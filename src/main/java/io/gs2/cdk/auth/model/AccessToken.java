@@ -14,25 +14,51 @@
  * permissions and limitations under the License.
  */
 
-package io.gs2.cdk.identifier.model;
+package io.gs2.cdk.auth.model;
 
 import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.identifier.resource.*;
+import io.gs2.cdk.auth.resource.*;
 
 import java.util.*;
 import java.util.stream.*;
 
-public class ProjectToken {
+public class AccessToken {
+	public String ownerId;
 	public String token;
+	public String userId;
+	public Long expire;
+	public Integer timeOffset;
 
-    public ProjectToken(
+    public AccessToken(
+            String ownerId,
+            String token,
+            String userId,
+            Long expire,
+            Integer timeOffset
     ) {
+        this.ownerId = ownerId;
+        this.token = token;
+        this.userId = userId;
+        this.expire = expire;
+        this.timeOffset = timeOffset;
     }
 
     public Map<String, Object> properties() {
         var properties = new HashMap<String, Object>();
+        if (this.ownerId != null) {
+            properties.put("OwnerId", this.ownerId);
+        }
         if (this.token != null) {
             properties.put("Token", this.token);
+        }
+        if (this.userId != null) {
+            properties.put("UserId", this.userId);
+        }
+        if (this.expire != null) {
+            properties.put("Expire", this.expire);
+        }
+        if (this.timeOffset != null) {
+            properties.put("TimeOffset", this.timeOffset);
         }
         return properties;
     }

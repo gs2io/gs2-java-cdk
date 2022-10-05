@@ -44,6 +44,7 @@ io/gs2/cdk/limit/ref/CurrentLimitMasterRef.class
 io/gs2/cdk/core/model/NotificationSetting$1.class
 io/gs2/cdk/limit/stampSheet/DeleteCounterByUserId$1.class
 io/gs2/cdk/stamina/stampSheet/ConsumeStaminaByUserId$1.class
+io/gs2/cdk/deploy/ref/ResourceRef.class
 io/gs2/cdk/script/ref/NamespaceRef.class
 io/gs2/cdk/realtime/stampSheet/Dummy.class
 io/gs2/cdk/limit/model/Dummy.class
@@ -69,6 +70,7 @@ io/gs2/cdk/quest/ref/NamespaceRef.class
 io/gs2/cdk/mission/resource/MissionGroupModel$1.class
 io/gs2/cdk/schedule/resource/CurrentMasterData$1$1.class
 io/gs2/cdk/core/model/CdkResource$1.class
+io/gs2/cdk/deploy/model/OutputField.class
 io/gs2/cdk/enhance/ref/CurrentRateMasterRef.class
 io/gs2/cdk/Limit.class
 io/gs2/cdk/megaField/ref/AreaModelRef.class
@@ -80,6 +82,7 @@ io/gs2/cdk/version/model/TargetVersion.class
 io/gs2/cdk/inbox/resource/Namespace.class
 io/gs2/cdk/Dictionary.class
 io/gs2/cdk/lottery/model/Prize$Type.class
+io/gs2/cdk/auth/resource/Dummy.class
 io/gs2/cdk/identifier/ref/PasswordRef.class
 io/gs2/cdk/megaField/model/Scope.class
 io/gs2/cdk/money/stampSheet/WithdrawByUserId.class
@@ -94,6 +97,7 @@ io/gs2/cdk/inventory/ref/InventoryModelRef.class
 io/gs2/cdk/ranking/model/Dummy.class
 io/gs2/cdk/Version.class
 io/gs2/cdk/inventory/stampSheet/AcquireItemSetByUserId.class
+io/gs2/cdk/deploy/stampSheet/Dummy.class
 io/gs2/cdk/chat/stampSheet/Dummy.class
 io/gs2/cdk/showcase/ref/SalesItemMasterRef.class
 io/gs2/cdk/megaField/resource/LayerModelMaster.class
@@ -110,7 +114,9 @@ io/gs2/cdk/stamina/resource/StaminaModel.class
 io/gs2/cdk/limit/resource/LimitModelMaster.class
 io/gs2/cdk/formation/resource/CurrentMasterData.class
 io/gs2/cdk/version/resource/VersionModel$Scope.class
+io/gs2/cdk/deploy/model/Dummy.class
 io/gs2/cdk/key/resource/Namespace.class
+io/gs2/cdk/auth/model/Dummy.class
 io/gs2/cdk/experience/model/Dummy.class
 io/gs2/cdk/distributor/model/DistributeResource.class
 io/gs2/cdk/serialKey/resource/Namespace.class
@@ -124,6 +130,7 @@ io/gs2/cdk/inbox/stampSheet/SendMessageByUserId.class
 io/gs2/cdk/limit/resource/Namespace.class
 io/gs2/cdk/inventory/stampSheet/VerifyReferenceOfByUserId.class
 io/gs2/cdk/formation/resource/FormModelMaster.class
+io/gs2/cdk/auth/ref/Dummy.class
 io/gs2/cdk/mission/ref/MissionTaskModelMasterRef.class
 io/gs2/cdk/stamina/stampSheet/ConsumeStaminaByUserId.class
 io/gs2/cdk/Account.class
@@ -173,6 +180,7 @@ io/gs2/cdk/exchange/resource/Namespace.class
 io/gs2/cdk/megaField/resource/CurrentMasterData$1.class
 io/gs2/cdk/SerialKey.class
 io/gs2/cdk/experience/stampSheet/AddRankCapByUserId$1.class
+io/gs2/cdk/identifier/stampSheet/Dummy.class
 io/gs2/cdk/inventory/stampSheet/AddReferenceOfByUserId.class
 io/gs2/cdk/quest/resource/CurrentMasterData.class
 io/gs2/cdk/matchmaking/resource/Namespace.class
@@ -210,6 +218,7 @@ io/gs2/cdk/formation/stampSheet/SetMoldCapacityByUserId$1.class
 io/gs2/cdk/serialKey/stampSheet/UseByUserId$1.class
 io/gs2/cdk/exchange/stampSheet/CreateAwaitByUserId$1.class
 io/gs2/cdk/log/model/AccessLogCount.class
+io/gs2/cdk/deploy/ref/EventRef.class
 io/gs2/cdk/showcase/resource/DisplayItem$1.class
 io/gs2/cdk/limit/resource/LimitModel$ResetDayOfWeek.class
 io/gs2/cdk/key/model/Dummy.class
@@ -222,6 +231,7 @@ io/gs2/cdk/lottery/stampSheet/DrawByUserId.class
 io/gs2/cdk/matchmaking/model/WrittenBallot.class
 io/gs2/cdk/formation/ref/FormModelMasterRef.class
 io/gs2/cdk/log/model/ExecuteStampSheetLog.class
+io/gs2/cdk/auth/model/AccessToken.class
 io/gs2/cdk/showcase/ref/DisplayItemRef.class
 io/gs2/cdk/lottery/model/BoxItems.class
 io/gs2/cdk/formation/stampSheet/SetMoldCapacityByUserId.class
@@ -237,6 +247,7 @@ io/gs2/cdk/version/stampSheet/Dummy.class
 io/gs2/cdk/jobQueue/model/JobEntry.class
 io/gs2/cdk/mission/resource/Namespace.class
 io/gs2/cdk/core/model/Config.class
+io/gs2/cdk/deploy/ref/OutputRef.class
 io/gs2/cdk/Gateway.class
 io/gs2/cdk/inbox/resource/GlobalMessage.class
 io/gs2/cdk/limit/resource/LimitModel$ResetType.class
@@ -248,6 +259,7 @@ io/gs2/cdk/lottery/model/BoxItem.class
 io/gs2/cdk/experience/resource/ExperienceModelMaster.class
 io/gs2/cdk/matchmaking/stampSheet/Dummy.class
 io/gs2/cdk/formation/model/SlotModel.class
+io/gs2/cdk/deploy/ref/WorkingResourceRef.class
 io/gs2/cdk/core/model/TransactionSetting$1.class
 io/gs2/cdk/quest/resource/QuestGroupModelMaster.class
 io/gs2/cdk/exchange/resource/RateModel.class
@@ -282,6 +294,7 @@ io/gs2/cdk/stamina/ref/NamespaceRef.class
 io/gs2/cdk/realtime/resource/Namespace.class
 io/gs2/cdk/key/resource/Key.class
 io/gs2/cdk/inventory/resource/InventoryModel.class
+io/gs2/cdk/auth/stampSheet/Dummy.class
 io/gs2/cdk/news/resource/Namespace.class
 io/gs2/cdk/enhance/stampSheet/DirectEnhanceByUserId.class
 io/gs2/cdk/version/ref/NamespaceRef.class
@@ -370,6 +383,7 @@ io/gs2/cdk/matchmaking/model/Attribute.class
 io/gs2/cdk/quest/ref/QuestGroupModelMasterRef.class
 io/gs2/cdk/ranking/model/Ranking.class
 io/gs2/cdk/Showcase.class
+io/gs2/cdk/identifier/model/Dummy.class
 io/gs2/cdk/megaField/ref/LayerModelMasterRef.class
 io/gs2/cdk/Script.class
 io/gs2/cdk/stamina/ref/MaxStaminaTableRef.class
@@ -447,12 +461,15 @@ io/gs2/cdk/schedule/stampSheet/Dummy.class
 io/gs2/cdk/serialKey/resource/CampaignModel.class
 io/gs2/cdk/matchmaking/ref/RatingModelMasterRef.class
 io/gs2/cdk/distributor/resource/CurrentMasterData$1$1.class
+io/gs2/cdk/deploy/ref/WorkingStackRef.class
 io/gs2/cdk/account/stampSheet/Dummy.class
 io/gs2/cdk/distributor/resource/CurrentMasterData.class
 io/gs2/cdk/exchange/stampSheet/ExchangeByUserId.class
+io/gs2/cdk/Auth.class
 io/gs2/cdk/lottery/resource/LotteryModel.class
 io/gs2/cdk/showcase/resource/SalesItemGroupMaster.class
 io/gs2/cdk/experience/model/Threshold.class
+io/gs2/cdk/deploy/ref/StackRef.class
 io/gs2/cdk/lottery/model/Dummy.class
 io/gs2/cdk/stamina/stampSheet/RaiseMaxValueByUserId$1.class
 io/gs2/cdk/experience/resource/CurrentMasterData.class
@@ -536,6 +553,7 @@ io/gs2/cdk/mission/model/CounterScopeModel$1.class
 io/gs2/cdk/dictionary/resource/EntryModelMaster.class
 io/gs2/cdk/core/model/ConsumeAction$1.class
 io/gs2/cdk/enhance/stampSheet/DeleteProgressByUserId$1.class
+io/gs2/cdk/Deploy.class
 io/gs2/cdk/core/model/ScriptSetting$1.class
 io/gs2/cdk/inbox/stampSheet/SendMessageByUserId$1.class
 io/gs2/cdk/Inbox.class

@@ -14,26 +14,8 @@
  * permissions and limitations under the License.
  */
 
-package io.gs2.cdk.identifier.model;
+package io.gs2.cdk.auth.ref;
 
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.identifier.resource.*;
+public class Dummy {
 
-import java.util.*;
-import java.util.stream.*;
-
-public class ProjectToken {
-	public String token;
-
-    public ProjectToken(
-    ) {
-    }
-
-    public Map<String, Object> properties() {
-        var properties = new HashMap<String, Object>();
-        if (this.token != null) {
-            properties.put("Token", this.token);
-        }
-        return properties;
-    }
 }

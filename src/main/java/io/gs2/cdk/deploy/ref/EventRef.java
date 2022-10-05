@@ -14,26 +14,40 @@
  * permissions and limitations under the License.
  */
 
-package io.gs2.cdk.identifier.model;
+package io.gs2.cdk.deploy.ref;
 
+import io.gs2.cdk.core.func.*;
 import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.identifier.resource.*;
 
 import java.util.*;
 import java.util.stream.*;
 
-public class ProjectToken {
-	public String token;
 
-    public ProjectToken(
+public class EventRef {
+    public String stackName;
+    public String eventName;
+
+    public EventRef(
+            String stackName,
+            String eventName
     ) {
+        this.stackName = stackName;
+        this.eventName = eventName;
     }
 
-    public Map<String, Object> properties() {
-        var properties = new HashMap<String, Object>();
-        if (this.token != null) {
-            properties.put("Token", this.token);
-        }
-        return properties;
+    public String grn() {
+        return new Join(
+            ":",
+            Arrays.asList(
+                "grn",
+                "gs2",
+                GetAttr.region().str(),
+                GetAttr.ownerId().str(),
+                "stack",
+                this.stackName,
+                "event",
+                this.eventName
+            )
+        ).str();
     }
 }

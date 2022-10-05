@@ -14,25 +14,33 @@
  * permissions and limitations under the License.
  */
 
-package io.gs2.cdk.identifier.model;
+package io.gs2.cdk.deploy.model;
 
 import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.identifier.resource.*;
+import io.gs2.cdk.deploy.resource.*;
 
 import java.util.*;
 import java.util.stream.*;
 
-public class ProjectToken {
-	public String token;
+public class OutputField {
+	public String name;
+	public String fieldName;
 
-    public ProjectToken(
+    public OutputField(
+            String name,
+            String fieldName
     ) {
+        this.name = name;
+        this.fieldName = fieldName;
     }
 
     public Map<String, Object> properties() {
         var properties = new HashMap<String, Object>();
-        if (this.token != null) {
-            properties.put("Token", this.token);
+        if (this.name != null) {
+            properties.put("Name", this.name);
+        }
+        if (this.fieldName != null) {
+            properties.put("FieldName", this.fieldName);
         }
         return properties;
     }
