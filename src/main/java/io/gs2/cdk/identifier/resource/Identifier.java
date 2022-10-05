@@ -56,6 +56,14 @@ public class Identifier extends CdkResource {
         return properties;
     }
 
+    public static String AdministratorAccessGrn() {
+        return "grn:gs2::system:identifier:securityPolicy:AdministratorAccess";
+    }
+
+    public static String ApplicationAccessGrn() {
+        return "grn:gs2::system:identifier:securityPolicy:ApplicationAccess";
+    }
+
     public GetAttr getAttrClientId() {
         return new GetAttr(
                 "Item.ClientId"
