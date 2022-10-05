@@ -17,6 +17,7 @@
 package io.gs2.cdk.log.model;
 
 import io.gs2.cdk.core.model.*;
+import io.gs2.cdk.log.resource.*;
 
 import java.util.*;
 import java.util.stream.*;

@@ -29,6 +29,7 @@ import java.util.stream.*;
 public class MaxStaminaTableMaster extends CdkResource {
 
     public Stack stack;
+    public String ownerId;
     public String namespaceName;
     public String name;
     public String description;

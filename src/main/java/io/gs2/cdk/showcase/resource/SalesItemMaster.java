@@ -29,6 +29,7 @@ import java.util.stream.*;
 public class SalesItemMaster extends CdkResource {
 
     public Stack stack;
+    public String ownerId;
     public String namespaceName;
     public String name;
     public String description;

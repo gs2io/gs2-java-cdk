@@ -17,25 +17,17 @@
 package io.gs2.cdk.distributor.model;
 
 import io.gs2.cdk.core.model.*;
+import io.gs2.cdk.distributor.resource.*;
 
 import java.util.*;
 import java.util.stream.*;
 
 public class DistributeResource {
-
-    public enum Action {;
-
-       public String toString() {
-           switch (this) {
-           }
-           return "unknown";
-       }
-    }
-	public Action action;
+	public String action;
 	public String request;
 
     public DistributeResource(
-            Action action,
+            String action,
             String request
     ) {
         this.action = action;
@@ -45,7 +37,7 @@ public class DistributeResource {
     public Map<String, Object> properties() {
         var properties = new HashMap<String, Object>();
         if (this.action != null) {
-            properties.put("Action", this.action.toString());
+            properties.put("Action", this.action);
         }
         if (this.request != null) {
             properties.put("Request", this.request);

@@ -54,13 +54,4 @@ public class Showcase {
         }
         return properties;
     }
-
-    public ShowcaseRef ref(
-            String namespaceName
-    ) {
-        return new ShowcaseRef(
-            namespaceName,
-            this.name
-        );
-    }
 }

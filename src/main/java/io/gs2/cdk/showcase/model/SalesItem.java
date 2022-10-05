@@ -17,6 +17,7 @@
 package io.gs2.cdk.showcase.model;
 
 import io.gs2.cdk.core.model.*;
+import io.gs2.cdk.showcase.resource.*;
 
 import java.util.*;
 import java.util.stream.*;

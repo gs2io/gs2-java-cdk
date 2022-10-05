@@ -29,6 +29,7 @@ import java.util.stream.*;
 public class Namespace extends CdkResource {
 
     public Stack stack;
+    public String ownerId;
     public String name;
     public String description;
     public LogSetting logSetting;

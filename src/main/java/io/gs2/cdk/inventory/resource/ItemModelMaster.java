@@ -29,6 +29,7 @@ import java.util.stream.*;
 public class ItemModelMaster extends CdkResource {
 
     public Stack stack;
+    public String ownerId;
     public String namespaceName;
     public String inventoryName;
     public String name;
