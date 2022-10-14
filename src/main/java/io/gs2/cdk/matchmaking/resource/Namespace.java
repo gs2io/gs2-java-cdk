@@ -39,6 +39,7 @@ public class Namespace extends CdkResource {
     public String completeMatchmakingTriggerType;
     public String completeMatchmakingTriggerRealtimeNamespaceId;
     public String completeMatchmakingTriggerScriptId;
+    public ScriptSetting changeRatingScript;
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
@@ -102,6 +103,9 @@ public class Namespace extends CdkResource {
         }
         if (this.completeMatchmakingTriggerScriptId != null) {
             properties.put("CompleteMatchmakingTriggerScriptId", this.completeMatchmakingTriggerScriptId);
+        }
+        if (this.changeRatingScript != null) {
+            properties.put("ChangeRatingScript", this.changeRatingScript.properties());
         }
         if (this.joinNotification != null) {
             properties.put("JoinNotification", this.joinNotification.properties());
