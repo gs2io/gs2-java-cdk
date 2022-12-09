@@ -25,6 +25,7 @@ import java.util.stream.*;
 public class Ranking {
 	public Long rank;
 	public Long index;
+	public String categoryName;
 	public String userId;
 	public Long score;
 	public String metadata;
@@ -33,12 +34,14 @@ public class Ranking {
     public Ranking(
             Long rank,
             Long index,
+            String categoryName,
             String userId,
             Long score,
             Long createdAt
     ) {
         this.rank = rank;
         this.index = index;
+        this.categoryName = categoryName;
         this.userId = userId;
         this.score = score;
         this.createdAt = createdAt;
@@ -51,6 +54,9 @@ public class Ranking {
         }
         if (this.index != null) {
             properties.put("Index", this.index);
+        }
+        if (this.categoryName != null) {
+            properties.put("CategoryName", this.categoryName);
         }
         if (this.userId != null) {
             properties.put("UserId", this.userId);
