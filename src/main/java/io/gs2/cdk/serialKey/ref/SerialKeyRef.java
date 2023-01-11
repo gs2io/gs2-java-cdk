@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,53 +13,66 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.serialKey.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.serialKey.model.*;
-import io.gs2.cdk.serialKey.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.serialKey.stampSheet.UseByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SerialKeyRef {
-    public String namespaceName;
-    public String serialKeyCode;
+    private String namespaceName;
+    private String code;
 
     public SerialKeyRef(
-            String namespaceName,
-            String serialKeyCode
+        String namespaceName,
+        String code
     ) {
         this.namespaceName = namespaceName;
-        this.serialKeyCode = serialKeyCode;
+        this.code = code;
     }
 
     public UseByUserId use(
-            String code
+        String userId
     ) {
-        return new UseByUserId(
+        return (new UseByUserId(
             this.namespaceName,
-            "#{userId}",
-            code
-        );
+            this.code,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public UseByUserId use(
+    ) {
+        return (new UseByUserId(
+            this.namespaceName,
+            this.code,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "serialKey",
                 this.namespaceName,
                 "serialKey",
-                this.serialKeyCode
+                this.code
             )
-        ).str();
+        )).str(
+        );
     }
 }

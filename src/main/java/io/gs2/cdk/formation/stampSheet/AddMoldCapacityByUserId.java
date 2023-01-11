@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.formation.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.formation.ref.*;
-import io.gs2.cdk.formation.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddMoldCapacityByUserId extends AcquireAction {
 
     public AddMoldCapacityByUserId(
-            String namespaceName,
-            String userId,
-            String moldName,
-            Integer capacity
+        String namespaceName,
+        String moldName,
+        Integer capacity,
+        String userId
     ) {
         super(
             "Gs2Formation:AddMoldCapacityByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (moldName != null) {
-                        put("moldName", moldName);
-                    }
-                    if (capacity != null) {
-                        put("capacity", capacity);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("moldName", moldName);
+                    put("capacity", capacity);
+                    put("userId", userId);
                 }
             }
         );

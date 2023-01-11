@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.jobQueue.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.jobQueue.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.jobQueue.model.options.JobEntryOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class JobEntry {
-	public String scriptId;
-	public String args;
-	public Integer maxTryCount;
+    private String scriptId;
+    private String args;
+    private Integer maxTryCount;
 
     public JobEntry(
-            String scriptId,
-            String args,
-            Integer maxTryCount
+        String scriptId,
+        String args,
+        Integer maxTryCount,
+        JobEntryOptions options
+    ) {
+        this.scriptId = scriptId;
+        this.args = args;
+        this.maxTryCount = maxTryCount;
+    }
+    public JobEntry(
+        String scriptId,
+        String args,
+        Integer maxTryCount
     ) {
         this.scriptId = scriptId;
         this.args = args;
         this.maxTryCount = maxTryCount;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.scriptId != null) {
-            properties.put("ScriptId", this.scriptId);
+            properties.put("scriptId", this.scriptId);
         }
         if (this.args != null) {
-            properties.put("Args", this.args);
+            properties.put("args", this.args);
         }
         if (this.maxTryCount != null) {
-            properties.put("MaxTryCount", this.maxTryCount);
+            properties.put("maxTryCount", this.maxTryCount);
         }
+
         return properties;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,39 +13,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.jobQueue.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.jobQueue.ref.*;
-import io.gs2.cdk.jobQueue.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.jobQueue.model.JobEntry;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PushByUserId extends AcquireAction {
 
     public PushByUserId(
-            String namespaceName,
-            String userId,
-            List<JobEntry> jobs
+        String namespaceName,
+        List<JobEntry> jobs,
+        String userId
     ) {
         super(
             "Gs2JobQueue:PushByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (jobs != null) {
-                        put("jobs", jobs);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("jobs", jobs);
+                    put("userId", userId);
                 }
             }
         );

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.lottery.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.lottery.model.*;
-import io.gs2.cdk.lottery.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PrizeLimitRef {
-    public String namespaceName;
-    public String prizeTableName;
-    public String prizeId;
+    private String namespaceName;
+    private String prizeTableName;
+    private String prizeId;
 
     public PrizeLimitRef(
-            String namespaceName,
-            String prizeTableName,
-            String prizeId
+        String namespaceName,
+        String prizeTableName,
+        String prizeId
     ) {
         this.namespaceName = namespaceName;
         this.prizeTableName = prizeTableName;
         this.prizeId = prizeId;
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "lottery",
                 this.namespaceName,
                 "table",
@@ -55,6 +56,7 @@ public class PrizeLimitRef {
                 "prize",
                 this.prizeId
             )
-        ).str();
+        )).str(
+        );
     }
 }

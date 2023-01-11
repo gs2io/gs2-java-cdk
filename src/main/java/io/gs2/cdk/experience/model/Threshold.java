@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,33 +13,41 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.experience.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.experience.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.experience.model.options.ThresholdOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Threshold {
-	public String metadata;
-	public List<Long> values;
+    private List<Long> values;
+    private String metadata = null;
 
     public Threshold(
-            List<Long> values
+        List<Long> values,
+        ThresholdOptions options
+    ) {
+        this.values = values;
+        this.metadata = options.metadata;
+    }
+    public Threshold(
+        List<Long> values
     ) {
         this.values = values;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.metadata != null) {
-            properties.put("Metadata", this.metadata);
+            properties.put("metadata", this.metadata);
         }
         if (this.values != null) {
-            properties.put("Values", this.values);
+            properties.put("values", this.values);
         }
+
         return properties;
     }
 }

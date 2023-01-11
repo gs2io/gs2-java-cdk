@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,56 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.version.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.version.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.options.TargetVersionOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TargetVersion {
-	public String versionName;
-	public Version version;
-	public String body;
-	public String signature;
+    private String versionName;
+    private Version version;
+    private String body = null;
+    private String signature = null;
 
     public TargetVersion(
-            String versionName,
-            Version version
+        String versionName,
+        Version version,
+        TargetVersionOptions options
+    ) {
+        this.versionName = versionName;
+        this.version = version;
+        this.body = options.body;
+        this.signature = options.signature;
+    }
+    public TargetVersion(
+        String versionName,
+        Version version
     ) {
         this.versionName = versionName;
         this.version = version;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.versionName != null) {
-            properties.put("VersionName", this.versionName);
+            properties.put("versionName", this.versionName);
         }
         if (this.version != null) {
-            properties.put("Version", this.version.properties());
+            properties.put("version", this.version.properties(
+            ));
         }
         if (this.body != null) {
-            properties.put("Body", this.body);
+            properties.put("body", this.body);
         }
         if (this.signature != null) {
-            properties.put("Signature", this.signature);
+            properties.put("signature", this.signature);
         }
+
         return properties;
     }
 }

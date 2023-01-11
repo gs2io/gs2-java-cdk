@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.matchmaking.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.matchmaking.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.matchmaking.model.options.AttributeRangeOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AttributeRange {
-	public String name;
-	public Integer min;
-	public Integer max;
+    private String name;
+    private Integer min;
+    private Integer max;
 
     public AttributeRange(
-            String name,
-            Integer min,
-            Integer max
+        String name,
+        Integer min,
+        Integer max,
+        AttributeRangeOptions options
+    ) {
+        this.name = name;
+        this.min = min;
+        this.max = max;
+    }
+    public AttributeRange(
+        String name,
+        Integer min,
+        Integer max
     ) {
         this.name = name;
         this.min = min;
         this.max = max;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.name != null) {
-            properties.put("Name", this.name);
+            properties.put("name", this.name);
         }
         if (this.min != null) {
-            properties.put("Min", this.min);
+            properties.put("min", this.min);
         }
         if (this.max != null) {
-            properties.put("Max", this.max);
+            properties.put("max", this.max);
         }
+
         return properties;
     }
 }

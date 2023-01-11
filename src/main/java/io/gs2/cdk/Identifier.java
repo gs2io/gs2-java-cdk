@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,26 +13,25 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk;
-
-import io.gs2.cdk.identifier.ref.*;
+import io.gs2.cdk.identifier.ref.UserRef;
+import io.gs2.cdk.identifier.ref.SecurityPolicyRef;
 
 public class Identifier {
 
     public static UserRef user(
-            String userName
+        String userName
     ) {
-        return new UserRef(
+        return (new UserRef(
             userName
-        );
+        ));
     }
 
     public static SecurityPolicyRef securityPolicy(
-            String securityPolicyName
+        String securityPolicyName
     ) {
-        return new SecurityPolicyRef(
+        return (new SecurityPolicyRef(
             securityPolicyName
-        );
+        ));
     }
 }

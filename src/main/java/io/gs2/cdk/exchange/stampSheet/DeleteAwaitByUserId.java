@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.exchange.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.exchange.ref.*;
-import io.gs2.cdk.exchange.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DeleteAwaitByUserId extends ConsumeAction {
 
     public DeleteAwaitByUserId(
-            String namespaceName,
-            String userId,
-            String rateName,
-            String awaitName
+        String namespaceName,
+        String rateName,
+        String awaitName,
+        String userId
     ) {
         super(
             "Gs2Exchange:DeleteAwaitByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (rateName != null) {
-                        put("rateName", rateName);
-                    }
-                    if (awaitName != null) {
-                        put("awaitName", awaitName);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("rateName", rateName);
+                    put("awaitName", awaitName);
+                    put("userId", userId);
                 }
             }
         );

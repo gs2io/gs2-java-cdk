@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,66 +13,59 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.mission.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.mission.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.mission.model.options.ScopedValueOptions;
+import io.gs2.cdk.mission.model.enums.ScopedValueResetType;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScopedValue {
-
-    public enum ResetType {
-        NOT_RESET,
-        DAILY,
-        WEEKLY,
-        MONTHLY;
-
-       public String toString() {
-           switch (this) {
-               case NOT_RESET:
-                   return "notReset";
-               case DAILY:
-                   return "daily";
-               case WEEKLY:
-                   return "weekly";
-               case MONTHLY:
-                   return "monthly";
-           }
-           return "unknown";
-       }
-    }
-	public ResetType resetType;
-	public Long value;
-	public Long nextResetAt;
-	public Long updatedAt;
+    private ScopedValueResetType resetType;
+    private Long value;
+    private Long updatedAt;
+    private Long nextResetAt = null;
 
     public ScopedValue(
-            ResetType resetType,
-            Long value,
-            Long updatedAt
+        ScopedValueResetType resetType,
+        Long value,
+        Long updatedAt,
+        ScopedValueOptions options
+    ) {
+        this.resetType = resetType;
+        this.value = value;
+        this.updatedAt = updatedAt;
+        this.nextResetAt = options.nextResetAt;
+    }
+    public ScopedValue(
+        ScopedValueResetType resetType,
+        Long value,
+        Long updatedAt
     ) {
         this.resetType = resetType;
         this.value = value;
         this.updatedAt = updatedAt;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.resetType != null) {
-            properties.put("ResetType", this.resetType.toString());
+            properties.put("resetType", this.resetType.toString(
+            ));
         }
         if (this.value != null) {
-            properties.put("Value", this.value);
+            properties.put("value", this.value);
         }
         if (this.nextResetAt != null) {
-            properties.put("NextResetAt", this.nextResetAt);
+            properties.put("nextResetAt", this.nextResetAt);
         }
         if (this.updatedAt != null) {
-            properties.put("UpdatedAt", this.updatedAt);
+            properties.put("updatedAt", this.updatedAt);
         }
+
         return properties;
     }
 }

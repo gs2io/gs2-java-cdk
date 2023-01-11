@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,54 +13,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.key.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.key.ref.KeyRef;
+import io.gs2.cdk.key.ref.GitHubApiKeyRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public KeyRef key(
-            String keyName
+    public String grn(
     ) {
-        return new KeyRef(
-            this.namespaceName,
-            keyName
-        );
-    }
-
-    public GitHubApiKeyRef gitHubApiKey(
-            String apiKeyName
-    ) {
-        return new GitHubApiKeyRef(
-            this.namespaceName,
-            apiKeyName
-        );
-    }
-
-    public String grn() {
-        return new Join(
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "key",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

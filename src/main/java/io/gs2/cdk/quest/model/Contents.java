@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,37 +13,48 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.quest.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.quest.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.quest.model.options.ContentsOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Contents {
-	public String metadata;
-	public List<AcquireAction> completeAcquireActions;
-	public Integer weight;
+    private Integer weight;
+    private String metadata = null;
+    private List<AcquireAction> completeAcquireActions = null;
 
     public Contents(
-            Integer weight
+        Integer weight,
+        ContentsOptions options
+    ) {
+        this.weight = weight;
+        this.metadata = options.metadata;
+        this.completeAcquireActions = options.completeAcquireActions;
+    }
+    public Contents(
+        Integer weight
     ) {
         this.weight = weight;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.metadata != null) {
-            properties.put("Metadata", this.metadata);
+            properties.put("metadata", this.metadata);
         }
         if (this.completeAcquireActions != null) {
-            properties.put("CompleteAcquireActions", this.completeAcquireActions.stream().map(AcquireAction::properties).collect(Collectors.toList()));
+            properties.put("completeAcquireActions", this.completeAcquireActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.weight != null) {
-            properties.put("Weight", this.weight);
+            properties.put("weight", this.weight);
         }
+
         return properties;
     }
 }

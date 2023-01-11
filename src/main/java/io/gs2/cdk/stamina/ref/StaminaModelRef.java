@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,109 +13,195 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.stamina.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.stamina.model.*;
-import io.gs2.cdk.stamina.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.stamina.stampSheet.RecoverStaminaByUserId;
+import io.gs2.cdk.stamina.stampSheet.RaiseMaxValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetMaxValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetRecoverIntervalByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetRecoverValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.ConsumeStaminaByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StaminaModelRef {
-    public String namespaceName;
-    public String staminaName;
+    private String namespaceName;
+    private String staminaName;
 
     public StaminaModelRef(
-            String namespaceName,
-            String staminaName
+        String namespaceName,
+        String staminaName
     ) {
         this.namespaceName = namespaceName;
         this.staminaName = staminaName;
     }
 
     public RecoverStaminaByUserId recoverStamina(
-            Integer recoverValue
+        Integer recoverValue,
+        String userId
     ) {
-        return new RecoverStaminaByUserId(
+        return (new RecoverStaminaByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            recoverValue
-        );
+            recoverValue,
+            userId
+        ));
+    }
+
+
+    public RecoverStaminaByUserId recoverStamina(
+        Integer recoverValue
+    ) {
+        return (new RecoverStaminaByUserId(
+            this.namespaceName,
+            this.staminaName,
+            recoverValue,
+            "#{userId}"
+        ));
     }
 
     public RaiseMaxValueByUserId raiseMaxValue(
-            Integer raiseValue
+        Integer raiseValue,
+        String userId
     ) {
-        return new RaiseMaxValueByUserId(
+        return (new RaiseMaxValueByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            raiseValue
-        );
+            raiseValue,
+            userId
+        ));
+    }
+
+
+    public RaiseMaxValueByUserId raiseMaxValue(
+        Integer raiseValue
+    ) {
+        return (new RaiseMaxValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            raiseValue,
+            "#{userId}"
+        ));
     }
 
     public SetMaxValueByUserId setMaxValue(
-            Integer maxValue
+        Integer maxValue,
+        String userId
     ) {
-        return new SetMaxValueByUserId(
+        return (new SetMaxValueByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            maxValue
-        );
+            maxValue,
+            userId
+        ));
+    }
+
+
+    public SetMaxValueByUserId setMaxValue(
+        Integer maxValue
+    ) {
+        return (new SetMaxValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            maxValue,
+            "#{userId}"
+        ));
     }
 
     public SetRecoverIntervalByUserId setRecoverInterval(
-            Integer recoverIntervalMinutes
+        Integer recoverIntervalMinutes,
+        String userId
     ) {
-        return new SetRecoverIntervalByUserId(
+        return (new SetRecoverIntervalByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            recoverIntervalMinutes
-        );
+            recoverIntervalMinutes,
+            userId
+        ));
+    }
+
+
+    public SetRecoverIntervalByUserId setRecoverInterval(
+        Integer recoverIntervalMinutes
+    ) {
+        return (new SetRecoverIntervalByUserId(
+            this.namespaceName,
+            this.staminaName,
+            recoverIntervalMinutes,
+            "#{userId}"
+        ));
     }
 
     public SetRecoverValueByUserId setRecoverValue(
-            Integer recoverValue
+        Integer recoverValue,
+        String userId
     ) {
-        return new SetRecoverValueByUserId(
+        return (new SetRecoverValueByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            recoverValue
-        );
+            recoverValue,
+            userId
+        ));
+    }
+
+
+    public SetRecoverValueByUserId setRecoverValue(
+        Integer recoverValue
+    ) {
+        return (new SetRecoverValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            recoverValue,
+            "#{userId}"
+        ));
     }
 
     public ConsumeStaminaByUserId consumeStamina(
-            Integer consumeValue
+        Integer consumeValue,
+        String userId
     ) {
-        return new ConsumeStaminaByUserId(
+        return (new ConsumeStaminaByUserId(
             this.namespaceName,
             this.staminaName,
-            "#{userId}",
-            consumeValue
-        );
+            consumeValue,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public ConsumeStaminaByUserId consumeStamina(
+        Integer consumeValue
+    ) {
+        return (new ConsumeStaminaByUserId(
+            this.namespaceName,
+            this.staminaName,
+            consumeValue,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "stamina",
                 this.namespaceName,
                 "model",
                 this.staminaName
             )
-        ).str();
+        )).str(
+        );
     }
 }

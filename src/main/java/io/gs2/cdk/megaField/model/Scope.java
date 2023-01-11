@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.megaField.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.megaField.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.megaField.model.options.ScopeOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Scope {
-	public String layerName;
-	public Float r;
-	public Integer limit;
+    private String layerName;
+    private Float r;
+    private Integer limit;
 
     public Scope(
-            String layerName,
-            Float r,
-            Integer limit
+        String layerName,
+        Float r,
+        Integer limit,
+        ScopeOptions options
+    ) {
+        this.layerName = layerName;
+        this.r = r;
+        this.limit = limit;
+    }
+    public Scope(
+        String layerName,
+        Float r,
+        Integer limit
     ) {
         this.layerName = layerName;
         this.r = r;
         this.limit = limit;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.layerName != null) {
-            properties.put("LayerName", this.layerName);
+            properties.put("layerName", this.layerName);
         }
         if (this.r != null) {
-            properties.put("R", this.r);
+            properties.put("r", this.r);
         }
         if (this.limit != null) {
-            properties.put("Limit", this.limit);
+            properties.put("limit", this.limit);
         }
+
         return properties;
     }
 }

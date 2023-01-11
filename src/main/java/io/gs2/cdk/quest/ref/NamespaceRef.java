@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,85 +13,101 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.quest.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.quest.model.*;
-import io.gs2.cdk.quest.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.quest.ref.QuestGroupModelRef;
+import io.gs2.cdk.quest.stampSheet.CreateProgressByUserId;
+import io.gs2.cdk.core.model.Config;
+import io.gs2.cdk.quest.stampSheet.DeleteProgressByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentQuestMasterRef currentQuestMaster(
-    ) {
-        return new CurrentQuestMasterRef(
-            this.namespaceName
-        );
-    }
-
     public QuestGroupModelRef questGroupModel(
-            String questGroupName
+        String questGroupName
     ) {
-        return new QuestGroupModelRef(
+        return (new QuestGroupModelRef(
             this.namespaceName,
             questGroupName
-        );
-    }
-
-    public QuestGroupModelMasterRef questGroupModelMaster(
-            String questGroupName
-    ) {
-        return new QuestGroupModelMasterRef(
-            this.namespaceName,
-            questGroupName
-        );
+        ));
     }
 
     public CreateProgressByUserId createProgress(
-            String questModelId,
-            Boolean force,
-            List<Config> config
+        String questModelId,
+        Boolean force,
+        List<Config> config,
+        String userId
     ) {
-        return new CreateProgressByUserId(
+        return (new CreateProgressByUserId(
             this.namespaceName,
-            "#{userId}",
             questModelId,
             force,
-            config
-        );
+            config,
+            userId
+        ));
+    }
+
+
+    public CreateProgressByUserId createProgress(
+        String questModelId,
+        Boolean force,
+        List<Config> config
+    ) {
+        return (new CreateProgressByUserId(
+            this.namespaceName,
+            questModelId,
+            force,
+            config,
+            "#{userId}"
+        ));
     }
 
     public DeleteProgressByUserId deleteProgress(
+        String userId
     ) {
-        return new DeleteProgressByUserId(
+        return (new DeleteProgressByUserId(
             this.namespaceName,
-            "#{userId}"
-        );
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public DeleteProgressByUserId deleteProgress(
+    ) {
+        return (new DeleteProgressByUserId(
+            this.namespaceName,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "quest",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

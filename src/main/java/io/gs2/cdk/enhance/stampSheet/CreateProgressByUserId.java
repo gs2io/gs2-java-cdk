@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,51 +13,37 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.enhance.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.enhance.ref.*;
-import io.gs2.cdk.enhance.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.enhance.model.Material;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreateProgressByUserId extends AcquireAction {
 
     public CreateProgressByUserId(
-            String namespaceName,
-            String userId,
-            String rateName,
-            String targetItemSetId,
-            List<Material> materials,
-            Boolean force
+        String namespaceName,
+        String rateName,
+        String targetItemSetId,
+        Boolean force,
+        List<Material> materials,
+        String userId
     ) {
         super(
             "Gs2Enhance:CreateProgressByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (rateName != null) {
-                        put("rateName", rateName);
-                    }
-                    if (targetItemSetId != null) {
-                        put("targetItemSetId", targetItemSetId);
-                    }
-                    if (materials != null) {
-                        put("materials", materials);
-                    }
-                    if (force != null) {
-                        put("force", force);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("rateName", rateName);
+                    put("targetItemSetId", targetItemSetId);
+                    put("force", force);
+                    put("materials", materials);
+                    put("userId", userId);
                 }
             }
         );

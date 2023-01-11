@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,63 +13,291 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.inventory.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.inventory.model.*;
-import io.gs2.cdk.inventory.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.inventory.ref.InventoryModelRef;
+import io.gs2.cdk.inventory.stampSheet.AddCapacityByUserId;
+import io.gs2.cdk.inventory.stampSheet.SetCapacityByUserId;
+import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
+import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
+import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentItemModelMasterRef currentItemModelMaster(
-    ) {
-        return new CurrentItemModelMasterRef(
-            this.namespaceName
-        );
-    }
-
     public InventoryModelRef inventoryModel(
-            String inventoryName
+        String inventoryName
     ) {
-        return new InventoryModelRef(
+        return (new InventoryModelRef(
             this.namespaceName,
             inventoryName
-        );
+        ));
     }
 
-    public InventoryModelMasterRef inventoryModelMaster(
-            String inventoryName
+    public AddCapacityByUserId addCapacity(
+        String inventoryName,
+        Integer addCapacityValue,
+        String userId
     ) {
-        return new InventoryModelMasterRef(
+        return (new AddCapacityByUserId(
             this.namespaceName,
-            inventoryName
-        );
+            inventoryName,
+            addCapacityValue,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public AddCapacityByUserId addCapacity(
+        String inventoryName,
+        Integer addCapacityValue
+    ) {
+        return (new AddCapacityByUserId(
+            this.namespaceName,
+            inventoryName,
+            addCapacityValue,
+            "#{userId}"
+        ));
+    }
+
+    public SetCapacityByUserId setCapacity(
+        String inventoryName,
+        Integer newCapacityValue,
+        String userId
+    ) {
+        return (new SetCapacityByUserId(
+            this.namespaceName,
+            inventoryName,
+            newCapacityValue,
+            userId
+        ));
+    }
+
+
+    public SetCapacityByUserId setCapacity(
+        String inventoryName,
+        Integer newCapacityValue
+    ) {
+        return (new SetCapacityByUserId(
+            this.namespaceName,
+            inventoryName,
+            newCapacityValue,
+            "#{userId}"
+        ));
+    }
+
+    public AcquireItemSetByUserId acquireItemSet(
+        String inventoryName,
+        String itemName,
+        Long acquireCount,
+        Long expiresAt,
+        Boolean createNewItemSet,
+        String itemSetName,
+        String userId
+    ) {
+        return (new AcquireItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            acquireCount,
+            expiresAt,
+            createNewItemSet,
+            itemSetName,
+            userId
+        ));
+    }
+
+
+    public AcquireItemSetByUserId acquireItemSet(
+        String inventoryName,
+        String itemName,
+        Long acquireCount,
+        Long expiresAt,
+        Boolean createNewItemSet,
+        String itemSetName
+    ) {
+        return (new AcquireItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            acquireCount,
+            expiresAt,
+            createNewItemSet,
+            itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public AddReferenceOfByUserId addReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf,
+        String userId
+    ) {
+        return (new AddReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            userId
+        ));
+    }
+
+
+    public AddReferenceOfByUserId addReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf
+    ) {
+        return (new AddReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteReferenceOfByUserId deleteReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf,
+        String userId
+    ) {
+        return (new DeleteReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            userId
+        ));
+    }
+
+
+    public DeleteReferenceOfByUserId deleteReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf
+    ) {
+        return (new DeleteReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            "#{userId}"
+        ));
+    }
+
+    public ConsumeItemSetByUserId consumeItemSet(
+        String inventoryName,
+        String itemName,
+        Long consumeCount,
+        String itemSetName,
+        String userId
+    ) {
+        return (new ConsumeItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            consumeCount,
+            itemSetName,
+            userId
+        ));
+    }
+
+
+    public ConsumeItemSetByUserId consumeItemSet(
+        String inventoryName,
+        String itemName,
+        Long consumeCount,
+        String itemSetName
+    ) {
+        return (new ConsumeItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            consumeCount,
+            itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyReferenceOfByUserId verifyReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyReferenceOfByUserId verifyReferenceOf(
+        String inventoryName,
+        String itemName,
+        String itemSetName,
+        String referenceOf,
+        String verifyType
+    ) {
+        return (new VerifyReferenceOfByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            itemSetName,
+            referenceOf,
+            verifyType,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "inventory",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

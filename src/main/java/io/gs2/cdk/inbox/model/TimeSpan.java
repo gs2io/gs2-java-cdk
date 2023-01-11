@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.inbox.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.inbox.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.inbox.model.options.TimeSpanOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TimeSpan {
-	public Integer days;
-	public Integer hours;
-	public Integer minutes;
+    private Integer days;
+    private Integer hours;
+    private Integer minutes;
 
     public TimeSpan(
-            Integer days,
-            Integer hours,
-            Integer minutes
+        Integer days,
+        Integer hours,
+        Integer minutes,
+        TimeSpanOptions options
+    ) {
+        this.days = days;
+        this.hours = hours;
+        this.minutes = minutes;
+    }
+    public TimeSpan(
+        Integer days,
+        Integer hours,
+        Integer minutes
     ) {
         this.days = days;
         this.hours = hours;
         this.minutes = minutes;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.days != null) {
-            properties.put("Days", this.days);
+            properties.put("days", this.days);
         }
         if (this.hours != null) {
-            properties.put("Hours", this.hours);
+            properties.put("hours", this.hours);
         }
         if (this.minutes != null) {
-            properties.put("Minutes", this.minutes);
+            properties.put("minutes", this.minutes);
         }
+
         return properties;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,72 +13,143 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.experience.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.experience.model.*;
-import io.gs2.cdk.experience.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.experience.ref.ExperienceModelRef;
+import io.gs2.cdk.experience.stampSheet.AddExperienceByUserId;
+import io.gs2.cdk.experience.stampSheet.AddRankCapByUserId;
+import io.gs2.cdk.experience.stampSheet.SetRankCapByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentExperienceMasterRef currentExperienceMaster(
-    ) {
-        return new CurrentExperienceMasterRef(
-            this.namespaceName
-        );
-    }
-
     public ExperienceModelRef experienceModel(
-            String experienceName
+        String experienceName
     ) {
-        return new ExperienceModelRef(
+        return (new ExperienceModelRef(
             this.namespaceName,
             experienceName
-        );
+        ));
     }
 
-    public ThresholdMasterRef thresholdMaster(
-            String thresholdName
+    public AddExperienceByUserId addExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue,
+        String userId
     ) {
-        return new ThresholdMasterRef(
+        return (new AddExperienceByUserId(
             this.namespaceName,
-            thresholdName
-        );
+            experienceName,
+            propertyId,
+            experienceValue,
+            userId
+        ));
     }
 
-    public ExperienceModelMasterRef experienceModelMaster(
-            String experienceName
+
+    public AddExperienceByUserId addExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue
     ) {
-        return new ExperienceModelMasterRef(
+        return (new AddExperienceByUserId(
             this.namespaceName,
-            experienceName
-        );
+            experienceName,
+            propertyId,
+            experienceValue,
+            "#{userId}"
+        ));
     }
 
-    public String grn() {
-        return new Join(
+    public AddRankCapByUserId addRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue,
+        String userId
+    ) {
+        return (new AddRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
+            userId
+        ));
+    }
+
+
+    public AddRankCapByUserId addRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue
+    ) {
+        return (new AddRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
+            "#{userId}"
+        ));
+    }
+
+    public SetRankCapByUserId setRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue,
+        String userId
+    ) {
+        return (new SetRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
+            userId
+        ));
+    }
+
+
+    public SetRankCapByUserId setRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue
+    ) {
+        return (new SetRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "experience",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

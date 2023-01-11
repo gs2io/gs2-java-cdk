@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,39 +13,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.megaField.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LayerModelRef {
-    public String namespaceName;
-    public String areaModelName;
-    public String layerModelName;
+    private String namespaceName;
+    private String areaModelName;
+    private String layerModelName;
 
     public LayerModelRef(
-            String namespaceName,
-            String areaModelName,
-            String layerModelName
+        String namespaceName,
+        String areaModelName,
+        String layerModelName
     ) {
         this.namespaceName = namespaceName;
         this.areaModelName = areaModelName;
         this.layerModelName = layerModelName;
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "megaField",
                 this.namespaceName,
                 "model",
@@ -54,6 +57,7 @@ public class LayerModelRef {
                 "layer",
                 this.layerModelName
             )
-        ).str();
+        )).str(
+        );
     }
 }

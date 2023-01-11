@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,45 +13,56 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.log.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.log.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.log.model.options.ExecuteStampTaskLogCountOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExecuteStampTaskLogCount {
-	public String service;
-	public String method;
-	public String userId;
-	public String action;
-	public Long count;
+    private Long count;
+    private String service = null;
+    private String method = null;
+    private String userId = null;
+    private String action = null;
 
     public ExecuteStampTaskLogCount(
-            Long count
+        Long count,
+        ExecuteStampTaskLogCountOptions options
+    ) {
+        this.count = count;
+        this.service = options.service;
+        this.method = options.method;
+        this.userId = options.userId;
+        this.action = options.action;
+    }
+    public ExecuteStampTaskLogCount(
+        Long count
     ) {
         this.count = count;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.service != null) {
-            properties.put("Service", this.service);
+            properties.put("service", this.service);
         }
         if (this.method != null) {
-            properties.put("Method", this.method);
+            properties.put("method", this.method);
         }
         if (this.userId != null) {
-            properties.put("UserId", this.userId);
+            properties.put("userId", this.userId);
         }
         if (this.action != null) {
-            properties.put("Action", this.action);
+            properties.put("action", this.action);
         }
         if (this.count != null) {
-            properties.put("Count", this.count);
+            properties.put("count", this.count);
         }
+
         return properties;
     }
 }

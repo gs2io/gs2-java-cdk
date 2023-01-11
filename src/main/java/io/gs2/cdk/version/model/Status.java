@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,33 +13,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.version.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.version.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.VersionModel;
+import io.gs2.cdk.version.model.options.StatusOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Status {
-	public VersionModel versionModel;
-	public Version currentVersion;
+    private VersionModel versionModel;
+    private Version currentVersion = null;
 
     public Status(
-            VersionModel versionModel
+        VersionModel versionModel,
+        StatusOptions options
+    ) {
+        this.versionModel = versionModel;
+        this.currentVersion = options.currentVersion;
+    }
+    public Status(
+        VersionModel versionModel
     ) {
         this.versionModel = versionModel;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.versionModel != null) {
-            properties.put("VersionModel", this.versionModel.properties());
+            properties.put("versionModel", this.versionModel.properties(
+            ));
         }
         if (this.currentVersion != null) {
-            properties.put("CurrentVersion", this.currentVersion.properties());
+            properties.put("currentVersion", this.currentVersion.properties(
+            ));
         }
+
         return properties;
     }
 }

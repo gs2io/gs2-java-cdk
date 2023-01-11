@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,26 +13,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.quest.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.quest.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.quest.model.options.RewardOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Reward {
-	public String action;
-	public String request;
-	public String itemId;
-	public Integer value;
+    private String action;
+    private String request;
+    private String itemId;
+    private Integer value;
 
     public Reward(
-            String action,
-            String request,
-            String itemId,
-            Integer value
+        String action,
+        String request,
+        String itemId,
+        Integer value,
+        RewardOptions options
+    ) {
+        this.action = action;
+        this.request = request;
+        this.itemId = itemId;
+        this.value = value;
+    }
+    public Reward(
+        String action,
+        String request,
+        String itemId,
+        Integer value
     ) {
         this.action = action;
         this.request = request;
@@ -40,20 +50,24 @@ public class Reward {
         this.value = value;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.action != null) {
-            properties.put("Action", this.action);
+            properties.put("action", this.action.toString(
+            ));
         }
         if (this.request != null) {
-            properties.put("Request", this.request);
+            properties.put("request", this.request);
         }
         if (this.itemId != null) {
-            properties.put("ItemId", this.itemId);
+            properties.put("itemId", this.itemId);
         }
         if (this.value != null) {
-            properties.put("Value", this.value);
+            properties.put("value", this.value);
         }
+
         return properties;
     }
 }

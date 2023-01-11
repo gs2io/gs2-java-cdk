@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.stamina.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.stamina.ref.*;
-import io.gs2.cdk.stamina.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsumeStaminaByUserId extends ConsumeAction {
 
     public ConsumeStaminaByUserId(
-            String namespaceName,
-            String staminaName,
-            String userId,
-            Integer consumeValue
+        String namespaceName,
+        String staminaName,
+        Integer consumeValue,
+        String userId
     ) {
         super(
             "Gs2Stamina:ConsumeStaminaByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (staminaName != null) {
-                        put("staminaName", staminaName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (consumeValue != null) {
-                        put("consumeValue", consumeValue);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("staminaName", staminaName);
+                    put("consumeValue", consumeValue);
+                    put("userId", userId);
                 }
             }
         );

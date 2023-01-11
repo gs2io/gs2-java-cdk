@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,39 +13,30 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.serialKey.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.serialKey.ref.*;
-import io.gs2.cdk.serialKey.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UseByUserId extends ConsumeAction {
 
     public UseByUserId(
-            String namespaceName,
-            String userId,
-            String code
+        String namespaceName,
+        String code,
+        String userId
     ) {
         super(
             "Gs2SerialKey:UseByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (code != null) {
-                        put("code", code);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("code", code);
+                    put("userId", userId);
                 }
             }
         );

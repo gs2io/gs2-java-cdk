@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,35 +13,44 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.matchmaking.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.matchmaking.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.matchmaking.model.options.AttributeOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Attribute {
-	public String name;
-	public Integer value;
+    private String name;
+    private Integer value;
 
     public Attribute(
-            String name,
-            Integer value
+        String name,
+        Integer value,
+        AttributeOptions options
+    ) {
+        this.name = name;
+        this.value = value;
+    }
+    public Attribute(
+        String name,
+        Integer value
     ) {
         this.name = name;
         this.value = value;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.name != null) {
-            properties.put("Name", this.name);
+            properties.put("name", this.name);
         }
         if (this.value != null) {
-            properties.put("Value", this.value);
+            properties.put("value", this.value);
         }
+
         return properties;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.inventory.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.inventory.ref.*;
-import io.gs2.cdk.inventory.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SetCapacityByUserId extends AcquireAction {
 
     public SetCapacityByUserId(
-            String namespaceName,
-            String inventoryName,
-            String userId,
-            Integer newCapacityValue
+        String namespaceName,
+        String inventoryName,
+        Integer newCapacityValue,
+        String userId
     ) {
         super(
             "Gs2Inventory:SetCapacityByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (inventoryName != null) {
-                        put("inventoryName", inventoryName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (newCapacityValue != null) {
-                        put("newCapacityValue", newCapacityValue);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("inventoryName", inventoryName);
+                    put("newCapacityValue", newCapacityValue);
+                    put("userId", userId);
                 }
             }
         );

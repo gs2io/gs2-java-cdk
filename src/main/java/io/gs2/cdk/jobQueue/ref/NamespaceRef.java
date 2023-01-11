@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,48 +13,64 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.jobQueue.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.jobQueue.model.*;
-import io.gs2.cdk.jobQueue.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.jobQueue.stampSheet.PushByUserId;
+import io.gs2.cdk.jobQueue.model.JobEntry;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
     public PushByUserId push(
-            List<JobEntry> jobs
+        List<JobEntry> jobs,
+        String userId
     ) {
-        return new PushByUserId(
+        return (new PushByUserId(
             this.namespaceName,
-            "#{userId}",
-            jobs
-        );
+            jobs,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public PushByUserId push(
+        List<JobEntry> jobs
+    ) {
+        return (new PushByUserId(
+            this.namespaceName,
+            jobs,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "queue",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

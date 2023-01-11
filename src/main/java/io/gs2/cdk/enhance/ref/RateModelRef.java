@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.enhance.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.enhance.model.*;
-import io.gs2.cdk.enhance.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RateModelRef {
-    public String namespaceName;
-    public String rateName;
+    private String namespaceName;
+    private String rateName;
 
     public RateModelRef(
-            String namespaceName,
-            String rateName
+        String namespaceName,
+        String rateName
     ) {
         this.namespaceName = namespaceName;
         this.rateName = rateName;
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "enhance",
                 this.namespaceName,
                 "rateModel",
                 this.rateName
             )
-        ).str();
+        )).str(
+        );
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,75 +13,136 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.exchange.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.exchange.model.*;
-import io.gs2.cdk.exchange.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.exchange.ref.RateModelRef;
+import io.gs2.cdk.exchange.stampSheet.ExchangeByUserId;
+import io.gs2.cdk.core.model.Config;
+import io.gs2.cdk.exchange.stampSheet.CreateAwaitByUserId;
+import io.gs2.cdk.exchange.stampSheet.DeleteAwaitByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public RateModelMasterRef rateModelMaster(
-            String rateName
-    ) {
-        return new RateModelMasterRef(
-            this.namespaceName,
-            rateName
-        );
-    }
-
-    public CurrentRateMasterRef currentRateMaster(
-    ) {
-        return new CurrentRateMasterRef(
-            this.namespaceName
-        );
-    }
-
     public RateModelRef rateModel(
-            String rateName
+        String rateName
     ) {
-        return new RateModelRef(
+        return (new RateModelRef(
             this.namespaceName,
             rateName
-        );
+        ));
+    }
+
+    public ExchangeByUserId exchange(
+        String rateName,
+        Integer count,
+        List<Config> config,
+        String userId
+    ) {
+        return (new ExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            count,
+            config,
+            userId
+        ));
+    }
+
+
+    public ExchangeByUserId exchange(
+        String rateName,
+        Integer count,
+        List<Config> config
+    ) {
+        return (new ExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            count,
+            config,
+            "#{userId}"
+        ));
     }
 
     public CreateAwaitByUserId createAwait(
-            String rateName,
-            Integer count
+        String rateName,
+        Integer count,
+        String userId
     ) {
-        return new CreateAwaitByUserId(
+        return (new CreateAwaitByUserId(
             this.namespaceName,
-            "#{userId}",
             rateName,
-            count
-        );
+            count,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public CreateAwaitByUserId createAwait(
+        String rateName,
+        Integer count
+    ) {
+        return (new CreateAwaitByUserId(
+            this.namespaceName,
+            rateName,
+            count,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteAwaitByUserId deleteAwait(
+        String rateName,
+        String awaitName,
+        String userId
+    ) {
+        return (new DeleteAwaitByUserId(
+            this.namespaceName,
+            rateName,
+            awaitName,
+            userId
+        ));
+    }
+
+
+    public DeleteAwaitByUserId deleteAwait(
+        String rateName,
+        String awaitName
+    ) {
+        return (new DeleteAwaitByUserId(
+            this.namespaceName,
+            rateName,
+            awaitName,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "exchange",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

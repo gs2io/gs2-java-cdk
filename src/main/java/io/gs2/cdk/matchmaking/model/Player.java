@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,56 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.matchmaking.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.matchmaking.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.matchmaking.model.Attribute;
+import io.gs2.cdk.matchmaking.model.options.PlayerOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
-	public String userId;
-	public List<Attribute> attributes;
-	public String roleName;
-	public List<String> denyUserIds;
+    private String userId;
+    private String roleName;
+    private List<Attribute> attributes = null;
+    private List<String> denyUserIds = null;
 
     public Player(
-            String userId,
-            String roleName
+        String userId,
+        String roleName,
+        PlayerOptions options
+    ) {
+        this.userId = userId;
+        this.roleName = roleName;
+        this.attributes = options.attributes;
+        this.denyUserIds = options.denyUserIds;
+    }
+    public Player(
+        String userId,
+        String roleName
     ) {
         this.userId = userId;
         this.roleName = roleName;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.userId != null) {
-            properties.put("UserId", this.userId);
+            properties.put("userId", this.userId);
         }
         if (this.attributes != null) {
-            properties.put("Attributes", this.attributes.stream().map(Attribute::properties).collect(Collectors.toList()));
+            properties.put("attributes", this.attributes.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.roleName != null) {
-            properties.put("RoleName", this.roleName);
+            properties.put("roleName", this.roleName);
         }
         if (this.denyUserIds != null) {
-            properties.put("DenyUserIds", this.denyUserIds);
+            properties.put("denyUserIds", this.denyUserIds);
         }
+
         return properties;
     }
 }

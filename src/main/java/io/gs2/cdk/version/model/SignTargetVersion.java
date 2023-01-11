@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,28 +13,41 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.version.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.version.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.options.SignTargetVersionOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SignTargetVersion {
-	public String region;
-	public String ownerId;
-	public String namespaceName;
-	public String versionName;
-	public Version version;
+    private String region;
+    private String ownerId;
+    private String namespaceName;
+    private String versionName;
+    private Version version;
 
     public SignTargetVersion(
-            String region,
-            String ownerId,
-            String namespaceName,
-            String versionName,
-            Version version
+        String region,
+        String ownerId,
+        String namespaceName,
+        String versionName,
+        Version version,
+        SignTargetVersionOptions options
+    ) {
+        this.region = region;
+        this.ownerId = ownerId;
+        this.namespaceName = namespaceName;
+        this.versionName = versionName;
+        this.version = version;
+    }
+    public SignTargetVersion(
+        String region,
+        String ownerId,
+        String namespaceName,
+        String versionName,
+        Version version
     ) {
         this.region = region;
         this.ownerId = ownerId;
@@ -43,23 +56,27 @@ public class SignTargetVersion {
         this.version = version;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.region != null) {
-            properties.put("Region", this.region);
+            properties.put("region", this.region);
         }
         if (this.ownerId != null) {
-            properties.put("OwnerId", this.ownerId);
+            properties.put("ownerId", this.ownerId);
         }
         if (this.namespaceName != null) {
-            properties.put("NamespaceName", this.namespaceName);
+            properties.put("namespaceName", this.namespaceName);
         }
         if (this.versionName != null) {
-            properties.put("VersionName", this.versionName);
+            properties.put("versionName", this.versionName);
         }
         if (this.version != null) {
-            properties.put("Version", this.version.properties());
+            properties.put("version", this.version.properties(
+            ));
         }
+
         return properties;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,51 +13,37 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.inbox.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.inbox.ref.*;
-import io.gs2.cdk.inbox.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.inbox.model.TimeSpan;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SendMessageByUserId extends AcquireAction {
 
     public SendMessageByUserId(
-            String namespaceName,
-            String userId,
-            String metadata,
-            List<AcquireAction> readAcquireActions,
-            Long expiresAt,
-            TimeSpan expiresTimeSpan
+        String namespaceName,
+        String metadata,
+        List<AcquireAction> readAcquireActions,
+        Long expiresAt,
+        TimeSpan expiresTimeSpan,
+        String userId
     ) {
         super(
             "Gs2Inbox:SendMessageByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (metadata != null) {
-                        put("metadata", metadata);
-                    }
-                    if (readAcquireActions != null) {
-                        put("readAcquireActions", readAcquireActions);
-                    }
-                    if (expiresAt != null) {
-                        put("expiresAt", expiresAt);
-                    }
-                    if (expiresTimeSpan != null) {
-                        put("expiresTimeSpan", expiresTimeSpan);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("metadata", metadata);
+                    put("readAcquireActions", readAcquireActions);
+                    put("expiresAt", expiresAt);
+                    put("expiresTimeSpan", expiresTimeSpan);
+                    put("userId", userId);
                 }
             }
         );

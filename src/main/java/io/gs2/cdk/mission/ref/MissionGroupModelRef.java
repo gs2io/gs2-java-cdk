@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,53 +13,56 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.mission.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.mission.model.*;
-import io.gs2.cdk.mission.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.mission.ref.MissionTaskModelRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MissionGroupModelRef {
-    public String namespaceName;
-    public String missionGroupName;
+    private String namespaceName;
+    private String missionGroupName;
 
     public MissionGroupModelRef(
-            String namespaceName,
-            String missionGroupName
+        String namespaceName,
+        String missionGroupName
     ) {
         this.namespaceName = namespaceName;
         this.missionGroupName = missionGroupName;
     }
 
     public MissionTaskModelRef missionTaskModel(
-            String missionTaskName
+        String missionTaskName
     ) {
-        return new MissionTaskModelRef(
+        return (new MissionTaskModelRef(
             this.namespaceName,
             this.missionGroupName,
             missionTaskName
-        );
+        ));
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "mission",
                 this.namespaceName,
                 "group",
                 this.missionGroupName
             )
-        ).str();
+        )).str(
+        );
     }
 }

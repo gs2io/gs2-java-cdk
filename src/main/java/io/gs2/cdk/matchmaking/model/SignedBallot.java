@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,35 +13,44 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.matchmaking.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.matchmaking.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.matchmaking.model.options.SignedBallotOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SignedBallot {
-	public String body;
-	public String signature;
+    private String body;
+    private String signature;
 
     public SignedBallot(
-            String body,
-            String signature
+        String body,
+        String signature,
+        SignedBallotOptions options
+    ) {
+        this.body = body;
+        this.signature = signature;
+    }
+    public SignedBallot(
+        String body,
+        String signature
     ) {
         this.body = body;
         this.signature = signature;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.body != null) {
-            properties.put("Body", this.body);
+            properties.put("body", this.body);
         }
         if (this.signature != null) {
-            properties.put("Signature", this.signature);
+            properties.put("signature", this.signature);
         }
+
         return properties;
     }
 }

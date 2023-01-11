@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,35 +13,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.distributor.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.distributor.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.distributor.model.options.DistributeResourceOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DistributeResource {
-	public String action;
-	public String request;
+    private String action;
+    private String request;
 
     public DistributeResource(
-            String action,
-            String request
+        String action,
+        String request,
+        DistributeResourceOptions options
+    ) {
+        this.action = action;
+        this.request = request;
+    }
+    public DistributeResource(
+        String action,
+        String request
     ) {
         this.action = action;
         this.request = request;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.action != null) {
-            properties.put("Action", this.action);
+            properties.put("action", this.action.toString(
+            ));
         }
         if (this.request != null) {
-            properties.put("Request", this.request);
+            properties.put("request", this.request);
         }
+
         return properties;
     }
 }

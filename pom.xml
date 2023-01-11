@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.gs2</groupId>
 	<artifactId>gs2-java-cdk</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -75,24 +75,6 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<docencoding>UTF-8</docencoding>
-					<charset>UTF-8</charset>
-					<source>16</source>
-					<links>
-						<link>http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/</link>
-					</links>
-					<bottom>
-						<![CDATA[
-						Copyright © 2016-2019 Game Server Services, Inc. AllRights Reserved.
-						]]>
-					</bottom>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

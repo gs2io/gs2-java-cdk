@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,33 +13,50 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.log.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.log.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.log.model.options.IssueStampSheetLogOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class IssueStampSheetLog {
-	public Long timestamp;
-	public String transactionId;
-	public String service;
-	public String method;
-	public String userId;
-	public String action;
-	public String args;
-	public List<String> tasks;
+    private Long timestamp;
+    private String transactionId;
+    private String service;
+    private String method;
+    private String userId;
+    private String action;
+    private String args;
+    private List<String> tasks = null;
 
     public IssueStampSheetLog(
-            Long timestamp,
-            String transactionId,
-            String service,
-            String method,
-            String userId,
-            String action,
-            String args
+        Long timestamp,
+        String transactionId,
+        String service,
+        String method,
+        String userId,
+        String action,
+        String args,
+        IssueStampSheetLogOptions options
+    ) {
+        this.timestamp = timestamp;
+        this.transactionId = transactionId;
+        this.service = service;
+        this.method = method;
+        this.userId = userId;
+        this.action = action;
+        this.args = args;
+        this.tasks = options.tasks;
+    }
+    public IssueStampSheetLog(
+        Long timestamp,
+        String transactionId,
+        String service,
+        String method,
+        String userId,
+        String action,
+        String args
     ) {
         this.timestamp = timestamp;
         this.transactionId = transactionId;
@@ -50,32 +67,35 @@ public class IssueStampSheetLog {
         this.args = args;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.timestamp != null) {
-            properties.put("Timestamp", this.timestamp);
+            properties.put("timestamp", this.timestamp);
         }
         if (this.transactionId != null) {
-            properties.put("TransactionId", this.transactionId);
+            properties.put("transactionId", this.transactionId);
         }
         if (this.service != null) {
-            properties.put("Service", this.service);
+            properties.put("service", this.service);
         }
         if (this.method != null) {
-            properties.put("Method", this.method);
+            properties.put("method", this.method);
         }
         if (this.userId != null) {
-            properties.put("UserId", this.userId);
+            properties.put("userId", this.userId);
         }
         if (this.action != null) {
-            properties.put("Action", this.action);
+            properties.put("action", this.action);
         }
         if (this.args != null) {
-            properties.put("Args", this.args);
+            properties.put("args", this.args);
         }
         if (this.tasks != null) {
-            properties.put("Tasks", this.tasks);
+            properties.put("tasks", this.tasks);
         }
+
         return properties;
     }
 }

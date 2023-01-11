@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.limit.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.limit.model.*;
-import io.gs2.cdk.limit.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LimitModelRef {
-    public String namespaceName;
-    public String limitName;
+    private String namespaceName;
+    private String limitName;
 
     public LimitModelRef(
-            String namespaceName,
-            String limitName
+        String namespaceName,
+        String limitName
     ) {
         this.namespaceName = namespaceName;
         this.limitName = limitName;
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "limit",
                 this.namespaceName,
                 "limit",
                 this.limitName
             )
-        ).str();
+        )).str(
+        );
     }
 }

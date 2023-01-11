@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,77 +13,50 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.showcase.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.showcase.ref.DisplayItemRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentShowcaseMasterRef currentShowcaseMaster(
-    ) {
-        return new CurrentShowcaseMasterRef(
-            this.namespaceName
-        );
-    }
-
     public DisplayItemRef displayItem(
+        String displayItemId
     ) {
-        return new DisplayItemRef(
-            this.namespaceName
-        );
-    }
-
-    public SalesItemMasterRef salesItemMaster(
-            String salesItemName
-    ) {
-        return new SalesItemMasterRef(
+        return (new DisplayItemRef(
             this.namespaceName,
-            salesItemName
-        );
+            displayItemId
+        ));
     }
 
-    public SalesItemGroupMasterRef salesItemGroupMaster(
-            String salesItemGroupName
+    public String grn(
     ) {
-        return new SalesItemGroupMasterRef(
-            this.namespaceName,
-            salesItemGroupName
-        );
-    }
-
-    public ShowcaseMasterRef showcaseMaster(
-            String showcaseName
-    ) {
-        return new ShowcaseMasterRef(
-            this.namespaceName,
-            showcaseName
-        );
-    }
-
-    public String grn() {
-        return new Join(
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "showcase",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

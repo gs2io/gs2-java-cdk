@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,54 +13,47 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.serialKey.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.serialKey.model.*;
-import io.gs2.cdk.serialKey.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.serialKey.ref.IssueJobRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CampaignModelRef {
-    public String namespaceName;
-    public String campaignModelName;
+    private String namespaceName;
+    private String campaignModelName;
 
     public CampaignModelRef(
-            String namespaceName,
-            String campaignModelName
+        String namespaceName,
+        String campaignModelName
     ) {
         this.namespaceName = namespaceName;
         this.campaignModelName = campaignModelName;
     }
 
-    public IssueJobRef issueJob(
-            String issueJobName
+    public String grn(
     ) {
-        return new IssueJobRef(
-            this.namespaceName,
-            this.campaignModelName,
-            issueJobName
-        );
-    }
-
-    public String grn() {
-        return new Join(
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "serialKey",
                 this.namespaceName,
                 "master",
                 "campaign",
                 this.campaignModelName
             )
-        ).str();
+        )).str(
+        );
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,27 +13,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.identifier.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.identifier.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.identifier.model.options.ProjectTokenOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectToken {
-	public String token;
+    private String token = null;
 
+    public ProjectToken(
+        ProjectTokenOptions options
+    ) {
+        this.token = options.token;
+    }
     public ProjectToken(
     ) {
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.token != null) {
-            properties.put("Token", this.token);
+            properties.put("token", this.token);
         }
+
         return properties;
     }
 }

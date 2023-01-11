@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.stamina.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.stamina.model.*;
-import io.gs2.cdk.stamina.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecoverValueTableRef {
-    public String namespaceName;
-    public String recoverValueTableName;
+    private String namespaceName;
+    private String recoverValueTableName;
 
     public RecoverValueTableRef(
-            String namespaceName,
-            String recoverValueTableName
+        String namespaceName,
+        String recoverValueTableName
     ) {
         this.namespaceName = namespaceName;
         this.recoverValueTableName = recoverValueTableName;
     }
 
-    public String grn() {
-        return new Join(
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "stamina",
                 this.namespaceName,
                 "recoverValueTable",
                 this.recoverValueTableName
             )
-        ).str();
+        )).str(
+        );
     }
 }

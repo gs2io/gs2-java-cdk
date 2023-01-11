@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,39 +13,51 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.lottery.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.lottery.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.lottery.model.options.BoxItemOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BoxItem {
-	public List<AcquireAction> acquireActions;
-	public Integer remaining;
-	public Integer initial;
+    private Integer remaining;
+    private Integer initial;
+    private List<AcquireAction> acquireActions = null;
 
     public BoxItem(
-            Integer remaining,
-            Integer initial
+        Integer remaining,
+        Integer initial,
+        BoxItemOptions options
+    ) {
+        this.remaining = remaining;
+        this.initial = initial;
+        this.acquireActions = options.acquireActions;
+    }
+    public BoxItem(
+        Integer remaining,
+        Integer initial
     ) {
         this.remaining = remaining;
         this.initial = initial;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.acquireActions != null) {
-            properties.put("AcquireActions", this.acquireActions.stream().map(AcquireAction::properties).collect(Collectors.toList()));
+            properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.remaining != null) {
-            properties.put("Remaining", this.remaining);
+            properties.put("remaining", this.remaining);
         }
         if (this.initial != null) {
-            properties.put("Initial", this.initial);
+            properties.put("initial", this.initial);
         }
+
         return properties;
     }
 }

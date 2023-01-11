@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,22 +13,41 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.showcase.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.showcase.ref.SalesItemRef;
+import io.gs2.cdk.showcase.ref.SalesItemGroupRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DisplayItemRef {
-    public String namespaceName;
+    private String namespaceName;
+    private String displayItemId;
 
     public DisplayItemRef(
-            String namespaceName
+        String namespaceName,
+        String displayItemId
     ) {
         this.namespaceName = namespaceName;
+        this.displayItemId = displayItemId;
+    }
+
+    public SalesItemRef salesItem(
+    ) {
+        return (new SalesItemRef(
+            this.namespaceName,
+            this.displayItemId
+        ));
+    }
+
+    public SalesItemGroupRef salesItemGroup(
+    ) {
+        return (new SalesItemGroupRef(
+            this.namespaceName,
+            this.displayItemId
+        ));
     }
 }

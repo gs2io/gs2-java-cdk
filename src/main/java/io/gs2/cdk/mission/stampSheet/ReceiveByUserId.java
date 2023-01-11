@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,43 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.mission.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.mission.ref.*;
-import io.gs2.cdk.mission.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReceiveByUserId extends ConsumeAction {
 
     public ReceiveByUserId(
-            String namespaceName,
-            String missionGroupName,
-            String missionTaskName,
-            String userId
+        String namespaceName,
+        String missionGroupName,
+        String missionTaskName,
+        String userId
     ) {
         super(
             "Gs2Mission:ReceiveByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (missionGroupName != null) {
-                        put("missionGroupName", missionGroupName);
-                    }
-                    if (missionTaskName != null) {
-                        put("missionTaskName", missionTaskName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("missionGroupName", missionGroupName);
+                    put("missionTaskName", missionTaskName);
+                    put("userId", userId);
                 }
             }
         );

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,28 +13,40 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.auth.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.auth.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.auth.model.options.AccessTokenOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AccessToken {
-	public String ownerId;
-	public String token;
-	public String userId;
-	public Long expire;
-	public Integer timeOffset;
+    private String ownerId;
+    private String token;
+    private String userId;
+    private Long expire;
+    private Integer timeOffset;
 
     public AccessToken(
-            String ownerId,
-            String token,
-            String userId,
-            Long expire,
-            Integer timeOffset
+        String ownerId,
+        String token,
+        String userId,
+        Long expire,
+        Integer timeOffset,
+        AccessTokenOptions options
+    ) {
+        this.ownerId = ownerId;
+        this.token = token;
+        this.userId = userId;
+        this.expire = expire;
+        this.timeOffset = timeOffset;
+    }
+    public AccessToken(
+        String ownerId,
+        String token,
+        String userId,
+        Long expire,
+        Integer timeOffset
     ) {
         this.ownerId = ownerId;
         this.token = token;
@@ -43,23 +55,26 @@ public class AccessToken {
         this.timeOffset = timeOffset;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.ownerId != null) {
-            properties.put("OwnerId", this.ownerId);
+            properties.put("ownerId", this.ownerId);
         }
         if (this.token != null) {
-            properties.put("Token", this.token);
+            properties.put("token", this.token);
         }
         if (this.userId != null) {
-            properties.put("UserId", this.userId);
+            properties.put("userId", this.userId);
         }
         if (this.expire != null) {
-            properties.put("Expire", this.expire);
+            properties.put("expire", this.expire);
         }
         if (this.timeOffset != null) {
-            properties.put("TimeOffset", this.timeOffset);
+            properties.put("timeOffset", this.timeOffset);
         }
+
         return properties;
     }
 }

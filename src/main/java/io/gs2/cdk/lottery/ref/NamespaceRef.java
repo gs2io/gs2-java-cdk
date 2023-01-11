@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,81 +13,60 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.lottery.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.lottery.model.*;
-import io.gs2.cdk.lottery.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.lottery.ref.PrizeTableRef;
+import io.gs2.cdk.lottery.ref.LotteryModelRef;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentLotteryMasterRef currentLotteryMaster(
-    ) {
-        return new CurrentLotteryMasterRef(
-            this.namespaceName
-        );
-    }
-
     public PrizeTableRef prizeTable(
-            String prizeTableName
+        String prizeTableName
     ) {
-        return new PrizeTableRef(
+        return (new PrizeTableRef(
             this.namespaceName,
             prizeTableName
-        );
+        ));
     }
 
     public LotteryModelRef lotteryModel(
-            String lotteryName
+        String lotteryName
     ) {
-        return new LotteryModelRef(
+        return (new LotteryModelRef(
             this.namespaceName,
             lotteryName
-        );
+        ));
     }
 
-    public PrizeTableMasterRef prizeTableMaster(
-            String prizeTableName
+    public String grn(
     ) {
-        return new PrizeTableMasterRef(
-            this.namespaceName,
-            prizeTableName
-        );
-    }
-
-    public LotteryModelMasterRef lotteryModelMaster(
-            String lotteryName
-    ) {
-        return new LotteryModelMasterRef(
-            this.namespaceName,
-            lotteryName
-        );
-    }
-
-    public String grn() {
-        return new Join(
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "lottery",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

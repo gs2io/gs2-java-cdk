@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,117 +13,242 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.stamina.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.stamina.model.*;
-import io.gs2.cdk.stamina.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.stamina.ref.MaxStaminaTableRef;
+import io.gs2.cdk.stamina.ref.RecoverIntervalTableRef;
+import io.gs2.cdk.stamina.ref.RecoverValueTableRef;
+import io.gs2.cdk.stamina.ref.StaminaModelRef;
+import io.gs2.cdk.stamina.stampSheet.RecoverStaminaByUserId;
+import io.gs2.cdk.stamina.stampSheet.RaiseMaxValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetMaxValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetRecoverIntervalByUserId;
+import io.gs2.cdk.stamina.stampSheet.SetRecoverValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.ConsumeStaminaByUserId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NamespaceRef {
-    public String namespaceName;
+    private String namespaceName;
 
     public NamespaceRef(
-            String namespaceName
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
     }
 
-    public CurrentStaminaMasterRef currentStaminaMaster(
-    ) {
-        return new CurrentStaminaMasterRef(
-            this.namespaceName
-        );
-    }
-
     public MaxStaminaTableRef maxStaminaTable(
-            String maxStaminaTableName
+        String maxStaminaTableName
     ) {
-        return new MaxStaminaTableRef(
+        return (new MaxStaminaTableRef(
             this.namespaceName,
             maxStaminaTableName
-        );
+        ));
     }
 
     public RecoverIntervalTableRef recoverIntervalTable(
-            String recoverIntervalTableName
+        String recoverIntervalTableName
     ) {
-        return new RecoverIntervalTableRef(
+        return (new RecoverIntervalTableRef(
             this.namespaceName,
             recoverIntervalTableName
-        );
+        ));
     }
 
     public RecoverValueTableRef recoverValueTable(
-            String recoverValueTableName
+        String recoverValueTableName
     ) {
-        return new RecoverValueTableRef(
+        return (new RecoverValueTableRef(
             this.namespaceName,
             recoverValueTableName
-        );
+        ));
     }
 
     public StaminaModelRef staminaModel(
-            String staminaName
+        String staminaName
     ) {
-        return new StaminaModelRef(
+        return (new StaminaModelRef(
             this.namespaceName,
             staminaName
-        );
+        ));
     }
 
-    public RecoverIntervalTableMasterRef recoverIntervalTableMaster(
-            String recoverIntervalTableName
+    public RecoverStaminaByUserId recoverStamina(
+        String staminaName,
+        Integer recoverValue,
+        String userId
     ) {
-        return new RecoverIntervalTableMasterRef(
+        return (new RecoverStaminaByUserId(
             this.namespaceName,
-            recoverIntervalTableName
-        );
+            staminaName,
+            recoverValue,
+            userId
+        ));
     }
 
-    public MaxStaminaTableMasterRef maxStaminaTableMaster(
-            String maxStaminaTableName
+
+    public RecoverStaminaByUserId recoverStamina(
+        String staminaName,
+        Integer recoverValue
     ) {
-        return new MaxStaminaTableMasterRef(
+        return (new RecoverStaminaByUserId(
             this.namespaceName,
-            maxStaminaTableName
-        );
+            staminaName,
+            recoverValue,
+            "#{userId}"
+        ));
     }
 
-    public RecoverValueTableMasterRef recoverValueTableMaster(
-            String recoverValueTableName
+    public RaiseMaxValueByUserId raiseMaxValue(
+        String staminaName,
+        Integer raiseValue,
+        String userId
     ) {
-        return new RecoverValueTableMasterRef(
+        return (new RaiseMaxValueByUserId(
             this.namespaceName,
-            recoverValueTableName
-        );
+            staminaName,
+            raiseValue,
+            userId
+        ));
     }
 
-    public StaminaModelMasterRef staminaModelMaster(
-            String staminaName
+
+    public RaiseMaxValueByUserId raiseMaxValue(
+        String staminaName,
+        Integer raiseValue
     ) {
-        return new StaminaModelMasterRef(
+        return (new RaiseMaxValueByUserId(
             this.namespaceName,
-            staminaName
-        );
+            staminaName,
+            raiseValue,
+            "#{userId}"
+        ));
     }
 
-    public String grn() {
-        return new Join(
+    public SetMaxValueByUserId setMaxValue(
+        String staminaName,
+        Integer maxValue,
+        String userId
+    ) {
+        return (new SetMaxValueByUserId(
+            this.namespaceName,
+            staminaName,
+            maxValue,
+            userId
+        ));
+    }
+
+
+    public SetMaxValueByUserId setMaxValue(
+        String staminaName,
+        Integer maxValue
+    ) {
+        return (new SetMaxValueByUserId(
+            this.namespaceName,
+            staminaName,
+            maxValue,
+            "#{userId}"
+        ));
+    }
+
+    public SetRecoverIntervalByUserId setRecoverInterval(
+        String staminaName,
+        Integer recoverIntervalMinutes,
+        String userId
+    ) {
+        return (new SetRecoverIntervalByUserId(
+            this.namespaceName,
+            staminaName,
+            recoverIntervalMinutes,
+            userId
+        ));
+    }
+
+
+    public SetRecoverIntervalByUserId setRecoverInterval(
+        String staminaName,
+        Integer recoverIntervalMinutes
+    ) {
+        return (new SetRecoverIntervalByUserId(
+            this.namespaceName,
+            staminaName,
+            recoverIntervalMinutes,
+            "#{userId}"
+        ));
+    }
+
+    public SetRecoverValueByUserId setRecoverValue(
+        String staminaName,
+        Integer recoverValue,
+        String userId
+    ) {
+        return (new SetRecoverValueByUserId(
+            this.namespaceName,
+            staminaName,
+            recoverValue,
+            userId
+        ));
+    }
+
+
+    public SetRecoverValueByUserId setRecoverValue(
+        String staminaName,
+        Integer recoverValue
+    ) {
+        return (new SetRecoverValueByUserId(
+            this.namespaceName,
+            staminaName,
+            recoverValue,
+            "#{userId}"
+        ));
+    }
+
+    public ConsumeStaminaByUserId consumeStamina(
+        String staminaName,
+        Integer consumeValue,
+        String userId
+    ) {
+        return (new ConsumeStaminaByUserId(
+            this.namespaceName,
+            staminaName,
+            consumeValue,
+            userId
+        ));
+    }
+
+
+    public ConsumeStaminaByUserId consumeStamina(
+        String staminaName,
+        Integer consumeValue
+    ) {
+        return (new ConsumeStaminaByUserId(
+            this.namespaceName,
+            staminaName,
+            consumeValue,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "stamina",
                 this.namespaceName
             )
-        ).str();
+        )).str(
+        );
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,47 +13,35 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.lottery.stampSheet;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.lottery.ref.*;
-import io.gs2.cdk.lottery.model.*;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.Config;
 
-import java.util.*;
-import java.util.stream.*;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DrawByUserId extends AcquireAction {
 
     public DrawByUserId(
-            String namespaceName,
-            String lotteryName,
-            String userId,
-            Integer count,
-            List<Config> config
+        String namespaceName,
+        String lotteryName,
+        Integer count,
+        List<Config> config,
+        String userId
     ) {
         super(
             "Gs2Lottery:DrawByUserId",
-            new HashMap<String, Object>() {
+            new HashMap<>() {
                 {
-                    if (namespaceName != null) {
-                        put("namespaceName", namespaceName);
-                    }
-                    if (lotteryName != null) {
-                        put("lotteryName", lotteryName);
-                    }
-                    if (userId != null) {
-                        put("userId", userId);
-                    }
-                    if (count != null) {
-                        put("count", count);
-                    }
-                    if (config != null) {
-                        put("config", config);
-                    }
+                    put("namespaceName", namespaceName);
+                    put("lotteryName", lotteryName);
+                    put("count", count);
+                    put("config", config);
+                    put("userId", userId);
                 }
             }
         );

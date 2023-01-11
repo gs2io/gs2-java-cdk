@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,35 +13,44 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.chat.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.chat.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.chat.model.options.NotificationTypeOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NotificationType {
-	public Integer category;
-	public Boolean enableTransferMobilePushNotification;
+    private Integer category;
+    private Boolean enableTransferMobilePushNotification;
 
     public NotificationType(
-            Integer category,
-            Boolean enableTransferMobilePushNotification
+        Integer category,
+        Boolean enableTransferMobilePushNotification,
+        NotificationTypeOptions options
+    ) {
+        this.category = category;
+        this.enableTransferMobilePushNotification = enableTransferMobilePushNotification;
+    }
+    public NotificationType(
+        Integer category,
+        Boolean enableTransferMobilePushNotification
     ) {
         this.category = category;
         this.enableTransferMobilePushNotification = enableTransferMobilePushNotification;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.category != null) {
-            properties.put("Category", this.category);
+            properties.put("category", this.category);
         }
         if (this.enableTransferMobilePushNotification != null) {
-            properties.put("EnableTransferMobilePushNotification", this.enableTransferMobilePushNotification);
+            properties.put("enableTransferMobilePushNotification", this.enableTransferMobilePushNotification);
         }
+
         return properties;
     }
 }

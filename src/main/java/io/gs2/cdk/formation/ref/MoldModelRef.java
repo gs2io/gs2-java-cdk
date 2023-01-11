@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,66 +13,131 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.formation.ref;
 
-import io.gs2.cdk.core.func.*;
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.formation.model.*;
-import io.gs2.cdk.formation.stampSheet.*;
-
-import java.util.*;
-import java.util.stream.*;
-
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.formation.stampSheet.AddMoldCapacityByUserId;
+import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
+import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.formation.model.AcquireActionConfig;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MoldModelRef {
-    public String namespaceName;
-    public String moldName;
+    private String namespaceName;
+    private String moldName;
 
     public MoldModelRef(
-            String namespaceName,
-            String moldName
+        String namespaceName,
+        String moldName
     ) {
         this.namespaceName = namespaceName;
         this.moldName = moldName;
     }
 
     public AddMoldCapacityByUserId addMoldCapacity(
-            Integer capacity
+        Integer capacity,
+        String userId
     ) {
-        return new AddMoldCapacityByUserId(
+        return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            "#{userId}",
             this.moldName,
-            capacity
-        );
+            capacity,
+            userId
+        ));
+    }
+
+
+    public AddMoldCapacityByUserId addMoldCapacity(
+        Integer capacity
+    ) {
+        return (new AddMoldCapacityByUserId(
+            this.namespaceName,
+            this.moldName,
+            capacity,
+            "#{userId}"
+        ));
     }
 
     public SetMoldCapacityByUserId setMoldCapacity(
-            Integer capacity
+        Integer capacity,
+        String userId
     ) {
-        return new SetMoldCapacityByUserId(
+        return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            "#{userId}",
             this.moldName,
-            capacity
-        );
+            capacity,
+            userId
+        ));
     }
 
-    public String grn() {
-        return new Join(
+
+    public SetMoldCapacityByUserId setMoldCapacity(
+        Integer capacity
+    ) {
+        return (new SetMoldCapacityByUserId(
+            this.namespaceName,
+            this.moldName,
+            capacity,
+            "#{userId}"
+        ));
+    }
+
+    public AcquireActionsToFormProperties acquireActionsToFormProperties(
+        Integer index,
+        AcquireAction acquireAction,
+        List<AcquireActionConfig> config,
+        String userId
+    ) {
+        return (new AcquireActionsToFormProperties(
+            this.namespaceName,
+            this.moldName,
+            index,
+            acquireAction,
+            config,
+            userId
+        ));
+    }
+
+
+    public AcquireActionsToFormProperties acquireActionsToFormProperties(
+        Integer index,
+        AcquireAction acquireAction,
+        List<AcquireActionConfig> config
+    ) {
+        return (new AcquireActionsToFormProperties(
+            this.namespaceName,
+            this.moldName,
+            index,
+            acquireAction,
+            config,
+            "#{userId}"
+        ));
+    }
+
+    public String grn(
+    ) {
+        return (new Join(
             ":",
             Arrays.asList(
                 "grn",
                 "gs2",
-                GetAttr.region().str(),
-                GetAttr.ownerId().str(),
+                GetAttr.region(
+                ).str(
+                ),
+                GetAttr.ownerId(
+                ).str(
+                ),
                 "formation",
                 this.namespaceName,
                 "model",
                 "mold",
                 this.moldName
             )
-        ).str();
+        )).str(
+        );
     }
 }

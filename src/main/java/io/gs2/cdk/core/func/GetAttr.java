@@ -8,15 +8,14 @@ public class GetAttr implements Func {
 
     public GetAttr(
             CdkResource resource,
-            String path
-    ) {
-        this.key = resource.resourceName + "." + path;
-    }
-
-    public GetAttr(
+            String path,
             String key
     ) {
-        this.key = key;
+        if (key != null) {
+            this.key = key;
+        } else {
+            this.key = resource.resourceName + "." + path;
+        }
     }
 
     public String str() {
@@ -25,12 +24,16 @@ public class GetAttr implements Func {
 
     public static GetAttr region() {
         return new GetAttr(
+                null,
+                null,
                 "Gs2::Region"
         );
     }
 
     public static GetAttr ownerId() {
         return new GetAttr(
+                null,
+                null,
                 "Gs2::OwnerId"
         );
     }

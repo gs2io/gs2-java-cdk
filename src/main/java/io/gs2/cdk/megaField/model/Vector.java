@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -13,41 +13,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package io.gs2.cdk.megaField.model;
-
-import io.gs2.cdk.core.model.*;
-import io.gs2.cdk.megaField.resource.*;
-
-import java.util.*;
-import java.util.stream.*;
+import io.gs2.cdk.megaField.model.options.VectorOptions;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Vector {
-	public Float x;
-	public Float y;
-	public Float z;
+    private Float x;
+    private Float y;
+    private Float z;
 
     public Vector(
-            Float x,
-            Float y,
-            Float z
+        Float x,
+        Float y,
+        Float z,
+        VectorOptions options
+    ) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    public Vector(
+        Float x,
+        Float y,
+        Float z
     ) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Map<String, Object> properties() {
+    public Map<String, Object> properties(
+    ) {
         var properties = new HashMap<String, Object>();
+
         if (this.x != null) {
-            properties.put("X", this.x);
+            properties.put("x", this.x);
         }
         if (this.y != null) {
-            properties.put("Y", this.y);
+            properties.put("y", this.y);
         }
         if (this.z != null) {
-            properties.put("Z", this.z);
+            properties.put("z", this.z);
         }
+
         return properties;
     }
 }
