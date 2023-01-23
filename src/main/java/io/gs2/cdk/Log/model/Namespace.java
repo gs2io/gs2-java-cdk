@@ -32,8 +32,8 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private NamespaceType type;
     private String description = null;
+    private NamespaceType type = null;
     private String gcpCredentialJson = null;
     private String bigQueryDatasetName = null;
     private Integer logExpireDays = null;
@@ -45,7 +45,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        NamespaceType type,
         NamespaceOptions options
     ) {
         super(
@@ -54,8 +53,8 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.type = type;
         this.description = options.description;
+        this.type = options.type;
         this.gcpCredentialJson = options.gcpCredentialJson;
         this.bigQueryDatasetName = options.bigQueryDatasetName;
         this.logExpireDays = options.logExpireDays;
@@ -70,8 +69,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        NamespaceType type
+        String name
     ) {
         super(
             "Log_Namespace_" + name
@@ -79,7 +77,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.type = type;
         stack.addResource(
             this
         );

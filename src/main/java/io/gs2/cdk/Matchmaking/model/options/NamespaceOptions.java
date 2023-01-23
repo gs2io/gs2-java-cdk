@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public Boolean enableRating;
     public String createGatheringTriggerRealtimeNamespaceId;
     public String createGatheringTriggerScriptId;
     public String completeMatchmakingTriggerRealtimeNamespaceId;
@@ -39,6 +40,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableRating(
+        Boolean enableRating
+    ) {
+        this.enableRating = enableRating;
         return this;
     }
     

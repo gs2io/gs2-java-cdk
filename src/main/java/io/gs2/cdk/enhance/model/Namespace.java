@@ -36,16 +36,15 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean enableDirectEnhance;
     private TransactionSetting transactionSetting;
     private String description = null;
+    private Boolean enableDirectEnhance = null;
     private ScriptSetting enhanceScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableDirectEnhance,
         TransactionSetting transactionSetting,
         NamespaceOptions options
     ) {
@@ -55,9 +54,9 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableDirectEnhance = enableDirectEnhance;
         this.transactionSetting = transactionSetting;
         this.description = options.description;
+        this.enableDirectEnhance = options.enableDirectEnhance;
         this.enhanceScript = options.enhanceScript;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -68,7 +67,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableDirectEnhance,
         TransactionSetting transactionSetting
     ) {
         super(
@@ -77,7 +75,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableDirectEnhance = enableDirectEnhance;
         this.transactionSetting = transactionSetting;
         stack.addResource(
             this

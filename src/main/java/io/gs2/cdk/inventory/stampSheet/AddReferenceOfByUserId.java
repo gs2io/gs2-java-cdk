@@ -29,8 +29,8 @@ public class AddReferenceOfByUserId extends AcquireAction {
         String namespaceName,
         String inventoryName,
         String itemName,
-        String itemSetName,
         String referenceOf,
+        String itemSetName,
         String userId
     ) {
         super(
@@ -40,8 +40,8 @@ public class AddReferenceOfByUserId extends AcquireAction {
                     put("namespaceName", namespaceName);
                     put("inventoryName", inventoryName);
                     put("itemName", itemName);
-                    put("itemSetName", itemSetName);
                     put("referenceOf", referenceOf);
+                    put("itemSetName", itemSetName);
                     put("userId", userId);
                 }
             }

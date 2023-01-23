@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public Boolean enableAwaitExchange;
+    public Boolean enableDirectExchange;
     public ScriptSetting exchangeScript;
     public LogSetting logSetting;
     public String queueNamespaceId;
@@ -34,6 +36,20 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableAwaitExchange(
+        Boolean enableAwaitExchange
+    ) {
+        this.enableAwaitExchange = enableAwaitExchange;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableDirectExchange(
+        Boolean enableDirectExchange
+    ) {
+        this.enableDirectExchange = enableDirectExchange;
         return this;
     }
     

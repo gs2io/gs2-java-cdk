@@ -29,9 +29,9 @@ public class VerifyReferenceOfByUserId extends ConsumeAction {
         String namespaceName,
         String inventoryName,
         String itemName,
-        String itemSetName,
         String referenceOf,
         String verifyType,
+        String itemSetName,
         String userId
     ) {
         super(
@@ -41,9 +41,9 @@ public class VerifyReferenceOfByUserId extends ConsumeAction {
                     put("namespaceName", namespaceName);
                     put("inventoryName", inventoryName);
                     put("itemName", itemName);
-                    put("itemSetName", itemSetName);
                     put("referenceOf", referenceOf);
                     put("verifyType", verifyType);
+                    put("itemSetName", itemSetName);
                     put("userId", userId);
                 }
             }

@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public Boolean enableAutoRun;
     public NotificationSetting pushNotification;
     public NotificationSetting runNotification;
     public LogSetting logSetting;
@@ -32,6 +33,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableAutoRun(
+        Boolean enableAutoRun
+    ) {
+        this.enableAutoRun = enableAutoRun;
         return this;
     }
     

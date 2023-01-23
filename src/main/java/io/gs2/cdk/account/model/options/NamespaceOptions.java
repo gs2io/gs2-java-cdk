@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public Boolean changePasswordIfTakeOver;
+    public Boolean differentUserIdForLoginAndDataRetention;
     public ScriptSetting createAccountScript;
     public ScriptSetting authenticationScript;
     public ScriptSetting createTakeOverScript;
@@ -34,6 +36,20 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withChangePasswordIfTakeOver(
+        Boolean changePasswordIfTakeOver
+    ) {
+        this.changePasswordIfTakeOver = changePasswordIfTakeOver;
+        return this;
+    }
+    
+    public NamespaceOptions withDifferentUserIdForLoginAndDataRetention(
+        Boolean differentUserIdForLoginAndDataRetention
+    ) {
+        this.differentUserIdForLoginAndDataRetention = differentUserIdForLoginAndDataRetention;
         return this;
     }
     

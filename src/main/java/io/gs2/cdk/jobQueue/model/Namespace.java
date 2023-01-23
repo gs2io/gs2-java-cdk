@@ -33,8 +33,8 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean enableAutoRun;
     private String description = null;
+    private Boolean enableAutoRun = null;
     private NotificationSetting pushNotification = null;
     private NotificationSetting runNotification = null;
     private LogSetting logSetting = null;
@@ -42,7 +42,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableAutoRun,
         NamespaceOptions options
     ) {
         super(
@@ -51,8 +50,8 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableAutoRun = enableAutoRun;
         this.description = options.description;
+        this.enableAutoRun = options.enableAutoRun;
         this.pushNotification = options.pushNotification;
         this.runNotification = options.runNotification;
         this.logSetting = options.logSetting;
@@ -63,8 +62,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        Boolean enableAutoRun
+        String name
     ) {
         super(
             "JobQueue_Namespace_" + name
@@ -72,7 +70,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableAutoRun = enableAutoRun;
         stack.addResource(
             this
         );

@@ -33,9 +33,9 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean changePasswordIfTakeOver;
-    private Boolean differentUserIdForLoginAndDataRetention;
     private String description = null;
+    private Boolean changePasswordIfTakeOver = null;
+    private Boolean differentUserIdForLoginAndDataRetention = null;
     private ScriptSetting createAccountScript = null;
     private ScriptSetting authenticationScript = null;
     private ScriptSetting createTakeOverScript = null;
@@ -45,8 +45,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean changePasswordIfTakeOver,
-        Boolean differentUserIdForLoginAndDataRetention,
         NamespaceOptions options
     ) {
         super(
@@ -55,9 +53,9 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.changePasswordIfTakeOver = changePasswordIfTakeOver;
-        this.differentUserIdForLoginAndDataRetention = differentUserIdForLoginAndDataRetention;
         this.description = options.description;
+        this.changePasswordIfTakeOver = options.changePasswordIfTakeOver;
+        this.differentUserIdForLoginAndDataRetention = options.differentUserIdForLoginAndDataRetention;
         this.createAccountScript = options.createAccountScript;
         this.authenticationScript = options.authenticationScript;
         this.createTakeOverScript = options.createTakeOverScript;
@@ -70,9 +68,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        Boolean changePasswordIfTakeOver,
-        Boolean differentUserIdForLoginAndDataRetention
+        String name
     ) {
         super(
             "Account_Namespace_" + name
@@ -80,8 +76,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.changePasswordIfTakeOver = changePasswordIfTakeOver;
-        this.differentUserIdForLoginAndDataRetention = differentUserIdForLoginAndDataRetention;
         stack.addResource(
             this
         );

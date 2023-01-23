@@ -30,8 +30,8 @@ public class CreateProgressByUserId extends AcquireAction {
         String namespaceName,
         String rateName,
         String targetItemSetId,
-        Boolean force,
         List<Material> materials,
+        Boolean force,
         String userId
     ) {
         super(
@@ -41,8 +41,8 @@ public class CreateProgressByUserId extends AcquireAction {
                     put("namespaceName", namespaceName);
                     put("rateName", rateName);
                     put("targetItemSetId", targetItemSetId);
-                    put("force", force);
                     put("materials", materials);
+                    put("force", force);
                     put("userId", userId);
                 }
             }

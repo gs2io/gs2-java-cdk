@@ -38,10 +38,10 @@ public class Namespace extends CdkResource {
     private NamespacePriority priority;
     private Boolean shareFree;
     private NamespaceCurrency currency;
-    private Boolean enableFakeReceipt;
     private String description = null;
     private String appleKey = null;
     private String googleKey = null;
+    private Boolean enableFakeReceipt = null;
     private ScriptSetting createWalletScript = null;
     private ScriptSetting depositScript = null;
     private ScriptSetting withdrawScript = null;
@@ -53,7 +53,6 @@ public class Namespace extends CdkResource {
         NamespacePriority priority,
         Boolean shareFree,
         NamespaceCurrency currency,
-        Boolean enableFakeReceipt,
         NamespaceOptions options
     ) {
         super(
@@ -65,10 +64,10 @@ public class Namespace extends CdkResource {
         this.priority = priority;
         this.shareFree = shareFree;
         this.currency = currency;
-        this.enableFakeReceipt = enableFakeReceipt;
         this.description = options.description;
         this.appleKey = options.appleKey;
         this.googleKey = options.googleKey;
+        this.enableFakeReceipt = options.enableFakeReceipt;
         this.createWalletScript = options.createWalletScript;
         this.depositScript = options.depositScript;
         this.withdrawScript = options.withdrawScript;
@@ -83,8 +82,7 @@ public class Namespace extends CdkResource {
         String name,
         NamespacePriority priority,
         Boolean shareFree,
-        NamespaceCurrency currency,
-        Boolean enableFakeReceipt
+        NamespaceCurrency currency
     ) {
         super(
             "Money_Namespace_" + name
@@ -95,7 +93,6 @@ public class Namespace extends CdkResource {
         this.priority = priority;
         this.shareFree = shareFree;
         this.currency = currency;
-        this.enableFakeReceipt = enableFakeReceipt;
         stack.addResource(
             this
         );

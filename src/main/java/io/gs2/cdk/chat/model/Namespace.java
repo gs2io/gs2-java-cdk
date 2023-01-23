@@ -34,8 +34,8 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean allowCreateRoom;
     private String description = null;
+    private Boolean allowCreateRoom = null;
     private ScriptSetting postMessageScript = null;
     private ScriptSetting createRoomScript = null;
     private ScriptSetting deleteRoomScript = null;
@@ -47,7 +47,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean allowCreateRoom,
         NamespaceOptions options
     ) {
         super(
@@ -56,8 +55,8 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.allowCreateRoom = allowCreateRoom;
         this.description = options.description;
+        this.allowCreateRoom = options.allowCreateRoom;
         this.postMessageScript = options.postMessageScript;
         this.createRoomScript = options.createRoomScript;
         this.deleteRoomScript = options.deleteRoomScript;
@@ -72,8 +71,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        Boolean allowCreateRoom
+        String name
     ) {
         super(
             "Chat_Namespace_" + name
@@ -81,7 +79,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.allowCreateRoom = allowCreateRoom;
         stack.addResource(
             this
         );

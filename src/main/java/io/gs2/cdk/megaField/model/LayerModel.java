@@ -21,24 +21,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LayerModel {
-    private String areaModelName;
     private String name;
     private String metadata = null;
 
     public LayerModel(
-        String areaModelName,
         String name,
         LayerModelOptions options
     ) {
-        this.areaModelName = areaModelName;
         this.name = name;
         this.metadata = options.metadata;
     }
     public LayerModel(
-        String areaModelName,
         String name
     ) {
-        this.areaModelName = areaModelName;
         this.name = name;
     }
 
@@ -46,9 +41,6 @@ public class LayerModel {
     ) {
         var properties = new HashMap<String, Object>();
 
-        if (this.areaModelName != null) {
-            properties.put("areaModelName", this.areaModelName);
-        }
         if (this.name != null) {
             properties.put("name", this.name);
         }

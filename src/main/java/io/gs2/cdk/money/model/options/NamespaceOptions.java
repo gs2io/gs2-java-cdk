@@ -26,6 +26,7 @@ public class NamespaceOptions {
     public String description;
     public String appleKey;
     public String googleKey;
+    public Boolean enableFakeReceipt;
     public ScriptSetting createWalletScript;
     public ScriptSetting depositScript;
     public ScriptSetting withdrawScript;
@@ -49,6 +50,13 @@ public class NamespaceOptions {
         String googleKey
     ) {
         this.googleKey = googleKey;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableFakeReceipt(
+        Boolean enableFakeReceipt
+    ) {
+        this.enableFakeReceipt = enableFakeReceipt;
         return this;
     }
     

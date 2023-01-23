@@ -12,8 +12,12 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.log.model.options;
+
+import io.gs2.cdk.log.model.enums.NamespaceType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +26,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public NamespaceType type;
     public String gcpCredentialJson;
     public String bigQueryDatasetName;
     public Integer logExpireDays;
@@ -34,6 +39,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withType(
+        NamespaceType type
+    ) {
+        this.type = type;
         return this;
     }
     

@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public Boolean allowCreateRoom;
     public ScriptSetting postMessageScript;
     public ScriptSetting createRoomScript;
     public ScriptSetting deleteRoomScript;
@@ -37,6 +38,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withAllowCreateRoom(
+        Boolean allowCreateRoom
+    ) {
+        this.allowCreateRoom = allowCreateRoom;
         return this;
     }
     
