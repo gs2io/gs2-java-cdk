@@ -13,41 +13,38 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.formation.model;
-import io.gs2.cdk.core.model.Config;
-import io.gs2.cdk.formation.model.options.AcquireActionConfigOptions;
+package io.gs2.cdk.news.model;
+import io.gs2.cdk.news.model.Content;
+import io.gs2.cdk.news.model.options.ViewOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AcquireActionConfig {
-    private String name;
-    private List<Config> config = null;
+public class View {
+    private List<Content> contents = null;
+    private List<Content> removeContents = null;
 
-    public AcquireActionConfig(
-        String name,
-        AcquireActionConfigOptions options
+    public View(
+        ViewOptions options
     ) {
-        this.name = name;
-        this.config = options.config;
+        this.contents = options.contents;
+        this.removeContents = options.removeContents;
     }
-    public AcquireActionConfig(
-        String name
+    public View(
     ) {
-        this.name = name;
     }
 
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
 
-        if (this.name != null) {
-            properties.put("name", this.name.toString(
-            ));
+        if (this.contents != null) {
+            properties.put("contents", this.contents.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
-        if (this.config != null) {
-            properties.put("config", this.config.stream().map(v -> v.properties(
+        if (this.removeContents != null) {
+            properties.put("removeContents", this.removeContents.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

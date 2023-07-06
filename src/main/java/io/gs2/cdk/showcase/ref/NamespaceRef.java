@@ -17,7 +17,6 @@ package io.gs2.cdk.showcase.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.showcase.ref.DisplayItemRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,15 +28,6 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public DisplayItemRef displayItem(
-        String displayItemId
-    ) {
-        return (new DisplayItemRef(
-            this.namespaceName,
-            displayItemId
-        ));
     }
 
     public String grn(

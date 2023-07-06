@@ -26,11 +26,13 @@ public class CategoryModelOptions {
     public String metadata;
     public Long minimumValue;
     public Long maximumValue;
+    public Boolean sum;
     public Integer calculateFixedTimingHour;
     public Integer calculateFixedTimingMinute;
     public Integer calculateIntervalMinutes;
     public String entryPeriodEventId;
     public String accessPeriodEventId;
+    public List<String> ignoreUserIds;
     public String generation;
     
     public CategoryModelOptions withMetadata(
@@ -51,6 +53,13 @@ public class CategoryModelOptions {
         Long maximumValue
     ) {
         this.maximumValue = maximumValue;
+        return this;
+    }
+    
+    public CategoryModelOptions withSum(
+        Boolean sum
+    ) {
+        this.sum = sum;
         return this;
     }
     
@@ -86,6 +95,13 @@ public class CategoryModelOptions {
         String accessPeriodEventId
     ) {
         this.accessPeriodEventId = accessPeriodEventId;
+        return this;
+    }
+    
+    public CategoryModelOptions withIgnoreUserIds(
+        List<String> ignoreUserIds
+    ) {
+        this.ignoreUserIds = ignoreUserIds;
         return this;
     }
     

@@ -18,7 +18,6 @@ package io.gs2.cdk.serialKey.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.serialKey.ref.CampaignModelRef;
-import io.gs2.cdk.serialKey.ref.SerialKeyRef;
 import io.gs2.cdk.serialKey.stampSheet.UseByUserId;
 import java.util.Arrays;
 import java.util.List;

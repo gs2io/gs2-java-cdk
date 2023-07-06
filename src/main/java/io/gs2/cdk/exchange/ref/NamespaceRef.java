@@ -18,8 +18,11 @@ package io.gs2.cdk.exchange.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.exchange.ref.RateModelRef;
+import io.gs2.cdk.exchange.ref.IncrementalRateModelRef;
 import io.gs2.cdk.exchange.stampSheet.ExchangeByUserId;
 import io.gs2.cdk.core.model.Config;
+import io.gs2.cdk.exchange.stampSheet.IncrementalExchangeByUserId;
+import io.gs2.cdk.exchange.stampSheet.UnlockIncrementalExchangeByUserId;
 import io.gs2.cdk.exchange.stampSheet.CreateAwaitByUserId;
 import io.gs2.cdk.exchange.stampSheet.DeleteAwaitByUserId;
 import java.util.Arrays;
@@ -39,6 +42,15 @@ public class NamespaceRef {
         String rateName
     ) {
         return (new RateModelRef(
+            this.namespaceName,
+            rateName
+        ));
+    }
+
+    public IncrementalRateModelRef incrementalRateModel(
+        String rateName
+    ) {
+        return (new IncrementalRateModelRef(
             this.namespaceName,
             rateName
         ));
@@ -74,6 +86,62 @@ public class NamespaceRef {
         ));
     }
 
+    public IncrementalExchangeByUserId incrementalExchange(
+        String rateName,
+        Integer count,
+        List<Config> config,
+        String userId
+    ) {
+        return (new IncrementalExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            count,
+            config,
+            userId
+        ));
+    }
+
+
+    public IncrementalExchangeByUserId incrementalExchange(
+        String rateName,
+        Integer count,
+        List<Config> config
+    ) {
+        return (new IncrementalExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            count,
+            config,
+            "#{userId}"
+        ));
+    }
+
+    public UnlockIncrementalExchangeByUserId unlockIncrementalExchange(
+        String rateName,
+        String lockTransactionId,
+        String userId
+    ) {
+        return (new UnlockIncrementalExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            lockTransactionId,
+            userId
+        ));
+    }
+
+
+    public UnlockIncrementalExchangeByUserId unlockIncrementalExchange(
+        String rateName,
+        String lockTransactionId
+    ) {
+        return (new UnlockIncrementalExchangeByUserId(
+            this.namespaceName,
+            rateName,
+            lockTransactionId,
+            "#{userId}"
+        ));
+    }
+
     public CreateAwaitByUserId createAwait(
         String rateName,
         Integer count,
@@ -101,13 +169,11 @@ public class NamespaceRef {
     }
 
     public DeleteAwaitByUserId deleteAwait(
-        String rateName,
         String awaitName,
         String userId
     ) {
         return (new DeleteAwaitByUserId(
             this.namespaceName,
-            rateName,
             awaitName,
             userId
         ));
@@ -115,12 +181,10 @@ public class NamespaceRef {
 
 
     public DeleteAwaitByUserId deleteAwait(
-        String rateName,
         String awaitName
     ) {
         return (new DeleteAwaitByUserId(
             this.namespaceName,
-            rateName,
             awaitName,
             "#{userId}"
         ));

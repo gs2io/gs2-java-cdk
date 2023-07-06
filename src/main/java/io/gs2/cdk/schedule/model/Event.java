@@ -33,8 +33,8 @@ import java.util.stream.Collectors;
 public class Event {
     private String name;
     private EventScheduleType scheduleType;
+    private EventRepeatType repeatType;
     private String metadata = null;
-    private EventRepeatType repeatType = null;
     private Long absoluteBegin = null;
     private Long absoluteEnd = null;
     private Integer repeatBeginDayOfMonth = null;
@@ -44,17 +44,17 @@ public class Event {
     private Integer repeatBeginHour = null;
     private Integer repeatEndHour = null;
     private String relativeTriggerName = null;
-    private Integer relativeDuration = null;
 
     public Event(
         String name,
         EventScheduleType scheduleType,
+        EventRepeatType repeatType,
         EventOptions options
     ) {
         this.name = name;
         this.scheduleType = scheduleType;
+        this.repeatType = repeatType;
         this.metadata = options.metadata;
-        this.repeatType = options.repeatType;
         this.absoluteBegin = options.absoluteBegin;
         this.absoluteEnd = options.absoluteEnd;
         this.repeatBeginDayOfMonth = options.repeatBeginDayOfMonth;
@@ -64,14 +64,15 @@ public class Event {
         this.repeatBeginHour = options.repeatBeginHour;
         this.repeatEndHour = options.repeatEndHour;
         this.relativeTriggerName = options.relativeTriggerName;
-        this.relativeDuration = options.relativeDuration;
     }
     public Event(
         String name,
-        EventScheduleType scheduleType
+        EventScheduleType scheduleType,
+        EventRepeatType repeatType
     ) {
         this.name = name;
         this.scheduleType = scheduleType;
+        this.repeatType = repeatType;
     }
 
     public static Event scheduleTypeIsAbsolute(
@@ -84,8 +85,8 @@ public class Event {
         return (new Event(
             name,
             EventScheduleType.ABSOLUTE,
+            repeatType,
             new EventOptions()
-                .withRepeatType(repeatType)
                 .withAbsoluteBegin(absoluteBegin)
                 .withAbsoluteEnd(absoluteEnd)
                 .withMetadata(options.metadata)
@@ -101,22 +102,23 @@ public class Event {
     ) {
         return (new Event(
             name,
-            EventScheduleType.ABSOLUTE
+            EventScheduleType.ABSOLUTE,
+            repeatType
         ));
     }
 
     public static Event scheduleTypeIsRelative(
         String name,
+        EventRepeatType repeatType,
         String relativeTriggerName,
-        Integer relativeDuration,
         EventScheduleTypeIsRelativeOptions options
     ) {
         return (new Event(
             name,
             EventScheduleType.RELATIVE,
+            repeatType,
             new EventOptions()
                 .withRelativeTriggerName(relativeTriggerName)
-                .withRelativeDuration(relativeDuration)
                 .withMetadata(options.metadata)
         ));
     }
@@ -124,12 +126,13 @@ public class Event {
 
     public static Event scheduleTypeIsRelative(
         String name,
-        String relativeTriggerName,
-        Integer relativeDuration
+        EventRepeatType repeatType,
+        String relativeTriggerName
     ) {
         return (new Event(
             name,
-            EventScheduleType.RELATIVE
+            EventScheduleType.RELATIVE,
+            repeatType
         ));
     }
 
@@ -141,6 +144,7 @@ public class Event {
         return (new Event(
             name,
             scheduleType,
+            EventRepeatType.ALWAYS,
             new EventOptions()
                 .withMetadata(options.metadata)
         ));
@@ -153,7 +157,8 @@ public class Event {
     ) {
         return (new Event(
             name,
-            scheduleType
+            scheduleType,
+            EventRepeatType.ALWAYS
         ));
     }
 
@@ -167,6 +172,7 @@ public class Event {
         return (new Event(
             name,
             scheduleType,
+            EventRepeatType.DAILY,
             new EventOptions()
                 .withRepeatBeginHour(repeatBeginHour)
                 .withRepeatEndHour(repeatEndHour)
@@ -183,7 +189,8 @@ public class Event {
     ) {
         return (new Event(
             name,
-            scheduleType
+            scheduleType,
+            EventRepeatType.DAILY
         ));
     }
 
@@ -199,6 +206,7 @@ public class Event {
         return (new Event(
             name,
             scheduleType,
+            EventRepeatType.WEEKLY,
             new EventOptions()
                 .withRepeatBeginDayOfWeek(repeatBeginDayOfWeek)
                 .withRepeatEndDayOfWeek(repeatEndDayOfWeek)
@@ -219,7 +227,8 @@ public class Event {
     ) {
         return (new Event(
             name,
-            scheduleType
+            scheduleType,
+            EventRepeatType.WEEKLY
         ));
     }
 
@@ -235,6 +244,7 @@ public class Event {
         return (new Event(
             name,
             scheduleType,
+            EventRepeatType.MONTHLY,
             new EventOptions()
                 .withRepeatBeginDayOfMonth(repeatBeginDayOfMonth)
                 .withRepeatEndDayOfMonth(repeatEndDayOfMonth)
@@ -255,7 +265,8 @@ public class Event {
     ) {
         return (new Event(
             name,
-            scheduleType
+            scheduleType,
+            EventRepeatType.MONTHLY
         ));
     }
 
@@ -305,9 +316,6 @@ public class Event {
         }
         if (this.relativeTriggerName != null) {
             properties.put("relativeTriggerName", this.relativeTriggerName);
-        }
-        if (this.relativeDuration != null) {
-            properties.put("relativeDuration", this.relativeDuration);
         }
 
         return properties;

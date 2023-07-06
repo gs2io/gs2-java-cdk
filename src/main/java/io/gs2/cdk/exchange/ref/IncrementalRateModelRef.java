@@ -13,35 +13,24 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.megaField.ref;
+package io.gs2.cdk.exchange.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.megaField.ref.LayerModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AreaModelRef {
+public class IncrementalRateModelRef {
     private String namespaceName;
-    private String areaModelName;
+    private String rateName;
 
-    public AreaModelRef(
+    public IncrementalRateModelRef(
         String namespaceName,
-        String areaModelName
+        String rateName
     ) {
         this.namespaceName = namespaceName;
-        this.areaModelName = areaModelName;
-    }
-
-    public LayerModelRef layerModel(
-        String layerModelName
-    ) {
-        return (new LayerModelRef(
-            this.namespaceName,
-            this.areaModelName,
-            layerModelName
-        ));
+        this.rateName = rateName;
     }
 
     public String grn(
@@ -57,11 +46,11 @@ public class AreaModelRef {
                 GetAttr.ownerId(
                 ).str(
                 ),
-                "megaField",
+                "exchange",
                 this.namespaceName,
+                "incremental",
                 "model",
-                "area",
-                this.areaModelName
+                this.rateName
             )
         )).str(
         );

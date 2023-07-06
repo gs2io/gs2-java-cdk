@@ -17,6 +17,7 @@ package io.gs2.cdk.news.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.news.ref.ProgressRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

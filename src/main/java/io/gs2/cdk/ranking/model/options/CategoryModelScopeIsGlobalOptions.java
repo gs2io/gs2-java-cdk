@@ -30,6 +30,7 @@ public class CategoryModelScopeIsGlobalOptions {
     public Integer calculateFixedTimingMinute;
     public String entryPeriodEventId;
     public String accessPeriodEventId;
+    public List<String> ignoreUserIds;
     public String generation;
     
     public CategoryModelScopeIsGlobalOptions withMetadata(
@@ -78,6 +79,13 @@ public class CategoryModelScopeIsGlobalOptions {
         String accessPeriodEventId
     ) {
         this.accessPeriodEventId = accessPeriodEventId;
+        return this;
+    }
+    
+    public CategoryModelScopeIsGlobalOptions withIgnoreUserIds(
+        List<String> ignoreUserIds
+    ) {
+        this.ignoreUserIds = ignoreUserIds;
         return this;
     }
     

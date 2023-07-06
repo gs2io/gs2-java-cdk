@@ -31,6 +31,7 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
+    public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
     
     public NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions withDescription(
@@ -65,6 +66,13 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions {
         NotificationSetting completeNotification
     ) {
         this.completeNotification = completeNotification;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions withChangeRatingNotification(
+        NotificationSetting changeRatingNotification
+    ) {
+        this.changeRatingNotification = changeRatingNotification;
         return this;
     }
     

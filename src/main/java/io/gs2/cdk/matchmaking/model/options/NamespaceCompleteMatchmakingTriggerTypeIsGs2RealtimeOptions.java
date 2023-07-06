@@ -31,6 +31,7 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
+    public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
     
     public NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions withDescription(
@@ -65,6 +66,13 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions {
         NotificationSetting completeNotification
     ) {
         this.completeNotification = completeNotification;
+        return this;
+    }
+    
+    public NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions withChangeRatingNotification(
+        NotificationSetting changeRatingNotification
+    ) {
+        this.changeRatingNotification = changeRatingNotification;
         return this;
     }
     

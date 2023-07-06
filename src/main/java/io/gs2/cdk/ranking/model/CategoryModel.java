@@ -32,11 +32,13 @@ public class CategoryModel {
     private String metadata = null;
     private Long minimumValue = null;
     private Long maximumValue = null;
+    private Boolean sum = null;
     private Integer calculateFixedTimingHour = null;
     private Integer calculateFixedTimingMinute = null;
     private Integer calculateIntervalMinutes = null;
     private String entryPeriodEventId = null;
     private String accessPeriodEventId = null;
+    private List<String> ignoreUserIds = null;
     private String generation = null;
 
     public CategoryModel(
@@ -53,11 +55,13 @@ public class CategoryModel {
         this.metadata = options.metadata;
         this.minimumValue = options.minimumValue;
         this.maximumValue = options.maximumValue;
+        this.sum = options.sum;
         this.calculateFixedTimingHour = options.calculateFixedTimingHour;
         this.calculateFixedTimingMinute = options.calculateFixedTimingMinute;
         this.calculateIntervalMinutes = options.calculateIntervalMinutes;
         this.entryPeriodEventId = options.entryPeriodEventId;
         this.accessPeriodEventId = options.accessPeriodEventId;
+        this.ignoreUserIds = options.ignoreUserIds;
         this.generation = options.generation;
     }
     public CategoryModel(
@@ -93,6 +97,7 @@ public class CategoryModel {
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
                 .withEntryPeriodEventId(options.entryPeriodEventId)
                 .withAccessPeriodEventId(options.accessPeriodEventId)
+                .withIgnoreUserIds(options.ignoreUserIds)
                 .withGeneration(options.generation)
         ));
     }
@@ -131,6 +136,7 @@ public class CategoryModel {
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
                 .withEntryPeriodEventId(options.entryPeriodEventId)
                 .withAccessPeriodEventId(options.accessPeriodEventId)
+                .withIgnoreUserIds(options.ignoreUserIds)
                 .withGeneration(options.generation)
         ));
     }
@@ -176,6 +182,9 @@ public class CategoryModel {
         if (this.uniqueByUserId != null) {
             properties.put("uniqueByUserId", this.uniqueByUserId);
         }
+        if (this.sum != null) {
+            properties.put("sum", this.sum);
+        }
         if (this.calculateFixedTimingHour != null) {
             properties.put("calculateFixedTimingHour", this.calculateFixedTimingHour);
         }
@@ -190,6 +199,9 @@ public class CategoryModel {
         }
         if (this.accessPeriodEventId != null) {
             properties.put("accessPeriodEventId", this.accessPeriodEventId);
+        }
+        if (this.ignoreUserIds != null) {
+            properties.put("ignoreUserIds", this.ignoreUserIds);
         }
         if (this.generation != null) {
             properties.put("generation", this.generation);

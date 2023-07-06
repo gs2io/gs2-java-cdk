@@ -18,6 +18,7 @@ package io.gs2.cdk.exchange.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.exchange.model.RateModel;
+import io.gs2.cdk.exchange.model.IncrementalRateModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +29,13 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2019-08-19";
     private String namespaceName;
     private List<RateModel> rateModels;
+    private List<IncrementalRateModel> incrementalRateModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<RateModel> rateModels
+        List<RateModel> rateModels,
+        List<IncrementalRateModel> incrementalRateModels
     ) {
         super(
             "Exchange_CurrentRateMaster_" + namespaceName
@@ -40,6 +43,7 @@ public class CurrentMasterData extends CdkResource {
 
         this.namespaceName = namespaceName;
         this.rateModels = rateModels;
+        this.incrementalRateModels = incrementalRateModels;
         stack.addResource(
             this
         );
@@ -63,6 +67,10 @@ public class CurrentMasterData extends CdkResource {
         settings.put("version", this.version);
         if (this.rateModels != null) {
             settings.put("rateModels", this.rateModels.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.incrementalRateModels != null) {
+            settings.put("incrementalRateModels", this.incrementalRateModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

@@ -31,6 +31,7 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
+    public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
     
     public NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions withDescription(
@@ -65,6 +66,13 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions {
         NotificationSetting completeNotification
     ) {
         this.completeNotification = completeNotification;
+        return this;
+    }
+    
+    public NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions withChangeRatingNotification(
+        NotificationSetting changeRatingNotification
+    ) {
+        this.changeRatingNotification = changeRatingNotification;
         return this;
     }
     

@@ -13,29 +13,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.formation.model;
-import io.gs2.cdk.core.model.Config;
-import io.gs2.cdk.formation.model.options.AcquireActionConfigOptions;
+package io.gs2.cdk.news.model;
+import io.gs2.cdk.news.model.options.OutputOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AcquireActionConfig {
+public class Output {
     private String name;
-    private List<Config> config = null;
+    private String text;
+    private Long createdAt;
 
-    public AcquireActionConfig(
+    public Output(
         String name,
-        AcquireActionConfigOptions options
+        String text,
+        Long createdAt,
+        OutputOptions options
     ) {
         this.name = name;
-        this.config = options.config;
+        this.text = text;
+        this.createdAt = createdAt;
     }
-    public AcquireActionConfig(
-        String name
+    public Output(
+        String name,
+        String text,
+        Long createdAt
     ) {
         this.name = name;
+        this.text = text;
+        this.createdAt = createdAt;
     }
 
     public Map<String, Object> properties(
@@ -43,12 +50,13 @@ public class AcquireActionConfig {
         var properties = new HashMap<String, Object>();
 
         if (this.name != null) {
-            properties.put("name", this.name.toString(
-            ));
+            properties.put("name", this.name);
         }
-        if (this.config != null) {
-            properties.put("config", this.config.stream().map(v -> v.properties(
-                    )).collect(Collectors.toList()));
+        if (this.text != null) {
+            properties.put("text", this.text);
+        }
+        if (this.createdAt != null) {
+            properties.put("createdAt", this.createdAt);
         }
 
         return properties;

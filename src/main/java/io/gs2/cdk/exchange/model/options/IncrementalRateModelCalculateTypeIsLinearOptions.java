@@ -13,32 +13,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.exchange.stampSheet;
-
-import io.gs2.cdk.core.model.AcquireAction;
+package io.gs2.cdk.exchange.model.options;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.exchange.model.enums.IncrementalRateModelCalculateType;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DeleteAwaitByUserId extends ConsumeAction {
-
-    public DeleteAwaitByUserId(
-        String namespaceName,
-        String awaitName,
-        String userId
+public class IncrementalRateModelCalculateTypeIsLinearOptions {
+    public String metadata;
+    public List<AcquireAction> acquireActions;
+    
+    public IncrementalRateModelCalculateTypeIsLinearOptions withMetadata(
+        String metadata
     ) {
-        super(
-            "Gs2Exchange:DeleteAwaitByUserId",
-            new HashMap<>() {
-                {
-                    put("namespaceName", namespaceName);
-                    put("awaitName", awaitName);
-                    put("userId", userId);
-                }
-            }
-        );
+        this.metadata = metadata;
+        return this;
+    }
+    
+    public IncrementalRateModelCalculateTypeIsLinearOptions withAcquireActions(
+        List<AcquireAction> acquireActions
+    ) {
+        this.acquireActions = acquireActions;
+        return this;
     }
 }

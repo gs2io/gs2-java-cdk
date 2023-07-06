@@ -31,6 +31,7 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
+    public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
     
     public NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions withDescription(
@@ -65,6 +66,13 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
         NotificationSetting completeNotification
     ) {
         this.completeNotification = completeNotification;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions withChangeRatingNotification(
+        NotificationSetting changeRatingNotification
+    ) {
+        this.changeRatingNotification = changeRatingNotification;
         return this;
     }
     

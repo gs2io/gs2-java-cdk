@@ -58,7 +58,6 @@ public class LotteryModel {
     public static LotteryModel methodIsPrizeTable(
         String name,
         LotteryModelMode mode,
-        String prizeTableName,
         LotteryModelMethodIsPrizeTableOptions options
     ) {
         return (new LotteryModel(
@@ -66,7 +65,6 @@ public class LotteryModel {
             mode,
             LotteryModelMethod.PRIZE_TABLE,
             new LotteryModelOptions()
-                .withPrizeTableName(prizeTableName)
                 .withMetadata(options.metadata)
         ));
     }
@@ -74,8 +72,7 @@ public class LotteryModel {
 
     public static LotteryModel methodIsPrizeTable(
         String name,
-        LotteryModelMode mode,
-        String prizeTableName
+        LotteryModelMode mode
     ) {
         return (new LotteryModel(
             name,
@@ -87,7 +84,6 @@ public class LotteryModel {
     public static LotteryModel methodIsScript(
         String name,
         LotteryModelMode mode,
-        String choicePrizeTableScriptId,
         LotteryModelMethodIsScriptOptions options
     ) {
         return (new LotteryModel(
@@ -95,7 +91,6 @@ public class LotteryModel {
             mode,
             LotteryModelMethod.SCRIPT,
             new LotteryModelOptions()
-                .withChoicePrizeTableScriptId(choicePrizeTableScriptId)
                 .withMetadata(options.metadata)
         ));
     }
@@ -103,8 +98,7 @@ public class LotteryModel {
 
     public static LotteryModel methodIsScript(
         String name,
-        LotteryModelMode mode,
-        String choicePrizeTableScriptId
+        LotteryModelMode mode
     ) {
         return (new LotteryModel(
             name,

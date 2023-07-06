@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 
 public class EventOptions {
     public String metadata;
-    public EventRepeatType repeatType;
     public Long absoluteBegin;
     public Long absoluteEnd;
     public Integer repeatBeginDayOfMonth;
@@ -36,19 +35,11 @@ public class EventOptions {
     public Integer repeatBeginHour;
     public Integer repeatEndHour;
     public String relativeTriggerName;
-    public Integer relativeDuration;
     
     public EventOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
-        return this;
-    }
-    
-    public EventOptions withRepeatType(
-        EventRepeatType repeatType
-    ) {
-        this.repeatType = repeatType;
         return this;
     }
     
@@ -112,13 +103,6 @@ public class EventOptions {
         String relativeTriggerName
     ) {
         this.relativeTriggerName = relativeTriggerName;
-        return this;
-    }
-    
-    public EventOptions withRelativeDuration(
-        Integer relativeDuration
-    ) {
-        this.relativeDuration = relativeDuration;
         return this;
     }
 }

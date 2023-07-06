@@ -17,25 +17,30 @@ package io.gs2.cdk.exchange.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.Config;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DeleteAwaitByUserId extends ConsumeAction {
+public class IncrementalExchangeByUserId extends AcquireAction {
 
-    public DeleteAwaitByUserId(
+    public IncrementalExchangeByUserId(
         String namespaceName,
-        String awaitName,
+        String rateName,
+        Integer count,
+        List<Config> config,
         String userId
     ) {
         super(
-            "Gs2Exchange:DeleteAwaitByUserId",
+            "Gs2Exchange:IncrementalExchangeByUserId",
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("awaitName", awaitName);
+                    put("rateName", rateName);
+                    put("count", count);
+                    put("config", config);
                     put("userId", userId);
                 }
             }

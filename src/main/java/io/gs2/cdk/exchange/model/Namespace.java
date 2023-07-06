@@ -25,6 +25,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.exchange.ref.NamespaceRef;
 import io.gs2.cdk.exchange.model.CurrentMasterData;
 import io.gs2.cdk.exchange.model.RateModel;
+import io.gs2.cdk.exchange.model.IncrementalRateModel;
 
 import io.gs2.cdk.exchange.model.options.NamespaceOptions;
 
@@ -36,18 +37,16 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean enableAwaitExchange;
-    private Boolean enableDirectExchange;
     private TransactionSetting transactionSetting;
     private String description = null;
+    private Boolean enableAwaitExchange = null;
+    private Boolean enableDirectExchange = null;
     private ScriptSetting exchangeScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableAwaitExchange,
-        Boolean enableDirectExchange,
         TransactionSetting transactionSetting,
         NamespaceOptions options
     ) {
@@ -57,10 +56,10 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableAwaitExchange = enableAwaitExchange;
-        this.enableDirectExchange = enableDirectExchange;
         this.transactionSetting = transactionSetting;
         this.description = options.description;
+        this.enableAwaitExchange = options.enableAwaitExchange;
+        this.enableDirectExchange = options.enableDirectExchange;
         this.exchangeScript = options.exchangeScript;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -71,8 +70,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableAwaitExchange,
-        Boolean enableDirectExchange,
         TransactionSetting transactionSetting
     ) {
         super(
@@ -81,8 +78,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableAwaitExchange = enableAwaitExchange;
-        this.enableDirectExchange = enableDirectExchange;
         this.transactionSetting = transactionSetting;
         stack.addResource(
             this
@@ -149,12 +144,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<RateModel> rateModels
+        List<RateModel> rateModels,
+        List<IncrementalRateModel> incrementalRateModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            rateModels
+            rateModels,
+            incrementalRateModels
         )).addDependsOn(
             this
         );

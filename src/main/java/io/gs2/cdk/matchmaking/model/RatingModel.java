@@ -22,23 +22,28 @@ import java.util.stream.Collectors;
 
 public class RatingModel {
     private String name;
+    private Integer initialValue;
     private Integer volatility;
     private String metadata = null;
 
     public RatingModel(
         String name,
+        Integer initialValue,
         Integer volatility,
         RatingModelOptions options
     ) {
         this.name = name;
+        this.initialValue = initialValue;
         this.volatility = volatility;
         this.metadata = options.metadata;
     }
     public RatingModel(
         String name,
+        Integer initialValue,
         Integer volatility
     ) {
         this.name = name;
+        this.initialValue = initialValue;
         this.volatility = volatility;
     }
 
@@ -51,6 +56,9 @@ public class RatingModel {
         }
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
+        }
+        if (this.initialValue != null) {
+            properties.put("initialValue", this.initialValue);
         }
         if (this.volatility != null) {
             properties.put("volatility", this.volatility);

@@ -31,6 +31,7 @@ public class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting completeNotification;
+    public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
     
     public NamespaceCreateGatheringTriggerTypeIsNoneOptions withDescription(
@@ -65,6 +66,13 @@ public class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
         NotificationSetting completeNotification
     ) {
         this.completeNotification = completeNotification;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsNoneOptions withChangeRatingNotification(
+        NotificationSetting changeRatingNotification
+    ) {
+        this.changeRatingNotification = changeRatingNotification;
         return this;
     }
     

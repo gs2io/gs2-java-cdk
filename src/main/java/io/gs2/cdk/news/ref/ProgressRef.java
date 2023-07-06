@@ -13,35 +13,25 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.megaField.ref;
+package io.gs2.cdk.news.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.megaField.ref.LayerModelRef;
+import io.gs2.cdk.news.ref.OutputRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AreaModelRef {
+public class ProgressRef {
     private String namespaceName;
-    private String areaModelName;
+    private String uploadToken;
 
-    public AreaModelRef(
+    public ProgressRef(
         String namespaceName,
-        String areaModelName
+        String uploadToken
     ) {
         this.namespaceName = namespaceName;
-        this.areaModelName = areaModelName;
-    }
-
-    public LayerModelRef layerModel(
-        String layerModelName
-    ) {
-        return (new LayerModelRef(
-            this.namespaceName,
-            this.areaModelName,
-            layerModelName
-        ));
+        this.uploadToken = uploadToken;
     }
 
     public String grn(
@@ -57,11 +47,10 @@ public class AreaModelRef {
                 GetAttr.ownerId(
                 ).str(
                 ),
-                "megaField",
+                "news",
                 this.namespaceName,
-                "model",
-                "area",
-                this.areaModelName
+                "progress",
+                this.uploadToken
             )
         )).str(
         );

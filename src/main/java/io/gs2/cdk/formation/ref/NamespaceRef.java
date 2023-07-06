@@ -17,8 +17,8 @@ package io.gs2.cdk.formation.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.formation.ref.FormModelRef;
 import io.gs2.cdk.formation.ref.MoldModelRef;
+import io.gs2.cdk.formation.ref.FormModelRef;
 import io.gs2.cdk.formation.stampSheet.AddMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
@@ -38,21 +38,21 @@ public class NamespaceRef {
         this.namespaceName = namespaceName;
     }
 
-    public FormModelRef formModel(
-        String formModelName
-    ) {
-        return (new FormModelRef(
-            this.namespaceName,
-            formModelName
-        ));
-    }
-
     public MoldModelRef moldModel(
         String moldName
     ) {
         return (new MoldModelRef(
             this.namespaceName,
             moldName
+        ));
+    }
+
+    public FormModelRef formModel(
+        String formModelName
+    ) {
+        return (new FormModelRef(
+            this.namespaceName,
+            formModelName
         ));
     }
 

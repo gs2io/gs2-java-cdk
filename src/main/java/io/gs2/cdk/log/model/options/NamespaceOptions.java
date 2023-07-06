@@ -15,6 +15,8 @@
  */
 package io.gs2.cdk.log.model.options;
 
+import io.gs2.cdk.log.model.enums.NamespaceType;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public NamespaceType type;
     public String gcpCredentialJson;
     public String bigQueryDatasetName;
     public Integer logExpireDays;
@@ -34,6 +37,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withType(
+        NamespaceType type
+    ) {
+        this.type = type;
         return this;
     }
     
@@ -86,4 +96,3 @@ public class NamespaceOptions {
         return this;
     }
 }
-

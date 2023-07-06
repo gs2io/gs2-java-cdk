@@ -23,19 +23,21 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DeleteAwaitByUserId extends ConsumeAction {
+public class UnlockIncrementalExchangeByUserId extends AcquireAction {
 
-    public DeleteAwaitByUserId(
+    public UnlockIncrementalExchangeByUserId(
         String namespaceName,
-        String awaitName,
+        String rateName,
+        String lockTransactionId,
         String userId
     ) {
         super(
-            "Gs2Exchange:DeleteAwaitByUserId",
+            "Gs2Exchange:UnlockIncrementalExchangeByUserId",
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("awaitName", awaitName);
+                    put("rateName", rateName);
+                    put("lockTransactionId", lockTransactionId);
                     put("userId", userId);
                 }
             }

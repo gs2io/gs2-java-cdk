@@ -38,10 +38,10 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private Boolean enableRating;
     private NamespaceCreateGatheringTriggerType createGatheringTriggerType;
     private NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType;
     private String description = null;
+    private Boolean enableRating = null;
     private String createGatheringTriggerRealtimeNamespaceId = null;
     private String createGatheringTriggerScriptId = null;
     private String completeMatchmakingTriggerRealtimeNamespaceId = null;
@@ -50,12 +50,12 @@ public class Namespace extends CdkResource {
     private NotificationSetting joinNotification = null;
     private NotificationSetting leaveNotification = null;
     private NotificationSetting completeNotification = null;
+    private NotificationSetting changeRatingNotification = null;
     private LogSetting logSetting = null;
 
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableRating,
         NamespaceCreateGatheringTriggerType createGatheringTriggerType,
         NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType,
         NamespaceOptions options
@@ -66,10 +66,10 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableRating = enableRating;
         this.createGatheringTriggerType = createGatheringTriggerType;
         this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         this.description = options.description;
+        this.enableRating = options.enableRating;
         this.createGatheringTriggerRealtimeNamespaceId = options.createGatheringTriggerRealtimeNamespaceId;
         this.createGatheringTriggerScriptId = options.createGatheringTriggerScriptId;
         this.completeMatchmakingTriggerRealtimeNamespaceId = options.completeMatchmakingTriggerRealtimeNamespaceId;
@@ -78,6 +78,7 @@ public class Namespace extends CdkResource {
         this.joinNotification = options.joinNotification;
         this.leaveNotification = options.leaveNotification;
         this.completeNotification = options.completeNotification;
+        this.changeRatingNotification = options.changeRatingNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -87,7 +88,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        Boolean enableRating,
         NamespaceCreateGatheringTriggerType createGatheringTriggerType,
         NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType
     ) {
@@ -97,7 +97,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.enableRating = enableRating;
         this.createGatheringTriggerType = createGatheringTriggerType;
         this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         stack.addResource(
@@ -161,6 +160,10 @@ public class Namespace extends CdkResource {
         }
         if (this.completeNotification != null) {
             properties.put("CompleteNotification", this.completeNotification.properties(
+            ));
+        }
+        if (this.changeRatingNotification != null) {
+            properties.put("ChangeRatingNotification", this.changeRatingNotification.properties(
             ));
         }
         if (this.logSetting != null) {

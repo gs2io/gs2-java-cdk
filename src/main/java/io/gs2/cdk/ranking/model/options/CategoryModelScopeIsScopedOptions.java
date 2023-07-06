@@ -30,6 +30,7 @@ public class CategoryModelScopeIsScopedOptions {
     public Integer calculateFixedTimingMinute;
     public String entryPeriodEventId;
     public String accessPeriodEventId;
+    public List<String> ignoreUserIds;
     public String generation;
     
     public CategoryModelScopeIsScopedOptions withMetadata(
@@ -78,6 +79,13 @@ public class CategoryModelScopeIsScopedOptions {
         String accessPeriodEventId
     ) {
         this.accessPeriodEventId = accessPeriodEventId;
+        return this;
+    }
+    
+    public CategoryModelScopeIsScopedOptions withIgnoreUserIds(
+        List<String> ignoreUserIds
+    ) {
+        this.ignoreUserIds = ignoreUserIds;
         return this;
     }
     
