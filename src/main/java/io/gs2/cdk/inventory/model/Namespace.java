@@ -24,6 +24,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.inventory.ref.NamespaceRef;
 import io.gs2.cdk.inventory.model.CurrentMasterData;
 import io.gs2.cdk.inventory.model.InventoryModel;
+import io.gs2.cdk.inventory.model.SimpleInventoryModel;
 
 import io.gs2.cdk.inventory.model.options.NamespaceOptions;
 
@@ -135,12 +136,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<InventoryModel> inventoryModels
+        List<InventoryModel> inventoryModels,
+        List<SimpleInventoryModel> simpleInventoryModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            inventoryModels
+            inventoryModels,
+            simpleInventoryModels
         )).addDependsOn(
             this
         );

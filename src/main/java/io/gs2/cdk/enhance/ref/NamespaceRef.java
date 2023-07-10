@@ -64,8 +64,8 @@ public class NamespaceRef {
     public CreateProgressByUserId createProgress(
         String rateName,
         String targetItemSetId,
-        Boolean force,
-        List<Material> materials
+        List<Material> materials,
+        Boolean force
     ) {
         return (new CreateProgressByUserId(
             this.namespaceName,

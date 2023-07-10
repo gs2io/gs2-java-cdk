@@ -12,19 +12,26 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.inventory.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.inventory.ref.InventoryModelRef;
+import io.gs2.cdk.inventory.ref.SimpleInventoryModelRef;
 import io.gs2.cdk.inventory.stampSheet.AddCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.SetCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
+import io.gs2.cdk.inventory.stampSheet.AcquireSimpleItemsByUserId;
+import io.gs2.cdk.inventory.model.AcquireCount;
+import io.gs2.cdk.inventory.model.ConsumeCount;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
+import io.gs2.cdk.inventory.stampSheet.ConsumeSimpleItemsByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,6 +49,15 @@ public class NamespaceRef {
         String inventoryName
     ) {
         return (new InventoryModelRef(
+            this.namespaceName,
+            inventoryName
+        ));
+    }
+
+    public SimpleInventoryModelRef simpleInventoryModel(
+        String inventoryName
+    ) {
+        return (new SimpleInventoryModelRef(
             this.namespaceName,
             inventoryName
         ));
@@ -209,6 +225,32 @@ public class NamespaceRef {
         ));
     }
 
+    public AcquireSimpleItemsByUserId acquireSimpleItems(
+        String inventoryName,
+        List<AcquireCount> acquireCounts,
+        String userId
+    ) {
+        return (new AcquireSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            acquireCounts,
+            userId
+        ));
+    }
+
+
+    public AcquireSimpleItemsByUserId acquireSimpleItems(
+        String inventoryName,
+        List<AcquireCount> acquireCounts
+    ) {
+        return (new AcquireSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            acquireCounts,
+            "#{userId}"
+        ));
+    }
+
     public ConsumeItemSetByUserId consumeItemSet(
         String inventoryName,
         String itemName,
@@ -277,6 +319,32 @@ public class NamespaceRef {
             itemSetName,
             referenceOf,
             verifyType,
+            "#{userId}"
+        ));
+    }
+
+    public ConsumeSimpleItemsByUserId consumeSimpleItems(
+        String inventoryName,
+        List<ConsumeCount> consumeCounts,
+        String userId
+    ) {
+        return (new ConsumeSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            consumeCounts,
+            userId
+        ));
+    }
+
+
+    public ConsumeSimpleItemsByUserId consumeSimpleItems(
+        String inventoryName,
+        List<ConsumeCount> consumeCounts
+    ) {
+        return (new ConsumeSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            consumeCounts,
             "#{userId}"
         ));
     }

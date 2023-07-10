@@ -18,6 +18,7 @@ package io.gs2.cdk.inventory.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.inventory.model.InventoryModel;
+import io.gs2.cdk.inventory.model.SimpleInventoryModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +29,13 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2019-02-05";
     private String namespaceName;
     private List<InventoryModel> inventoryModels;
+    private List<SimpleInventoryModel> simpleInventoryModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<InventoryModel> inventoryModels
+        List<InventoryModel> inventoryModels,
+        List<SimpleInventoryModel> simpleInventoryModels
     ) {
         super(
             "Inventory_CurrentItemModelMaster_" + namespaceName
@@ -40,6 +43,7 @@ public class CurrentMasterData extends CdkResource {
 
         this.namespaceName = namespaceName;
         this.inventoryModels = inventoryModels;
+        this.simpleInventoryModels = simpleInventoryModels;
         stack.addResource(
             this
         );
@@ -63,6 +67,10 @@ public class CurrentMasterData extends CdkResource {
         settings.put("version", this.version);
         if (this.inventoryModels != null) {
             settings.put("inventoryModels", this.inventoryModels.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.simpleInventoryModels != null) {
+            settings.put("simpleInventoryModels", this.simpleInventoryModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 
