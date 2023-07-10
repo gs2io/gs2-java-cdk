@@ -13,24 +13,22 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+package io.gs2.cdk.idle.model.options;
+import io.gs2.cdk.core.model.AcquireAction;
 
-package io.gs2.cdk.formation.model.enums;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
-
-public enum SlotWithSignaturePropertyType {
-    GS2_INVENTORY,
-    GS2_SIMPLE_INVENTORY,
-    GS2_DICTIONARY;
-
-    public String toString() {
-        switch (this) {
-            case GS2_INVENTORY:
-                return "gs2_inventory";
-            case GS2_SIMPLE_INVENTORY:
-                return "gs2_simple_inventory";
-            case GS2_DICTIONARY:
-                return "gs2_dictionary";
-        }
-        return "unknown";
+public class AcquireActionListOptions {
+    public List<AcquireAction> acquireActions;
+    
+    public AcquireActionListOptions withAcquireActions(
+        List<AcquireAction> acquireActions
+    ) {
+        this.acquireActions = acquireActions;
+        return this;
     }
 }
+
