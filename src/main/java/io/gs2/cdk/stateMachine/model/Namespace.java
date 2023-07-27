@@ -15,16 +15,18 @@
  *
  * deny overwrite
  */
-package io.gs2.cdk.script.model;
+package io.gs2.cdk.stateMachine.model;
 
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
-import io.gs2.cdk.script.ref.NamespaceRef;
+import io.gs2.cdk.stateMachine.integration.StateMachineDefinition;
+import io.gs2.cdk.stateMachine.ref.NamespaceRef;
 
-import io.gs2.cdk.script.model.options.NamespaceOptions;
+import io.gs2.cdk.stateMachine.model.options.NamespaceOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +37,10 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private ScriptSetting startScript = null;
+    private ScriptSetting passScript = null;
+    private ScriptSetting errorScript = null;
+    private Long lowestStateMachineVersion = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -43,12 +49,16 @@ public class Namespace extends CdkResource {
         NamespaceOptions options
     ) {
         super(
-            "Script_Namespace_" + name
+            "StateMachine_Namespace_" + name
         );
 
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.startScript = options.startScript;
+        this.passScript = options.passScript;
+        this.errorScript = options.errorScript;
+        this.lowestStateMachineVersion = options.lowestStateMachineVersion;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -60,7 +70,7 @@ public class Namespace extends CdkResource {
         String name
     ) {
         super(
-            "Script_Namespace_" + name
+            "StateMachine_Namespace_" + name
         );
 
         this.stack = stack;
@@ -78,7 +88,7 @@ public class Namespace extends CdkResource {
 
     public String resourceType(
     ) {
-        return "GS2::Script::Namespace";
+        return "GS2::StateMachine::Namespace";
     }
 
     public Map<String, Object> properties(
@@ -90,6 +100,21 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.startScript != null) {
+            properties.put("StartScript", this.startScript.properties(
+            ));
+        }
+        if (this.passScript != null) {
+            properties.put("PassScript", this.passScript.properties(
+            ));
+        }
+        if (this.errorScript != null) {
+            properties.put("ErrorScript", this.errorScript.properties(
+            ));
+        }
+        if (this.lowestStateMachineVersion != null) {
+            properties.put("LowestStateMachineVersion", this.lowestStateMachineVersion);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
@@ -115,7 +140,22 @@ public class Namespace extends CdkResource {
         ));
     }
 
-    public String getName() {
-        return name;
+    public void stateMachine(
+            io.gs2.cdk.script.model.Namespace scriptNamespace,
+            StateMachineDefinition definition
+    ) {
+        definition.appendScripts(
+                stack,
+                scriptNamespace
+        );
+        new io.gs2.cdk.stateMachine.model.StateMachineMaster(
+                stack,
+                name,
+                definition.stateMachineName,
+                definition.gsl().replace("{scriptNamespaceName}", scriptNamespace.getName())
+        ).addDependsOn(
+                this
+        );
     }
+
 }
