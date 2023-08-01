@@ -24,28 +24,23 @@ import java.util.stream.Collectors;
 public class ScopedValue {
     private ScopedValueResetType resetType;
     private Long value;
-    private Long updatedAt;
     private Long nextResetAt = null;
 
     public ScopedValue(
         ScopedValueResetType resetType,
         Long value,
-        Long updatedAt,
         ScopedValueOptions options
     ) {
         this.resetType = resetType;
         this.value = value;
-        this.updatedAt = updatedAt;
         this.nextResetAt = options.nextResetAt;
     }
     public ScopedValue(
         ScopedValueResetType resetType,
-        Long value,
-        Long updatedAt
+        Long value
     ) {
         this.resetType = resetType;
         this.value = value;
-        this.updatedAt = updatedAt;
     }
 
     public Map<String, Object> properties(
@@ -61,9 +56,6 @@ public class ScopedValue {
         }
         if (this.nextResetAt != null) {
             properties.put("nextResetAt", this.nextResetAt);
-        }
-        if (this.updatedAt != null) {
-            properties.put("updatedAt", this.updatedAt);
         }
 
         return properties;
