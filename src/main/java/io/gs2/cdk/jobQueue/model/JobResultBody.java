@@ -24,30 +24,25 @@ public class JobResultBody {
     private Integer tryNumber;
     private Integer statusCode;
     private String result;
-    private Long tryAt;
 
     public JobResultBody(
         Integer tryNumber,
         Integer statusCode,
         String result,
-        Long tryAt,
         JobResultBodyOptions options
     ) {
         this.tryNumber = tryNumber;
         this.statusCode = statusCode;
         this.result = result;
-        this.tryAt = tryAt;
     }
     public JobResultBody(
         Integer tryNumber,
         Integer statusCode,
-        String result,
-        Long tryAt
+        String result
     ) {
         this.tryNumber = tryNumber;
         this.statusCode = statusCode;
         this.result = result;
-        this.tryAt = tryAt;
     }
 
     public Map<String, Object> properties(
@@ -62,9 +57,6 @@ public class JobResultBody {
         }
         if (this.result != null) {
             properties.put("result", this.result);
-        }
-        if (this.tryAt != null) {
-            properties.put("tryAt", this.tryAt);
         }
 
         return properties;

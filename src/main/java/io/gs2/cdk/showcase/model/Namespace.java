@@ -25,6 +25,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.showcase.ref.NamespaceRef;
 import io.gs2.cdk.showcase.model.CurrentMasterData;
 import io.gs2.cdk.showcase.model.Showcase;
+import io.gs2.cdk.showcase.model.RandomShowcase;
 
 import io.gs2.cdk.showcase.model.options.NamespaceOptions;
 
@@ -126,19 +127,21 @@ public class Namespace extends CdkResource {
     public GetAttr getAttrNamespaceId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.NamespaceId"
+            this,
+            "Item.NamespaceId",
+            null
         ));
     }
 
     public Namespace masterData(
-        List<Showcase> showcases
+        List<Showcase> showcases,
+        List<RandomShowcase> randomShowcases
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            showcases
+            showcases,
+            randomShowcases
         )).addDependsOn(
             this
         );

@@ -149,9 +149,9 @@ public class User extends CdkResource {
     public GetAttr getAttrUserId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.UserId"
+            this,
+            "Item.UserId",
+            null
         ));
     }
 }

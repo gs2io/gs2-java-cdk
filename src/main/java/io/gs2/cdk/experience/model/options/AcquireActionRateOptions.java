@@ -14,30 +14,12 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.experience.model.options;
-import io.gs2.cdk.experience.model.Threshold;
-import io.gs2.cdk.experience.model.AcquireActionRate;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExperienceModelOptions {
-    public String metadata;
-    public List<AcquireActionRate> acquireActionRates;
-    
-    public ExperienceModelOptions withMetadata(
-        String metadata
-    ) {
-        this.metadata = metadata;
-        return this;
-    }
-    
-    public ExperienceModelOptions withAcquireActionRates(
-        List<AcquireActionRate> acquireActionRates
-    ) {
-        this.acquireActionRates = acquireActionRates;
-        return this;
-    }
+public class AcquireActionRateOptions {
 }
 

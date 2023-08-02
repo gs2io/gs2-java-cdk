@@ -22,34 +22,29 @@ import java.util.stream.Collectors;
 
 public class AccessToken {
     private String ownerId;
-    private String token;
     private String userId;
     private Long expire;
     private Integer timeOffset;
 
     public AccessToken(
         String ownerId,
-        String token,
         String userId,
         Long expire,
         Integer timeOffset,
         AccessTokenOptions options
     ) {
         this.ownerId = ownerId;
-        this.token = token;
         this.userId = userId;
         this.expire = expire;
         this.timeOffset = timeOffset;
     }
     public AccessToken(
         String ownerId,
-        String token,
         String userId,
         Long expire,
         Integer timeOffset
     ) {
         this.ownerId = ownerId;
-        this.token = token;
         this.userId = userId;
         this.expire = expire;
         this.timeOffset = timeOffset;
@@ -61,9 +56,6 @@ public class AccessToken {
 
         if (this.ownerId != null) {
             properties.put("ownerId", this.ownerId);
-        }
-        if (this.token != null) {
-            properties.put("token", this.token);
         }
         if (this.userId != null) {
             properties.put("userId", this.userId);

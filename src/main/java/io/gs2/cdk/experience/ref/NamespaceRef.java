@@ -21,6 +21,8 @@ import io.gs2.cdk.experience.ref.ExperienceModelRef;
 import io.gs2.cdk.experience.stampSheet.AddExperienceByUserId;
 import io.gs2.cdk.experience.stampSheet.AddRankCapByUserId;
 import io.gs2.cdk.experience.stampSheet.SetRankCapByUserId;
+import io.gs2.cdk.experience.stampSheet.MultiplyAcquireActionsByUserId;
+import io.gs2.cdk.core.model.AcquireAction;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -129,6 +131,40 @@ public class NamespaceRef {
             experienceName,
             propertyId,
             rankCapValue,
+            "#{userId}"
+        ));
+    }
+
+    public MultiplyAcquireActionsByUserId multiplyAcquireActions(
+        String experienceName,
+        String propertyId,
+        String rateName,
+        List<AcquireAction> acquireActions,
+        String userId
+    ) {
+        return (new MultiplyAcquireActionsByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rateName,
+            acquireActions,
+            userId
+        ));
+    }
+
+
+    public MultiplyAcquireActionsByUserId multiplyAcquireActions(
+        String experienceName,
+        String propertyId,
+        String rateName,
+        List<AcquireAction> acquireActions
+    ) {
+        return (new MultiplyAcquireActionsByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rateName,
+            acquireActions,
             "#{userId}"
         ));
     }

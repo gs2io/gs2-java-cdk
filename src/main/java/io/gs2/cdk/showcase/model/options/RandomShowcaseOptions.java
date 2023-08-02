@@ -13,30 +13,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.experience.model.options;
-import io.gs2.cdk.experience.model.Threshold;
-import io.gs2.cdk.experience.model.AcquireActionRate;
+package io.gs2.cdk.showcase.model.options;
+import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.showcase.model.RandomDisplayItemModel;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExperienceModelOptions {
+public class RandomShowcaseOptions {
     public String metadata;
-    public List<AcquireActionRate> acquireActionRates;
+    public String salesPeriodEventId;
     
-    public ExperienceModelOptions withMetadata(
+    public RandomShowcaseOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
         return this;
     }
     
-    public ExperienceModelOptions withAcquireActionRates(
-        List<AcquireActionRate> acquireActionRates
+    public RandomShowcaseOptions withSalesPeriodEventId(
+        String salesPeriodEventId
     ) {
-        this.acquireActionRates = acquireActionRates;
+        this.salesPeriodEventId = salesPeriodEventId;
         return this;
     }
 }

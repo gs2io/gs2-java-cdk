@@ -26,7 +26,6 @@ public class IssueJob {
     private Integer issuedCount;
     private Integer issueRequestCount;
     private IssueJobStatus status;
-    private Long createdAt;
     private String metadata = null;
 
     public IssueJob(
@@ -34,28 +33,24 @@ public class IssueJob {
         Integer issuedCount,
         Integer issueRequestCount,
         IssueJobStatus status,
-        Long createdAt,
         IssueJobOptions options
     ) {
         this.name = name;
         this.issuedCount = issuedCount;
         this.issueRequestCount = issueRequestCount;
         this.status = status;
-        this.createdAt = createdAt;
         this.metadata = options.metadata;
     }
     public IssueJob(
         String name,
         Integer issuedCount,
         Integer issueRequestCount,
-        IssueJobStatus status,
-        Long createdAt
+        IssueJobStatus status
     ) {
         this.name = name;
         this.issuedCount = issuedCount;
         this.issueRequestCount = issueRequestCount;
         this.status = status;
-        this.createdAt = createdAt;
     }
 
     public Map<String, Object> properties(
@@ -77,9 +72,6 @@ public class IssueJob {
         if (this.status != null) {
             properties.put("status", this.status.toString(
             ));
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
         }
 
         return properties;

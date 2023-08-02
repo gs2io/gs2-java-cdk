@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.experience.model;
 import io.gs2.cdk.experience.model.Threshold;
+import io.gs2.cdk.experience.model.AcquireActionRate;
 import io.gs2.cdk.experience.model.options.ExperienceModelOptions;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class ExperienceModel {
     private Long maxRankCap;
     private Threshold rankThreshold;
     private String metadata = null;
+    private List<AcquireActionRate> acquireActionRates = null;
 
     public ExperienceModel(
         String name,
@@ -43,6 +45,7 @@ public class ExperienceModel {
         this.maxRankCap = maxRankCap;
         this.rankThreshold = rankThreshold;
         this.metadata = options.metadata;
+        this.acquireActionRates = options.acquireActionRates;
     }
     public ExperienceModel(
         String name,
@@ -80,6 +83,10 @@ public class ExperienceModel {
         if (this.rankThreshold != null) {
             properties.put("rankThreshold", this.rankThreshold.properties(
             ));
+        }
+        if (this.acquireActionRates != null) {
+            properties.put("acquireActionRates", this.acquireActionRates.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
 
         return properties;

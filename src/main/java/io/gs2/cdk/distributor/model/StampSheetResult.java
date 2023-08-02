@@ -26,8 +26,6 @@ public class StampSheetResult {
     private String userId;
     private String transactionId;
     private AcquireAction sheetRequest;
-    private Long createdAt;
-    private Long ttlAt;
     private List<ConsumeAction> taskRequests = null;
     private List<String> taskResults = null;
     private String sheetResult = null;
@@ -37,15 +35,11 @@ public class StampSheetResult {
         String userId,
         String transactionId,
         AcquireAction sheetRequest,
-        Long createdAt,
-        Long ttlAt,
         StampSheetResultOptions options
     ) {
         this.userId = userId;
         this.transactionId = transactionId;
         this.sheetRequest = sheetRequest;
-        this.createdAt = createdAt;
-        this.ttlAt = ttlAt;
         this.taskRequests = options.taskRequests;
         this.taskResults = options.taskResults;
         this.sheetResult = options.sheetResult;
@@ -54,15 +48,11 @@ public class StampSheetResult {
     public StampSheetResult(
         String userId,
         String transactionId,
-        AcquireAction sheetRequest,
-        Long createdAt,
-        Long ttlAt
+        AcquireAction sheetRequest
     ) {
         this.userId = userId;
         this.transactionId = transactionId;
         this.sheetRequest = sheetRequest;
-        this.createdAt = createdAt;
-        this.ttlAt = ttlAt;
     }
 
     public Map<String, Object> properties(
@@ -91,12 +81,6 @@ public class StampSheetResult {
         }
         if (this.nextTransactionId != null) {
             properties.put("nextTransactionId", this.nextTransactionId);
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
-        }
-        if (this.ttlAt != null) {
-            properties.put("ttlAt", this.ttlAt);
         }
 
         return properties;

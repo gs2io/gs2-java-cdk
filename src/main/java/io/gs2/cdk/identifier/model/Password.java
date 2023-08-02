@@ -103,9 +103,9 @@ public class Password extends CdkResource {
     public GetAttr getAttrPasswordId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.PasswordId"
+            this,
+            "Item.PasswordId",
+            null
         ));
     }
 }

@@ -117,9 +117,9 @@ public class Script extends CdkResource {
     public GetAttr getAttrScriptId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.ScriptId"
+            this,
+            "Item.ScriptId",
+            null
         ));
     }
 }

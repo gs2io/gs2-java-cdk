@@ -97,9 +97,9 @@ public class Identifier extends CdkResource {
     public GetAttr getAttrClientId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.ClientId"
+            this,
+            "Item.ClientId",
+            null
         ));
     }
 
@@ -107,9 +107,9 @@ public class Identifier extends CdkResource {
     public GetAttr getAttrClientSecret(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "ClientSecret"
+            this,
+            "ClientSecret",
+            null
         ));
     }
 }

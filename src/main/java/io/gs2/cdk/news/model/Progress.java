@@ -24,35 +24,25 @@ public class Progress {
     private String uploadToken;
     private Integer generated;
     private Integer patternCount;
-    private Long createdAt;
-    private Long updatedAt;
 
     public Progress(
         String uploadToken,
         Integer generated,
         Integer patternCount,
-        Long createdAt,
-        Long updatedAt,
         ProgressOptions options
     ) {
         this.uploadToken = uploadToken;
         this.generated = generated;
         this.patternCount = patternCount;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
     public Progress(
         String uploadToken,
         Integer generated,
-        Integer patternCount,
-        Long createdAt,
-        Long updatedAt
+        Integer patternCount
     ) {
         this.uploadToken = uploadToken;
         this.generated = generated;
         this.patternCount = patternCount;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Map<String, Object> properties(
@@ -67,12 +57,6 @@ public class Progress {
         }
         if (this.patternCount != null) {
             properties.put("patternCount", this.patternCount);
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
-        }
-        if (this.updatedAt != null) {
-            properties.put("updatedAt", this.updatedAt);
         }
 
         return properties;

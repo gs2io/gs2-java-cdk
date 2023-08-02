@@ -13,34 +13,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.news.model;
-import io.gs2.cdk.news.model.options.OutputOptions;
+package io.gs2.cdk.experience.model;
+import io.gs2.cdk.experience.model.options.AcquireActionRateOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Output {
-    private String text;
+public class AcquireActionRate {
+    private String name;
+    private List<Double> rates;
 
-    public Output(
-        String text,
-        OutputOptions options
+    public AcquireActionRate(
+        String name,
+        List<Double> rates,
+        AcquireActionRateOptions options
     ) {
-        this.text = text;
+        this.name = name;
+        this.rates = rates;
     }
-    public Output(
-        String text
+    public AcquireActionRate(
+        String name,
+        List<Double> rates
     ) {
-        this.text = text;
+        this.name = name;
+        this.rates = rates;
     }
 
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
 
-        if (this.text != null) {
-            properties.put("text", this.text);
+        if (this.name != null) {
+            properties.put("name", this.name);
+        }
+        if (this.rates != null) {
+            properties.put("rates", this.rates);
         }
 
         return properties;

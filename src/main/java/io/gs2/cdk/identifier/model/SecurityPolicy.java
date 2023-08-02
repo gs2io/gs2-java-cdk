@@ -114,9 +114,9 @@ public class SecurityPolicy extends CdkResource {
     public GetAttr getAttrSecurityPolicyId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.SecurityPolicyId"
+            this,
+            "Item.SecurityPolicyId",
+            null
         ));
     }
 }

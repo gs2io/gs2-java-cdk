@@ -13,31 +13,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.experience.model.options;
-import io.gs2.cdk.experience.model.Threshold;
-import io.gs2.cdk.experience.model.AcquireActionRate;
+package io.gs2.cdk.showcase.stampSheet;
+
+import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.core.model.ConsumeAction;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExperienceModelOptions {
-    public String metadata;
-    public List<AcquireActionRate> acquireActionRates;
-    
-    public ExperienceModelOptions withMetadata(
-        String metadata
+public class ForceReDrawByUserId extends AcquireAction {
+
+    public ForceReDrawByUserId(
+        String namespaceName,
+        String showcaseName,
+        String userId
     ) {
-        this.metadata = metadata;
-        return this;
-    }
-    
-    public ExperienceModelOptions withAcquireActionRates(
-        List<AcquireActionRate> acquireActionRates
-    ) {
-        this.acquireActionRates = acquireActionRates;
-        return this;
+        super(
+            "Gs2Showcase:ForceReDrawByUserId",
+            new HashMap<>() {
+                {
+                    put("namespaceName", namespaceName);
+                    put("showcaseName", showcaseName);
+                    put("userId", userId);
+                }
+            }
+        );
     }
 }
-

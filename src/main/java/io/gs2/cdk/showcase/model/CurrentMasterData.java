@@ -18,6 +18,7 @@ package io.gs2.cdk.showcase.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.showcase.model.Showcase;
+import io.gs2.cdk.showcase.model.RandomShowcase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +29,13 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2019-04-04";
     private String namespaceName;
     private List<Showcase> showcases;
+    private List<RandomShowcase> randomShowcases;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<Showcase> showcases
+        List<Showcase> showcases,
+        List<RandomShowcase> randomShowcases
     ) {
         super(
             "Showcase_CurrentShowcaseMaster_" + namespaceName
@@ -40,6 +43,7 @@ public class CurrentMasterData extends CdkResource {
 
         this.namespaceName = namespaceName;
         this.showcases = showcases;
+        this.randomShowcases = randomShowcases;
         stack.addResource(
             this
         );
@@ -63,6 +67,10 @@ public class CurrentMasterData extends CdkResource {
         settings.put("version", this.version);
         if (this.showcases != null) {
             settings.put("showcases", this.showcases.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.randomShowcases != null) {
+            settings.put("randomShowcases", this.randomShowcases.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

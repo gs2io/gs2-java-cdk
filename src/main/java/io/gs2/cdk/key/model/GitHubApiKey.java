@@ -24,37 +24,27 @@ public class GitHubApiKey {
     private String name;
     private String apiKey;
     private String encryptionKeyName;
-    private Long createdAt;
-    private Long updatedAt;
     private String description = null;
 
     public GitHubApiKey(
         String name,
         String apiKey,
         String encryptionKeyName,
-        Long createdAt,
-        Long updatedAt,
         GitHubApiKeyOptions options
     ) {
         this.name = name;
         this.apiKey = apiKey;
         this.encryptionKeyName = encryptionKeyName;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
         this.description = options.description;
     }
     public GitHubApiKey(
         String name,
         String apiKey,
-        String encryptionKeyName,
-        Long createdAt,
-        Long updatedAt
+        String encryptionKeyName
     ) {
         this.name = name;
         this.apiKey = apiKey;
         this.encryptionKeyName = encryptionKeyName;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Map<String, Object> properties(
@@ -72,12 +62,6 @@ public class GitHubApiKey {
         }
         if (this.encryptionKeyName != null) {
             properties.put("encryptionKeyName", this.encryptionKeyName);
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
-        }
-        if (this.updatedAt != null) {
-            properties.put("updatedAt", this.updatedAt);
         }
 
         return properties;

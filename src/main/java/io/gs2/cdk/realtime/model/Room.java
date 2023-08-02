@@ -127,9 +127,9 @@ public class Room extends CdkResource {
     public GetAttr getAttrRoomId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.RoomId"
+            this,
+            "Item.RoomId",
+            null
         ));
     }
 }

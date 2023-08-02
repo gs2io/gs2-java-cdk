@@ -109,9 +109,9 @@ public class Key extends CdkResource {
     public GetAttr getAttrKeyId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.KeyId"
+            this,
+            "Item.KeyId",
+            null
         ));
     }
 }

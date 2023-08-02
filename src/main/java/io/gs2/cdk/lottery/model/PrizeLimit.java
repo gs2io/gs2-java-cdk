@@ -23,31 +23,21 @@ import java.util.stream.Collectors;
 public class PrizeLimit {
     private String prizeId;
     private Integer drawnCount;
-    private Long createdAt;
-    private Long updatedAt;
 
     public PrizeLimit(
         String prizeId,
         Integer drawnCount,
-        Long createdAt,
-        Long updatedAt,
         PrizeLimitOptions options
     ) {
         this.prizeId = prizeId;
         this.drawnCount = drawnCount;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
     public PrizeLimit(
         String prizeId,
-        Integer drawnCount,
-        Long createdAt,
-        Long updatedAt
+        Integer drawnCount
     ) {
         this.prizeId = prizeId;
         this.drawnCount = drawnCount;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Map<String, Object> properties(
@@ -59,12 +49,6 @@ public class PrizeLimit {
         }
         if (this.drawnCount != null) {
             properties.put("drawnCount", this.drawnCount);
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
-        }
-        if (this.updatedAt != null) {
-            properties.put("updatedAt", this.updatedAt);
         }
 
         return properties;

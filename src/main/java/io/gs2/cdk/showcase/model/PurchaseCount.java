@@ -13,34 +13,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.news.model;
-import io.gs2.cdk.news.model.options.OutputOptions;
+package io.gs2.cdk.showcase.model;
+import io.gs2.cdk.showcase.model.options.PurchaseCountOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Output {
-    private String text;
+public class PurchaseCount {
+    private String name;
+    private Integer count;
 
-    public Output(
-        String text,
-        OutputOptions options
+    public PurchaseCount(
+        String name,
+        Integer count,
+        PurchaseCountOptions options
     ) {
-        this.text = text;
+        this.name = name;
+        this.count = count;
     }
-    public Output(
-        String text
+    public PurchaseCount(
+        String name,
+        Integer count
     ) {
-        this.text = text;
+        this.name = name;
+        this.count = count;
     }
 
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
 
-        if (this.text != null) {
-            properties.put("text", this.text);
+        if (this.name != null) {
+            properties.put("name", this.name);
+        }
+        if (this.count != null) {
+            properties.put("count", this.count);
         }
 
         return properties;

@@ -146,9 +146,9 @@ public class Namespace extends CdkResource {
     public GetAttr getAttrNamespaceId(
     ) {
         return (new GetAttr(
-            null,
-            null,
-            "Item.NamespaceId"
+            this,
+            "Item.NamespaceId",
+            null
         ));
     }
 

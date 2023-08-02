@@ -26,7 +26,6 @@ public class Layer {
     private Integer numberOfMinEntries;
     private Integer numberOfMaxEntries;
     private Integer height;
-    private Long createdAt;
     private String root = null;
 
     public Layer(
@@ -35,7 +34,6 @@ public class Layer {
         Integer numberOfMinEntries,
         Integer numberOfMaxEntries,
         Integer height,
-        Long createdAt,
         LayerOptions options
     ) {
         this.areaModelName = areaModelName;
@@ -43,7 +41,6 @@ public class Layer {
         this.numberOfMinEntries = numberOfMinEntries;
         this.numberOfMaxEntries = numberOfMaxEntries;
         this.height = height;
-        this.createdAt = createdAt;
         this.root = options.root;
     }
     public Layer(
@@ -51,15 +48,13 @@ public class Layer {
         String layerModelName,
         Integer numberOfMinEntries,
         Integer numberOfMaxEntries,
-        Integer height,
-        Long createdAt
+        Integer height
     ) {
         this.areaModelName = areaModelName;
         this.layerModelName = layerModelName;
         this.numberOfMinEntries = numberOfMinEntries;
         this.numberOfMaxEntries = numberOfMaxEntries;
         this.height = height;
-        this.createdAt = createdAt;
     }
 
     public Map<String, Object> properties(
@@ -83,9 +78,6 @@ public class Layer {
         }
         if (this.height != null) {
             properties.put("height", this.height);
-        }
-        if (this.createdAt != null) {
-            properties.put("createdAt", this.createdAt);
         }
 
         return properties;
