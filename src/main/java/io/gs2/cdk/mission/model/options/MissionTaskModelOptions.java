@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.mission.model.options;
 import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.mission.model.enums.MissionTaskModelTargetResetType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 public class MissionTaskModelOptions {
     public String metadata;
+    public MissionTaskModelTargetResetType targetResetType;
     public List<AcquireAction> completeAcquireActions;
     public String challengePeriodEventId;
     public String premiseMissionTaskName;
@@ -31,6 +33,13 @@ public class MissionTaskModelOptions {
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public MissionTaskModelOptions withTargetResetType(
+        MissionTaskModelTargetResetType targetResetType
+    ) {
+        this.targetResetType = targetResetType;
         return this;
     }
     

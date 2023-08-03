@@ -16,6 +16,7 @@
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.mission.model.options.MissionTaskModelOptions;
+import io.gs2.cdk.mission.model.enums.MissionTaskModelTargetResetType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MissionTaskModel {
     private String counterName;
     private Long targetValue;
     private String metadata = null;
+    private MissionTaskModelTargetResetType targetResetType = null;
     private List<AcquireAction> completeAcquireActions = null;
     private String challengePeriodEventId = null;
     private String premiseMissionTaskName = null;
@@ -40,6 +42,7 @@ public class MissionTaskModel {
         this.counterName = counterName;
         this.targetValue = targetValue;
         this.metadata = options.metadata;
+        this.targetResetType = options.targetResetType;
         this.completeAcquireActions = options.completeAcquireActions;
         this.challengePeriodEventId = options.challengePeriodEventId;
         this.premiseMissionTaskName = options.premiseMissionTaskName;
@@ -66,6 +69,10 @@ public class MissionTaskModel {
         }
         if (this.counterName != null) {
             properties.put("counterName", this.counterName);
+        }
+        if (this.targetResetType != null) {
+            properties.put("targetResetType", this.targetResetType.toString(
+            ));
         }
         if (this.targetValue != null) {
             properties.put("targetValue", this.targetValue);

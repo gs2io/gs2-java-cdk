@@ -153,14 +153,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<MissionGroupModel> missionGroupModels,
-        List<CounterModel> counterModels
+        List<MissionGroupModel> groups,
+        List<CounterModel> counters
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            missionGroupModels,
-            counterModels
+            groups,
+            counters
         )).addDependsOn(
             this
         );

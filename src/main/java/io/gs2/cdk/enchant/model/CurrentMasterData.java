@@ -13,12 +13,12 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.mission.model;
+package io.gs2.cdk.enchant.model;
 
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
-import io.gs2.cdk.mission.model.MissionGroupModel;
-import io.gs2.cdk.mission.model.CounterModel;
+import io.gs2.cdk.enchant.model.BalanceParameterModel;
+import io.gs2.cdk.enchant.model.RarityParameterModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,24 +26,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CurrentMasterData extends CdkResource {
-    private String version= "2019-05-28";
+    private String version= "2023-07-18";
     private String namespaceName;
-    private List<MissionGroupModel> groups;
-    private List<CounterModel> counters;
+    private List<BalanceParameterModel> balanceParameterModels;
+    private List<RarityParameterModel> rarityParameterModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<MissionGroupModel> groups,
-        List<CounterModel> counters
+        List<BalanceParameterModel> balanceParameterModels,
+        List<RarityParameterModel> rarityParameterModels
     ) {
         super(
-            "Mission_CurrentMissionMaster_" + namespaceName
+            "Enchant_CurrentParameterMaster_" + namespaceName
         );
 
         this.namespaceName = namespaceName;
-        this.groups = groups;
-        this.counters = counters;
+        this.balanceParameterModels = balanceParameterModels;
+        this.rarityParameterModels = rarityParameterModels;
         stack.addResource(
             this
         );
@@ -56,7 +56,7 @@ public class CurrentMasterData extends CdkResource {
 
     public String resourceType(
     ) {
-        return "GS2::Mission::CurrentMissionMaster";
+        return "GS2::Enchant::CurrentParameterMaster";
     }
 
     public Map<String, Object> properties(
@@ -65,12 +65,12 @@ public class CurrentMasterData extends CdkResource {
         var settings = new HashMap<String, Object>();
 
         settings.put("version", this.version);
-        if (this.groups != null) {
-            settings.put("groups", this.groups.stream().map(v -> v.properties(
+        if (this.balanceParameterModels != null) {
+            settings.put("balanceParameterModels", this.balanceParameterModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
-        if (this.counters != null) {
-            settings.put("counters", this.counters.stream().map(v -> v.properties(
+        if (this.rarityParameterModels != null) {
+            settings.put("rarityParameterModels", this.rarityParameterModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

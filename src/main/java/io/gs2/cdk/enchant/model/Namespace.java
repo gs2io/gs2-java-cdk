@@ -13,20 +13,20 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.loginReward.model;
+package io.gs2.cdk.enchant.model;
 
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
-import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
-import io.gs2.cdk.loginReward.ref.NamespaceRef;
-import io.gs2.cdk.loginReward.model.CurrentMasterData;
-import io.gs2.cdk.loginReward.model.BonusModel;
+import io.gs2.cdk.enchant.ref.NamespaceRef;
+import io.gs2.cdk.enchant.model.CurrentMasterData;
+import io.gs2.cdk.enchant.model.BalanceParameterModel;
+import io.gs2.cdk.enchant.model.RarityParameterModel;
 
-import io.gs2.cdk.loginReward.model.options.NamespaceOptions;
+import io.gs2.cdk.enchant.model.options.NamespaceOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +38,6 @@ public class Namespace extends CdkResource {
     private String name;
     private TransactionSetting transactionSetting;
     private String description = null;
-    private ScriptSetting receiveScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -48,14 +47,13 @@ public class Namespace extends CdkResource {
         NamespaceOptions options
     ) {
         super(
-            "LoginReward_Namespace_" + name
+            "Enchant_Namespace_" + name
         );
 
         this.stack = stack;
         this.name = name;
         this.transactionSetting = transactionSetting;
         this.description = options.description;
-        this.receiveScript = options.receiveScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -68,7 +66,7 @@ public class Namespace extends CdkResource {
         TransactionSetting transactionSetting
     ) {
         super(
-            "LoginReward_Namespace_" + name
+            "Enchant_Namespace_" + name
         );
 
         this.stack = stack;
@@ -87,7 +85,7 @@ public class Namespace extends CdkResource {
 
     public String resourceType(
     ) {
-        return "GS2::LoginReward::Namespace";
+        return "GS2::Enchant::Namespace";
     }
 
     public Map<String, Object> properties(
@@ -102,10 +100,6 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
-            ));
-        }
-        if (this.receiveScript != null) {
-            properties.put("ReceiveScript", this.receiveScript.properties(
             ));
         }
         if (this.logSetting != null) {
@@ -133,12 +127,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<BonusModel> bonusModels
+        List<BalanceParameterModel> balanceParameterModels,
+        List<RarityParameterModel> rarityParameterModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            bonusModels
+            balanceParameterModels,
+            rarityParameterModels
         )).addDependsOn(
             this
         );
