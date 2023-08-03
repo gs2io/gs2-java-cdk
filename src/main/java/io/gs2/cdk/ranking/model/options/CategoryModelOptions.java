@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.ranking.model.options;
+import io.gs2.cdk.ranking.model.Scope;
 import io.gs2.cdk.ranking.model.enums.CategoryModelOrderDirection;
 import io.gs2.cdk.ranking.model.enums.CategoryModelScope;
 
@@ -30,6 +31,7 @@ public class CategoryModelOptions {
     public Integer calculateFixedTimingHour;
     public Integer calculateFixedTimingMinute;
     public Integer calculateIntervalMinutes;
+    public List<Scope> additionalScopes;
     public String entryPeriodEventId;
     public String accessPeriodEventId;
     public List<String> ignoreUserIds;
@@ -81,6 +83,13 @@ public class CategoryModelOptions {
         Integer calculateIntervalMinutes
     ) {
         this.calculateIntervalMinutes = calculateIntervalMinutes;
+        return this;
+    }
+    
+    public CategoryModelOptions withAdditionalScopes(
+        List<Scope> additionalScopes
+    ) {
+        this.additionalScopes = additionalScopes;
         return this;
     }
     

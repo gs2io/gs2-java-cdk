@@ -12,16 +12,22 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.enchant.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.enchant.model.BalanceParameterValue;
+import io.gs2.cdk.enchant.model.RarityParameterValue;
 import io.gs2.cdk.enchant.ref.BalanceParameterModelRef;
 import io.gs2.cdk.enchant.ref.RarityParameterModelRef;
 import io.gs2.cdk.enchant.stampSheet.ReDrawBalanceParameterStatusByUserId;
+import io.gs2.cdk.enchant.stampSheet.SetBalanceParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.ReDrawRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.AddRarityParameterStatusByUserId;
+import io.gs2.cdk.enchant.stampSheet.SetRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.VerifyRarityParameterStatusByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -84,6 +90,36 @@ public class NamespaceRef {
         ));
     }
 
+    public SetBalanceParameterStatusByUserId setBalanceParameterStatus(
+        String parameterName,
+        String propertyId,
+        List<BalanceParameterValue> parameterValues,
+        String userId
+    ) {
+        return (new SetBalanceParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValues,
+            userId
+        ));
+    }
+
+
+    public SetBalanceParameterStatusByUserId setBalanceParameterStatus(
+        String parameterName,
+        String propertyId,
+        List<BalanceParameterValue> parameterValues
+    ) {
+        return (new SetBalanceParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValues,
+            "#{userId}"
+        ));
+    }
+
     public ReDrawRarityParameterStatusByUserId reDrawRarityParameterStatus(
         String parameterName,
         String propertyId,
@@ -140,6 +176,36 @@ public class NamespaceRef {
             parameterName,
             propertyId,
             count,
+            "#{userId}"
+        ));
+    }
+
+    public SetRarityParameterStatusByUserId setRarityParameterStatus(
+        String parameterName,
+        String propertyId,
+        List<RarityParameterValue> parameterValues,
+        String userId
+    ) {
+        return (new SetRarityParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValues,
+            userId
+        ));
+    }
+
+
+    public SetRarityParameterStatusByUserId setRarityParameterStatus(
+        String parameterName,
+        String propertyId,
+        List<RarityParameterValue> parameterValues
+    ) {
+        return (new SetRarityParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValues,
             "#{userId}"
         ));
     }

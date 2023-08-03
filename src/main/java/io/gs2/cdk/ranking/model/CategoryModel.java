@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.ranking.model;
+import io.gs2.cdk.ranking.model.Scope;
 import io.gs2.cdk.ranking.model.options.CategoryModelOptions;
 import io.gs2.cdk.ranking.model.options.CategoryModelScopeIsGlobalOptions;
 import io.gs2.cdk.ranking.model.options.CategoryModelScopeIsScopedOptions;
@@ -36,6 +37,7 @@ public class CategoryModel {
     private Integer calculateFixedTimingHour = null;
     private Integer calculateFixedTimingMinute = null;
     private Integer calculateIntervalMinutes = null;
+    private List<Scope> additionalScopes = null;
     private String entryPeriodEventId = null;
     private String accessPeriodEventId = null;
     private List<String> ignoreUserIds = null;
@@ -59,6 +61,7 @@ public class CategoryModel {
         this.calculateFixedTimingHour = options.calculateFixedTimingHour;
         this.calculateFixedTimingMinute = options.calculateFixedTimingMinute;
         this.calculateIntervalMinutes = options.calculateIntervalMinutes;
+        this.additionalScopes = options.additionalScopes;
         this.entryPeriodEventId = options.entryPeriodEventId;
         this.accessPeriodEventId = options.accessPeriodEventId;
         this.ignoreUserIds = options.ignoreUserIds;
@@ -95,6 +98,7 @@ public class CategoryModel {
                 .withMaximumValue(options.maximumValue)
                 .withCalculateFixedTimingHour(options.calculateFixedTimingHour)
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
+                .withAdditionalScopes(options.additionalScopes)
                 .withEntryPeriodEventId(options.entryPeriodEventId)
                 .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withIgnoreUserIds(options.ignoreUserIds)
@@ -134,6 +138,7 @@ public class CategoryModel {
                 .withMaximumValue(options.maximumValue)
                 .withCalculateFixedTimingHour(options.calculateFixedTimingHour)
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
+                .withAdditionalScopes(options.additionalScopes)
                 .withEntryPeriodEventId(options.entryPeriodEventId)
                 .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withIgnoreUserIds(options.ignoreUserIds)
@@ -193,6 +198,10 @@ public class CategoryModel {
         }
         if (this.calculateIntervalMinutes != null) {
             properties.put("calculateIntervalMinutes", this.calculateIntervalMinutes);
+        }
+        if (this.additionalScopes != null) {
+            properties.put("additionalScopes", this.additionalScopes.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.entryPeriodEventId != null) {
             properties.put("entryPeriodEventId", this.entryPeriodEventId);
