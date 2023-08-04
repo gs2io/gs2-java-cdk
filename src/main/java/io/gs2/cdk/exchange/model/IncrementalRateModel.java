@@ -31,6 +31,7 @@ public class IncrementalRateModel {
     private ConsumeAction consumeAction;
     private IncrementalRateModelCalculateType calculateType;
     private String exchangeCountId;
+    private Integer maximumExchangeCount;
     private String metadata = null;
     private Long baseValue = null;
     private Long coefficientValue = null;
@@ -42,12 +43,14 @@ public class IncrementalRateModel {
         ConsumeAction consumeAction,
         IncrementalRateModelCalculateType calculateType,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         IncrementalRateModelOptions options
     ) {
         this.name = name;
         this.consumeAction = consumeAction;
         this.calculateType = calculateType;
         this.exchangeCountId = exchangeCountId;
+        this.maximumExchangeCount = maximumExchangeCount;
         this.metadata = options.metadata;
         this.baseValue = options.baseValue;
         this.coefficientValue = options.coefficientValue;
@@ -58,18 +61,21 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         IncrementalRateModelCalculateType calculateType,
-        String exchangeCountId
+        String exchangeCountId,
+        Integer maximumExchangeCount
     ) {
         this.name = name;
         this.consumeAction = consumeAction;
         this.calculateType = calculateType;
         this.exchangeCountId = exchangeCountId;
+        this.maximumExchangeCount = maximumExchangeCount;
     }
 
     public static IncrementalRateModel calculateTypeIsLinear(
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         Long baseValue,
         Long coefficientValue,
         IncrementalRateModelCalculateTypeIsLinearOptions options
@@ -79,6 +85,7 @@ public class IncrementalRateModel {
             consumeAction,
             IncrementalRateModelCalculateType.LINEAR,
             exchangeCountId,
+            maximumExchangeCount,
             new IncrementalRateModelOptions()
                 .withBaseValue(baseValue)
                 .withCoefficientValue(coefficientValue)
@@ -92,6 +99,7 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         Long baseValue,
         Long coefficientValue
     ) {
@@ -99,7 +107,8 @@ public class IncrementalRateModel {
             name,
             consumeAction,
             IncrementalRateModelCalculateType.LINEAR,
-            exchangeCountId
+            exchangeCountId,
+            maximumExchangeCount
         ));
     }
 
@@ -107,6 +116,7 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         Long coefficientValue,
         IncrementalRateModelCalculateTypeIsPowerOptions options
     ) {
@@ -115,6 +125,7 @@ public class IncrementalRateModel {
             consumeAction,
             IncrementalRateModelCalculateType.POWER,
             exchangeCountId,
+            maximumExchangeCount,
             new IncrementalRateModelOptions()
                 .withCoefficientValue(coefficientValue)
                 .withMetadata(options.metadata)
@@ -127,13 +138,15 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         Long coefficientValue
     ) {
         return (new IncrementalRateModel(
             name,
             consumeAction,
             IncrementalRateModelCalculateType.POWER,
-            exchangeCountId
+            exchangeCountId,
+            maximumExchangeCount
         ));
     }
 
@@ -141,6 +154,7 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         String calculateScriptId,
         IncrementalRateModelCalculateTypeIsGs2ScriptOptions options
     ) {
@@ -149,6 +163,7 @@ public class IncrementalRateModel {
             consumeAction,
             IncrementalRateModelCalculateType.GS2_SCRIPT,
             exchangeCountId,
+            maximumExchangeCount,
             new IncrementalRateModelOptions()
                 .withCalculateScriptId(calculateScriptId)
                 .withMetadata(options.metadata)
@@ -161,13 +176,15 @@ public class IncrementalRateModel {
         String name,
         ConsumeAction consumeAction,
         String exchangeCountId,
+        Integer maximumExchangeCount,
         String calculateScriptId
     ) {
         return (new IncrementalRateModel(
             name,
             consumeAction,
             IncrementalRateModelCalculateType.GS2_SCRIPT,
-            exchangeCountId
+            exchangeCountId,
+            maximumExchangeCount
         ));
     }
 
@@ -200,6 +217,9 @@ public class IncrementalRateModel {
         }
         if (this.exchangeCountId != null) {
             properties.put("exchangeCountId", this.exchangeCountId);
+        }
+        if (this.maximumExchangeCount != null) {
+            properties.put("maximumExchangeCount", this.maximumExchangeCount);
         }
         if (this.acquireActions != null) {
             properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(
