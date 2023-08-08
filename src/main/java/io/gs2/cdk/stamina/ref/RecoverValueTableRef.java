@@ -22,36 +22,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RecoverValueTableRef {
-    private String namespaceName;
-    private String recoverValueTableName;
 
     public RecoverValueTableRef(
-        String namespaceName,
-        String recoverValueTableName
     ) {
-        this.namespaceName = namespaceName;
-        this.recoverValueTableName = recoverValueTableName;
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "stamina",
-                this.namespaceName,
-                "recoverValueTable",
-                this.recoverValueTableName
-            )
-        )).str(
-        );
     }
 }

@@ -17,9 +17,6 @@ package io.gs2.cdk.stamina.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.stamina.ref.MaxStaminaTableRef;
-import io.gs2.cdk.stamina.ref.RecoverIntervalTableRef;
-import io.gs2.cdk.stamina.ref.RecoverValueTableRef;
 import io.gs2.cdk.stamina.ref.StaminaModelRef;
 import io.gs2.cdk.stamina.stampSheet.RecoverStaminaByUserId;
 import io.gs2.cdk.stamina.stampSheet.RaiseMaxValueByUserId;
@@ -38,33 +35,6 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public MaxStaminaTableRef maxStaminaTable(
-        String maxStaminaTableName
-    ) {
-        return (new MaxStaminaTableRef(
-            this.namespaceName,
-            maxStaminaTableName
-        ));
-    }
-
-    public RecoverIntervalTableRef recoverIntervalTable(
-        String recoverIntervalTableName
-    ) {
-        return (new RecoverIntervalTableRef(
-            this.namespaceName,
-            recoverIntervalTableName
-        ));
-    }
-
-    public RecoverValueTableRef recoverValueTable(
-        String recoverValueTableName
-    ) {
-        return (new RecoverValueTableRef(
-            this.namespaceName,
-            recoverValueTableName
-        ));
     }
 
     public StaminaModelRef staminaModel(

@@ -22,36 +22,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RecoverIntervalTableRef {
-    private String namespaceName;
-    private String recoverIntervalTableName;
 
     public RecoverIntervalTableRef(
-        String namespaceName,
-        String recoverIntervalTableName
     ) {
-        this.namespaceName = namespaceName;
-        this.recoverIntervalTableName = recoverIntervalTableName;
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "stamina",
-                this.namespaceName,
-                "recoverIntervalTable",
-                this.recoverIntervalTableName
-            )
-        )).str(
-        );
     }
 }
