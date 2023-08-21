@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class PrizeLimit {
     private String prizeId;
     private Integer drawnCount;
+    private Long revision = null;
 
     public PrizeLimit(
         String prizeId,
@@ -31,6 +32,7 @@ public class PrizeLimit {
     ) {
         this.prizeId = prizeId;
         this.drawnCount = drawnCount;
+        this.revision = options.revision;
     }
     public PrizeLimit(
         String prizeId,

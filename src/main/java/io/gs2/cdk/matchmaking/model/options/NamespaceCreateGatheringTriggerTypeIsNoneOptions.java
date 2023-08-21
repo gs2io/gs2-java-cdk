@@ -33,6 +33,7 @@ public class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
     public NotificationSetting completeNotification;
     public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
+    public Long revision;
     
     public NamespaceCreateGatheringTriggerTypeIsNoneOptions withDescription(
         String description
@@ -80,6 +81,13 @@ public class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsNoneOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

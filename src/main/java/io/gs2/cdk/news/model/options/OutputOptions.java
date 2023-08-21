@@ -21,5 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputOptions {
+    public Long revision;
+    
+    public OutputOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
 

@@ -33,6 +33,7 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public NotificationSetting completeNotification;
     public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
+    public Long revision;
     
     public NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions withDescription(
         String description
@@ -80,6 +81,13 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

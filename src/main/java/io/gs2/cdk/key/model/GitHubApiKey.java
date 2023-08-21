@@ -25,6 +25,7 @@ public class GitHubApiKey {
     private String apiKey;
     private String encryptionKeyName;
     private String description = null;
+    private Long revision = null;
 
     public GitHubApiKey(
         String name,
@@ -36,6 +37,7 @@ public class GitHubApiKey {
         this.apiKey = apiKey;
         this.encryptionKeyName = encryptionKeyName;
         this.description = options.description;
+        this.revision = options.revision;
     }
     public GitHubApiKey(
         String name,

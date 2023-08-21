@@ -24,6 +24,7 @@ public class Progress {
     private String uploadToken;
     private Integer generated;
     private Integer patternCount;
+    private Long revision = null;
 
     public Progress(
         String uploadToken,
@@ -34,6 +35,7 @@ public class Progress {
         this.uploadToken = uploadToken;
         this.generated = generated;
         this.patternCount = patternCount;
+        this.revision = options.revision;
     }
     public Progress(
         String uploadToken,

@@ -30,6 +30,7 @@ public class StampSheetResult {
     private List<String> taskResults = null;
     private String sheetResult = null;
     private String nextTransactionId = null;
+    private Long revision = null;
 
     public StampSheetResult(
         String userId,
@@ -44,6 +45,7 @@ public class StampSheetResult {
         this.taskResults = options.taskResults;
         this.sheetResult = options.sheetResult;
         this.nextTransactionId = options.nextTransactionId;
+        this.revision = options.revision;
     }
     public StampSheetResult(
         String userId,

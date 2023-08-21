@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class NamespaceTypeIsBigqueryOptions {
     public String description;
     public String status;
+    public Long revision;
     
     public NamespaceTypeIsBigqueryOptions withDescription(
         String description
@@ -36,6 +37,13 @@ public class NamespaceTypeIsBigqueryOptions {
         String status
     ) {
         this.status = status;
+        return this;
+    }
+    
+    public NamespaceTypeIsBigqueryOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

@@ -13,37 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.log.model.options;
-import io.gs2.cdk.log.model.enums.NamespaceType;
+package io.gs2.cdk.inventory.model.options;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceTypeIsFirehoseOptions {
-    public String description;
-    public String status;
-    public Long revision;
+public class BigItemModelOptions {
+    public String metadata;
     
-    public NamespaceTypeIsFirehoseOptions withDescription(
-        String description
+    public BigItemModelOptions withMetadata(
+        String metadata
     ) {
-        this.description = description;
-        return this;
-    }
-    
-    public NamespaceTypeIsFirehoseOptions withStatus(
-        String status
-    ) {
-        this.status = status;
-        return this;
-    }
-    
-    public NamespaceTypeIsFirehoseOptions withRevision(
-        Long revision
-    ) {
-        this.revision = revision;
+        this.metadata = metadata;
         return this;
     }
 }
+

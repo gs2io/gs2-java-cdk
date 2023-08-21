@@ -22,11 +22,19 @@ import java.util.stream.Collectors;
 
 public class GitHubApiKeyOptions {
     public String description;
+    public Long revision;
     
     public GitHubApiKeyOptions withDescription(
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public GitHubApiKeyOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

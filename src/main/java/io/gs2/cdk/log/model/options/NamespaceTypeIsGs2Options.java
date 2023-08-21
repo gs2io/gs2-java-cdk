@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class NamespaceTypeIsGs2Options {
     public String description;
     public String status;
+    public Long revision;
     
     public NamespaceTypeIsGs2Options withDescription(
         String description
@@ -36,6 +37,13 @@ public class NamespaceTypeIsGs2Options {
         String status
     ) {
         this.status = status;
+        return this;
+    }
+    
+    public NamespaceTypeIsGs2Options withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

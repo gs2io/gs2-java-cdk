@@ -22,11 +22,19 @@ import java.util.stream.Collectors;
 
 public class AttachSecurityPolicyOptions {
     public List<String> securityPolicyIds;
+    public Long revision;
     
     public AttachSecurityPolicyOptions withSecurityPolicyIds(
         List<String> securityPolicyIds
     ) {
         this.securityPolicyIds = securityPolicyIds;
+        return this;
+    }
+    
+    public AttachSecurityPolicyOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

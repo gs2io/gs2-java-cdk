@@ -33,6 +33,7 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions {
     public NotificationSetting completeNotification;
     public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
+    public Long revision;
     
     public NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions withDescription(
         String description
@@ -80,6 +81,13 @@ public class NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceCreateGatheringTriggerTypeIsGs2ScriptOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

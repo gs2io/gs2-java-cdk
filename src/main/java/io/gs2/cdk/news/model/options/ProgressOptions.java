@@ -21,5 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProgressOptions {
+    public Long revision;
+    
+    public ProgressOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
 

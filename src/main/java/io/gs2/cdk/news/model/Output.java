@@ -22,12 +22,14 @@ import java.util.stream.Collectors;
 
 public class Output {
     private String text;
+    private Long revision = null;
 
     public Output(
         String text,
         OutputOptions options
     ) {
         this.text = text;
+        this.revision = options.revision;
     }
     public Output(
         String text

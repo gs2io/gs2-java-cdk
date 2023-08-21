@@ -13,46 +13,28 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.serialKey.model;
-import io.gs2.cdk.serialKey.model.options.IssueJobOptions;
-import io.gs2.cdk.serialKey.model.enums.IssueJobStatus;
+package io.gs2.cdk.inventory.model;
+import io.gs2.cdk.inventory.model.options.BigItemModelOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IssueJob {
+public class BigItemModel {
     private String name;
-    private Integer issuedCount;
-    private Integer issueRequestCount;
-    private IssueJobStatus status;
     private String metadata = null;
-    private Long revision = null;
 
-    public IssueJob(
+    public BigItemModel(
         String name,
-        Integer issuedCount,
-        Integer issueRequestCount,
-        IssueJobStatus status,
-        IssueJobOptions options
+        BigItemModelOptions options
     ) {
         this.name = name;
-        this.issuedCount = issuedCount;
-        this.issueRequestCount = issueRequestCount;
-        this.status = status;
         this.metadata = options.metadata;
-        this.revision = options.revision;
     }
-    public IssueJob(
-        String name,
-        Integer issuedCount,
-        Integer issueRequestCount,
-        IssueJobStatus status
+    public BigItemModel(
+        String name
     ) {
         this.name = name;
-        this.issuedCount = issuedCount;
-        this.issueRequestCount = issueRequestCount;
-        this.status = status;
     }
 
     public Map<String, Object> properties(
@@ -64,16 +46,6 @@ public class IssueJob {
         }
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
-        }
-        if (this.issuedCount != null) {
-            properties.put("issuedCount", this.issuedCount);
-        }
-        if (this.issueRequestCount != null) {
-            properties.put("issueRequestCount", this.issueRequestCount);
-        }
-        if (this.status != null) {
-            properties.put("status", this.status.toString(
-            ));
         }
 
         return properties;

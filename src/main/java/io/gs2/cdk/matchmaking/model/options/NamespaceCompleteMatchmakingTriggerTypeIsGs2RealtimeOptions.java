@@ -33,6 +33,7 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions {
     public NotificationSetting completeNotification;
     public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
+    public Long revision;
     
     public NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions withDescription(
         String description
@@ -80,6 +81,13 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceCompleteMatchmakingTriggerTypeIsGs2RealtimeOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

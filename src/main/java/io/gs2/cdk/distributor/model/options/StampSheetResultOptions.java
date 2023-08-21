@@ -27,6 +27,7 @@ public class StampSheetResultOptions {
     public List<String> taskResults;
     public String sheetResult;
     public String nextTransactionId;
+    public Long revision;
     
     public StampSheetResultOptions withTaskRequests(
         List<ConsumeAction> taskRequests
@@ -53,6 +54,13 @@ public class StampSheetResultOptions {
         String nextTransactionId
     ) {
         this.nextTransactionId = nextTransactionId;
+        return this;
+    }
+    
+    public StampSheetResultOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

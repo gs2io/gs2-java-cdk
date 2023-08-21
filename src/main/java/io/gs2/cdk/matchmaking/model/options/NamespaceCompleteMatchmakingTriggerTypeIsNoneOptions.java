@@ -33,6 +33,7 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions {
     public NotificationSetting completeNotification;
     public NotificationSetting changeRatingNotification;
     public LogSetting logSetting;
+    public Long revision;
     
     public NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions withDescription(
         String description
@@ -80,6 +81,13 @@ public class NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceCompleteMatchmakingTriggerTypeIsNoneOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

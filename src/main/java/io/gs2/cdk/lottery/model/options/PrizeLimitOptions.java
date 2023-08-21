@@ -21,5 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PrizeLimitOptions {
+    public Long revision;
+    
+    public PrizeLimitOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
 

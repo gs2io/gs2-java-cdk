@@ -23,11 +23,19 @@ import java.util.stream.Collectors;
 
 public class IssueJobOptions {
     public String metadata;
+    public Long revision;
     
     public IssueJobOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public IssueJobOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }
