@@ -17,6 +17,7 @@ package io.gs2.cdk.schedule.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.schedule.stampSheet.TriggerByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +29,36 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
+    }
+
+    public TriggerByUserId trigger(
+        String triggerName,
+        String triggerStrategy,
+        Integer ttl,
+        String userId
+    ) {
+        return (new TriggerByUserId(
+            this.namespaceName,
+            triggerName,
+            triggerStrategy,
+            ttl,
+            userId
+        ));
+    }
+
+
+    public TriggerByUserId trigger(
+        String triggerName,
+        String triggerStrategy,
+        Integer ttl
+    ) {
+        return (new TriggerByUserId(
+            this.namespaceName,
+            triggerName,
+            triggerStrategy,
+            ttl,
+            "#{userId}"
+        ));
     }
 
     public String grn(
