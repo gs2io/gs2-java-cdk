@@ -19,8 +19,10 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.mission.ref.MissionGroupModelRef;
 import io.gs2.cdk.mission.ref.CounterModelRef;
+import io.gs2.cdk.mission.stampSheet.RevertReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
+import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +51,32 @@ public class NamespaceRef {
         return (new CounterModelRef(
             this.namespaceName,
             counterName
+        ));
+    }
+
+    public RevertReceiveByUserId revertReceive(
+        String missionGroupName,
+        String missionTaskName,
+        String userId
+    ) {
+        return (new RevertReceiveByUserId(
+            this.namespaceName,
+            missionGroupName,
+            missionTaskName,
+            userId
+        ));
+    }
+
+
+    public RevertReceiveByUserId revertReceive(
+        String missionGroupName,
+        String missionTaskName
+    ) {
+        return (new RevertReceiveByUserId(
+            this.namespaceName,
+            missionGroupName,
+            missionTaskName,
+            "#{userId}"
         ));
     }
 
@@ -100,6 +128,32 @@ public class NamespaceRef {
             this.namespaceName,
             missionGroupName,
             missionTaskName,
+            "#{userId}"
+        ));
+    }
+
+    public DecreaseCounterByUserId decreaseCounter(
+        String counterName,
+        Long value,
+        String userId
+    ) {
+        return (new DecreaseCounterByUserId(
+            this.namespaceName,
+            counterName,
+            value,
+            userId
+        ));
+    }
+
+
+    public DecreaseCounterByUserId decreaseCounter(
+        String counterName,
+        Long value
+    ) {
+        return (new DecreaseCounterByUserId(
+            this.namespaceName,
+            counterName,
+            value,
             "#{userId}"
         ));
     }

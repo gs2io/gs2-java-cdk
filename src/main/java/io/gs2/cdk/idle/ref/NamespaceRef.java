@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.idle.ref.CategoryModelRef;
 import io.gs2.cdk.idle.stampSheet.IncreaseMaximumIdleMinutesByUserId;
+import io.gs2.cdk.idle.stampSheet.DecreaseMaximumIdleMinutesByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,6 +64,32 @@ public class NamespaceRef {
             this.namespaceName,
             categoryName,
             increaseMinutes,
+            "#{userId}"
+        ));
+    }
+
+    public DecreaseMaximumIdleMinutesByUserId decreaseMaximumIdleMinutes(
+        String categoryName,
+        Integer decreaseMinutes,
+        String userId
+    ) {
+        return (new DecreaseMaximumIdleMinutesByUserId(
+            this.namespaceName,
+            categoryName,
+            decreaseMinutes,
+            userId
+        ));
+    }
+
+
+    public DecreaseMaximumIdleMinutesByUserId decreaseMaximumIdleMinutes(
+        String categoryName,
+        Integer decreaseMinutes
+    ) {
+        return (new DecreaseMaximumIdleMinutesByUserId(
+            this.namespaceName,
+            categoryName,
+            decreaseMinutes,
             "#{userId}"
         ));
     }

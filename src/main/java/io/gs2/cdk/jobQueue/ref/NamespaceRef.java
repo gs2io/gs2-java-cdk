@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.jobQueue.stampSheet.PushByUserId;
 import io.gs2.cdk.jobQueue.model.JobEntry;
+import io.gs2.cdk.jobQueue.stampSheet.DeleteJobByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +51,28 @@ public class NamespaceRef {
         return (new PushByUserId(
             this.namespaceName,
             jobs,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteJobByUserId deleteJob(
+        String jobName,
+        String userId
+    ) {
+        return (new DeleteJobByUserId(
+            this.namespaceName,
+            jobName,
+            userId
+        ));
+    }
+
+
+    public DeleteJobByUserId deleteJob(
+        String jobName
+    ) {
+        return (new DeleteJobByUserId(
+            this.namespaceName,
+            jobName,
             "#{userId}"
         ));
     }

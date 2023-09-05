@@ -18,6 +18,7 @@ package io.gs2.cdk.mission.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,6 +52,30 @@ public class CounterModelRef {
         Long value
     ) {
         return (new IncreaseCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            value,
+            "#{userId}"
+        ));
+    }
+
+    public DecreaseCounterByUserId decreaseCounter(
+        Long value,
+        String userId
+    ) {
+        return (new DecreaseCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            value,
+            userId
+        ));
+    }
+
+
+    public DecreaseCounterByUserId decreaseCounter(
+        Long value
+    ) {
+        return (new DecreaseCounterByUserId(
             this.namespaceName,
             this.counterName,
             value,

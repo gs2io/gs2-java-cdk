@@ -18,6 +18,7 @@ package io.gs2.cdk.dictionary.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.dictionary.stampSheet.AddEntriesByUserId;
+import io.gs2.cdk.dictionary.stampSheet.DeleteEntriesByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +51,28 @@ public class EntryModelRef {
         List<String> entryModelNames
     ) {
         return (new AddEntriesByUserId(
+            this.namespaceName,
+            entryModelNames,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteEntriesByUserId deleteEntries(
+        List<String> entryModelNames,
+        String userId
+    ) {
+        return (new DeleteEntriesByUserId(
+            this.namespaceName,
+            entryModelNames,
+            userId
+        ));
+    }
+
+
+    public DeleteEntriesByUserId deleteEntries(
+        List<String> entryModelNames
+    ) {
+        return (new DeleteEntriesByUserId(
             this.namespaceName,
             entryModelNames,
             "#{userId}"

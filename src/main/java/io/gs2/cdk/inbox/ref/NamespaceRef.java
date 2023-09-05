@@ -22,6 +22,7 @@ import io.gs2.cdk.inbox.stampSheet.SendMessageByUserId;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.inbox.model.TimeSpan;
 import io.gs2.cdk.inbox.stampSheet.OpenMessageByUserId;
+import io.gs2.cdk.inbox.stampSheet.DeleteMessageByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -94,6 +95,28 @@ public class NamespaceRef {
         String messageName
     ) {
         return (new OpenMessageByUserId(
+            this.namespaceName,
+            messageName,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteMessageByUserId deleteMessage(
+        String messageName,
+        String userId
+    ) {
+        return (new DeleteMessageByUserId(
+            this.namespaceName,
+            messageName,
+            userId
+        ));
+    }
+
+
+    public DeleteMessageByUserId deleteMessage(
+        String messageName
+    ) {
+        return (new DeleteMessageByUserId(
             this.namespaceName,
             messageName,
             "#{userId}"

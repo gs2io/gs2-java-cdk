@@ -17,6 +17,7 @@ package io.gs2.cdk.showcase.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.showcase.stampSheet.DecrementPurchaseCountByUserId;
 import io.gs2.cdk.showcase.stampSheet.ForceReDrawByUserId;
 import io.gs2.cdk.showcase.stampSheet.IncrementPurchaseCountByUserId;
 import java.util.Arrays;
@@ -30,6 +31,36 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
+    }
+
+    public DecrementPurchaseCountByUserId decrementPurchaseCount(
+        String showcaseName,
+        String displayItemName,
+        Integer count,
+        String userId
+    ) {
+        return (new DecrementPurchaseCountByUserId(
+            this.namespaceName,
+            showcaseName,
+            displayItemName,
+            count,
+            userId
+        ));
+    }
+
+
+    public DecrementPurchaseCountByUserId decrementPurchaseCount(
+        String showcaseName,
+        String displayItemName,
+        Integer count
+    ) {
+        return (new DecrementPurchaseCountByUserId(
+            this.namespaceName,
+            showcaseName,
+            displayItemName,
+            count,
+            "#{userId}"
+        ));
     }
 
     public ForceReDrawByUserId forceReDraw(

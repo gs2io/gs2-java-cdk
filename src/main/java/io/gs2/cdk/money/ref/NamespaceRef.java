@@ -18,6 +18,7 @@ package io.gs2.cdk.money.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.money.stampSheet.DepositByUserId;
+import io.gs2.cdk.money.stampSheet.RevertRecordReceipt;
 import io.gs2.cdk.money.stampSheet.WithdrawByUserId;
 import io.gs2.cdk.money.stampSheet.RecordReceipt;
 import java.util.Arrays;
@@ -59,6 +60,28 @@ public class NamespaceRef {
             slot,
             price,
             count,
+            "#{userId}"
+        ));
+    }
+
+    public RevertRecordReceipt revertRecordReceipt(
+        String receipt,
+        String userId
+    ) {
+        return (new RevertRecordReceipt(
+            this.namespaceName,
+            receipt,
+            userId
+        ));
+    }
+
+
+    public RevertRecordReceipt revertRecordReceipt(
+        String receipt
+    ) {
+        return (new RevertRecordReceipt(
+            this.namespaceName,
+            receipt,
             "#{userId}"
         ));
     }

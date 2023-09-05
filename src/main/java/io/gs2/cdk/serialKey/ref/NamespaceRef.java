@@ -18,6 +18,7 @@ package io.gs2.cdk.serialKey.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.serialKey.ref.CampaignModelRef;
+import io.gs2.cdk.serialKey.stampSheet.RevertUseByUserId;
 import io.gs2.cdk.serialKey.stampSheet.UseByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +39,28 @@ public class NamespaceRef {
         return (new CampaignModelRef(
             this.namespaceName,
             campaignModelName
+        ));
+    }
+
+    public RevertUseByUserId revertUse(
+        String code,
+        String userId
+    ) {
+        return (new RevertUseByUserId(
+            this.namespaceName,
+            code,
+            userId
+        ));
+    }
+
+
+    public RevertUseByUserId revertUse(
+        String code
+    ) {
+        return (new RevertUseByUserId(
+            this.namespaceName,
+            code,
+            "#{userId}"
         ));
     }
 

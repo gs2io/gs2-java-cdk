@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.loginReward.ref.BonusModelRef;
 import io.gs2.cdk.loginReward.stampSheet.DeleteReceiveStatusByUserId;
+import io.gs2.cdk.loginReward.stampSheet.UnmarkReceivedByUserId;
 import io.gs2.cdk.loginReward.stampSheet.MarkReceivedByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -60,6 +61,32 @@ public class NamespaceRef {
         return (new DeleteReceiveStatusByUserId(
             this.namespaceName,
             bonusModelName,
+            "#{userId}"
+        ));
+    }
+
+    public UnmarkReceivedByUserId unmarkReceived(
+        String bonusModelName,
+        Integer stepNumber,
+        String userId
+    ) {
+        return (new UnmarkReceivedByUserId(
+            this.namespaceName,
+            bonusModelName,
+            stepNumber,
+            userId
+        ));
+    }
+
+
+    public UnmarkReceivedByUserId unmarkReceived(
+        String bonusModelName,
+        Integer stepNumber
+    ) {
+        return (new UnmarkReceivedByUserId(
+            this.namespaceName,
+            bonusModelName,
+            stepNumber,
             "#{userId}"
         ));
     }

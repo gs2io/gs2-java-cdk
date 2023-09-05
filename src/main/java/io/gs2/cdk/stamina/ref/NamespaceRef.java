@@ -23,6 +23,7 @@ import io.gs2.cdk.stamina.stampSheet.RaiseMaxValueByUserId;
 import io.gs2.cdk.stamina.stampSheet.SetMaxValueByUserId;
 import io.gs2.cdk.stamina.stampSheet.SetRecoverIntervalByUserId;
 import io.gs2.cdk.stamina.stampSheet.SetRecoverValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.DecreaseMaxValueByUserId;
 import io.gs2.cdk.stamina.stampSheet.ConsumeStaminaByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -172,6 +173,32 @@ public class NamespaceRef {
             this.namespaceName,
             staminaName,
             recoverValue,
+            "#{userId}"
+        ));
+    }
+
+    public DecreaseMaxValueByUserId decreaseMaxValue(
+        String staminaName,
+        Integer decreaseValue,
+        String userId
+    ) {
+        return (new DecreaseMaxValueByUserId(
+            this.namespaceName,
+            staminaName,
+            decreaseValue,
+            userId
+        ));
+    }
+
+
+    public DecreaseMaxValueByUserId decreaseMaxValue(
+        String staminaName,
+        Integer decreaseValue
+    ) {
+        return (new DecreaseMaxValueByUserId(
+            this.namespaceName,
+            staminaName,
+            decreaseValue,
             "#{userId}"
         ));
     }

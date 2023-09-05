@@ -18,6 +18,7 @@ package io.gs2.cdk.limit.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.limit.ref.LimitModelRef;
+import io.gs2.cdk.limit.stampSheet.CountDownByUserId;
 import io.gs2.cdk.limit.stampSheet.DeleteCounterByUserId;
 import io.gs2.cdk.limit.stampSheet.CountUpByUserId;
 import java.util.Arrays;
@@ -39,6 +40,36 @@ public class NamespaceRef {
         return (new LimitModelRef(
             this.namespaceName,
             limitName
+        ));
+    }
+
+    public CountDownByUserId countDown(
+        String limitName,
+        String counterName,
+        Integer countDownValue,
+        String userId
+    ) {
+        return (new CountDownByUserId(
+            this.namespaceName,
+            limitName,
+            counterName,
+            countDownValue,
+            userId
+        ));
+    }
+
+
+    public CountDownByUserId countDown(
+        String limitName,
+        String counterName,
+        Integer countDownValue
+    ) {
+        return (new CountDownByUserId(
+            this.namespaceName,
+            limitName,
+            counterName,
+            countDownValue,
+            "#{userId}"
         ));
     }
 

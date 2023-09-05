@@ -23,6 +23,8 @@ import io.gs2.cdk.experience.stampSheet.AddRankCapByUserId;
 import io.gs2.cdk.experience.stampSheet.SetRankCapByUserId;
 import io.gs2.cdk.experience.stampSheet.MultiplyAcquireActionsByUserId;
 import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.experience.stampSheet.SubExperienceByUserId;
+import io.gs2.cdk.experience.stampSheet.SubRankCapByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -165,6 +167,66 @@ public class NamespaceRef {
             propertyId,
             rateName,
             acquireActions,
+            "#{userId}"
+        ));
+    }
+
+    public SubExperienceByUserId subExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue,
+        String userId
+    ) {
+        return (new SubExperienceByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            experienceValue,
+            userId
+        ));
+    }
+
+
+    public SubExperienceByUserId subExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue
+    ) {
+        return (new SubExperienceByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            experienceValue,
+            "#{userId}"
+        ));
+    }
+
+    public SubRankCapByUserId subRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue,
+        String userId
+    ) {
+        return (new SubRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
+            userId
+        ));
+    }
+
+
+    public SubRankCapByUserId subRankCap(
+        String experienceName,
+        String propertyId,
+        Long rankCapValue
+    ) {
+        return (new SubRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            rankCapValue,
             "#{userId}"
         ));
     }

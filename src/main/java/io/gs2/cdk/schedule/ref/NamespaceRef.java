@@ -18,6 +18,7 @@ package io.gs2.cdk.schedule.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.schedule.stampSheet.TriggerByUserId;
+import io.gs2.cdk.schedule.stampSheet.DeleteTriggerByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,6 +58,28 @@ public class NamespaceRef {
             triggerName,
             triggerStrategy,
             ttl,
+            "#{userId}"
+        ));
+    }
+
+    public DeleteTriggerByUserId deleteTrigger(
+        String triggerName,
+        String userId
+    ) {
+        return (new DeleteTriggerByUserId(
+            this.namespaceName,
+            triggerName,
+            userId
+        ));
+    }
+
+
+    public DeleteTriggerByUserId deleteTrigger(
+        String triggerName
+    ) {
+        return (new DeleteTriggerByUserId(
+            this.namespaceName,
+            triggerName,
             "#{userId}"
         ));
     }

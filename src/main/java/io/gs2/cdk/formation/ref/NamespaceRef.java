@@ -25,6 +25,7 @@ import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.formation.model.AcquireActionConfig;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToPropertyFormProperties;
+import io.gs2.cdk.formation.stampSheet.SubMoldCapacityByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -172,6 +173,32 @@ public class NamespaceRef {
             propertyId,
             acquireAction,
             config,
+            "#{userId}"
+        ));
+    }
+
+    public SubMoldCapacityByUserId subMoldCapacity(
+        String moldName,
+        Integer capacity,
+        String userId
+    ) {
+        return (new SubMoldCapacityByUserId(
+            this.namespaceName,
+            moldName,
+            capacity,
+            userId
+        ));
+    }
+
+
+    public SubMoldCapacityByUserId subMoldCapacity(
+        String moldName,
+        Integer capacity
+    ) {
+        return (new SubMoldCapacityByUserId(
+            this.namespaceName,
+            moldName,
+            capacity,
             "#{userId}"
         ));
     }
