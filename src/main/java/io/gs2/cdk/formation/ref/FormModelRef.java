@@ -40,7 +40,6 @@ public class FormModelRef {
     }
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -48,7 +47,7 @@ public class FormModelRef {
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             index,
             acquireAction,
             config,
@@ -58,14 +57,13 @@ public class FormModelRef {
 
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             index,
             acquireAction,
             config,

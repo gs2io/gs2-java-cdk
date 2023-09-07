@@ -27,7 +27,7 @@ public class AddMoldCapacityByUserId extends AcquireAction {
 
     public AddMoldCapacityByUserId(
         String namespaceName,
-        String moldName,
+        String moldModelName,
         Integer capacity,
         String userId
     ) {
@@ -36,7 +36,7 @@ public class AddMoldCapacityByUserId extends AcquireAction {
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("moldName", moldName);
+                    put("moldModelName", moldModelName);
                     put("capacity", capacity);
                     put("userId", userId);
                 }

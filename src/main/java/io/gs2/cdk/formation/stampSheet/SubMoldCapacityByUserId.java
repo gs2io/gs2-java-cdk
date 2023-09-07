@@ -27,7 +27,7 @@ public class SubMoldCapacityByUserId extends ConsumeAction {
 
     public SubMoldCapacityByUserId(
         String namespaceName,
-        String moldName,
+        String moldModelName,
         Integer capacity,
         String userId
     ) {
@@ -36,7 +36,7 @@ public class SubMoldCapacityByUserId extends ConsumeAction {
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("moldName", moldName);
+                    put("moldModelName", moldModelName);
                     put("capacity", capacity);
                     put("userId", userId);
                 }

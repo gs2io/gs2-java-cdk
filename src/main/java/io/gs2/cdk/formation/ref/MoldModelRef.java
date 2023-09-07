@@ -51,13 +51,12 @@ public class MoldModelRef {
     }
 
     public AddMoldCapacityByUserId addMoldCapacity(
-        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             userId
         ));
@@ -65,25 +64,23 @@ public class MoldModelRef {
 
 
     public AddMoldCapacityByUserId addMoldCapacity(
-        String moldName,
         Integer capacity
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             "#{userId}"
         ));
     }
 
     public SetMoldCapacityByUserId setMoldCapacity(
-        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             userId
         ));
@@ -91,19 +88,17 @@ public class MoldModelRef {
 
 
     public SetMoldCapacityByUserId setMoldCapacity(
-        String moldName,
         Integer capacity
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             "#{userId}"
         ));
     }
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -111,7 +106,7 @@ public class MoldModelRef {
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             index,
             acquireAction,
             config,
@@ -121,14 +116,13 @@ public class MoldModelRef {
 
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             index,
             acquireAction,
             config,
@@ -137,13 +131,12 @@ public class MoldModelRef {
     }
 
     public SubMoldCapacityByUserId subMoldCapacity(
-        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             userId
         ));
@@ -151,12 +144,11 @@ public class MoldModelRef {
 
 
     public SubMoldCapacityByUserId subMoldCapacity(
-        String moldName,
         Integer capacity
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            this.moldModelName,
             capacity,
             "#{userId}"
         ));

@@ -58,13 +58,13 @@ public class NamespaceRef {
     }
 
     public AddMoldCapacityByUserId addMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity,
         String userId
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             userId
         ));
@@ -72,25 +72,25 @@ public class NamespaceRef {
 
 
     public AddMoldCapacityByUserId addMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             "#{userId}"
         ));
     }
 
     public SetMoldCapacityByUserId setMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity,
         String userId
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             userId
         ));
@@ -98,19 +98,19 @@ public class NamespaceRef {
 
 
     public SetMoldCapacityByUserId setMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             "#{userId}"
         ));
     }
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
+        String moldModelName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -118,7 +118,7 @@ public class NamespaceRef {
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            moldModelName,
             index,
             acquireAction,
             config,
@@ -128,14 +128,14 @@ public class NamespaceRef {
 
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
+        String moldModelName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            moldName,
+            moldModelName,
             index,
             acquireAction,
             config,
@@ -178,13 +178,13 @@ public class NamespaceRef {
     }
 
     public SubMoldCapacityByUserId subMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity,
         String userId
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             userId
         ));
@@ -192,12 +192,12 @@ public class NamespaceRef {
 
 
     public SubMoldCapacityByUserId subMoldCapacity(
-        String moldName,
+        String moldModelName,
         Integer capacity
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            moldName,
+            moldModelName,
             capacity,
             "#{userId}"
         ));
