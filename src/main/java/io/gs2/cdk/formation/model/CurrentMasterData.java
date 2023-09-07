@@ -18,7 +18,7 @@ package io.gs2.cdk.formation.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.formation.model.MoldModel;
-import io.gs2.cdk.formation.model.FormModel;
+import io.gs2.cdk.formation.model.PropertyFormModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +29,13 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2019-09-09";
     private String namespaceName;
     private List<MoldModel> moldModels;
-    private List<FormModel> formModels;
+    private List<PropertyFormModel> propertyFormModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
         List<MoldModel> moldModels,
-        List<FormModel> formModels
+        List<PropertyFormModel> propertyFormModels
     ) {
         super(
             "Formation_CurrentFormMaster_" + namespaceName
@@ -43,7 +43,7 @@ public class CurrentMasterData extends CdkResource {
 
         this.namespaceName = namespaceName;
         this.moldModels = moldModels;
-        this.formModels = formModels;
+        this.propertyFormModels = propertyFormModels;
         stack.addResource(
             this
         );
@@ -69,8 +69,8 @@ public class CurrentMasterData extends CdkResource {
             settings.put("moldModels", this.moldModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
-        if (this.formModels != null) {
-            settings.put("formModels", this.formModels.stream().map(v -> v.properties(
+        if (this.propertyFormModels != null) {
+            settings.put("propertyFormModels", this.propertyFormModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

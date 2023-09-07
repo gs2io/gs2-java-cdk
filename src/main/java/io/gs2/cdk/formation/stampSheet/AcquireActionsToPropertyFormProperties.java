@@ -28,7 +28,7 @@ public class AcquireActionsToPropertyFormProperties extends AcquireAction {
 
     public AcquireActionsToPropertyFormProperties(
         String namespaceName,
-        String formModelName,
+        String propertyFormModelName,
         String propertyId,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -39,7 +39,7 @@ public class AcquireActionsToPropertyFormProperties extends AcquireAction {
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("formModelName", formModelName);
+                    put("propertyFormModelName", propertyFormModelName);
                     put("propertyId", propertyId);
                     put("acquireAction", acquireAction);
                     put("config", config);

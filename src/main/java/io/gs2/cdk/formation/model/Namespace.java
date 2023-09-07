@@ -25,7 +25,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.formation.ref.NamespaceRef;
 import io.gs2.cdk.formation.model.CurrentMasterData;
 import io.gs2.cdk.formation.model.MoldModel;
-import io.gs2.cdk.formation.model.FormModel;
+import io.gs2.cdk.formation.model.PropertyFormModel;
 
 import io.gs2.cdk.formation.model.options.NamespaceOptions;
 
@@ -138,13 +138,13 @@ public class Namespace extends CdkResource {
 
     public Namespace masterData(
         List<MoldModel> moldModels,
-        List<FormModel> formModels
+        List<PropertyFormModel> propertyFormModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
             moldModels,
-            formModels
+            propertyFormModels
         )).addDependsOn(
             this
         );

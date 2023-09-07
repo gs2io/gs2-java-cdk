@@ -18,7 +18,7 @@ package io.gs2.cdk.formation.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.formation.ref.MoldModelRef;
-import io.gs2.cdk.formation.ref.FormModelRef;
+import io.gs2.cdk.formation.ref.PropertyFormModelRef;
 import io.gs2.cdk.formation.stampSheet.AddMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
@@ -40,20 +40,20 @@ public class NamespaceRef {
     }
 
     public MoldModelRef moldModel(
-        String moldName
+        String moldModelName
     ) {
         return (new MoldModelRef(
             this.namespaceName,
-            moldName
+            moldModelName
         ));
     }
 
-    public FormModelRef formModel(
-        String formModelName
+    public PropertyFormModelRef propertyFormModel(
+        String propertyFormModelName
     ) {
-        return (new FormModelRef(
+        return (new PropertyFormModelRef(
             this.namespaceName,
-            formModelName
+            propertyFormModelName
         ));
     }
 
@@ -144,7 +144,7 @@ public class NamespaceRef {
     }
 
     public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
-        String formModelName,
+        String propertyFormModelName,
         String propertyId,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -152,7 +152,7 @@ public class NamespaceRef {
     ) {
         return (new AcquireActionsToPropertyFormProperties(
             this.namespaceName,
-            formModelName,
+            propertyFormModelName,
             propertyId,
             acquireAction,
             config,
@@ -162,14 +162,14 @@ public class NamespaceRef {
 
 
     public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
-        String formModelName,
+        String propertyFormModelName,
         String propertyId,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
         return (new AcquireActionsToPropertyFormProperties(
             this.namespaceName,
-            formModelName,
+            propertyFormModelName,
             propertyId,
             acquireAction,
             config,

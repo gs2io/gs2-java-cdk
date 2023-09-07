@@ -17,39 +17,35 @@ package io.gs2.cdk.formation.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
+import io.gs2.cdk.formation.stampSheet.AcquireActionsToPropertyFormProperties;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.formation.model.AcquireActionConfig;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FormModelRef {
+public class PropertyFormModelRef {
     private String namespaceName;
-    private String moldModelName;
-    private String formModelName;
+    private String propertyFormModelName;
 
-    public FormModelRef(
+    public PropertyFormModelRef(
         String namespaceName,
-        String moldModelName,
-        String formModelName
+        String propertyFormModelName
     ) {
         this.namespaceName = namespaceName;
-        this.moldModelName = moldModelName;
-        this.formModelName = formModelName;
+        this.propertyFormModelName = propertyFormModelName;
     }
 
-    public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
-        Integer index,
+    public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
+        String propertyId,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
         String userId
     ) {
-        return (new AcquireActionsToFormProperties(
+        return (new AcquireActionsToPropertyFormProperties(
             this.namespaceName,
-            moldName,
-            index,
+            this.propertyFormModelName,
+            propertyId,
             acquireAction,
             config,
             userId
@@ -57,16 +53,15 @@ public class FormModelRef {
     }
 
 
-    public AcquireActionsToFormProperties acquireActionsToFormProperties(
-        String moldName,
-        Integer index,
+    public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
+        String propertyId,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
-        return (new AcquireActionsToFormProperties(
+        return (new AcquireActionsToPropertyFormProperties(
             this.namespaceName,
-            moldName,
-            index,
+            this.propertyFormModelName,
+            propertyId,
             acquireAction,
             config,
             "#{userId}"
@@ -89,11 +84,8 @@ public class FormModelRef {
                 "formation",
                 this.namespaceName,
                 "model",
-                "mold",
-                this.moldModelName,
-                "model",
-                "form",
-                this.formModelName
+                "propertyForm",
+                this.propertyFormModelName
             )
         )).str(
         );

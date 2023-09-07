@@ -17,6 +17,7 @@ package io.gs2.cdk.formation.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.formation.ref.FormModelRef;
 import io.gs2.cdk.formation.stampSheet.AddMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
@@ -29,23 +30,34 @@ import java.util.stream.Collectors;
 
 public class MoldModelRef {
     private String namespaceName;
-    private String moldName;
+    private String moldModelName;
 
     public MoldModelRef(
         String namespaceName,
-        String moldName
+        String moldModelName
     ) {
         this.namespaceName = namespaceName;
-        this.moldName = moldName;
+        this.moldModelName = moldModelName;
+    }
+
+    public FormModelRef formModel(
+        String formModelName
+    ) {
+        return (new FormModelRef(
+            this.namespaceName,
+            this.moldModelName,
+            formModelName
+        ));
     }
 
     public AddMoldCapacityByUserId addMoldCapacity(
+        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             userId
         ));
@@ -53,23 +65,25 @@ public class MoldModelRef {
 
 
     public AddMoldCapacityByUserId addMoldCapacity(
+        String moldName,
         Integer capacity
     ) {
         return (new AddMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             "#{userId}"
         ));
     }
 
     public SetMoldCapacityByUserId setMoldCapacity(
+        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             userId
         ));
@@ -77,17 +91,19 @@ public class MoldModelRef {
 
 
     public SetMoldCapacityByUserId setMoldCapacity(
+        String moldName,
         Integer capacity
     ) {
         return (new SetMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             "#{userId}"
         ));
     }
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
+        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config,
@@ -95,7 +111,7 @@ public class MoldModelRef {
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            this.moldName,
+            moldName,
             index,
             acquireAction,
             config,
@@ -105,13 +121,14 @@ public class MoldModelRef {
 
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
+        String moldName,
         Integer index,
         AcquireAction acquireAction,
         List<AcquireActionConfig> config
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,
-            this.moldName,
+            moldName,
             index,
             acquireAction,
             config,
@@ -120,12 +137,13 @@ public class MoldModelRef {
     }
 
     public SubMoldCapacityByUserId subMoldCapacity(
+        String moldName,
         Integer capacity,
         String userId
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             userId
         ));
@@ -133,11 +151,12 @@ public class MoldModelRef {
 
 
     public SubMoldCapacityByUserId subMoldCapacity(
+        String moldName,
         Integer capacity
     ) {
         return (new SubMoldCapacityByUserId(
             this.namespaceName,
-            this.moldName,
+            moldName,
             capacity,
             "#{userId}"
         ));
@@ -160,7 +179,7 @@ public class MoldModelRef {
                 this.namespaceName,
                 "model",
                 "mold",
-                this.moldName
+                this.moldModelName
             )
         )).str(
         );
