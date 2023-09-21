@@ -15,7 +15,9 @@
  */
 package io.gs2.cdk.version.model.options;
 import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
+import io.gs2.cdk.version.model.enums.VersionModelType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +27,9 @@ import java.util.stream.Collectors;
 public class VersionModelOptions {
     public String metadata;
     public Version currentVersion;
+    public Version warningVersion;
+    public Version errorVersion;
+    public List<ScheduleVersion> scheduleVersions;
     public Boolean needSignature;
     public String signatureKeyId;
     
@@ -39,6 +44,27 @@ public class VersionModelOptions {
         Version currentVersion
     ) {
         this.currentVersion = currentVersion;
+        return this;
+    }
+    
+    public VersionModelOptions withWarningVersion(
+        Version warningVersion
+    ) {
+        this.warningVersion = warningVersion;
+        return this;
+    }
+    
+    public VersionModelOptions withErrorVersion(
+        Version errorVersion
+    ) {
+        this.errorVersion = errorVersion;
+        return this;
+    }
+    
+    public VersionModelOptions withScheduleVersions(
+        List<ScheduleVersion> scheduleVersions
+    ) {
+        this.scheduleVersions = scheduleVersions;
         return this;
     }
     

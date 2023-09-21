@@ -15,10 +15,14 @@
  */
 package io.gs2.cdk.version.model;
 import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.options.VersionModelOptions;
+import io.gs2.cdk.version.model.options.VersionModelTypeIsSimpleOptions;
+import io.gs2.cdk.version.model.options.VersionModelTypeIsScheduleOptions;
 import io.gs2.cdk.version.model.options.VersionModelScopeIsPassiveOptions;
 import io.gs2.cdk.version.model.options.VersionModelScopeIsActiveOptions;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
+import io.gs2.cdk.version.model.enums.VersionModelType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -26,105 +30,157 @@ import java.util.stream.Collectors;
 
 public class VersionModel {
     private String name;
-    private Version warningVersion;
-    private Version errorVersion;
     private VersionModelScope scope;
+    private VersionModelType type;
     private String metadata = null;
     private Version currentVersion = null;
+    private Version warningVersion = null;
+    private Version errorVersion = null;
+    private List<ScheduleVersion> scheduleVersions = null;
     private Boolean needSignature = null;
     private String signatureKeyId = null;
 
     public VersionModel(
         String name,
-        Version warningVersion,
-        Version errorVersion,
         VersionModelScope scope,
+        VersionModelType type,
         VersionModelOptions options
     ) {
         this.name = name;
-        this.warningVersion = warningVersion;
-        this.errorVersion = errorVersion;
         this.scope = scope;
+        this.type = type;
         this.metadata = options.metadata;
         this.currentVersion = options.currentVersion;
+        this.warningVersion = options.warningVersion;
+        this.errorVersion = options.errorVersion;
+        this.scheduleVersions = options.scheduleVersions;
         this.needSignature = options.needSignature;
         this.signatureKeyId = options.signatureKeyId;
     }
     public VersionModel(
         String name,
-        Version warningVersion,
-        Version errorVersion,
-        VersionModelScope scope
+        VersionModelScope scope,
+        VersionModelType type
     ) {
         this.name = name;
-        this.warningVersion = warningVersion;
-        this.errorVersion = errorVersion;
         this.scope = scope;
+        this.type = type;
+    }
+
+    public static VersionModel typeIsSimple(
+        String name,
+        VersionModelScope scope,
+        Version warningVersion,
+        Version errorVersion,
+        VersionModelTypeIsSimpleOptions options
+    ) {
+        return (new VersionModel(
+            name,
+            scope,
+            VersionModelType.SIMPLE,
+            new VersionModelOptions()
+                .withWarningVersion(warningVersion)
+                .withErrorVersion(errorVersion)
+                .withMetadata(options.metadata)
+                .withScheduleVersions(options.scheduleVersions)
+        ));
+    }
+
+
+    public static VersionModel typeIsSimple(
+        String name,
+        VersionModelScope scope,
+        Version warningVersion,
+        Version errorVersion
+    ) {
+        return (new VersionModel(
+            name,
+            scope,
+            VersionModelType.SIMPLE
+        ));
+    }
+
+    public static VersionModel typeIsSchedule(
+        String name,
+        VersionModelScope scope,
+        VersionModelTypeIsScheduleOptions options
+    ) {
+        return (new VersionModel(
+            name,
+            scope,
+            VersionModelType.SCHEDULE,
+            new VersionModelOptions()
+                .withMetadata(options.metadata)
+                .withScheduleVersions(options.scheduleVersions)
+        ));
+    }
+
+
+    public static VersionModel typeIsSchedule(
+        String name,
+        VersionModelScope scope
+    ) {
+        return (new VersionModel(
+            name,
+            scope,
+            VersionModelType.SCHEDULE
+        ));
     }
 
     public static VersionModel scopeIsPassive(
         String name,
-        Version warningVersion,
-        Version errorVersion,
+        VersionModelType type,
         Boolean needSignature,
         VersionModelScopeIsPassiveOptions options
     ) {
         return (new VersionModel(
             name,
-            warningVersion,
-            errorVersion,
             VersionModelScope.PASSIVE,
+            type,
             new VersionModelOptions()
                 .withNeedSignature(needSignature)
                 .withMetadata(options.metadata)
+                .withScheduleVersions(options.scheduleVersions)
         ));
     }
 
 
     public static VersionModel scopeIsPassive(
         String name,
-        Version warningVersion,
-        Version errorVersion,
+        VersionModelType type,
         Boolean needSignature
     ) {
         return (new VersionModel(
             name,
-            warningVersion,
-            errorVersion,
-            VersionModelScope.PASSIVE
+            VersionModelScope.PASSIVE,
+            type
         ));
     }
 
     public static VersionModel scopeIsActive(
         String name,
-        Version warningVersion,
-        Version errorVersion,
-        Version currentVersion,
+        VersionModelType type,
         VersionModelScopeIsActiveOptions options
     ) {
         return (new VersionModel(
             name,
-            warningVersion,
-            errorVersion,
             VersionModelScope.ACTIVE,
+            type,
             new VersionModelOptions()
-                .withCurrentVersion(currentVersion)
                 .withMetadata(options.metadata)
+                .withScheduleVersions(options.scheduleVersions)
         ));
     }
 
 
     public static VersionModel scopeIsActive(
         String name,
-        Version warningVersion,
-        Version errorVersion,
-        Version currentVersion
+        VersionModelType type
     ) {
         return (new VersionModel(
             name,
-            warningVersion,
-            errorVersion,
-            VersionModelScope.ACTIVE
+            VersionModelScope.ACTIVE,
+            type
         ));
     }
 
@@ -138,6 +194,18 @@ public class VersionModel {
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
         }
+        if (this.scope != null) {
+            properties.put("scope", this.scope.toString(
+            ));
+        }
+        if (this.type != null) {
+            properties.put("type", this.type.toString(
+            ));
+        }
+        if (this.currentVersion != null) {
+            properties.put("currentVersion", this.currentVersion.properties(
+            ));
+        }
         if (this.warningVersion != null) {
             properties.put("warningVersion", this.warningVersion.properties(
             ));
@@ -146,13 +214,9 @@ public class VersionModel {
             properties.put("errorVersion", this.errorVersion.properties(
             ));
         }
-        if (this.scope != null) {
-            properties.put("scope", this.scope.toString(
-            ));
-        }
-        if (this.currentVersion != null) {
-            properties.put("currentVersion", this.currentVersion.properties(
-            ));
+        if (this.scheduleVersions != null) {
+            properties.put("scheduleVersions", this.scheduleVersions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.needSignature != null) {
             properties.put("needSignature", this.needSignature);

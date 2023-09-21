@@ -15,7 +15,9 @@
  */
 package io.gs2.cdk.version.model.options;
 import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
+import io.gs2.cdk.version.model.enums.VersionModelType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,11 +26,19 @@ import java.util.stream.Collectors;
 
 public class VersionModelScopeIsActiveOptions {
     public String metadata;
+    public List<ScheduleVersion> scheduleVersions;
     
     public VersionModelScopeIsActiveOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public VersionModelScopeIsActiveOptions withScheduleVersions(
+        List<ScheduleVersion> scheduleVersions
+    ) {
+        this.scheduleVersions = scheduleVersions;
         return this;
     }
 }

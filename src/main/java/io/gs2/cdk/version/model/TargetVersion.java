@@ -23,26 +23,23 @@ import java.util.stream.Collectors;
 
 public class TargetVersion {
     private String versionName;
-    private Version version;
     private String body = null;
     private String signature = null;
+    private Version version = null;
 
     public TargetVersion(
         String versionName,
-        Version version,
         TargetVersionOptions options
     ) {
         this.versionName = versionName;
-        this.version = version;
         this.body = options.body;
         this.signature = options.signature;
+        this.version = options.version;
     }
     public TargetVersion(
-        String versionName,
-        Version version
+        String versionName
     ) {
         this.versionName = versionName;
-        this.version = version;
     }
 
     public Map<String, Object> properties(
@@ -52,15 +49,15 @@ public class TargetVersion {
         if (this.versionName != null) {
             properties.put("versionName", this.versionName);
         }
-        if (this.version != null) {
-            properties.put("version", this.version.properties(
-            ));
-        }
         if (this.body != null) {
             properties.put("body", this.body);
         }
         if (this.signature != null) {
             properties.put("signature", this.signature);
+        }
+        if (this.version != null) {
+            properties.put("version", this.version.properties(
+            ));
         }
 
         return properties;

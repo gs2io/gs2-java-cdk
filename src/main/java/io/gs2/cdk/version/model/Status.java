@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.version.model;
 import io.gs2.cdk.version.model.Version;
+import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.VersionModel;
 import io.gs2.cdk.version.model.options.StatusOptions;
 import java.util.HashMap;

@@ -13,24 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.version.model.options;
-import io.gs2.cdk.version.model.Version;
-import io.gs2.cdk.version.model.ScheduleVersion;
-import io.gs2.cdk.version.model.VersionModel;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.version.model.enums;
 
-public class StatusOptions {
-    public Version currentVersion;
-    
-    public StatusOptions withCurrentVersion(
-        Version currentVersion
-    ) {
-        this.currentVersion = currentVersion;
-        return this;
+
+public enum VersionModelType {
+    SIMPLE,
+    SCHEDULE;
+
+    public String toString() {
+        switch (this) {
+            case SIMPLE:
+                return "simple";
+            case SCHEDULE:
+                return "schedule";
+        }
+        return "unknown";
     }
 }
-

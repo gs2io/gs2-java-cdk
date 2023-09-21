@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class TargetVersionOptions {
     public String body;
     public String signature;
+    public Version version;
     
     public TargetVersionOptions withBody(
         String body
@@ -36,6 +37,13 @@ public class TargetVersionOptions {
         String signature
     ) {
         this.signature = signature;
+        return this;
+    }
+    
+    public TargetVersionOptions withVersion(
+        Version version
+    ) {
+        this.version = version;
         return this;
     }
 }

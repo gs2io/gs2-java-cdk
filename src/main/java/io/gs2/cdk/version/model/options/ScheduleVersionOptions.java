@@ -15,21 +15,19 @@
  */
 package io.gs2.cdk.version.model.options;
 import io.gs2.cdk.version.model.Version;
-import io.gs2.cdk.version.model.ScheduleVersion;
-import io.gs2.cdk.version.model.VersionModel;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StatusOptions {
-    public Version currentVersion;
+public class ScheduleVersionOptions {
+    public String scheduleEventId;
     
-    public StatusOptions withCurrentVersion(
-        Version currentVersion
+    public ScheduleVersionOptions withScheduleEventId(
+        String scheduleEventId
     ) {
-        this.currentVersion = currentVersion;
+        this.scheduleEventId = scheduleEventId;
         return this;
     }
 }
