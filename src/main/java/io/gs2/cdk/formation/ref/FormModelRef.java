@@ -27,16 +27,13 @@ import java.util.stream.Collectors;
 public class FormModelRef {
     private String namespaceName;
     private String moldModelName;
-    private String formModelName;
 
     public FormModelRef(
         String namespaceName,
-        String moldModelName,
-        String formModelName
+        String moldModelName
     ) {
         this.namespaceName = namespaceName;
         this.moldModelName = moldModelName;
-        this.formModelName = formModelName;
     }
 
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
@@ -89,9 +86,7 @@ public class FormModelRef {
                 "model",
                 "mold",
                 this.moldModelName,
-                "model",
-                "form",
-                this.formModelName
+                "form"
             )
         )).str(
         );

@@ -41,12 +41,10 @@ public class MoldModelRef {
     }
 
     public FormModelRef formModel(
-        String formModelName
     ) {
         return (new FormModelRef(
             this.namespaceName,
-            this.moldModelName,
-            formModelName
+            this.moldModelName
         ));
     }
 

@@ -22,23 +22,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BoxItem {
+    private String prizeId;
     private Integer remaining;
     private Integer initial;
     private List<AcquireAction> acquireActions = null;
 
     public BoxItem(
+        String prizeId,
         Integer remaining,
         Integer initial,
         BoxItemOptions options
     ) {
+        this.prizeId = prizeId;
         this.remaining = remaining;
         this.initial = initial;
         this.acquireActions = options.acquireActions;
     }
     public BoxItem(
+        String prizeId,
         Integer remaining,
         Integer initial
     ) {
+        this.prizeId = prizeId;
         this.remaining = remaining;
         this.initial = initial;
     }
@@ -47,6 +52,9 @@ public class BoxItem {
     ) {
         var properties = new HashMap<String, Object>();
 
+        if (this.prizeId != null) {
+            properties.put("prizeId", this.prizeId);
+        }
         if (this.acquireActions != null) {
             properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
