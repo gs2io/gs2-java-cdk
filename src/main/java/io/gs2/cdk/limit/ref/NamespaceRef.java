@@ -21,6 +21,7 @@ import io.gs2.cdk.limit.ref.LimitModelRef;
 import io.gs2.cdk.limit.stampSheet.CountDownByUserId;
 import io.gs2.cdk.limit.stampSheet.DeleteCounterByUserId;
 import io.gs2.cdk.limit.stampSheet.CountUpByUserId;
+import io.gs2.cdk.limit.stampSheet.VerifyCounterByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -129,6 +130,40 @@ public class NamespaceRef {
             counterName,
             countUpValue,
             maxValue,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCounterByUserId verifyCounter(
+        String limitName,
+        String counterName,
+        String verifyType,
+        Integer count,
+        String userId
+    ) {
+        return (new VerifyCounterByUserId(
+            this.namespaceName,
+            limitName,
+            counterName,
+            verifyType,
+            count,
+            userId
+        ));
+    }
+
+
+    public VerifyCounterByUserId verifyCounter(
+        String limitName,
+        String counterName,
+        String verifyType,
+        Integer count
+    ) {
+        return (new VerifyCounterByUserId(
+            this.namespaceName,
+            limitName,
+            counterName,
+            verifyType,
+            count,
             "#{userId}"
         ));
     }

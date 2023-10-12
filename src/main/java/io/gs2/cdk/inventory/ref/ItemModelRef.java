@@ -21,6 +21,7 @@ import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -80,61 +81,61 @@ public class ItemModelRef {
     }
 
     public AddReferenceOfByUserId addReferenceOf(
-        String itemSetName,
         String referenceOf,
+        String itemSetName,
         String userId
     ) {
         return (new AddReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             userId
         ));
     }
 
 
     public AddReferenceOfByUserId addReferenceOf(
-        String itemSetName,
-        String referenceOf
+        String referenceOf,
+        String itemSetName
     ) {
         return (new AddReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             "#{userId}"
         ));
     }
 
     public DeleteReferenceOfByUserId deleteReferenceOf(
-        String itemSetName,
         String referenceOf,
+        String itemSetName,
         String userId
     ) {
         return (new DeleteReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             userId
         ));
     }
 
 
     public DeleteReferenceOfByUserId deleteReferenceOf(
-        String itemSetName,
-        String referenceOf
+        String referenceOf,
+        String itemSetName
     ) {
         return (new DeleteReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             "#{userId}"
         ));
     }
@@ -169,36 +170,70 @@ public class ItemModelRef {
         ));
     }
 
-    public VerifyReferenceOfByUserId verifyReferenceOf(
+    public VerifyItemSetByUserId verifyItemSet(
+        String verifyType,
+        Long count,
         String itemSetName,
+        String userId
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            this.itemName,
+            verifyType,
+            count,
+            itemSetName,
+            userId
+        ));
+    }
+
+
+    public VerifyItemSetByUserId verifyItemSet(
+        String verifyType,
+        Long count,
+        String itemSetName
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            this.itemName,
+            verifyType,
+            count,
+            itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyReferenceOfByUserId verifyReferenceOf(
         String referenceOf,
         String verifyType,
+        String itemSetName,
         String userId
     ) {
         return (new VerifyReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
             verifyType,
+            itemSetName,
             userId
         ));
     }
 
 
     public VerifyReferenceOfByUserId verifyReferenceOf(
-        String itemSetName,
         String referenceOf,
-        String verifyType
+        String verifyType,
+        String itemSetName
     ) {
         return (new VerifyReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             this.itemName,
-            itemSetName,
             referenceOf,
             verifyType,
+            itemSetName,
             "#{userId}"
         ));
     }

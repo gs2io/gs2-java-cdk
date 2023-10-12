@@ -20,6 +20,7 @@ import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.dictionary.ref.EntryModelRef;
 import io.gs2.cdk.dictionary.stampSheet.AddEntriesByUserId;
 import io.gs2.cdk.dictionary.stampSheet.DeleteEntriesByUserId;
+import io.gs2.cdk.dictionary.stampSheet.VerifyEntryByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,6 +83,32 @@ public class NamespaceRef {
         return (new DeleteEntriesByUserId(
             this.namespaceName,
             entryModelNames,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyEntryByUserId verifyEntry(
+        String entryModelName,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyEntryByUserId(
+            this.namespaceName,
+            entryModelName,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyEntryByUserId verifyEntry(
+        String entryModelName,
+        String verifyType
+    ) {
+        return (new VerifyEntryByUserId(
+            this.namespaceName,
+            entryModelName,
+            verifyType,
             "#{userId}"
         ));
     }

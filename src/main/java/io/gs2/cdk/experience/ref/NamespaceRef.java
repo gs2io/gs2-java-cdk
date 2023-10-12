@@ -25,6 +25,8 @@ import io.gs2.cdk.experience.stampSheet.MultiplyAcquireActionsByUserId;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.experience.stampSheet.SubExperienceByUserId;
 import io.gs2.cdk.experience.stampSheet.SubRankCapByUserId;
+import io.gs2.cdk.experience.stampSheet.VerifyRankByUserId;
+import io.gs2.cdk.experience.stampSheet.VerifyRankCapByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -225,6 +227,74 @@ public class NamespaceRef {
         return (new SubRankCapByUserId(
             this.namespaceName,
             experienceName,
+            propertyId,
+            rankCapValue,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyRankByUserId verifyRank(
+        String experienceName,
+        String verifyType,
+        String propertyId,
+        Long rankValue,
+        String userId
+    ) {
+        return (new VerifyRankByUserId(
+            this.namespaceName,
+            experienceName,
+            verifyType,
+            propertyId,
+            rankValue,
+            userId
+        ));
+    }
+
+
+    public VerifyRankByUserId verifyRank(
+        String experienceName,
+        String verifyType,
+        String propertyId,
+        Long rankValue
+    ) {
+        return (new VerifyRankByUserId(
+            this.namespaceName,
+            experienceName,
+            verifyType,
+            propertyId,
+            rankValue,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyRankCapByUserId verifyRankCap(
+        String experienceName,
+        String verifyType,
+        String propertyId,
+        Long rankCapValue,
+        String userId
+    ) {
+        return (new VerifyRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            verifyType,
+            propertyId,
+            rankCapValue,
+            userId
+        ));
+    }
+
+
+    public VerifyRankCapByUserId verifyRankCap(
+        String experienceName,
+        String verifyType,
+        String propertyId,
+        Long rankCapValue
+    ) {
+        return (new VerifyRankCapByUserId(
+            this.namespaceName,
+            experienceName,
+            verifyType,
             propertyId,
             rankCapValue,
             "#{userId}"

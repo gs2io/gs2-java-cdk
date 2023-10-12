@@ -23,7 +23,9 @@ import io.gs2.cdk.inventory.stampSheet.SetCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyInventoryCurrentMaxCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -141,16 +143,16 @@ public class InventoryModelRef {
 
     public AddReferenceOfByUserId addReferenceOf(
         String itemName,
-        String itemSetName,
         String referenceOf,
+        String itemSetName,
         String userId
     ) {
         return (new AddReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             userId
         ));
     }
@@ -158,31 +160,31 @@ public class InventoryModelRef {
 
     public AddReferenceOfByUserId addReferenceOf(
         String itemName,
-        String itemSetName,
-        String referenceOf
+        String referenceOf,
+        String itemSetName
     ) {
         return (new AddReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             "#{userId}"
         ));
     }
 
     public DeleteReferenceOfByUserId deleteReferenceOf(
         String itemName,
-        String itemSetName,
         String referenceOf,
+        String itemSetName,
         String userId
     ) {
         return (new DeleteReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
             userId
         ));
     }
@@ -190,15 +192,43 @@ public class InventoryModelRef {
 
     public DeleteReferenceOfByUserId deleteReferenceOf(
         String itemName,
-        String itemSetName,
-        String referenceOf
+        String referenceOf,
+        String itemSetName
     ) {
         return (new DeleteReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
+            itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String verifyType,
+        Integer currentInventoryMaxCapacity,
+        String userId
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
+            userId
+        ));
+    }
+
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String verifyType,
+        Integer currentInventoryMaxCapacity
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
             "#{userId}"
         ));
     }
@@ -235,20 +265,56 @@ public class InventoryModelRef {
         ));
     }
 
+    public VerifyItemSetByUserId verifyItemSet(
+        String itemName,
+        String verifyType,
+        Long count,
+        String itemSetName,
+        String userId
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            itemName,
+            verifyType,
+            count,
+            itemSetName,
+            userId
+        ));
+    }
+
+
+    public VerifyItemSetByUserId verifyItemSet(
+        String itemName,
+        String verifyType,
+        Long count,
+        String itemSetName
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            itemName,
+            verifyType,
+            count,
+            itemSetName,
+            "#{userId}"
+        ));
+    }
+
     public VerifyReferenceOfByUserId verifyReferenceOf(
         String itemName,
-        String itemSetName,
         String referenceOf,
         String verifyType,
+        String itemSetName,
         String userId
     ) {
         return (new VerifyReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
             verifyType,
+            itemSetName,
             userId
         ));
     }
@@ -256,17 +322,17 @@ public class InventoryModelRef {
 
     public VerifyReferenceOfByUserId verifyReferenceOf(
         String itemName,
-        String itemSetName,
         String referenceOf,
-        String verifyType
+        String verifyType,
+        String itemSetName
     ) {
         return (new VerifyReferenceOfByUserId(
             this.namespaceName,
             this.inventoryName,
             itemName,
-            itemSetName,
             referenceOf,
             verifyType,
+            itemSetName,
             "#{userId}"
         ));
     }
