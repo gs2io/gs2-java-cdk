@@ -38,7 +38,7 @@ public class Namespace extends CdkResource {
     private String name;
     private String description = null;
     private TransactionSetting transactionSetting = null;
-    private String experienceCapScriptId = null;
+    private String rankCapScriptId = null;
     private ScriptSetting changeExperienceScript = null;
     private ScriptSetting changeRankScript = null;
     private ScriptSetting changeRankCapScript = null;
@@ -58,7 +58,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
-        this.experienceCapScriptId = options.experienceCapScriptId;
+        this.rankCapScriptId = options.rankCapScriptId;
         this.changeExperienceScript = options.changeExperienceScript;
         this.changeRankScript = options.changeRankScript;
         this.changeRankCapScript = options.changeRankCapScript;
@@ -109,8 +109,8 @@ public class Namespace extends CdkResource {
             properties.put("TransactionSetting", this.transactionSetting.properties(
             ));
         }
-        if (this.experienceCapScriptId != null) {
-            properties.put("ExperienceCapScriptId", this.experienceCapScriptId);
+        if (this.rankCapScriptId != null) {
+            properties.put("RankCapScriptId", this.rankCapScriptId);
         }
         if (this.changeExperienceScript != null) {
             properties.put("ChangeExperienceScript", this.changeExperienceScript.properties(

@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public TransactionSetting transactionSetting;
-    public String experienceCapScriptId;
+    public String rankCapScriptId;
     public ScriptSetting changeExperienceScript;
     public ScriptSetting changeRankScript;
     public ScriptSetting changeRankCapScript;
@@ -47,10 +47,10 @@ public class NamespaceOptions {
         return this;
     }
     
-    public NamespaceOptions withExperienceCapScriptId(
-        String experienceCapScriptId
+    public NamespaceOptions withRankCapScriptId(
+        String rankCapScriptId
     ) {
-        this.experienceCapScriptId = experienceCapScriptId;
+        this.rankCapScriptId = rankCapScriptId;
         return this;
     }
     
