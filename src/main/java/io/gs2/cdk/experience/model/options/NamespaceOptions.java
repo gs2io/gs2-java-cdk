@@ -30,7 +30,7 @@ public class NamespaceOptions {
     public ScriptSetting changeExperienceScript;
     public ScriptSetting changeRankScript;
     public ScriptSetting changeRankCapScript;
-    public ScriptSetting overflowExperienceScript;
+    public String overflowExperienceScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -76,7 +76,7 @@ public class NamespaceOptions {
     }
     
     public NamespaceOptions withOverflowExperienceScript(
-        ScriptSetting overflowExperienceScript
+        String overflowExperienceScript
     ) {
         this.overflowExperienceScript = overflowExperienceScript;
         return this;

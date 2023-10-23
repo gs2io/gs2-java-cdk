@@ -42,7 +42,7 @@ public class Namespace extends CdkResource {
     private ScriptSetting changeExperienceScript = null;
     private ScriptSetting changeRankScript = null;
     private ScriptSetting changeRankCapScript = null;
-    private ScriptSetting overflowExperienceScript = null;
+    private String overflowExperienceScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -125,8 +125,7 @@ public class Namespace extends CdkResource {
             ));
         }
         if (this.overflowExperienceScript != null) {
-            properties.put("OverflowExperienceScript", this.overflowExperienceScript.properties(
-            ));
+            properties.put("OverflowExperienceScript", this.overflowExperienceScript);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
