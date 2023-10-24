@@ -15,6 +15,9 @@
  */
 package io.gs2.cdk.experience.model;
 import io.gs2.cdk.experience.model.options.AcquireActionRateOptions;
+import io.gs2.cdk.experience.model.options.AcquireActionRateModeIsDoubleOptions;
+import io.gs2.cdk.experience.model.options.AcquireActionRateModeIsBigOptions;
+import io.gs2.cdk.experience.model.enums.AcquireActionRateMode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -22,22 +25,74 @@ import java.util.stream.Collectors;
 
 public class AcquireActionRate {
     private String name;
-    private List<Double> rates;
+    private AcquireActionRateMode mode;
+    private List<Double> rates = null;
+    private List<String> bigRates = null;
 
     public AcquireActionRate(
         String name,
-        List<Double> rates,
+        AcquireActionRateMode mode,
         AcquireActionRateOptions options
     ) {
         this.name = name;
-        this.rates = rates;
+        this.mode = mode;
+        this.rates = options.rates;
+        this.bigRates = options.bigRates;
     }
     public AcquireActionRate(
         String name,
-        List<Double> rates
+        AcquireActionRateMode mode
     ) {
         this.name = name;
-        this.rates = rates;
+        this.mode = mode;
+    }
+
+    public static AcquireActionRate modeIsDouble(
+        String name,
+        List<Double> rates,
+        AcquireActionRateModeIsDoubleOptions options
+    ) {
+        return (new AcquireActionRate(
+            name,
+            AcquireActionRateMode.DOUBLE,
+            new AcquireActionRateOptions()
+                .withRates(rates)
+        ));
+    }
+
+
+    public static AcquireActionRate modeIsDouble(
+        String name,
+        List<Double> rates
+    ) {
+        return (new AcquireActionRate(
+            name,
+            AcquireActionRateMode.DOUBLE
+        ));
+    }
+
+    public static AcquireActionRate modeIsBig(
+        String name,
+        List<String> bigRates,
+        AcquireActionRateModeIsBigOptions options
+    ) {
+        return (new AcquireActionRate(
+            name,
+            AcquireActionRateMode.BIG,
+            new AcquireActionRateOptions()
+                .withBigRates(bigRates)
+        ));
+    }
+
+
+    public static AcquireActionRate modeIsBig(
+        String name,
+        List<String> bigRates
+    ) {
+        return (new AcquireActionRate(
+            name,
+            AcquireActionRateMode.BIG
+        ));
     }
 
     public Map<String, Object> properties(
@@ -47,8 +102,15 @@ public class AcquireActionRate {
         if (this.name != null) {
             properties.put("name", this.name);
         }
+        if (this.mode != null) {
+            properties.put("mode", this.mode.toString(
+            ));
+        }
         if (this.rates != null) {
             properties.put("rates", this.rates);
+        }
+        if (this.bigRates != null) {
+            properties.put("bigRates", this.bigRates);
         }
 
         return properties;

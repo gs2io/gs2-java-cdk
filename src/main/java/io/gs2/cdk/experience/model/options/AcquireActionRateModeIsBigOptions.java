@@ -21,22 +21,5 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AcquireActionRateOptions {
-    public List<Double> rates;
-    public List<String> bigRates;
-    
-    public AcquireActionRateOptions withRates(
-        List<Double> rates
-    ) {
-        this.rates = rates;
-        return this;
-    }
-    
-    public AcquireActionRateOptions withBigRates(
-        List<String> bigRates
-    ) {
-        this.bigRates = bigRates;
-        return this;
-    }
+public class AcquireActionRateModeIsBigOptions {
 }
-
