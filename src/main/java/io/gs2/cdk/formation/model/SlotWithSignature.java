@@ -24,33 +24,27 @@ import java.util.stream.Collectors;
 public class SlotWithSignature {
     private String name;
     private SlotWithSignaturePropertyType propertyType;
-    private String body;
-    private String signature;
+    private String body = null;
+    private String signature = null;
     private String metadata = null;
 
     public SlotWithSignature(
         String name,
         SlotWithSignaturePropertyType propertyType,
-        String body,
-        String signature,
         SlotWithSignatureOptions options
     ) {
         this.name = name;
         this.propertyType = propertyType;
-        this.body = body;
-        this.signature = signature;
+        this.body = options.body;
+        this.signature = options.signature;
         this.metadata = options.metadata;
     }
     public SlotWithSignature(
         String name,
-        SlotWithSignaturePropertyType propertyType,
-        String body,
-        String signature
+        SlotWithSignaturePropertyType propertyType
     ) {
         this.name = name;
         this.propertyType = propertyType;
-        this.body = body;
-        this.signature = signature;
     }
 
     public Map<String, Object> properties(

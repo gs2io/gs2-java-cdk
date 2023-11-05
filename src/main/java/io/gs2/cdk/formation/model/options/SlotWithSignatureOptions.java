@@ -22,7 +22,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SlotWithSignatureOptions {
+    public String body;
+    public String signature;
     public String metadata;
+    
+    public SlotWithSignatureOptions withBody(
+        String body
+    ) {
+        this.body = body;
+        return this;
+    }
+    
+    public SlotWithSignatureOptions withSignature(
+        String signature
+    ) {
+        this.signature = signature;
+        return this;
+    }
     
     public SlotWithSignatureOptions withMetadata(
         String metadata
