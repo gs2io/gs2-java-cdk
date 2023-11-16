@@ -18,7 +18,6 @@ package io.gs2.cdk.stamina.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
-import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.stamina.ref.NamespaceRef;
@@ -36,7 +35,7 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
-    private ScriptSetting overflowTriggerScript = null;
+    private String overflowTriggerScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -95,8 +94,7 @@ public class Namespace extends CdkResource {
             properties.put("Description", this.description);
         }
         if (this.overflowTriggerScript != null) {
-            properties.put("OverflowTriggerScript", this.overflowTriggerScript.properties(
-            ));
+            properties.put("OverflowTriggerScript", this.overflowTriggerScript);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(

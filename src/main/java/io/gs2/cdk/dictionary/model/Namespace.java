@@ -37,7 +37,7 @@ public class Namespace extends CdkResource {
     private String name;
     private String description = null;
     private ScriptSetting entryScript = null;
-    private ScriptSetting duplicateEntryScript = null;
+    private String duplicateEntryScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -101,8 +101,7 @@ public class Namespace extends CdkResource {
             ));
         }
         if (this.duplicateEntryScript != null) {
-            properties.put("DuplicateEntryScript", this.duplicateEntryScript.properties(
-            ));
+            properties.put("DuplicateEntryScript", this.duplicateEntryScript);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(

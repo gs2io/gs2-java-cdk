@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public ScriptSetting entryScript;
-    public ScriptSetting duplicateEntryScript;
+    public String duplicateEntryScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -43,7 +43,7 @@ public class NamespaceOptions {
     }
     
     public NamespaceOptions withDuplicateEntryScript(
-        ScriptSetting duplicateEntryScript
+        String duplicateEntryScript
     ) {
         this.duplicateEntryScript = duplicateEntryScript;
         return this;

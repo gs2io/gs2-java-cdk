@@ -14,7 +14,6 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.stamina.model.options;
-import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import java.util.HashMap;
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
-    public ScriptSetting overflowTriggerScript;
+    public String overflowTriggerScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -35,7 +34,7 @@ public class NamespaceOptions {
     }
     
     public NamespaceOptions withOverflowTriggerScript(
-        ScriptSetting overflowTriggerScript
+        String overflowTriggerScript
     ) {
         this.overflowTriggerScript = overflowTriggerScript;
         return this;
