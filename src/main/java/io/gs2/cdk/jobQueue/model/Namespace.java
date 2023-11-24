@@ -34,7 +34,6 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
-    private Boolean enableAutoRun = null;
     private NotificationSetting pushNotification = null;
     private NotificationSetting runNotification = null;
     private LogSetting logSetting = null;
@@ -51,7 +50,6 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
-        this.enableAutoRun = options.enableAutoRun;
         this.pushNotification = options.pushNotification;
         this.runNotification = options.runNotification;
         this.logSetting = options.logSetting;
@@ -96,9 +94,7 @@ public class Namespace extends CdkResource {
         if (this.description != null) {
             properties.put("Description", this.description);
         }
-        if (this.enableAutoRun != null) {
-            properties.put("EnableAutoRun", this.enableAutoRun);
-        }
+        properties.put("EnableAutoRun", true);
         if (this.pushNotification != null) {
             properties.put("PushNotification", this.pushNotification.properties(
             ));

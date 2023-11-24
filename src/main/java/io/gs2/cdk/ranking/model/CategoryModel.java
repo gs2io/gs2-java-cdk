@@ -29,10 +29,10 @@ public class CategoryModel {
     private String name;
     private CategoryModelOrderDirection orderDirection;
     private CategoryModelScope scope;
-    private Boolean uniqueByUserId;
     private String metadata = null;
     private Long minimumValue = null;
     private Long maximumValue = null;
+    private Boolean uniqueByUserId = null;
     private Boolean sum = null;
     private Integer calculateFixedTimingHour = null;
     private Integer calculateFixedTimingMinute = null;
@@ -47,16 +47,15 @@ public class CategoryModel {
         String name,
         CategoryModelOrderDirection orderDirection,
         CategoryModelScope scope,
-        Boolean uniqueByUserId,
         CategoryModelOptions options
     ) {
         this.name = name;
         this.orderDirection = orderDirection;
         this.scope = scope;
-        this.uniqueByUserId = uniqueByUserId;
         this.metadata = options.metadata;
         this.minimumValue = options.minimumValue;
         this.maximumValue = options.maximumValue;
+        this.uniqueByUserId = options.uniqueByUserId;
         this.sum = options.sum;
         this.calculateFixedTimingHour = options.calculateFixedTimingHour;
         this.calculateFixedTimingMinute = options.calculateFixedTimingMinute;
@@ -70,13 +69,11 @@ public class CategoryModel {
     public CategoryModel(
         String name,
         CategoryModelOrderDirection orderDirection,
-        CategoryModelScope scope,
-        Boolean uniqueByUserId
+        CategoryModelScope scope
     ) {
         this.name = name;
         this.orderDirection = orderDirection;
         this.scope = scope;
-        this.uniqueByUserId = uniqueByUserId;
     }
 
     public static CategoryModel scopeIsGlobal(
@@ -90,8 +87,8 @@ public class CategoryModel {
             name,
             orderDirection,
             CategoryModelScope.GLOBAL,
-            uniqueByUserId,
             new CategoryModelOptions()
+                .withUniqueByUserId(uniqueByUserId)
                 .withCalculateIntervalMinutes(calculateIntervalMinutes)
                 .withMetadata(options.metadata)
                 .withMinimumValue(options.minimumValue)
@@ -116,22 +113,19 @@ public class CategoryModel {
         return (new CategoryModel(
             name,
             orderDirection,
-            CategoryModelScope.GLOBAL,
-            uniqueByUserId
+            CategoryModelScope.GLOBAL
         ));
     }
 
     public static CategoryModel scopeIsScoped(
         String name,
         CategoryModelOrderDirection orderDirection,
-        Boolean uniqueByUserId,
         CategoryModelScopeIsScopedOptions options
     ) {
         return (new CategoryModel(
             name,
             orderDirection,
             CategoryModelScope.SCOPED,
-            uniqueByUserId,
             new CategoryModelOptions()
                 .withMetadata(options.metadata)
                 .withMinimumValue(options.minimumValue)
@@ -149,14 +143,12 @@ public class CategoryModel {
 
     public static CategoryModel scopeIsScoped(
         String name,
-        CategoryModelOrderDirection orderDirection,
-        Boolean uniqueByUserId
+        CategoryModelOrderDirection orderDirection
     ) {
         return (new CategoryModel(
             name,
             orderDirection,
-            CategoryModelScope.SCOPED,
-            uniqueByUserId
+            CategoryModelScope.SCOPED
         ));
     }
 

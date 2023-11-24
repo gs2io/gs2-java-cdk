@@ -28,6 +28,7 @@ public class NamespaceOptions {
     public AdMob admob;
     public UnityAd unityAd;
     public String description;
+    public NotificationSetting changePointNotification;
     public LogSetting logSetting;
     
     public NamespaceOptions withAdmob(
@@ -48,6 +49,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withChangePointNotification(
+        NotificationSetting changePointNotification
+    ) {
+        this.changePointNotification = changePointNotification;
         return this;
     }
     

@@ -10,9 +10,7 @@ public class NotificationSetting {
     String sound;
 
     public NotificationSetting(
-            String gatewayNamespaceId
     ) {
-        this.gatewayNamespaceId = gatewayNamespaceId;
     }
 
     public Map<String, Object> properties() {

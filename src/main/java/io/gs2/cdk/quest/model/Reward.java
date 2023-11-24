@@ -55,8 +55,7 @@ public class Reward {
         var properties = new HashMap<String, Object>();
 
         if (this.action != null) {
-            properties.put("action", this.action.toString(
-            ));
+            properties.put("action", this.action);
         }
         if (this.request != null) {
             properties.put("request", this.request);

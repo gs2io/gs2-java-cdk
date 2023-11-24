@@ -43,8 +43,7 @@ public class AcquireActionConfig {
         var properties = new HashMap<String, Object>();
 
         if (this.name != null) {
-            properties.put("name", this.name.toString(
-            ));
+            properties.put("name", this.name);
         }
         if (this.config != null) {
             properties.put("config", this.config.stream().map(v -> v.properties(

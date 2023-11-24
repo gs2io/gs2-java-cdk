@@ -27,6 +27,7 @@ public class CategoryModelOptions {
     public String metadata;
     public Long minimumValue;
     public Long maximumValue;
+    public Boolean uniqueByUserId;
     public Boolean sum;
     public Integer calculateFixedTimingHour;
     public Integer calculateFixedTimingMinute;
@@ -55,6 +56,13 @@ public class CategoryModelOptions {
         Long maximumValue
     ) {
         this.maximumValue = maximumValue;
+        return this;
+    }
+    
+    public CategoryModelOptions withUniqueByUserId(
+        Boolean uniqueByUserId
+    ) {
+        this.uniqueByUserId = uniqueByUserId;
         return this;
     }
     

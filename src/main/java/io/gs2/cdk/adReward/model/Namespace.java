@@ -35,16 +35,15 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private NotificationSetting changePointNotification;
     private AdMob admob = null;
     private UnityAd unityAd = null;
     private String description = null;
+    private NotificationSetting changePointNotification = null;
     private LogSetting logSetting = null;
 
     public Namespace(
         Stack stack,
         String name,
-        NotificationSetting changePointNotification,
         NamespaceOptions options
     ) {
         super(
@@ -53,10 +52,10 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.changePointNotification = changePointNotification;
         this.admob = options.admob;
         this.unityAd = options.unityAd;
         this.description = options.description;
+        this.changePointNotification = options.changePointNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -65,8 +64,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        NotificationSetting changePointNotification
+        String name
     ) {
         super(
             "AdReward_Namespace_" + name
@@ -74,7 +72,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.changePointNotification = changePointNotification;
         stack.addResource(
             this
         );
