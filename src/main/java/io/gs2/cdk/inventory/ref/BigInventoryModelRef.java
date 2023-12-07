@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.inventory.ref.BigItemModelRef;
 import io.gs2.cdk.inventory.stampSheet.AcquireBigItemByUserId;
+import io.gs2.cdk.inventory.stampSheet.SetBigItemByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeBigItemByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyBigItemByUserId;
 import java.util.Arrays;
@@ -71,6 +72,34 @@ public class BigInventoryModelRef {
             this.inventoryName,
             itemName,
             acquireCount,
+            "#{userId}"
+        ));
+    }
+
+    public SetBigItemByUserId setBigItem(
+        String itemName,
+        String count,
+        String userId
+    ) {
+        return (new SetBigItemByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            itemName,
+            count,
+            userId
+        ));
+    }
+
+
+    public SetBigItemByUserId setBigItem(
+        String itemName,
+        String count
+    ) {
+        return (new SetBigItemByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            itemName,
+            count,
             "#{userId}"
         ));
     }
