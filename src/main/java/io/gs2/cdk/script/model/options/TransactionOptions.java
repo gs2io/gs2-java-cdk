@@ -13,36 +13,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.stateMachine.stampSheet;
-
-import io.gs2.cdk.core.model.AcquireAction;
+package io.gs2.cdk.script.model.options;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.AcquireAction;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StartStateMachineByUserId extends AcquireAction {
-
-    public StartStateMachineByUserId(
-        String namespaceName,
-        String args,
-        String enableSpeculativeExecution,
-        Integer ttl,
-        String userId
+public class TransactionOptions {
+    public List<ConsumeAction> consumeActions;
+    public List<AcquireAction> acquireActions;
+    
+    public TransactionOptions withConsumeActions(
+        List<ConsumeAction> consumeActions
     ) {
-        super(
-            "Gs2StateMachine:StartStateMachineByUserId",
-            new HashMap<>() {
-                {
-                    put("namespaceName", namespaceName);
-                    put("args", args);
-                    put("enableSpeculativeExecution", enableSpeculativeExecution);
-                    put("ttl", ttl);
-                    put("userId", userId);
-                }
-            }
-        );
+        this.consumeActions = consumeActions;
+        return this;
+    }
+    
+    public TransactionOptions withAcquireActions(
+        List<AcquireAction> acquireActions
+    ) {
+        this.acquireActions = acquireActions;
+        return this;
     }
 }
+

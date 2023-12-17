@@ -27,6 +27,7 @@ public class NamespaceOptions {
     public String description;
     public Boolean enableAwaitExchange;
     public Boolean enableDirectExchange;
+    public TransactionSetting transactionSetting;
     public ScriptSetting exchangeScript;
     public LogSetting logSetting;
     public String queueNamespaceId;
@@ -50,6 +51,13 @@ public class NamespaceOptions {
         Boolean enableDirectExchange
     ) {
         this.enableDirectExchange = enableDirectExchange;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
         return this;
     }
     

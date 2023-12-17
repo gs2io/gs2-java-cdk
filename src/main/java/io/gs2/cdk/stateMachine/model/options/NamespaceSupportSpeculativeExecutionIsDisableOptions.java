@@ -24,70 +24,69 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceOptions {
+public class NamespaceSupportSpeculativeExecutionIsDisableOptions {
     public String description;
-    public NamespaceSupportSpeculativeExecution supportSpeculativeExecution;
     public TransactionSetting transactionSetting;
     public ScriptSetting startScript;
     public ScriptSetting passScript;
     public ScriptSetting errorScript;
     public Long lowestStateMachineVersion;
     public LogSetting logSetting;
+    public Long revision;
     
-    public NamespaceOptions withDescription(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withDescription(
         String description
     ) {
         this.description = description;
         return this;
     }
     
-    public NamespaceOptions withSupportSpeculativeExecution(
-        NamespaceSupportSpeculativeExecution supportSpeculativeExecution
-    ) {
-        this.supportSpeculativeExecution = supportSpeculativeExecution;
-        return this;
-    }
-    
-    public NamespaceOptions withTransactionSetting(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withTransactionSetting(
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
         return this;
     }
     
-    public NamespaceOptions withStartScript(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withStartScript(
         ScriptSetting startScript
     ) {
         this.startScript = startScript;
         return this;
     }
     
-    public NamespaceOptions withPassScript(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withPassScript(
         ScriptSetting passScript
     ) {
         this.passScript = passScript;
         return this;
     }
     
-    public NamespaceOptions withErrorScript(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withErrorScript(
         ScriptSetting errorScript
     ) {
         this.errorScript = errorScript;
         return this;
     }
     
-    public NamespaceOptions withLowestStateMachineVersion(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withLowestStateMachineVersion(
         Long lowestStateMachineVersion
     ) {
         this.lowestStateMachineVersion = lowestStateMachineVersion;
         return this;
     }
     
-    public NamespaceOptions withLogSetting(
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withLogSetting(
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
         return this;
     }
+    
+    public NamespaceSupportSpeculativeExecutionIsDisableOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
-

@@ -33,12 +33,14 @@ public class NamespaceRef {
 
     public StartStateMachineByUserId startStateMachine(
         String args,
+        String enableSpeculativeExecution,
         Integer ttl,
         String userId
     ) {
         return (new StartStateMachineByUserId(
             this.namespaceName,
             args,
+            enableSpeculativeExecution,
             ttl,
             userId
         ));
@@ -47,11 +49,13 @@ public class NamespaceRef {
 
     public StartStateMachineByUserId startStateMachine(
         String args,
+        String enableSpeculativeExecution,
         Integer ttl
     ) {
         return (new StartStateMachineByUserId(
             this.namespaceName,
             args,
+            enableSpeculativeExecution,
             ttl,
             "#{userId}"
         ));
