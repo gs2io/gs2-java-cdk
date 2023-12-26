@@ -37,15 +37,14 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private TransactionSetting transactionSetting;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private ScriptSetting buyScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
         Stack stack,
         String name,
-        TransactionSetting transactionSetting,
         NamespaceOptions options
     ) {
         super(
@@ -54,8 +53,8 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.transactionSetting = transactionSetting;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.buyScript = options.buyScript;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -65,8 +64,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        TransactionSetting transactionSetting
+        String name
     ) {
         super(
             "Showcase_Namespace_" + name
@@ -74,7 +72,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.transactionSetting = transactionSetting;
         stack.addResource(
             this
         );

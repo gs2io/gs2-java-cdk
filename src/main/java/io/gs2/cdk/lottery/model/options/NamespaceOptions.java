@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public TransactionSetting transactionSetting;
     public String lotteryTriggerScriptId;
     public String choicePrizeTableScriptId;
     public LogSetting logSetting;
@@ -34,6 +35,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
         return this;
     }
     

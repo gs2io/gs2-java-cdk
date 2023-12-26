@@ -36,8 +36,8 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private TransactionSetting transactionSetting;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private ScriptSetting startQuestScript = null;
     private ScriptSetting completeQuestScript = null;
     private ScriptSetting failedQuestScript = null;
@@ -46,7 +46,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        TransactionSetting transactionSetting,
         NamespaceOptions options
     ) {
         super(
@@ -55,8 +54,8 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.transactionSetting = transactionSetting;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.startQuestScript = options.startQuestScript;
         this.completeQuestScript = options.completeQuestScript;
         this.failedQuestScript = options.failedQuestScript;
@@ -68,8 +67,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        TransactionSetting transactionSetting
+        String name
     ) {
         super(
             "Quest_Namespace_" + name
@@ -77,7 +75,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.transactionSetting = transactionSetting;
         stack.addResource(
             this
         );

@@ -16,6 +16,8 @@
 package io.gs2.cdk.realtime.model.options;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
+import io.gs2.cdk.realtime.model.enums.NamespaceServerType;
+import io.gs2.cdk.realtime.model.enums.NamespaceServerSpec;
 
 import java.util.HashMap;
 import java.util.Map;

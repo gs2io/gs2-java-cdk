@@ -13,7 +13,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.loginReward.model.options;
+package io.gs2.cdk.grade.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public TransactionSetting transactionSetting;
-    public ScriptSetting receiveScript;
+    public ScriptSetting changeGradeScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -43,10 +43,10 @@ public class NamespaceOptions {
         return this;
     }
     
-    public NamespaceOptions withReceiveScript(
-        ScriptSetting receiveScript
+    public NamespaceOptions withChangeGradeScript(
+        ScriptSetting changeGradeScript
     ) {
-        this.receiveScript = receiveScript;
+        this.changeGradeScript = changeGradeScript;
         return this;
     }
     

@@ -13,38 +13,39 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.enchant.model.options;
-import io.gs2.cdk.core.model.TransactionSetting;
-import io.gs2.cdk.core.model.LogSetting;
+package io.gs2.cdk.grade.model.options;
+import io.gs2.cdk.grade.model.DefaultGradeModel;
+import io.gs2.cdk.grade.model.GradeEntryModel;
+import io.gs2.cdk.grade.model.AcquireActionRate;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceOptions {
-    public String description;
-    public TransactionSetting transactionSetting;
-    public LogSetting logSetting;
+public class GradeModelOptions {
+    public String metadata;
+    public List<DefaultGradeModel> defaultGrades;
+    public List<AcquireActionRate> acquireActionRates;
     
-    public NamespaceOptions withDescription(
-        String description
+    public GradeModelOptions withMetadata(
+        String metadata
     ) {
-        this.description = description;
+        this.metadata = metadata;
         return this;
     }
     
-    public NamespaceOptions withTransactionSetting(
-        TransactionSetting transactionSetting
+    public GradeModelOptions withDefaultGrades(
+        List<DefaultGradeModel> defaultGrades
     ) {
-        this.transactionSetting = transactionSetting;
+        this.defaultGrades = defaultGrades;
         return this;
     }
     
-    public NamespaceOptions withLogSetting(
-        LogSetting logSetting
+    public GradeModelOptions withAcquireActionRates(
+        List<AcquireActionRate> acquireActionRates
     ) {
-        this.logSetting = logSetting;
+        this.acquireActionRates = acquireActionRates;
         return this;
     }
 }

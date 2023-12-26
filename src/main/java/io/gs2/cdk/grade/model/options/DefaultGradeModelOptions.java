@@ -13,34 +13,13 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.stateMachine.stampSheet;
-
-import io.gs2.cdk.core.model.AcquireAction;
-import io.gs2.cdk.core.model.ConsumeAction;
+package io.gs2.cdk.grade.model.options;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StartStateMachineByUserId extends AcquireAction {
-
-    public StartStateMachineByUserId(
-        String namespaceName,
-        String args,
-        Integer ttl,
-        String userId
-    ) {
-        super(
-            "Gs2StateMachine:StartStateMachineByUserId",
-            new HashMap<>() {
-                {
-                    put("namespaceName", namespaceName);
-                    put("args", args);
-                    put("ttl", ttl);
-                    put("userId", userId);
-                }
-            }
-        );
-    }
+public class DefaultGradeModelOptions {
 }
+

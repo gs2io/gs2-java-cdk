@@ -16,6 +16,8 @@
 package io.gs2.cdk.money.model.options;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
+import io.gs2.cdk.money.model.enums.NamespacePriority;
+import io.gs2.cdk.money.model.enums.NamespaceCurrency;
 
 import java.util.HashMap;
 import java.util.Map;

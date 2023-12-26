@@ -17,6 +17,8 @@ package io.gs2.cdk.matchmaking.model.options;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceCreateGatheringTriggerType;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceCompleteMatchmakingTriggerType;
 
 import java.util.HashMap;
 import java.util.Map;

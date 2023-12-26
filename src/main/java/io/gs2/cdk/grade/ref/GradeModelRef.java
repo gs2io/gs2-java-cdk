@@ -13,48 +13,24 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.stateMachine.ref;
+package io.gs2.cdk.grade.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.stateMachine.stampSheet.StartStateMachineByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class GradeModelRef {
     private String namespaceName;
+    private String gradeName;
 
-    public NamespaceRef(
-        String namespaceName
+    public GradeModelRef(
+        String namespaceName,
+        String gradeName
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public StartStateMachineByUserId startStateMachine(
-        String args,
-        Integer ttl,
-        String userId
-    ) {
-        return (new StartStateMachineByUserId(
-            this.namespaceName,
-            args,
-            ttl,
-            userId
-        ));
-    }
-
-
-    public StartStateMachineByUserId startStateMachine(
-        String args,
-        Integer ttl
-    ) {
-        return (new StartStateMachineByUserId(
-            this.namespaceName,
-            args,
-            ttl,
-            "#{userId}"
-        ));
+        this.gradeName = gradeName;
     }
 
     public String grn(
@@ -70,8 +46,10 @@ public class NamespaceRef {
                 GetAttr.ownerId(
                 ).str(
                 ),
-                "stateMachine",
-                this.namespaceName
+                "grade",
+                this.namespaceName,
+                "model",
+                this.gradeName
             )
         )).str(
         );
