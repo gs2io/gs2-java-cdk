@@ -13,21 +13,13 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.grade.model.options;
+package io.gs2.cdk.enhance.model.options;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GradeEntryModelOptions {
-    public String metadata;
-    
-    public GradeEntryModelOptions withMetadata(
-        String metadata
-    ) {
-        this.metadata = metadata;
-        return this;
-    }
+public class UnleashRateEntryModelOptions {
 }
 

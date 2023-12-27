@@ -25,6 +25,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.enhance.ref.NamespaceRef;
 import io.gs2.cdk.enhance.model.CurrentMasterData;
 import io.gs2.cdk.enhance.model.RateModel;
+import io.gs2.cdk.enhance.model.UnleashRateModel;
 
 import io.gs2.cdk.enhance.model.options.NamespaceOptions;
 
@@ -135,12 +136,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<RateModel> rateModels
+        List<RateModel> rateModels,
+        List<UnleashRateModel> unleashRateModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            rateModels
+            rateModels,
+            unleashRateModels
         )).addDependsOn(
             this
         );

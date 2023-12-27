@@ -22,25 +22,28 @@ import java.util.stream.Collectors;
 
 public class GradeEntryModel {
     private Long rankCapValue;
+    private String propertyIdRegex;
     private String gradeUpPropertyIdRegex;
     private String metadata = null;
-    private String propertyIdRegex = null;
 
     public GradeEntryModel(
         Long rankCapValue,
+        String propertyIdRegex,
         String gradeUpPropertyIdRegex,
         GradeEntryModelOptions options
     ) {
         this.rankCapValue = rankCapValue;
+        this.propertyIdRegex = propertyIdRegex;
         this.gradeUpPropertyIdRegex = gradeUpPropertyIdRegex;
         this.metadata = options.metadata;
-        this.propertyIdRegex = options.propertyIdRegex;
     }
     public GradeEntryModel(
         Long rankCapValue,
+        String propertyIdRegex,
         String gradeUpPropertyIdRegex
     ) {
         this.rankCapValue = rankCapValue;
+        this.propertyIdRegex = propertyIdRegex;
         this.gradeUpPropertyIdRegex = gradeUpPropertyIdRegex;
     }
 

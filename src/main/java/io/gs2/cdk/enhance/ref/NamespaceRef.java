@@ -17,6 +17,7 @@ package io.gs2.cdk.enhance.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.enhance.ref.UnleashRateModelRef;
 import io.gs2.cdk.enhance.ref.RateModelRef;
 import io.gs2.cdk.enhance.stampSheet.CreateProgressByUserId;
 import io.gs2.cdk.enhance.model.Material;
@@ -32,6 +33,15 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
+    }
+
+    public UnleashRateModelRef unleashRateModel(
+        String rateName
+    ) {
+        return (new UnleashRateModelRef(
+            this.namespaceName,
+            rateName
+        ));
     }
 
     public RateModelRef rateModel(
