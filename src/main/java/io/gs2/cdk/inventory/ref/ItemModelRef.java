@@ -18,6 +18,7 @@ package io.gs2.cdk.inventory.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.AcquireItemSetWithGradeByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
@@ -76,6 +77,36 @@ public class ItemModelRef {
             expiresAt,
             createNewItemSet,
             itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public AcquireItemSetWithGradeByUserId acquireItemSetWithGrade(
+        String gradeModelId,
+        Long gradeValue,
+        String userId
+    ) {
+        return (new AcquireItemSetWithGradeByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            this.itemName,
+            gradeModelId,
+            gradeValue,
+            userId
+        ));
+    }
+
+
+    public AcquireItemSetWithGradeByUserId acquireItemSetWithGrade(
+        String gradeModelId,
+        Long gradeValue
+    ) {
+        return (new AcquireItemSetWithGradeByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            this.itemName,
+            gradeModelId,
+            gradeValue,
             "#{userId}"
         ));
     }

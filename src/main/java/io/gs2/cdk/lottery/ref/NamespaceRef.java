@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.lottery.ref.PrizeTableRef;
 import io.gs2.cdk.lottery.ref.LotteryModelRef;
+import io.gs2.cdk.lottery.stampSheet.ResetBoxByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +48,28 @@ public class NamespaceRef {
         return (new LotteryModelRef(
             this.namespaceName,
             lotteryName
+        ));
+    }
+
+    public ResetBoxByUserId resetBox(
+        String prizeTableName,
+        String userId
+    ) {
+        return (new ResetBoxByUserId(
+            this.namespaceName,
+            prizeTableName,
+            userId
+        ));
+    }
+
+
+    public ResetBoxByUserId resetBox(
+        String prizeTableName
+    ) {
+        return (new ResetBoxByUserId(
+            this.namespaceName,
+            prizeTableName,
+            "#{userId}"
         ));
     }
 
