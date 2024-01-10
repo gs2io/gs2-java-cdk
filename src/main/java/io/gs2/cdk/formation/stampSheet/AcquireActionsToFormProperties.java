@@ -17,7 +17,7 @@ package io.gs2.cdk.formation.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
-import io.gs2.cdk.formation.model.AcquireActionConfig;
+import io.gs2.cdk.core.model.Config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ public class AcquireActionsToFormProperties extends AcquireAction {
         String moldModelName,
         Integer index,
         AcquireAction acquireAction,
-        List<AcquireActionConfig> config,
+        List<Config> config,
         String userId
     ) {
         super(

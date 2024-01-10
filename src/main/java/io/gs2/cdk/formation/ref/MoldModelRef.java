@@ -22,7 +22,7 @@ import io.gs2.cdk.formation.stampSheet.AddMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
 import io.gs2.cdk.core.model.AcquireAction;
-import io.gs2.cdk.formation.model.AcquireActionConfig;
+import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.formation.stampSheet.SubMoldCapacityByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +99,7 @@ public class MoldModelRef {
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
         Integer index,
         AcquireAction acquireAction,
-        List<AcquireActionConfig> config,
+        List<Config> config,
         String userId
     ) {
         return (new AcquireActionsToFormProperties(
@@ -116,7 +116,7 @@ public class MoldModelRef {
     public AcquireActionsToFormProperties acquireActionsToFormProperties(
         Integer index,
         AcquireAction acquireAction,
-        List<AcquireActionConfig> config
+        List<Config> config
     ) {
         return (new AcquireActionsToFormProperties(
             this.namespaceName,

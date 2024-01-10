@@ -19,7 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToPropertyFormProperties;
 import io.gs2.cdk.core.model.AcquireAction;
-import io.gs2.cdk.formation.model.AcquireActionConfig;
+import io.gs2.cdk.core.model.Config;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,7 +39,7 @@ public class PropertyFormModelRef {
     public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
         String propertyId,
         AcquireAction acquireAction,
-        List<AcquireActionConfig> config,
+        List<Config> config,
         String userId
     ) {
         return (new AcquireActionsToPropertyFormProperties(
@@ -56,7 +56,7 @@ public class PropertyFormModelRef {
     public AcquireActionsToPropertyFormProperties acquireActionsToPropertyFormProperties(
         String propertyId,
         AcquireAction acquireAction,
-        List<AcquireActionConfig> config
+        List<Config> config
     ) {
         return (new AcquireActionsToPropertyFormProperties(
             this.namespaceName,
