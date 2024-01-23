@@ -23,8 +23,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TransactionOptions {
+    public String transactionId;
     public List<ConsumeAction> consumeActions;
     public List<AcquireAction> acquireActions;
+    
+    public TransactionOptions withTransactionId(
+        String transactionId
+    ) {
+        this.transactionId = transactionId;
+        return this;
+    }
     
     public TransactionOptions withConsumeActions(
         List<ConsumeAction> consumeActions

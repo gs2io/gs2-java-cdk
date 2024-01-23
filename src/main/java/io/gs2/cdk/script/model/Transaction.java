@@ -23,12 +23,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Transaction {
+    private String transactionId = null;
     private List<ConsumeAction> consumeActions = null;
     private List<AcquireAction> acquireActions = null;
 
     public Transaction(
         TransactionOptions options
     ) {
+        this.transactionId = options.transactionId;
         this.consumeActions = options.consumeActions;
         this.acquireActions = options.acquireActions;
     }
@@ -40,6 +42,9 @@ public class Transaction {
     ) {
         var properties = new HashMap<String, Object>();
 
+        if (this.transactionId != null) {
+            properties.put("transactionId", this.transactionId);
+        }
         if (this.consumeActions != null) {
             properties.put("consumeActions", this.consumeActions.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));

@@ -27,6 +27,8 @@ public class NamespaceOptions {
     public ScriptSetting acquireScript;
     public ScriptSetting overflowScript;
     public ScriptSetting consumeScript;
+    public ScriptSetting simpleItemAcquireScript;
+    public ScriptSetting simpleItemConsumeScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -54,6 +56,20 @@ public class NamespaceOptions {
         ScriptSetting consumeScript
     ) {
         this.consumeScript = consumeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withSimpleItemAcquireScript(
+        ScriptSetting simpleItemAcquireScript
+    ) {
+        this.simpleItemAcquireScript = simpleItemAcquireScript;
+        return this;
+    }
+    
+    public NamespaceOptions withSimpleItemConsumeScript(
+        ScriptSetting simpleItemConsumeScript
+    ) {
+        this.simpleItemConsumeScript = simpleItemConsumeScript;
         return this;
     }
     

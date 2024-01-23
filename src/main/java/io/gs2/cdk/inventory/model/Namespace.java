@@ -41,6 +41,8 @@ public class Namespace extends CdkResource {
     private ScriptSetting acquireScript = null;
     private ScriptSetting overflowScript = null;
     private ScriptSetting consumeScript = null;
+    private ScriptSetting simpleItemAcquireScript = null;
+    private ScriptSetting simpleItemConsumeScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -58,6 +60,8 @@ public class Namespace extends CdkResource {
         this.acquireScript = options.acquireScript;
         this.overflowScript = options.overflowScript;
         this.consumeScript = options.consumeScript;
+        this.simpleItemAcquireScript = options.simpleItemAcquireScript;
+        this.simpleItemConsumeScript = options.simpleItemConsumeScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -110,6 +114,14 @@ public class Namespace extends CdkResource {
         }
         if (this.consumeScript != null) {
             properties.put("ConsumeScript", this.consumeScript.properties(
+            ));
+        }
+        if (this.simpleItemAcquireScript != null) {
+            properties.put("SimpleItemAcquireScript", this.simpleItemAcquireScript.properties(
+            ));
+        }
+        if (this.simpleItemConsumeScript != null) {
+            properties.put("SimpleItemConsumeScript", this.simpleItemConsumeScript.properties(
             ));
         }
         if (this.logSetting != null) {
