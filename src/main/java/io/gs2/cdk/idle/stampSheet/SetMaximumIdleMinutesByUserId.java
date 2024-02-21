@@ -13,7 +13,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.skillTree.stampSheet;
+package io.gs2.cdk.idle.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
@@ -23,21 +23,21 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MarkReleaseByUserId extends AcquireAction {
+public class SetMaximumIdleMinutesByUserId extends AcquireAction {
 
-    public MarkReleaseByUserId(
+    public SetMaximumIdleMinutesByUserId(
         String namespaceName,
-        String propertyId,
-        List<String> nodeModelNames,
+        String categoryName,
+        Integer maximumIdleMinutes,
         String userId
     ) {
         super(
-            "Gs2SkillTree:MarkReleaseByUserId",
+            "Gs2Idle:SetMaximumIdleMinutesByUserId",
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("propertyId", propertyId);
-                    put("nodeModelNames", nodeModelNames);
+                    put("categoryName", categoryName);
+                    put("maximumIdleMinutes", maximumIdleMinutes);
                     put("userId", userId);
                 }
             }

@@ -27,6 +27,7 @@ public class MarkRestrainByUserId extends ConsumeAction {
 
     public MarkRestrainByUserId(
         String namespaceName,
+        String propertyId,
         List<String> nodeModelNames,
         String userId
     ) {
@@ -35,6 +36,7 @@ public class MarkRestrainByUserId extends ConsumeAction {
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
+                    put("propertyId", propertyId);
                     put("nodeModelNames", nodeModelNames);
                     put("userId", userId);
                 }

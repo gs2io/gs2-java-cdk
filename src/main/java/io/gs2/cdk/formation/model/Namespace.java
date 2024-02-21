@@ -41,6 +41,7 @@ public class Namespace extends CdkResource {
     private TransactionSetting transactionSetting = null;
     private ScriptSetting updateMoldScript = null;
     private ScriptSetting updateFormScript = null;
+    private ScriptSetting updatePropertyFormScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -58,6 +59,7 @@ public class Namespace extends CdkResource {
         this.transactionSetting = options.transactionSetting;
         this.updateMoldScript = options.updateMoldScript;
         this.updateFormScript = options.updateFormScript;
+        this.updatePropertyFormScript = options.updatePropertyFormScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -110,6 +112,10 @@ public class Namespace extends CdkResource {
         }
         if (this.updateFormScript != null) {
             properties.put("UpdateFormScript", this.updateFormScript.properties(
+            ));
+        }
+        if (this.updatePropertyFormScript != null) {
+            properties.put("UpdatePropertyFormScript", this.updatePropertyFormScript.properties(
             ));
         }
         if (this.logSetting != null) {

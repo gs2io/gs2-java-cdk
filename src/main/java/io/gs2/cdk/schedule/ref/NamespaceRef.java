@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.schedule.stampSheet.TriggerByUserId;
 import io.gs2.cdk.schedule.stampSheet.DeleteTriggerByUserId;
+import io.gs2.cdk.schedule.stampSheet.VerifyEventByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -80,6 +81,32 @@ public class NamespaceRef {
         return (new DeleteTriggerByUserId(
             this.namespaceName,
             triggerName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyEventByUserId verifyEvent(
+        String eventName,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyEventByUserId(
+            this.namespaceName,
+            eventName,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyEventByUserId verifyEvent(
+        String eventName,
+        String verifyType
+    ) {
+        return (new VerifyEventByUserId(
+            this.namespaceName,
+            eventName,
+            verifyType,
             "#{userId}"
         ));
     }

@@ -27,7 +27,9 @@ public class StampSheetResult {
     private String transactionId;
     private AcquireAction sheetRequest;
     private List<ConsumeAction> taskRequests = null;
+    private List<Integer> taskResultCodes = null;
     private List<String> taskResults = null;
+    private Integer sheetResultCode = null;
     private String sheetResult = null;
     private String nextTransactionId = null;
     private Long revision = null;
@@ -42,7 +44,9 @@ public class StampSheetResult {
         this.transactionId = transactionId;
         this.sheetRequest = sheetRequest;
         this.taskRequests = options.taskRequests;
+        this.taskResultCodes = options.taskResultCodes;
         this.taskResults = options.taskResults;
+        this.sheetResultCode = options.sheetResultCode;
         this.sheetResult = options.sheetResult;
         this.nextTransactionId = options.nextTransactionId;
         this.revision = options.revision;
@@ -75,8 +79,14 @@ public class StampSheetResult {
             properties.put("sheetRequest", this.sheetRequest.properties(
             ));
         }
+        if (this.taskResultCodes != null) {
+            properties.put("taskResultCodes", this.taskResultCodes);
+        }
         if (this.taskResults != null) {
             properties.put("taskResults", this.taskResults);
+        }
+        if (this.sheetResultCode != null) {
+            properties.put("sheetResultCode", this.sheetResultCode);
         }
         if (this.sheetResult != null) {
             properties.put("sheetResult", this.sheetResult);

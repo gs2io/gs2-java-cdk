@@ -28,6 +28,7 @@ public class NamespaceOptions {
     public TransactionSetting transactionSetting;
     public ScriptSetting updateMoldScript;
     public ScriptSetting updateFormScript;
+    public ScriptSetting updatePropertyFormScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -55,6 +56,13 @@ public class NamespaceOptions {
         ScriptSetting updateFormScript
     ) {
         this.updateFormScript = updateFormScript;
+        return this;
+    }
+    
+    public NamespaceOptions withUpdatePropertyFormScript(
+        ScriptSetting updatePropertyFormScript
+    ) {
+        this.updatePropertyFormScript = updatePropertyFormScript;
         return this;
     }
     

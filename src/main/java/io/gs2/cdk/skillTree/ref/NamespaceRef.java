@@ -43,11 +43,13 @@ public class NamespaceRef {
     }
 
     public MarkReleaseByUserId markRelease(
+        String propertyId,
         List<String> nodeModelNames,
         String userId
     ) {
         return (new MarkReleaseByUserId(
             this.namespaceName,
+            propertyId,
             nodeModelNames,
             userId
         ));
@@ -55,21 +57,25 @@ public class NamespaceRef {
 
 
     public MarkReleaseByUserId markRelease(
+        String propertyId,
         List<String> nodeModelNames
     ) {
         return (new MarkReleaseByUserId(
             this.namespaceName,
+            propertyId,
             nodeModelNames,
             "#{userId}"
         ));
     }
 
     public MarkRestrainByUserId markRestrain(
+        String propertyId,
         List<String> nodeModelNames,
         String userId
     ) {
         return (new MarkRestrainByUserId(
             this.namespaceName,
+            propertyId,
             nodeModelNames,
             userId
         ));
@@ -77,10 +83,12 @@ public class NamespaceRef {
 
 
     public MarkRestrainByUserId markRestrain(
+        String propertyId,
         List<String> nodeModelNames
     ) {
         return (new MarkRestrainByUserId(
             this.namespaceName,
+            propertyId,
             nodeModelNames,
             "#{userId}"
         ));

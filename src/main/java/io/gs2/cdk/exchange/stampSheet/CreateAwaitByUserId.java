@@ -17,6 +17,7 @@ package io.gs2.cdk.exchange.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.Config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class CreateAwaitByUserId extends AcquireAction {
         String namespaceName,
         String rateName,
         Integer count,
+        List<Config> config,
         String userId
     ) {
         super(
@@ -38,6 +40,7 @@ public class CreateAwaitByUserId extends AcquireAction {
                     put("namespaceName", namespaceName);
                     put("rateName", rateName);
                     put("count", count);
+                    put("config", config);
                     put("userId", userId);
                 }
             }

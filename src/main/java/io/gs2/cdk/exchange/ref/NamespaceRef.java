@@ -145,12 +145,14 @@ public class NamespaceRef {
     public CreateAwaitByUserId createAwait(
         String rateName,
         Integer count,
+        List<Config> config,
         String userId
     ) {
         return (new CreateAwaitByUserId(
             this.namespaceName,
             rateName,
             count,
+            config,
             userId
         ));
     }
@@ -158,12 +160,14 @@ public class NamespaceRef {
 
     public CreateAwaitByUserId createAwait(
         String rateName,
-        Integer count
+        Integer count,
+        List<Config> config
     ) {
         return (new CreateAwaitByUserId(
             this.namespaceName,
             rateName,
             count,
+            config,
             "#{userId}"
         ));
     }

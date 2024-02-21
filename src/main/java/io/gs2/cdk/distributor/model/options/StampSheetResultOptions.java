@@ -24,7 +24,9 @@ import java.util.stream.Collectors;
 
 public class StampSheetResultOptions {
     public List<ConsumeAction> taskRequests;
+    public List<Integer> taskResultCodes;
     public List<String> taskResults;
+    public Integer sheetResultCode;
     public String sheetResult;
     public String nextTransactionId;
     public Long revision;
@@ -36,10 +38,24 @@ public class StampSheetResultOptions {
         return this;
     }
     
+    public StampSheetResultOptions withTaskResultCodes(
+        List<Integer> taskResultCodes
+    ) {
+        this.taskResultCodes = taskResultCodes;
+        return this;
+    }
+    
     public StampSheetResultOptions withTaskResults(
         List<String> taskResults
     ) {
         this.taskResults = taskResults;
+        return this;
+    }
+    
+    public StampSheetResultOptions withSheetResultCode(
+        Integer sheetResultCode
+    ) {
+        this.sheetResultCode = sheetResultCode;
         return this;
     }
     
