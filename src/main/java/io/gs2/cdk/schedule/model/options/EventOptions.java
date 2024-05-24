@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.schedule.model.options;
+import io.gs2.cdk.schedule.model.RepeatSetting;
 import io.gs2.cdk.schedule.model.enums.EventScheduleType;
 import io.gs2.cdk.schedule.model.enums.EventRepeatType;
 import io.gs2.cdk.schedule.model.enums.EventRepeatBeginDayOfWeek;
@@ -28,13 +29,13 @@ public class EventOptions {
     public String metadata;
     public Long absoluteBegin;
     public Long absoluteEnd;
+    public String relativeTriggerName;
     public Integer repeatBeginDayOfMonth;
     public Integer repeatEndDayOfMonth;
     public EventRepeatBeginDayOfWeek repeatBeginDayOfWeek;
     public EventRepeatEndDayOfWeek repeatEndDayOfWeek;
     public Integer repeatBeginHour;
     public Integer repeatEndHour;
-    public String relativeTriggerName;
     
     public EventOptions withMetadata(
         String metadata
@@ -54,6 +55,13 @@ public class EventOptions {
         Long absoluteEnd
     ) {
         this.absoluteEnd = absoluteEnd;
+        return this;
+    }
+    
+    public EventOptions withRelativeTriggerName(
+        String relativeTriggerName
+    ) {
+        this.relativeTriggerName = relativeTriggerName;
         return this;
     }
     
@@ -96,13 +104,6 @@ public class EventOptions {
         Integer repeatEndHour
     ) {
         this.repeatEndHour = repeatEndHour;
-        return this;
-    }
-    
-    public EventOptions withRelativeTriggerName(
-        String relativeTriggerName
-    ) {
-        this.relativeTriggerName = relativeTriggerName;
         return this;
     }
 }

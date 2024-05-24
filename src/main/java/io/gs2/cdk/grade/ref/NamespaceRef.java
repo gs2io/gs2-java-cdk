@@ -172,6 +172,7 @@ public class NamespaceRef {
         String verifyType,
         String propertyId,
         Long gradeValue,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyGradeByUserId(
@@ -180,6 +181,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             gradeValue,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -189,7 +191,8 @@ public class NamespaceRef {
         String gradeName,
         String verifyType,
         String propertyId,
-        Long gradeValue
+        Long gradeValue,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyGradeByUserId(
             this.namespaceName,
@@ -197,6 +200,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             gradeValue,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

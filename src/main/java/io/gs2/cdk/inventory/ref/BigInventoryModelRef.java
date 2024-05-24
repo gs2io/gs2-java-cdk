@@ -136,6 +136,7 @@ public class BigInventoryModelRef {
         String itemName,
         String verifyType,
         String count,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyBigItemByUserId(
@@ -144,6 +145,7 @@ public class BigInventoryModelRef {
             itemName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -152,7 +154,8 @@ public class BigInventoryModelRef {
     public VerifyBigItemByUserId verifyBigItem(
         String itemName,
         String verifyType,
-        String count
+        String count,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyBigItemByUserId(
             this.namespaceName,
@@ -160,6 +163,7 @@ public class BigInventoryModelRef {
             itemName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

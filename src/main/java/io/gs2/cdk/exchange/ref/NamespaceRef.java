@@ -24,6 +24,7 @@ import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.exchange.stampSheet.IncrementalExchangeByUserId;
 import io.gs2.cdk.exchange.stampSheet.UnlockIncrementalExchangeByUserId;
 import io.gs2.cdk.exchange.stampSheet.CreateAwaitByUserId;
+import io.gs2.cdk.exchange.stampSheet.SkipByUserId;
 import io.gs2.cdk.exchange.stampSheet.DeleteAwaitByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -168,6 +169,40 @@ public class NamespaceRef {
             rateName,
             count,
             config,
+            "#{userId}"
+        ));
+    }
+
+    public SkipByUserId skip(
+        String awaitName,
+        String skipType,
+        Integer minutes,
+        Float rate,
+        String userId
+    ) {
+        return (new SkipByUserId(
+            this.namespaceName,
+            awaitName,
+            skipType,
+            minutes,
+            rate,
+            userId
+        ));
+    }
+
+
+    public SkipByUserId skip(
+        String awaitName,
+        String skipType,
+        Integer minutes,
+        Float rate
+    ) {
+        return (new SkipByUserId(
+            this.namespaceName,
+            awaitName,
+            skipType,
+            minutes,
+            rate,
             "#{userId}"
         ));
     }

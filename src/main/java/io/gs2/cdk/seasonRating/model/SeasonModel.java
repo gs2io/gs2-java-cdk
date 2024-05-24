@@ -26,6 +26,7 @@ public class SeasonModel {
     private List<TierModel> tiers;
     private String experienceModelId;
     private String metadata = null;
+    private String challengePeriodEventId = null;
 
     public SeasonModel(
         String name,
@@ -37,6 +38,7 @@ public class SeasonModel {
         this.tiers = tiers;
         this.experienceModelId = experienceModelId;
         this.metadata = options.metadata;
+        this.challengePeriodEventId = options.challengePeriodEventId;
     }
     public SeasonModel(
         String name,
@@ -64,6 +66,9 @@ public class SeasonModel {
         }
         if (this.experienceModelId != null) {
             properties.put("experienceModelId", this.experienceModelId);
+        }
+        if (this.challengePeriodEventId != null) {
+            properties.put("challengePeriodEventId", this.challengePeriodEventId);
         }
 
         return properties;

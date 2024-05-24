@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 public class RateModelTimingTypeIsAwaitOptions {
     public String metadata;
     public List<ConsumeAction> consumeActions;
-    public List<ConsumeAction> skipConsumeActions;
     public List<AcquireAction> acquireActions;
     
     public RateModelTimingTypeIsAwaitOptions withMetadata(
@@ -40,13 +39,6 @@ public class RateModelTimingTypeIsAwaitOptions {
         List<ConsumeAction> consumeActions
     ) {
         this.consumeActions = consumeActions;
-        return this;
-    }
-    
-    public RateModelTimingTypeIsAwaitOptions withSkipConsumeActions(
-        List<ConsumeAction> skipConsumeActions
-    ) {
-        this.skipConsumeActions = skipConsumeActions;
         return this;
     }
     

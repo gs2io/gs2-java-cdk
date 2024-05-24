@@ -30,6 +30,7 @@ public class VerifyInventoryCurrentMaxCapacityByUserId extends ConsumeAction {
         String inventoryName,
         String verifyType,
         Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
@@ -40,6 +41,7 @@ public class VerifyInventoryCurrentMaxCapacityByUserId extends ConsumeAction {
                     put("inventoryName", inventoryName);
                     put("verifyType", verifyType);
                     put("currentInventoryMaxCapacity", currentInventoryMaxCapacity);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

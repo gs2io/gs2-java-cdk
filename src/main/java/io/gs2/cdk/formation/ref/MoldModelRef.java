@@ -23,6 +23,8 @@ import io.gs2.cdk.formation.stampSheet.SetMoldCapacityByUserId;
 import io.gs2.cdk.formation.stampSheet.AcquireActionsToFormProperties;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.Config;
+import io.gs2.cdk.formation.stampSheet.SetFormByUserId;
+import io.gs2.cdk.formation.model.Slot;
 import io.gs2.cdk.formation.stampSheet.SubMoldCapacityByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -124,6 +126,34 @@ public class MoldModelRef {
             index,
             acquireAction,
             config,
+            "#{userId}"
+        ));
+    }
+
+    public SetFormByUserId setForm(
+        Integer index,
+        List<Slot> slots,
+        String userId
+    ) {
+        return (new SetFormByUserId(
+            this.namespaceName,
+            this.moldModelName,
+            index,
+            slots,
+            userId
+        ));
+    }
+
+
+    public SetFormByUserId setForm(
+        Integer index,
+        List<Slot> slots
+    ) {
+        return (new SetFormByUserId(
+            this.namespaceName,
+            this.moldModelName,
+            index,
+            slots,
             "#{userId}"
         ));
     }

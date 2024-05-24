@@ -22,24 +22,21 @@ import java.util.stream.Collectors;
 
 public class Slot {
     private String name;
-    private String propertyId;
+    private String propertyId = null;
     private String metadata = null;
 
     public Slot(
         String name,
-        String propertyId,
         SlotOptions options
     ) {
         this.name = name;
-        this.propertyId = propertyId;
+        this.propertyId = options.propertyId;
         this.metadata = options.metadata;
     }
     public Slot(
-        String name,
-        String propertyId
+        String name
     ) {
         this.name = name;
-        this.propertyId = propertyId;
     }
 
     public Map<String, Object> properties(

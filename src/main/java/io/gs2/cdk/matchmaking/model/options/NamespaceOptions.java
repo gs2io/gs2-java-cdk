@@ -17,8 +17,10 @@ package io.gs2.cdk.matchmaking.model.options;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableDisconnectDetection;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCreateGatheringTriggerType;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCompleteMatchmakingTriggerType;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableCollaborateSeasonRating;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,10 +30,15 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public Boolean enableRating;
+    public NamespaceEnableDisconnectDetection enableDisconnectDetection;
+    public Integer disconnectDetectionTimeoutSeconds;
     public String createGatheringTriggerRealtimeNamespaceId;
     public String createGatheringTriggerScriptId;
     public String completeMatchmakingTriggerRealtimeNamespaceId;
     public String completeMatchmakingTriggerScriptId;
+    public NamespaceEnableCollaborateSeasonRating enableCollaborateSeasonRating;
+    public String collaborateSeasonRatingNamespaceId;
+    public Integer collaborateSeasonRatingTtl;
     public ScriptSetting changeRatingScript;
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
@@ -50,6 +57,20 @@ public class NamespaceOptions {
         Boolean enableRating
     ) {
         this.enableRating = enableRating;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableDisconnectDetection(
+        NamespaceEnableDisconnectDetection enableDisconnectDetection
+    ) {
+        this.enableDisconnectDetection = enableDisconnectDetection;
+        return this;
+    }
+    
+    public NamespaceOptions withDisconnectDetectionTimeoutSeconds(
+        Integer disconnectDetectionTimeoutSeconds
+    ) {
+        this.disconnectDetectionTimeoutSeconds = disconnectDetectionTimeoutSeconds;
         return this;
     }
     
@@ -78,6 +99,27 @@ public class NamespaceOptions {
         String completeMatchmakingTriggerScriptId
     ) {
         this.completeMatchmakingTriggerScriptId = completeMatchmakingTriggerScriptId;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableCollaborateSeasonRating(
+        NamespaceEnableCollaborateSeasonRating enableCollaborateSeasonRating
+    ) {
+        this.enableCollaborateSeasonRating = enableCollaborateSeasonRating;
+        return this;
+    }
+    
+    public NamespaceOptions withCollaborateSeasonRatingNamespaceId(
+        String collaborateSeasonRatingNamespaceId
+    ) {
+        this.collaborateSeasonRatingNamespaceId = collaborateSeasonRatingNamespaceId;
+        return this;
+    }
+    
+    public NamespaceOptions withCollaborateSeasonRatingTtl(
+        Integer collaborateSeasonRatingTtl
+    ) {
+        this.collaborateSeasonRatingTtl = collaborateSeasonRatingTtl;
         return this;
     }
     

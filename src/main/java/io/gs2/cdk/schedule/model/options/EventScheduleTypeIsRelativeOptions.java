@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.schedule.model.options;
+import io.gs2.cdk.schedule.model.RepeatSetting;
 import io.gs2.cdk.schedule.model.enums.EventScheduleType;
 import io.gs2.cdk.schedule.model.enums.EventRepeatType;
 import io.gs2.cdk.schedule.model.enums.EventRepeatBeginDayOfWeek;
@@ -26,11 +27,27 @@ import java.util.stream.Collectors;
 
 public class EventScheduleTypeIsRelativeOptions {
     public String metadata;
+    public Long absoluteBegin;
+    public Long absoluteEnd;
     
     public EventScheduleTypeIsRelativeOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public EventScheduleTypeIsRelativeOptions withAbsoluteBegin(
+        Long absoluteBegin
+    ) {
+        this.absoluteBegin = absoluteBegin;
+        return this;
+    }
+    
+    public EventScheduleTypeIsRelativeOptions withAbsoluteEnd(
+        Long absoluteEnd
+    ) {
+        this.absoluteEnd = absoluteEnd;
         return this;
     }
 }

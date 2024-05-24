@@ -205,6 +205,7 @@ public class ItemModelRef {
         String verifyType,
         Long count,
         String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyItemSetByUserId(
@@ -214,6 +215,7 @@ public class ItemModelRef {
             verifyType,
             count,
             itemSetName,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -222,7 +224,8 @@ public class ItemModelRef {
     public VerifyItemSetByUserId verifyItemSet(
         String verifyType,
         Long count,
-        String itemSetName
+        String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyItemSetByUserId(
             this.namespaceName,
@@ -231,6 +234,7 @@ public class ItemModelRef {
             verifyType,
             count,
             itemSetName,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

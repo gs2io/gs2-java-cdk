@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 public class RateModelTimingTypeIsImmediateOptions {
     public String metadata;
     public List<ConsumeAction> consumeActions;
-    public List<ConsumeAction> skipConsumeActions;
     public List<AcquireAction> acquireActions;
     
     public RateModelTimingTypeIsImmediateOptions withMetadata(
@@ -40,13 +39,6 @@ public class RateModelTimingTypeIsImmediateOptions {
         List<ConsumeAction> consumeActions
     ) {
         this.consumeActions = consumeActions;
-        return this;
-    }
-    
-    public RateModelTimingTypeIsImmediateOptions withSkipConsumeActions(
-        List<ConsumeAction> skipConsumeActions
-    ) {
-        this.skipConsumeActions = skipConsumeActions;
         return this;
     }
     

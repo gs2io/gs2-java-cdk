@@ -31,8 +31,6 @@ public class RateModel {
     private String metadata = null;
     private List<ConsumeAction> consumeActions = null;
     private Integer lockTime = null;
-    private Boolean enableSkip = null;
-    private List<ConsumeAction> skipConsumeActions = null;
     private List<AcquireAction> acquireActions = null;
 
     public RateModel(
@@ -45,8 +43,6 @@ public class RateModel {
         this.metadata = options.metadata;
         this.consumeActions = options.consumeActions;
         this.lockTime = options.lockTime;
-        this.enableSkip = options.enableSkip;
-        this.skipConsumeActions = options.skipConsumeActions;
         this.acquireActions = options.acquireActions;
     }
     public RateModel(
@@ -67,7 +63,6 @@ public class RateModel {
             new RateModelOptions()
                 .withMetadata(options.metadata)
                 .withConsumeActions(options.consumeActions)
-                .withSkipConsumeActions(options.skipConsumeActions)
                 .withAcquireActions(options.acquireActions)
         ));
     }
@@ -85,7 +80,6 @@ public class RateModel {
     public static RateModel timingTypeIsAwait(
         String name,
         Integer lockTime,
-        Boolean enableSkip,
         RateModelTimingTypeIsAwaitOptions options
     ) {
         return (new RateModel(
@@ -93,10 +87,8 @@ public class RateModel {
             RateModelTimingType.AWAIT,
             new RateModelOptions()
                 .withLockTime(lockTime)
-                .withEnableSkip(enableSkip)
                 .withMetadata(options.metadata)
                 .withConsumeActions(options.consumeActions)
-                .withSkipConsumeActions(options.skipConsumeActions)
                 .withAcquireActions(options.acquireActions)
         ));
     }
@@ -104,8 +96,7 @@ public class RateModel {
 
     public static RateModel timingTypeIsAwait(
         String name,
-        Integer lockTime,
-        Boolean enableSkip
+        Integer lockTime
     ) {
         return (new RateModel(
             name,
@@ -133,13 +124,6 @@ public class RateModel {
         }
         if (this.lockTime != null) {
             properties.put("lockTime", this.lockTime);
-        }
-        if (this.enableSkip != null) {
-            properties.put("enableSkip", this.enableSkip);
-        }
-        if (this.skipConsumeActions != null) {
-            properties.put("skipConsumeActions", this.skipConsumeActions.stream().map(v -> v.properties(
-                    )).collect(Collectors.toList()));
         }
         if (this.acquireActions != null) {
             properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(

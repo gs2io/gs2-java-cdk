@@ -27,8 +27,6 @@ public class RateModelOptions {
     public String metadata;
     public List<ConsumeAction> consumeActions;
     public Integer lockTime;
-    public Boolean enableSkip;
-    public List<ConsumeAction> skipConsumeActions;
     public List<AcquireAction> acquireActions;
     
     public RateModelOptions withMetadata(
@@ -49,20 +47,6 @@ public class RateModelOptions {
         Integer lockTime
     ) {
         this.lockTime = lockTime;
-        return this;
-    }
-    
-    public RateModelOptions withEnableSkip(
-        Boolean enableSkip
-    ) {
-        this.enableSkip = enableSkip;
-        return this;
-    }
-    
-    public RateModelOptions withSkipConsumeActions(
-        List<ConsumeAction> skipConsumeActions
-    ) {
-        this.skipConsumeActions = skipConsumeActions;
         return this;
     }
     

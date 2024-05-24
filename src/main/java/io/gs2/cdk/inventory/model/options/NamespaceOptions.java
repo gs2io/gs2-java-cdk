@@ -29,6 +29,8 @@ public class NamespaceOptions {
     public ScriptSetting consumeScript;
     public ScriptSetting simpleItemAcquireScript;
     public ScriptSetting simpleItemConsumeScript;
+    public ScriptSetting bigItemAcquireScript;
+    public ScriptSetting bigItemConsumeScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -70,6 +72,20 @@ public class NamespaceOptions {
         ScriptSetting simpleItemConsumeScript
     ) {
         this.simpleItemConsumeScript = simpleItemConsumeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withBigItemAcquireScript(
+        ScriptSetting bigItemAcquireScript
+    ) {
+        this.bigItemAcquireScript = bigItemAcquireScript;
+        return this;
+    }
+    
+    public NamespaceOptions withBigItemConsumeScript(
+        ScriptSetting bigItemConsumeScript
+    ) {
+        this.bigItemConsumeScript = bigItemConsumeScript;
         return this;
     }
     

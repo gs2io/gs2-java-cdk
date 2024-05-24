@@ -21,7 +21,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SlotOptions {
+    public String propertyId;
     public String metadata;
+    
+    public SlotOptions withPropertyId(
+        String propertyId
+    ) {
+        this.propertyId = propertyId;
+        return this;
+    }
     
     public SlotOptions withMetadata(
         String metadata

@@ -26,6 +26,7 @@ public class GlobalMessageOptions {
     public List<AcquireAction> readAcquireActions;
     public TimeSpan expiresTimeSpan;
     public Long expiresAt;
+    public String messageReceptionPeriodEventId;
     
     public GlobalMessageOptions withReadAcquireActions(
         List<AcquireAction> readAcquireActions
@@ -45,6 +46,13 @@ public class GlobalMessageOptions {
         Long expiresAt
     ) {
         this.expiresAt = expiresAt;
+        return this;
+    }
+    
+    public GlobalMessageOptions withMessageReceptionPeriodEventId(
+        String messageReceptionPeriodEventId
+    ) {
+        this.messageReceptionPeriodEventId = messageReceptionPeriodEventId;
         return this;
     }
 }

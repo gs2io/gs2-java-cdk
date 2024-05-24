@@ -30,6 +30,7 @@ public class AddExperienceByUserId extends AcquireAction {
         String experienceName,
         String propertyId,
         Long experienceValue,
+        Boolean truncateExperienceWhenRankUp,
         String userId
     ) {
         super(
@@ -40,6 +41,7 @@ public class AddExperienceByUserId extends AcquireAction {
                     put("experienceName", experienceName);
                     put("propertyId", propertyId);
                     put("experienceValue", experienceValue);
+                    put("truncateExperienceWhenRankUp", truncateExperienceWhenRankUp);
                     put("userId", userId);
                 }
             }

@@ -23,29 +23,38 @@ import java.util.stream.Collectors;
 public class AccessToken {
     private String ownerId;
     private String userId;
+    private String realUserId;
     private Long expire;
     private Integer timeOffset;
+    private String federationFromUserId = null;
+    private String federationPolicyDocument = null;
 
     public AccessToken(
         String ownerId,
         String userId,
+        String realUserId,
         Long expire,
         Integer timeOffset,
         AccessTokenOptions options
     ) {
         this.ownerId = ownerId;
         this.userId = userId;
+        this.realUserId = realUserId;
         this.expire = expire;
         this.timeOffset = timeOffset;
+        this.federationFromUserId = options.federationFromUserId;
+        this.federationPolicyDocument = options.federationPolicyDocument;
     }
     public AccessToken(
         String ownerId,
         String userId,
+        String realUserId,
         Long expire,
         Integer timeOffset
     ) {
         this.ownerId = ownerId;
         this.userId = userId;
+        this.realUserId = realUserId;
         this.expire = expire;
         this.timeOffset = timeOffset;
     }
@@ -59,6 +68,15 @@ public class AccessToken {
         }
         if (this.userId != null) {
             properties.put("userId", this.userId);
+        }
+        if (this.realUserId != null) {
+            properties.put("realUserId", this.realUserId);
+        }
+        if (this.federationFromUserId != null) {
+            properties.put("federationFromUserId", this.federationFromUserId);
+        }
+        if (this.federationPolicyDocument != null) {
+            properties.put("federationPolicyDocument", this.federationPolicyDocument);
         }
         if (this.expire != null) {
             properties.put("expire", this.expire);

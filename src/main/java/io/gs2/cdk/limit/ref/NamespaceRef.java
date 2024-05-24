@@ -139,6 +139,7 @@ public class NamespaceRef {
         String counterName,
         String verifyType,
         Integer count,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyCounterByUserId(
@@ -147,6 +148,7 @@ public class NamespaceRef {
             counterName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -156,7 +158,8 @@ public class NamespaceRef {
         String limitName,
         String counterName,
         String verifyType,
-        Integer count
+        Integer count,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyCounterByUserId(
             this.namespaceName,
@@ -164,6 +167,7 @@ public class NamespaceRef {
             counterName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

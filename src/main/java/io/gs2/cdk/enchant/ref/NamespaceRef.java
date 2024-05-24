@@ -12,22 +12,20 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
- * deny overwrite
  */
 package io.gs2.cdk.enchant.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.enchant.model.BalanceParameterValue;
-import io.gs2.cdk.enchant.model.RarityParameterValue;
 import io.gs2.cdk.enchant.ref.BalanceParameterModelRef;
 import io.gs2.cdk.enchant.ref.RarityParameterModelRef;
 import io.gs2.cdk.enchant.stampSheet.ReDrawBalanceParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.SetBalanceParameterStatusByUserId;
+import io.gs2.cdk.enchant.model.BalanceParameterValue;
 import io.gs2.cdk.enchant.stampSheet.ReDrawRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.AddRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.SetRarityParameterStatusByUserId;
+import io.gs2.cdk.enchant.model.RarityParameterValue;
 import io.gs2.cdk.enchant.stampSheet.VerifyRarityParameterStatusByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -216,6 +214,7 @@ public class NamespaceRef {
         String verifyType,
         String parameterValueName,
         Integer parameterCount,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyRarityParameterStatusByUserId(
@@ -225,6 +224,7 @@ public class NamespaceRef {
             verifyType,
             parameterValueName,
             parameterCount,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -235,7 +235,8 @@ public class NamespaceRef {
         String propertyId,
         String verifyType,
         String parameterValueName,
-        Integer parameterCount
+        Integer parameterCount,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyRarityParameterStatusByUserId(
             this.namespaceName,
@@ -244,6 +245,7 @@ public class NamespaceRef {
             verifyType,
             parameterValueName,
             parameterCount,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

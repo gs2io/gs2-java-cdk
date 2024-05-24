@@ -21,17 +21,28 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.inventory.ref.InventoryModelRef;
 import io.gs2.cdk.inventory.ref.SimpleInventoryModelRef;
+import io.gs2.cdk.inventory.ref.BigInventoryModelRef;
 import io.gs2.cdk.inventory.stampSheet.AddCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.SetCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.AcquireItemSetWithGradeByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.AcquireSimpleItemsByUserId;
 import io.gs2.cdk.inventory.model.AcquireCount;
-import io.gs2.cdk.inventory.model.ConsumeCount;
+import io.gs2.cdk.inventory.stampSheet.SetSimpleItemsByUserId;
+import io.gs2.cdk.inventory.model.HeldCount;
+import io.gs2.cdk.inventory.stampSheet.AcquireBigItemByUserId;
+import io.gs2.cdk.inventory.stampSheet.SetBigItemByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyInventoryCurrentMaxCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeSimpleItemsByUserId;
+import io.gs2.cdk.inventory.model.ConsumeCount;
+import io.gs2.cdk.inventory.stampSheet.VerifySimpleItemByUserId;
+import io.gs2.cdk.inventory.stampSheet.ConsumeBigItemByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyBigItemByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,6 +69,15 @@ public class NamespaceRef {
         String inventoryName
     ) {
         return (new SimpleInventoryModelRef(
+            this.namespaceName,
+            inventoryName
+        ));
+    }
+
+    public BigInventoryModelRef bigInventoryModel(
+        String inventoryName
+    ) {
+        return (new BigInventoryModelRef(
             this.namespaceName,
             inventoryName
         ));
@@ -157,6 +177,40 @@ public class NamespaceRef {
         ));
     }
 
+    public AcquireItemSetWithGradeByUserId acquireItemSetWithGrade(
+        String inventoryName,
+        String itemName,
+        String gradeModelId,
+        Long gradeValue,
+        String userId
+    ) {
+        return (new AcquireItemSetWithGradeByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            gradeModelId,
+            gradeValue,
+            userId
+        ));
+    }
+
+
+    public AcquireItemSetWithGradeByUserId acquireItemSetWithGrade(
+        String inventoryName,
+        String itemName,
+        String gradeModelId,
+        Long gradeValue
+    ) {
+        return (new AcquireItemSetWithGradeByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            gradeModelId,
+            gradeValue,
+            "#{userId}"
+        ));
+    }
+
     public AddReferenceOfByUserId addReferenceOf(
         String inventoryName,
         String itemName,
@@ -251,6 +305,126 @@ public class NamespaceRef {
         ));
     }
 
+    public SetSimpleItemsByUserId setSimpleItems(
+        String inventoryName,
+        List<HeldCount> counts,
+        String userId
+    ) {
+        return (new SetSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            counts,
+            userId
+        ));
+    }
+
+
+    public SetSimpleItemsByUserId setSimpleItems(
+        String inventoryName,
+        List<HeldCount> counts
+    ) {
+        return (new SetSimpleItemsByUserId(
+            this.namespaceName,
+            inventoryName,
+            counts,
+            "#{userId}"
+        ));
+    }
+
+    public AcquireBigItemByUserId acquireBigItem(
+        String inventoryName,
+        String itemName,
+        String acquireCount,
+        String userId
+    ) {
+        return (new AcquireBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            acquireCount,
+            userId
+        ));
+    }
+
+
+    public AcquireBigItemByUserId acquireBigItem(
+        String inventoryName,
+        String itemName,
+        String acquireCount
+    ) {
+        return (new AcquireBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            acquireCount,
+            "#{userId}"
+        ));
+    }
+
+    public SetBigItemByUserId setBigItem(
+        String inventoryName,
+        String itemName,
+        String count,
+        String userId
+    ) {
+        return (new SetBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            count,
+            userId
+        ));
+    }
+
+
+    public SetBigItemByUserId setBigItem(
+        String inventoryName,
+        String itemName,
+        String count
+    ) {
+        return (new SetBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            count,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String inventoryName,
+        String verifyType,
+        Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String inventoryName,
+        String verifyType,
+        Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
     public ConsumeItemSetByUserId consumeItemSet(
         String inventoryName,
         String itemName,
@@ -281,6 +455,48 @@ public class NamespaceRef {
             itemName,
             consumeCount,
             itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyItemSetByUserId verifyItemSet(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        Long count,
+        String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            itemSetName,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyItemSetByUserId verifyItemSet(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        Long count,
+        String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyItemSetByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            itemSetName,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
@@ -345,6 +561,112 @@ public class NamespaceRef {
             this.namespaceName,
             inventoryName,
             consumeCounts,
+            "#{userId}"
+        ));
+    }
+
+    public VerifySimpleItemByUserId verifySimpleItem(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        Long count,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifySimpleItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifySimpleItemByUserId verifySimpleItem(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        Long count,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifySimpleItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public ConsumeBigItemByUserId consumeBigItem(
+        String inventoryName,
+        String itemName,
+        String consumeCount,
+        String userId
+    ) {
+        return (new ConsumeBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            consumeCount,
+            userId
+        ));
+    }
+
+
+    public ConsumeBigItemByUserId consumeBigItem(
+        String inventoryName,
+        String itemName,
+        String consumeCount
+    ) {
+        return (new ConsumeBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            consumeCount,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyBigItemByUserId verifyBigItem(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        String count,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyBigItemByUserId verifyBigItem(
+        String inventoryName,
+        String itemName,
+        String verifyType,
+        String count,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyBigItemByUserId(
+            this.namespaceName,
+            inventoryName,
+            itemName,
+            verifyType,
+            count,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

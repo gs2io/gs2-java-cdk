@@ -16,6 +16,8 @@
 package io.gs2.cdk.adReward.model.options;
 import io.gs2.cdk.adReward.model.AdMob;
 import io.gs2.cdk.adReward.model.UnityAd;
+import io.gs2.cdk.adReward.model.AppLovinMax;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -27,7 +29,10 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public AdMob admob;
     public UnityAd unityAd;
+    public List<AppLovinMax> appLovinMaxes;
     public String description;
+    public ScriptSetting acquirePointScript;
+    public ScriptSetting consumePointScript;
     public NotificationSetting changePointNotification;
     public LogSetting logSetting;
     
@@ -45,10 +50,31 @@ public class NamespaceOptions {
         return this;
     }
     
+    public NamespaceOptions withAppLovinMaxes(
+        List<AppLovinMax> appLovinMaxes
+    ) {
+        this.appLovinMaxes = appLovinMaxes;
+        return this;
+    }
+    
     public NamespaceOptions withDescription(
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withAcquirePointScript(
+        ScriptSetting acquirePointScript
+    ) {
+        this.acquirePointScript = acquirePointScript;
+        return this;
+    }
+    
+    public NamespaceOptions withConsumePointScript(
+        ScriptSetting consumePointScript
+    ) {
+        this.consumePointScript = consumePointScript;
         return this;
     }
     

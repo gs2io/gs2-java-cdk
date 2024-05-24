@@ -28,6 +28,7 @@ public class GlobalMessage {
     private List<AcquireAction> readAcquireActions = null;
     private TimeSpan expiresTimeSpan = null;
     private Long expiresAt = null;
+    private String messageReceptionPeriodEventId = null;
 
     public GlobalMessage(
         String name,
@@ -39,6 +40,7 @@ public class GlobalMessage {
         this.readAcquireActions = options.readAcquireActions;
         this.expiresTimeSpan = options.expiresTimeSpan;
         this.expiresAt = options.expiresAt;
+        this.messageReceptionPeriodEventId = options.messageReceptionPeriodEventId;
     }
     public GlobalMessage(
         String name,
@@ -68,6 +70,9 @@ public class GlobalMessage {
         }
         if (this.expiresAt != null) {
             properties.put("expiresAt", this.expiresAt);
+        }
+        if (this.messageReceptionPeriodEventId != null) {
+            properties.put("messageReceptionPeriodEventId", this.messageReceptionPeriodEventId);
         }
 
         return properties;

@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.experience.ref.ExperienceModelRef;
 import io.gs2.cdk.experience.stampSheet.AddExperienceByUserId;
+import io.gs2.cdk.experience.stampSheet.SetExperienceByUserId;
 import io.gs2.cdk.experience.stampSheet.AddRankCapByUserId;
 import io.gs2.cdk.experience.stampSheet.SetRankCapByUserId;
 import io.gs2.cdk.experience.stampSheet.MultiplyAcquireActionsByUserId;
@@ -53,9 +54,43 @@ public class NamespaceRef {
         String experienceName,
         String propertyId,
         Long experienceValue,
+        Boolean truncateExperienceWhenRankUp,
         String userId
     ) {
         return (new AddExperienceByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            experienceValue,
+            truncateExperienceWhenRankUp,
+            userId
+        ));
+    }
+
+
+    public AddExperienceByUserId addExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue,
+        Boolean truncateExperienceWhenRankUp
+    ) {
+        return (new AddExperienceByUserId(
+            this.namespaceName,
+            experienceName,
+            propertyId,
+            experienceValue,
+            truncateExperienceWhenRankUp,
+            "#{userId}"
+        ));
+    }
+
+    public SetExperienceByUserId setExperience(
+        String experienceName,
+        String propertyId,
+        Long experienceValue,
+        String userId
+    ) {
+        return (new SetExperienceByUserId(
             this.namespaceName,
             experienceName,
             propertyId,
@@ -65,12 +100,12 @@ public class NamespaceRef {
     }
 
 
-    public AddExperienceByUserId addExperience(
+    public SetExperienceByUserId setExperience(
         String experienceName,
         String propertyId,
         Long experienceValue
     ) {
-        return (new AddExperienceByUserId(
+        return (new SetExperienceByUserId(
             this.namespaceName,
             experienceName,
             propertyId,
@@ -238,6 +273,7 @@ public class NamespaceRef {
         String verifyType,
         String propertyId,
         Long rankValue,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyRankByUserId(
@@ -246,6 +282,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             rankValue,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -255,7 +292,8 @@ public class NamespaceRef {
         String experienceName,
         String verifyType,
         String propertyId,
-        Long rankValue
+        Long rankValue,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyRankByUserId(
             this.namespaceName,
@@ -263,6 +301,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             rankValue,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
@@ -272,6 +311,7 @@ public class NamespaceRef {
         String verifyType,
         String propertyId,
         Long rankCapValue,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyRankCapByUserId(
@@ -280,6 +320,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             rankCapValue,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -289,7 +330,8 @@ public class NamespaceRef {
         String experienceName,
         String verifyType,
         String propertyId,
-        Long rankCapValue
+        Long rankCapValue,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyRankCapByUserId(
             this.namespaceName,
@@ -297,6 +339,7 @@ public class NamespaceRef {
             verifyType,
             propertyId,
             rankCapValue,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

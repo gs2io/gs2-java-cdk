@@ -25,8 +25,10 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.matchmaking.ref.NamespaceRef;
 import io.gs2.cdk.matchmaking.model.CurrentMasterData;
 import io.gs2.cdk.matchmaking.model.RatingModel;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableDisconnectDetection;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCreateGatheringTriggerType;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCompleteMatchmakingTriggerType;
+import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableCollaborateSeasonRating;
 
 import io.gs2.cdk.matchmaking.model.options.NamespaceOptions;
 
@@ -42,10 +44,15 @@ public class Namespace extends CdkResource {
     private NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType;
     private String description = null;
     private Boolean enableRating = null;
+    private NamespaceEnableDisconnectDetection enableDisconnectDetection = null;
+    private Integer disconnectDetectionTimeoutSeconds = null;
     private String createGatheringTriggerRealtimeNamespaceId = null;
     private String createGatheringTriggerScriptId = null;
     private String completeMatchmakingTriggerRealtimeNamespaceId = null;
     private String completeMatchmakingTriggerScriptId = null;
+    private NamespaceEnableCollaborateSeasonRating enableCollaborateSeasonRating = null;
+    private String collaborateSeasonRatingNamespaceId = null;
+    private Integer collaborateSeasonRatingTtl = null;
     private ScriptSetting changeRatingScript = null;
     private NotificationSetting joinNotification = null;
     private NotificationSetting leaveNotification = null;
@@ -70,10 +77,15 @@ public class Namespace extends CdkResource {
         this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         this.description = options.description;
         this.enableRating = options.enableRating;
+        this.enableDisconnectDetection = options.enableDisconnectDetection;
+        this.disconnectDetectionTimeoutSeconds = options.disconnectDetectionTimeoutSeconds;
         this.createGatheringTriggerRealtimeNamespaceId = options.createGatheringTriggerRealtimeNamespaceId;
         this.createGatheringTriggerScriptId = options.createGatheringTriggerScriptId;
         this.completeMatchmakingTriggerRealtimeNamespaceId = options.completeMatchmakingTriggerRealtimeNamespaceId;
         this.completeMatchmakingTriggerScriptId = options.completeMatchmakingTriggerScriptId;
+        this.enableCollaborateSeasonRating = options.enableCollaborateSeasonRating;
+        this.collaborateSeasonRatingNamespaceId = options.collaborateSeasonRatingNamespaceId;
+        this.collaborateSeasonRatingTtl = options.collaborateSeasonRatingTtl;
         this.changeRatingScript = options.changeRatingScript;
         this.joinNotification = options.joinNotification;
         this.leaveNotification = options.leaveNotification;
@@ -128,6 +140,12 @@ public class Namespace extends CdkResource {
         if (this.enableRating != null) {
             properties.put("EnableRating", this.enableRating);
         }
+        if (this.enableDisconnectDetection != null) {
+            properties.put("EnableDisconnectDetection", this.enableDisconnectDetection);
+        }
+        if (this.disconnectDetectionTimeoutSeconds != null) {
+            properties.put("DisconnectDetectionTimeoutSeconds", this.disconnectDetectionTimeoutSeconds);
+        }
         if (this.createGatheringTriggerType != null) {
             properties.put("CreateGatheringTriggerType", this.createGatheringTriggerType);
         }
@@ -145,6 +163,15 @@ public class Namespace extends CdkResource {
         }
         if (this.completeMatchmakingTriggerScriptId != null) {
             properties.put("CompleteMatchmakingTriggerScriptId", this.completeMatchmakingTriggerScriptId);
+        }
+        if (this.enableCollaborateSeasonRating != null) {
+            properties.put("EnableCollaborateSeasonRating", this.enableCollaborateSeasonRating);
+        }
+        if (this.collaborateSeasonRatingNamespaceId != null) {
+            properties.put("CollaborateSeasonRatingNamespaceId", this.collaborateSeasonRatingNamespaceId);
+        }
+        if (this.collaborateSeasonRatingTtl != null) {
+            properties.put("CollaborateSeasonRatingTtl", this.collaborateSeasonRatingTtl);
         }
         if (this.changeRatingScript != null) {
             properties.put("ChangeRatingScript", this.changeRatingScript.properties(

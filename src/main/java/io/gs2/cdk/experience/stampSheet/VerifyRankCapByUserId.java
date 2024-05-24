@@ -31,6 +31,7 @@ public class VerifyRankCapByUserId extends ConsumeAction {
         String verifyType,
         String propertyId,
         Long rankCapValue,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
@@ -42,6 +43,7 @@ public class VerifyRankCapByUserId extends ConsumeAction {
                     put("verifyType", verifyType);
                     put("propertyId", propertyId);
                     put("rankCapValue", rankCapValue);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

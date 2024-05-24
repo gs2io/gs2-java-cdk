@@ -51,7 +51,7 @@ public class IssueJobRef {
                 ),
                 "serialKey",
                 this.namespaceName,
-                "master",
+                "model",
                 "campaign",
                 this.campaignModelName,
                 "issue",

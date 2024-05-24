@@ -21,5 +21,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AccessTokenOptions {
+    public String federationFromUserId;
+    public String federationPolicyDocument;
+    
+    public AccessTokenOptions withFederationFromUserId(
+        String federationFromUserId
+    ) {
+        this.federationFromUserId = federationFromUserId;
+        return this;
+    }
+    
+    public AccessTokenOptions withFederationPolicyDocument(
+        String federationPolicyDocument
+    ) {
+        this.federationPolicyDocument = federationPolicyDocument;
+        return this;
+    }
 }
 

@@ -18,7 +18,10 @@ package io.gs2.cdk.mission.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
+import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,6 +62,30 @@ public class CounterModelRef {
         ));
     }
 
+    public SetCounterByUserId setCounter(
+        List<ScopedValue> values,
+        String userId
+    ) {
+        return (new SetCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            values,
+            userId
+        ));
+    }
+
+
+    public SetCounterByUserId setCounter(
+        List<ScopedValue> values
+    ) {
+        return (new SetCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            values,
+            "#{userId}"
+        ));
+    }
+
     public DecreaseCounterByUserId decreaseCounter(
         Long value,
         String userId
@@ -79,6 +106,42 @@ public class CounterModelRef {
             this.namespaceName,
             this.counterName,
             value,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCounterValueByUserId verifyCounterValue(
+        String verifyType,
+        String resetType,
+        Long value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyCounterValueByUserId(
+            this.namespaceName,
+            this.counterName,
+            verifyType,
+            resetType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyCounterValueByUserId verifyCounterValue(
+        String verifyType,
+        String resetType,
+        Long value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyCounterValueByUserId(
+            this.namespaceName,
+            this.counterName,
+            verifyType,
+            resetType,
+            value,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

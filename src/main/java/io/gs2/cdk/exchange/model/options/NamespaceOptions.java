@@ -29,6 +29,7 @@ public class NamespaceOptions {
     public Boolean enableDirectExchange;
     public TransactionSetting transactionSetting;
     public ScriptSetting exchangeScript;
+    public ScriptSetting incrementalExchangeScript;
     public LogSetting logSetting;
     public String queueNamespaceId;
     public String keyId;
@@ -65,6 +66,13 @@ public class NamespaceOptions {
         ScriptSetting exchangeScript
     ) {
         this.exchangeScript = exchangeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withIncrementalExchangeScript(
+        ScriptSetting incrementalExchangeScript
+    ) {
+        this.incrementalExchangeScript = incrementalExchangeScript;
         return this;
     }
     

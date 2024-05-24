@@ -21,8 +21,11 @@ import io.gs2.cdk.mission.ref.MissionGroupModelRef;
 import io.gs2.cdk.mission.ref.CounterModelRef;
 import io.gs2.cdk.mission.stampSheet.RevertReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
+import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -106,6 +109,32 @@ public class NamespaceRef {
         ));
     }
 
+    public SetCounterByUserId setCounter(
+        String counterName,
+        List<ScopedValue> values,
+        String userId
+    ) {
+        return (new SetCounterByUserId(
+            this.namespaceName,
+            counterName,
+            values,
+            userId
+        ));
+    }
+
+
+    public SetCounterByUserId setCounter(
+        String counterName,
+        List<ScopedValue> values
+    ) {
+        return (new SetCounterByUserId(
+            this.namespaceName,
+            counterName,
+            values,
+            "#{userId}"
+        ));
+    }
+
     public ReceiveByUserId receive(
         String missionGroupName,
         String missionTaskName,
@@ -154,6 +183,44 @@ public class NamespaceRef {
             this.namespaceName,
             counterName,
             value,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCounterValueByUserId verifyCounterValue(
+        String counterName,
+        String verifyType,
+        String resetType,
+        Long value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyCounterValueByUserId(
+            this.namespaceName,
+            counterName,
+            verifyType,
+            resetType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyCounterValueByUserId verifyCounterValue(
+        String counterName,
+        String verifyType,
+        String resetType,
+        Long value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyCounterValueByUserId(
+            this.namespaceName,
+            counterName,
+            verifyType,
+            resetType,
+            value,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

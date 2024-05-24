@@ -121,6 +121,7 @@ public class BigItemModelRef {
     public VerifyBigItemByUserId verifyBigItem(
         String verifyType,
         String count,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyBigItemByUserId(
@@ -129,6 +130,7 @@ public class BigItemModelRef {
             this.itemName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -136,7 +138,8 @@ public class BigItemModelRef {
 
     public VerifyBigItemByUserId verifyBigItem(
         String verifyType,
-        String count
+        String count,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyBigItemByUserId(
             this.namespaceName,
@@ -144,6 +147,7 @@ public class BigItemModelRef {
             this.itemName,
             verifyType,
             count,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

@@ -32,6 +32,7 @@ public class VerifyRarityParameterStatusByUserId extends ConsumeAction {
         String verifyType,
         String parameterValueName,
         Integer parameterCount,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
@@ -44,6 +45,7 @@ public class VerifyRarityParameterStatusByUserId extends ConsumeAction {
                     put("verifyType", verifyType);
                     put("parameterValueName", parameterValueName);
                     put("parameterCount", parameterCount);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

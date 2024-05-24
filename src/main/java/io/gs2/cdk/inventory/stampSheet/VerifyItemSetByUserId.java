@@ -32,6 +32,7 @@ public class VerifyItemSetByUserId extends ConsumeAction {
         String verifyType,
         Long count,
         String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
@@ -44,6 +45,7 @@ public class VerifyItemSetByUserId extends ConsumeAction {
                     put("verifyType", verifyType);
                     put("count", count);
                     put("itemSetName", itemSetName);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

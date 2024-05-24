@@ -23,11 +23,19 @@ import java.util.stream.Collectors;
 
 public class SeasonModelOptions {
     public String metadata;
+    public String challengePeriodEventId;
     
     public SeasonModelOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public SeasonModelOptions withChallengePeriodEventId(
+        String challengePeriodEventId
+    ) {
+        this.challengePeriodEventId = challengePeriodEventId;
         return this;
     }
 }

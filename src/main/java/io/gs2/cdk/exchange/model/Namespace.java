@@ -42,6 +42,7 @@ public class Namespace extends CdkResource {
     private Boolean enableDirectExchange = null;
     private TransactionSetting transactionSetting = null;
     private ScriptSetting exchangeScript = null;
+    private ScriptSetting incrementalExchangeScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -60,6 +61,7 @@ public class Namespace extends CdkResource {
         this.enableDirectExchange = options.enableDirectExchange;
         this.transactionSetting = options.transactionSetting;
         this.exchangeScript = options.exchangeScript;
+        this.incrementalExchangeScript = options.incrementalExchangeScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -114,6 +116,10 @@ public class Namespace extends CdkResource {
         }
         if (this.exchangeScript != null) {
             properties.put("ExchangeScript", this.exchangeScript.properties(
+            ));
+        }
+        if (this.incrementalExchangeScript != null) {
+            properties.put("IncrementalExchangeScript", this.incrementalExchangeScript.properties(
             ));
         }
         if (this.logSetting != null) {

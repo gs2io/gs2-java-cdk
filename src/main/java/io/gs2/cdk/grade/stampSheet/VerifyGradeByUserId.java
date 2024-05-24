@@ -31,6 +31,7 @@ public class VerifyGradeByUserId extends ConsumeAction {
         String verifyType,
         String propertyId,
         Long gradeValue,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
@@ -42,6 +43,7 @@ public class VerifyGradeByUserId extends ConsumeAction {
                     put("verifyType", verifyType);
                     put("propertyId", propertyId);
                     put("gradeValue", gradeValue);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

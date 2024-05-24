@@ -14,7 +14,10 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model.options;
+import io.gs2.cdk.mission.model.TargetCounterModel;
+import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.mission.model.enums.MissionTaskModelVerifyCompleteType;
 import io.gs2.cdk.mission.model.enums.MissionTaskModelTargetResetType;
 
 import java.util.HashMap;
@@ -24,10 +27,12 @@ import java.util.stream.Collectors;
 
 public class MissionTaskModelOptions {
     public String metadata;
-    public MissionTaskModelTargetResetType targetResetType;
+    public TargetCounterModel targetCounter;
+    public List<ConsumeAction> verifyCompleteConsumeActions;
     public List<AcquireAction> completeAcquireActions;
     public String challengePeriodEventId;
     public String premiseMissionTaskName;
+    public MissionTaskModelTargetResetType targetResetType;
     
     public MissionTaskModelOptions withMetadata(
         String metadata
@@ -36,10 +41,17 @@ public class MissionTaskModelOptions {
         return this;
     }
     
-    public MissionTaskModelOptions withTargetResetType(
-        MissionTaskModelTargetResetType targetResetType
+    public MissionTaskModelOptions withTargetCounter(
+        TargetCounterModel targetCounter
     ) {
-        this.targetResetType = targetResetType;
+        this.targetCounter = targetCounter;
+        return this;
+    }
+    
+    public MissionTaskModelOptions withVerifyCompleteConsumeActions(
+        List<ConsumeAction> verifyCompleteConsumeActions
+    ) {
+        this.verifyCompleteConsumeActions = verifyCompleteConsumeActions;
         return this;
     }
     
@@ -61,6 +73,13 @@ public class MissionTaskModelOptions {
         String premiseMissionTaskName
     ) {
         this.premiseMissionTaskName = premiseMissionTaskName;
+        return this;
+    }
+    
+    public MissionTaskModelOptions withTargetResetType(
+        MissionTaskModelTargetResetType targetResetType
+    ) {
+        this.targetResetType = targetResetType;
         return this;
     }
 }

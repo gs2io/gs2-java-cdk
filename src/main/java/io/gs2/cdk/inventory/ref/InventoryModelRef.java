@@ -241,6 +241,7 @@ public class InventoryModelRef {
     public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
         String verifyType,
         Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyInventoryCurrentMaxCapacityByUserId(
@@ -248,6 +249,7 @@ public class InventoryModelRef {
             this.inventoryName,
             verifyType,
             currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -255,13 +257,15 @@ public class InventoryModelRef {
 
     public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
         String verifyType,
-        Integer currentInventoryMaxCapacity
+        Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyInventoryCurrentMaxCapacityByUserId(
             this.namespaceName,
             this.inventoryName,
             verifyType,
             currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
@@ -303,6 +307,7 @@ public class InventoryModelRef {
         String verifyType,
         Long count,
         String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         return (new VerifyItemSetByUserId(
@@ -312,6 +317,7 @@ public class InventoryModelRef {
             verifyType,
             count,
             itemSetName,
+            multiplyValueSpecifyingQuantity,
             userId
         ));
     }
@@ -321,7 +327,8 @@ public class InventoryModelRef {
         String itemName,
         String verifyType,
         Long count,
-        String itemSetName
+        String itemSetName,
+        Boolean multiplyValueSpecifyingQuantity
     ) {
         return (new VerifyItemSetByUserId(
             this.namespaceName,
@@ -330,6 +337,7 @@ public class InventoryModelRef {
             verifyType,
             count,
             itemSetName,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
