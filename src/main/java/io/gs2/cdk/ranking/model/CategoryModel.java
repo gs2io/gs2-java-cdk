@@ -14,7 +14,9 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.ranking.model;
+import io.gs2.cdk.ranking.model.FixedTiming;
 import io.gs2.cdk.ranking.model.Scope;
+import io.gs2.cdk.ranking.model.GlobalRankingSetting;
 import io.gs2.cdk.ranking.model.options.CategoryModelOptions;
 import io.gs2.cdk.ranking.model.options.CategoryModelScopeIsGlobalOptions;
 import io.gs2.cdk.ranking.model.options.CategoryModelScopeIsScopedOptions;
@@ -27,77 +29,86 @@ import java.util.stream.Collectors;
 
 public class CategoryModel {
     private String name;
+    private Boolean sum;
     private CategoryModelOrderDirection orderDirection;
     private CategoryModelScope scope;
     private String metadata = null;
     private Long minimumValue = null;
     private Long maximumValue = null;
+    private GlobalRankingSetting globalRankingSetting = null;
+    private String entryPeriodEventId = null;
+    private String accessPeriodEventId = null;
     private Boolean uniqueByUserId = null;
-    private Boolean sum = null;
     private Integer calculateFixedTimingHour = null;
     private Integer calculateFixedTimingMinute = null;
     private Integer calculateIntervalMinutes = null;
     private List<Scope> additionalScopes = null;
-    private String entryPeriodEventId = null;
-    private String accessPeriodEventId = null;
     private List<String> ignoreUserIds = null;
     private String generation = null;
 
     public CategoryModel(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection,
         CategoryModelScope scope,
         CategoryModelOptions options
     ) {
         this.name = name;
+        this.sum = sum;
         this.orderDirection = orderDirection;
         this.scope = scope;
         this.metadata = options.metadata;
         this.minimumValue = options.minimumValue;
         this.maximumValue = options.maximumValue;
+        this.globalRankingSetting = options.globalRankingSetting;
+        this.entryPeriodEventId = options.entryPeriodEventId;
+        this.accessPeriodEventId = options.accessPeriodEventId;
         this.uniqueByUserId = options.uniqueByUserId;
-        this.sum = options.sum;
         this.calculateFixedTimingHour = options.calculateFixedTimingHour;
         this.calculateFixedTimingMinute = options.calculateFixedTimingMinute;
         this.calculateIntervalMinutes = options.calculateIntervalMinutes;
         this.additionalScopes = options.additionalScopes;
-        this.entryPeriodEventId = options.entryPeriodEventId;
-        this.accessPeriodEventId = options.accessPeriodEventId;
         this.ignoreUserIds = options.ignoreUserIds;
         this.generation = options.generation;
     }
     public CategoryModel(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection,
         CategoryModelScope scope
     ) {
         this.name = name;
+        this.sum = sum;
         this.orderDirection = orderDirection;
         this.scope = scope;
     }
 
     public static CategoryModel scopeIsGlobal(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection,
+        GlobalRankingSetting globalRankingSetting,
         Boolean uniqueByUserId,
         Integer calculateIntervalMinutes,
         CategoryModelScopeIsGlobalOptions options
     ) {
         return (new CategoryModel(
             name,
+            sum,
             orderDirection,
             CategoryModelScope.GLOBAL,
             new CategoryModelOptions()
+                .withGlobalRankingSetting(globalRankingSetting)
                 .withUniqueByUserId(uniqueByUserId)
                 .withCalculateIntervalMinutes(calculateIntervalMinutes)
                 .withMetadata(options.metadata)
                 .withMinimumValue(options.minimumValue)
                 .withMaximumValue(options.maximumValue)
+                .withEntryPeriodEventId(options.entryPeriodEventId)
+                .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withCalculateFixedTimingHour(options.calculateFixedTimingHour)
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
                 .withAdditionalScopes(options.additionalScopes)
-                .withEntryPeriodEventId(options.entryPeriodEventId)
-                .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withIgnoreUserIds(options.ignoreUserIds)
                 .withGeneration(options.generation)
         ));
@@ -106,12 +117,15 @@ public class CategoryModel {
 
     public static CategoryModel scopeIsGlobal(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection,
+        GlobalRankingSetting globalRankingSetting,
         Boolean uniqueByUserId,
         Integer calculateIntervalMinutes
     ) {
         return (new CategoryModel(
             name,
+            sum,
             orderDirection,
             CategoryModelScope.GLOBAL
         ));
@@ -119,22 +133,24 @@ public class CategoryModel {
 
     public static CategoryModel scopeIsScoped(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection,
         CategoryModelScopeIsScopedOptions options
     ) {
         return (new CategoryModel(
             name,
+            sum,
             orderDirection,
             CategoryModelScope.SCOPED,
             new CategoryModelOptions()
                 .withMetadata(options.metadata)
                 .withMinimumValue(options.minimumValue)
                 .withMaximumValue(options.maximumValue)
+                .withEntryPeriodEventId(options.entryPeriodEventId)
+                .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withCalculateFixedTimingHour(options.calculateFixedTimingHour)
                 .withCalculateFixedTimingMinute(options.calculateFixedTimingMinute)
                 .withAdditionalScopes(options.additionalScopes)
-                .withEntryPeriodEventId(options.entryPeriodEventId)
-                .withAccessPeriodEventId(options.accessPeriodEventId)
                 .withIgnoreUserIds(options.ignoreUserIds)
                 .withGeneration(options.generation)
         ));
@@ -143,10 +159,12 @@ public class CategoryModel {
 
     public static CategoryModel scopeIsScoped(
         String name,
+        Boolean sum,
         CategoryModelOrderDirection orderDirection
     ) {
         return (new CategoryModel(
             name,
+            sum,
             orderDirection,
             CategoryModelScope.SCOPED
         ));
@@ -168,6 +186,9 @@ public class CategoryModel {
         if (this.maximumValue != null) {
             properties.put("maximumValue", this.maximumValue);
         }
+        if (this.sum != null) {
+            properties.put("sum", this.sum);
+        }
         if (this.orderDirection != null) {
             properties.put("orderDirection", this.orderDirection.toString(
             ));
@@ -176,11 +197,18 @@ public class CategoryModel {
             properties.put("scope", this.scope.toString(
             ));
         }
+        if (this.globalRankingSetting != null) {
+            properties.put("globalRankingSetting", this.globalRankingSetting.properties(
+            ));
+        }
+        if (this.entryPeriodEventId != null) {
+            properties.put("entryPeriodEventId", this.entryPeriodEventId);
+        }
+        if (this.accessPeriodEventId != null) {
+            properties.put("accessPeriodEventId", this.accessPeriodEventId);
+        }
         if (this.uniqueByUserId != null) {
             properties.put("uniqueByUserId", this.uniqueByUserId);
-        }
-        if (this.sum != null) {
-            properties.put("sum", this.sum);
         }
         if (this.calculateFixedTimingHour != null) {
             properties.put("calculateFixedTimingHour", this.calculateFixedTimingHour);
@@ -194,12 +222,6 @@ public class CategoryModel {
         if (this.additionalScopes != null) {
             properties.put("additionalScopes", this.additionalScopes.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
-        }
-        if (this.entryPeriodEventId != null) {
-            properties.put("entryPeriodEventId", this.entryPeriodEventId);
-        }
-        if (this.accessPeriodEventId != null) {
-            properties.put("accessPeriodEventId", this.accessPeriodEventId);
         }
         if (this.ignoreUserIds != null) {
             properties.put("ignoreUserIds", this.ignoreUserIds);

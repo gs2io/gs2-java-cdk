@@ -14,7 +14,9 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.ranking.model.options;
+import io.gs2.cdk.ranking.model.FixedTiming;
 import io.gs2.cdk.ranking.model.Scope;
+import io.gs2.cdk.ranking.model.GlobalRankingSetting;
 import io.gs2.cdk.ranking.model.enums.CategoryModelOrderDirection;
 import io.gs2.cdk.ranking.model.enums.CategoryModelScope;
 
@@ -27,11 +29,11 @@ public class CategoryModelScopeIsScopedOptions {
     public String metadata;
     public Long minimumValue;
     public Long maximumValue;
+    public String entryPeriodEventId;
+    public String accessPeriodEventId;
     public Integer calculateFixedTimingHour;
     public Integer calculateFixedTimingMinute;
     public List<Scope> additionalScopes;
-    public String entryPeriodEventId;
-    public String accessPeriodEventId;
     public List<String> ignoreUserIds;
     public String generation;
     
@@ -56,6 +58,20 @@ public class CategoryModelScopeIsScopedOptions {
         return this;
     }
     
+    public CategoryModelScopeIsScopedOptions withEntryPeriodEventId(
+        String entryPeriodEventId
+    ) {
+        this.entryPeriodEventId = entryPeriodEventId;
+        return this;
+    }
+    
+    public CategoryModelScopeIsScopedOptions withAccessPeriodEventId(
+        String accessPeriodEventId
+    ) {
+        this.accessPeriodEventId = accessPeriodEventId;
+        return this;
+    }
+    
     public CategoryModelScopeIsScopedOptions withCalculateFixedTimingHour(
         Integer calculateFixedTimingHour
     ) {
@@ -74,20 +90,6 @@ public class CategoryModelScopeIsScopedOptions {
         List<Scope> additionalScopes
     ) {
         this.additionalScopes = additionalScopes;
-        return this;
-    }
-    
-    public CategoryModelScopeIsScopedOptions withEntryPeriodEventId(
-        String entryPeriodEventId
-    ) {
-        this.entryPeriodEventId = entryPeriodEventId;
-        return this;
-    }
-    
-    public CategoryModelScopeIsScopedOptions withAccessPeriodEventId(
-        String accessPeriodEventId
-    ) {
-        this.accessPeriodEventId = accessPeriodEventId;
         return this;
     }
     

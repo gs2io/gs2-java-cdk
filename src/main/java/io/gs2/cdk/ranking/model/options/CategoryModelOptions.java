@@ -14,7 +14,9 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.ranking.model.options;
+import io.gs2.cdk.ranking.model.FixedTiming;
 import io.gs2.cdk.ranking.model.Scope;
+import io.gs2.cdk.ranking.model.GlobalRankingSetting;
 import io.gs2.cdk.ranking.model.enums.CategoryModelOrderDirection;
 import io.gs2.cdk.ranking.model.enums.CategoryModelScope;
 
@@ -27,14 +29,14 @@ public class CategoryModelOptions {
     public String metadata;
     public Long minimumValue;
     public Long maximumValue;
+    public GlobalRankingSetting globalRankingSetting;
+    public String entryPeriodEventId;
+    public String accessPeriodEventId;
     public Boolean uniqueByUserId;
-    public Boolean sum;
     public Integer calculateFixedTimingHour;
     public Integer calculateFixedTimingMinute;
     public Integer calculateIntervalMinutes;
     public List<Scope> additionalScopes;
-    public String entryPeriodEventId;
-    public String accessPeriodEventId;
     public List<String> ignoreUserIds;
     public String generation;
     
@@ -59,17 +61,31 @@ public class CategoryModelOptions {
         return this;
     }
     
+    public CategoryModelOptions withGlobalRankingSetting(
+        GlobalRankingSetting globalRankingSetting
+    ) {
+        this.globalRankingSetting = globalRankingSetting;
+        return this;
+    }
+    
+    public CategoryModelOptions withEntryPeriodEventId(
+        String entryPeriodEventId
+    ) {
+        this.entryPeriodEventId = entryPeriodEventId;
+        return this;
+    }
+    
+    public CategoryModelOptions withAccessPeriodEventId(
+        String accessPeriodEventId
+    ) {
+        this.accessPeriodEventId = accessPeriodEventId;
+        return this;
+    }
+    
     public CategoryModelOptions withUniqueByUserId(
         Boolean uniqueByUserId
     ) {
         this.uniqueByUserId = uniqueByUserId;
-        return this;
-    }
-    
-    public CategoryModelOptions withSum(
-        Boolean sum
-    ) {
-        this.sum = sum;
         return this;
     }
     
@@ -98,20 +114,6 @@ public class CategoryModelOptions {
         List<Scope> additionalScopes
     ) {
         this.additionalScopes = additionalScopes;
-        return this;
-    }
-    
-    public CategoryModelOptions withEntryPeriodEventId(
-        String entryPeriodEventId
-    ) {
-        this.entryPeriodEventId = entryPeriodEventId;
-        return this;
-    }
-    
-    public CategoryModelOptions withAccessPeriodEventId(
-        String accessPeriodEventId
-    ) {
-        this.accessPeriodEventId = accessPeriodEventId;
         return this;
     }
     
