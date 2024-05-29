@@ -18,6 +18,7 @@ package io.gs2.cdk.buff.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.buff.ref.NamespaceRef;
@@ -35,6 +36,7 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private ScriptSetting applyBuffScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -49,6 +51,7 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.applyBuffScript = options.applyBuffScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -90,6 +93,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.applyBuffScript != null) {
+            properties.put("ApplyBuffScript", this.applyBuffScript.properties(
+            ));
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
