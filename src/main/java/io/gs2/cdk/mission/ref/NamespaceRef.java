@@ -24,6 +24,7 @@ import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
 import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
+import io.gs2.cdk.mission.stampSheet.VerifyCompleteByUserId;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
@@ -157,6 +158,40 @@ public class NamespaceRef {
             this.namespaceName,
             missionGroupName,
             missionTaskName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCompleteByUserId verifyComplete(
+        String missionGroupName,
+        String verifyType,
+        String missionTaskName,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyCompleteByUserId(
+            this.namespaceName,
+            missionGroupName,
+            verifyType,
+            missionTaskName,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyCompleteByUserId verifyComplete(
+        String missionGroupName,
+        String verifyType,
+        String missionTaskName,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyCompleteByUserId(
+            this.namespaceName,
+            missionGroupName,
+            verifyType,
+            missionTaskName,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
