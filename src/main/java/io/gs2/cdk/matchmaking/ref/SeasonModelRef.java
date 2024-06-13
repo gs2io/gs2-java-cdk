@@ -17,37 +17,20 @@ package io.gs2.cdk.matchmaking.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.matchmaking.ref.RatingModelRef;
-import io.gs2.cdk.matchmaking.ref.SeasonModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class SeasonModelRef {
     private String namespaceName;
+    private String seasonName;
 
-    public NamespaceRef(
-        String namespaceName
-    ) {
-        this.namespaceName = namespaceName;
-    }
-
-    public RatingModelRef ratingModel(
-        String ratingName
-    ) {
-        return (new RatingModelRef(
-            this.namespaceName,
-            ratingName
-        ));
-    }
-
-    public SeasonModelRef seasonModel(
+    public SeasonModelRef(
+        String namespaceName,
         String seasonName
     ) {
-        return (new SeasonModelRef(
-            this.namespaceName,
-            seasonName
-        ));
+        this.namespaceName = namespaceName;
+        this.seasonName = seasonName;
     }
 
     public String grn(
@@ -64,7 +47,9 @@ public class NamespaceRef {
                 ).str(
                 ),
                 "matchmaking",
-                this.namespaceName
+                this.namespaceName,
+                "model",
+                this.seasonName
             )
         )).str(
         );

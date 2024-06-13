@@ -18,6 +18,7 @@ package io.gs2.cdk.matchmaking.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.matchmaking.model.RatingModel;
+import io.gs2.cdk.matchmaking.model.SeasonModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,18 +29,21 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2020-06-24";
     private String namespaceName;
     private List<RatingModel> ratingModels;
+    private List<SeasonModel> seasonModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<RatingModel> ratingModels
+        List<RatingModel> ratingModels,
+        List<SeasonModel> seasonModels
     ) {
         super(
-            "Matchmaking_CurrentRatingModelMaster_" + namespaceName
+            "Matchmaking_CurrentModelMaster_" + namespaceName
         );
 
         this.namespaceName = namespaceName;
         this.ratingModels = ratingModels;
+        this.seasonModels = seasonModels;
         stack.addResource(
             this
         );
@@ -52,7 +56,7 @@ public class CurrentMasterData extends CdkResource {
 
     public String resourceType(
     ) {
-        return "GS2::Matchmaking::CurrentRatingModelMaster";
+        return "GS2::Matchmaking::CurrentModelMaster";
     }
 
     public Map<String, Object> properties(
@@ -63,6 +67,10 @@ public class CurrentMasterData extends CdkResource {
         settings.put("version", this.version);
         if (this.ratingModels != null) {
             settings.put("ratingModels", this.ratingModels.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.seasonModels != null) {
+            settings.put("seasonModels", this.seasonModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

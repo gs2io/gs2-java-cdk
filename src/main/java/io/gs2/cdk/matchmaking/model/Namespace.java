@@ -25,6 +25,7 @@ import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.matchmaking.ref.NamespaceRef;
 import io.gs2.cdk.matchmaking.model.CurrentMasterData;
 import io.gs2.cdk.matchmaking.model.RatingModel;
+import io.gs2.cdk.matchmaking.model.SeasonModel;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableDisconnectDetection;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCreateGatheringTriggerType;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceCompleteMatchmakingTriggerType;
@@ -218,12 +219,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<RatingModel> ratingModels
+        List<RatingModel> ratingModels,
+        List<SeasonModel> seasonModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            ratingModels
+            ratingModels,
+            seasonModels
         )).addDependsOn(
             this
         );
