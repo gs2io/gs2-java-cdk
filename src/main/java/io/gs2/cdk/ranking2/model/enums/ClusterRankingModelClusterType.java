@@ -19,7 +19,8 @@ package io.gs2.cdk.ranking2.model.enums;
 
 public enum ClusterRankingModelClusterType {
     RAW,
-    GS2_GUILD__GUILD;
+    GS2_GUILD__GUILD,
+    GS2_MATCHMAKING__SEASON_GATHERING;
 
     public String toString() {
         switch (this) {
@@ -27,6 +28,8 @@ public enum ClusterRankingModelClusterType {
                 return "Raw";
             case GS2_GUILD__GUILD:
                 return "Gs2Guild::Guild";
+            case GS2_MATCHMAKING__SEASON_GATHERING:
+                return "Gs2Matchmaking::SeasonGathering";
         }
         return "unknown";
     }

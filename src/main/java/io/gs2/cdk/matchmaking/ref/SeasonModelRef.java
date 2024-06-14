@@ -17,6 +17,7 @@ package io.gs2.cdk.matchmaking.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.matchmaking.stampSheet.VerifyIncludeParticipantByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,42 @@ public class SeasonModelRef {
     ) {
         this.namespaceName = namespaceName;
         this.seasonName = seasonName;
+    }
+
+    public VerifyIncludeParticipantByUserId verifyIncludeParticipant(
+        Long season,
+        Long tier,
+        String verifyType,
+        String seasonGatheringName,
+        String userId
+    ) {
+        return (new VerifyIncludeParticipantByUserId(
+            this.namespaceName,
+            this.seasonName,
+            season,
+            tier,
+            verifyType,
+            seasonGatheringName,
+            userId
+        ));
+    }
+
+
+    public VerifyIncludeParticipantByUserId verifyIncludeParticipant(
+        Long season,
+        Long tier,
+        String verifyType,
+        String seasonGatheringName
+    ) {
+        return (new VerifyIncludeParticipantByUserId(
+            this.namespaceName,
+            this.seasonName,
+            season,
+            tier,
+            verifyType,
+            seasonGatheringName,
+            "#{userId}"
+        ));
     }
 
     public String grn(
