@@ -18,15 +18,18 @@ package io.gs2.cdk.buff.model.enums;
 
 
 public enum BuffEntryModelExpression {
-    ADD,
-    MUL;
+    RATE_ADD,
+    MUL,
+    VALUE_ADD;
 
     public String toString() {
         switch (this) {
-            case ADD:
-                return "add";
+            case RATE_ADD:
+                return "rate_add";
             case MUL:
                 return "mul";
+            case VALUE_ADD:
+                return "value_add";
         }
         return "unknown";
     }
