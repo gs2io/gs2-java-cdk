@@ -20,8 +20,8 @@ import io.gs2.cdk.buff.model.BuffTargetAction;
 import io.gs2.cdk.buff.model.options.BuffEntryModelOptions;
 import io.gs2.cdk.buff.model.options.BuffEntryModelTargetTypeIsModelOptions;
 import io.gs2.cdk.buff.model.options.BuffEntryModelTargetTypeIsActionOptions;
-import io.gs2.cdk.buff.model.enums.BuffEntryModelTargetType;
 import io.gs2.cdk.buff.model.enums.BuffEntryModelExpression;
+import io.gs2.cdk.buff.model.enums.BuffEntryModelTargetType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 
 public class BuffEntryModel {
     private String name;
-    private BuffEntryModelTargetType targetType;
     private BuffEntryModelExpression expression;
+    private BuffEntryModelTargetType targetType;
     private Integer priority;
     private String metadata = null;
     private BuffTargetModel targetModel = null;
@@ -39,14 +39,14 @@ public class BuffEntryModel {
 
     public BuffEntryModel(
         String name,
-        BuffEntryModelTargetType targetType,
         BuffEntryModelExpression expression,
+        BuffEntryModelTargetType targetType,
         Integer priority,
         BuffEntryModelOptions options
     ) {
         this.name = name;
-        this.targetType = targetType;
         this.expression = expression;
+        this.targetType = targetType;
         this.priority = priority;
         this.metadata = options.metadata;
         this.targetModel = options.targetModel;
@@ -55,13 +55,13 @@ public class BuffEntryModel {
     }
     public BuffEntryModel(
         String name,
-        BuffEntryModelTargetType targetType,
         BuffEntryModelExpression expression,
+        BuffEntryModelTargetType targetType,
         Integer priority
     ) {
         this.name = name;
-        this.targetType = targetType;
         this.expression = expression;
+        this.targetType = targetType;
         this.priority = priority;
     }
 
@@ -74,8 +74,8 @@ public class BuffEntryModel {
     ) {
         return (new BuffEntryModel(
             name,
-            BuffEntryModelTargetType.MODEL,
             expression,
+            BuffEntryModelTargetType.MODEL,
             priority,
             new BuffEntryModelOptions()
                 .withTargetModel(targetModel)
@@ -93,8 +93,8 @@ public class BuffEntryModel {
     ) {
         return (new BuffEntryModel(
             name,
-            BuffEntryModelTargetType.MODEL,
             expression,
+            BuffEntryModelTargetType.MODEL,
             priority
         ));
     }
@@ -108,8 +108,8 @@ public class BuffEntryModel {
     ) {
         return (new BuffEntryModel(
             name,
-            BuffEntryModelTargetType.ACTION,
             expression,
+            BuffEntryModelTargetType.ACTION,
             priority,
             new BuffEntryModelOptions()
                 .withTargetAction(targetAction)
@@ -127,8 +127,8 @@ public class BuffEntryModel {
     ) {
         return (new BuffEntryModel(
             name,
-            BuffEntryModelTargetType.ACTION,
             expression,
+            BuffEntryModelTargetType.ACTION,
             priority
         ));
     }
@@ -143,6 +143,10 @@ public class BuffEntryModel {
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
         }
+        if (this.expression != null) {
+            properties.put("expression", this.expression.toString(
+            ));
+        }
         if (this.targetType != null) {
             properties.put("targetType", this.targetType.toString(
             ));
@@ -153,10 +157,6 @@ public class BuffEntryModel {
         }
         if (this.targetAction != null) {
             properties.put("targetAction", this.targetAction.properties(
-            ));
-        }
-        if (this.expression != null) {
-            properties.put("expression", this.expression.toString(
             ));
         }
         if (this.priority != null) {

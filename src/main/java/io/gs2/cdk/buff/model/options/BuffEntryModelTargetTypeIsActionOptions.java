@@ -17,8 +17,8 @@ package io.gs2.cdk.buff.model.options;
 import io.gs2.cdk.buff.model.BuffTargetGrn;
 import io.gs2.cdk.buff.model.BuffTargetModel;
 import io.gs2.cdk.buff.model.BuffTargetAction;
-import io.gs2.cdk.buff.model.enums.BuffEntryModelTargetType;
 import io.gs2.cdk.buff.model.enums.BuffEntryModelExpression;
+import io.gs2.cdk.buff.model.enums.BuffEntryModelTargetType;
 
 import java.util.HashMap;
 import java.util.Map;
