@@ -27,6 +27,7 @@ public class NamespaceOptions {
     public String description;
     public TransactionSetting transactionSetting;
     public ScriptSetting receiveScript;
+    public String overrideAcquireActionsScriptId;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -47,6 +48,13 @@ public class NamespaceOptions {
         ScriptSetting receiveScript
     ) {
         this.receiveScript = receiveScript;
+        return this;
+    }
+    
+    public NamespaceOptions withOverrideAcquireActionsScriptId(
+        String overrideAcquireActionsScriptId
+    ) {
+        this.overrideAcquireActionsScriptId = overrideAcquireActionsScriptId;
         return this;
     }
     

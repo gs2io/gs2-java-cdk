@@ -17,7 +17,9 @@ package io.gs2.cdk.money2.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.money2.ref.DailyTransactionHistoryRef;
 import io.gs2.cdk.money2.ref.StoreContentModelRef;
+import io.gs2.cdk.money2.ref.UnusedBalanceRef;
 import io.gs2.cdk.money2.stampSheet.DepositByUserId;
 import io.gs2.cdk.money2.model.DepositTransaction;
 import io.gs2.cdk.money2.stampSheet.WithdrawByUserId;

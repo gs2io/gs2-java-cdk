@@ -39,6 +39,7 @@ public class Namespace extends CdkResource {
     private String description = null;
     private TransactionSetting transactionSetting = null;
     private ScriptSetting receiveScript = null;
+    private String overrideAcquireActionsScriptId = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -55,6 +56,7 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
         this.receiveScript = options.receiveScript;
+        this.overrideAcquireActionsScriptId = options.overrideAcquireActionsScriptId;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -104,6 +106,9 @@ public class Namespace extends CdkResource {
         if (this.receiveScript != null) {
             properties.put("ReceiveScript", this.receiveScript.properties(
             ));
+        }
+        if (this.overrideAcquireActionsScriptId != null) {
+            properties.put("OverrideAcquireActionsScriptId", this.overrideAcquireActionsScriptId);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
