@@ -19,6 +19,7 @@ import io.gs2.cdk.schedule.model.options.RepeatSettingRepeatTypeIsAlwaysOptions;
 import io.gs2.cdk.schedule.model.options.RepeatSettingRepeatTypeIsDailyOptions;
 import io.gs2.cdk.schedule.model.options.RepeatSettingRepeatTypeIsWeeklyOptions;
 import io.gs2.cdk.schedule.model.options.RepeatSettingRepeatTypeIsMonthlyOptions;
+import io.gs2.cdk.schedule.model.options.RepeatSettingRepeatTypeIsCustomOptions;
 import io.gs2.cdk.schedule.model.enums.RepeatSettingRepeatType;
 import io.gs2.cdk.schedule.model.enums.RepeatSettingBeginDayOfWeek;
 import io.gs2.cdk.schedule.model.enums.RepeatSettingEndDayOfWeek;
@@ -35,6 +36,9 @@ public class RepeatSetting {
     private RepeatSettingEndDayOfWeek endDayOfWeek = null;
     private Integer beginHour = null;
     private Integer endHour = null;
+    private Long anchorTimestamp = null;
+    private Integer activeDays = null;
+    private Integer inactiveDays = null;
 
     public RepeatSetting(
         RepeatSettingRepeatType repeatType,
@@ -47,6 +51,9 @@ public class RepeatSetting {
         this.endDayOfWeek = options.endDayOfWeek;
         this.beginHour = options.beginHour;
         this.endHour = options.endHour;
+        this.anchorTimestamp = options.anchorTimestamp;
+        this.activeDays = options.activeDays;
+        this.inactiveDays = options.inactiveDays;
     }
     public RepeatSetting(
         RepeatSettingRepeatType repeatType
@@ -152,6 +159,32 @@ public class RepeatSetting {
         ));
     }
 
+    public static RepeatSetting repeatTypeIsCustom(
+        Long anchorTimestamp,
+        Integer activeDays,
+        Integer inactiveDays,
+        RepeatSettingRepeatTypeIsCustomOptions options
+    ) {
+        return (new RepeatSetting(
+            RepeatSettingRepeatType.CUSTOM,
+            new RepeatSettingOptions()
+                .withAnchorTimestamp(anchorTimestamp)
+                .withActiveDays(activeDays)
+                .withInactiveDays(inactiveDays)
+        ));
+    }
+
+
+    public static RepeatSetting repeatTypeIsCustom(
+        Long anchorTimestamp,
+        Integer activeDays,
+        Integer inactiveDays
+    ) {
+        return (new RepeatSetting(
+            RepeatSettingRepeatType.CUSTOM
+        ));
+    }
+
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
@@ -179,6 +212,15 @@ public class RepeatSetting {
         }
         if (this.endHour != null) {
             properties.put("endHour", this.endHour);
+        }
+        if (this.anchorTimestamp != null) {
+            properties.put("anchorTimestamp", this.anchorTimestamp);
+        }
+        if (this.activeDays != null) {
+            properties.put("activeDays", this.activeDays);
+        }
+        if (this.inactiveDays != null) {
+            properties.put("inactiveDays", this.inactiveDays);
         }
 
         return properties;

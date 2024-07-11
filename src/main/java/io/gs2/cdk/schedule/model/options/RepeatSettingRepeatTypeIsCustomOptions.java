@@ -13,30 +13,15 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+package io.gs2.cdk.schedule.model.options;
+import io.gs2.cdk.schedule.model.enums.RepeatSettingRepeatType;
+import io.gs2.cdk.schedule.model.enums.RepeatSettingBeginDayOfWeek;
+import io.gs2.cdk.schedule.model.enums.RepeatSettingEndDayOfWeek;
 
-package io.gs2.cdk.schedule.model.enums;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
-
-public enum RepeatSettingRepeatType {
-    ALWAYS,
-    DAILY,
-    WEEKLY,
-    MONTHLY,
-    CUSTOM;
-
-    public String toString() {
-        switch (this) {
-            case ALWAYS:
-                return "always";
-            case DAILY:
-                return "daily";
-            case WEEKLY:
-                return "weekly";
-            case MONTHLY:
-                return "monthly";
-            case CUSTOM:
-                return "custom";
-        }
-        return "unknown";
-    }
+public class RepeatSettingRepeatTypeIsCustomOptions {
 }

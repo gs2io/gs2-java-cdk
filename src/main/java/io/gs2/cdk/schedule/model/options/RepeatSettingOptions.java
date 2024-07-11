@@ -30,6 +30,9 @@ public class RepeatSettingOptions {
     public RepeatSettingEndDayOfWeek endDayOfWeek;
     public Integer beginHour;
     public Integer endHour;
+    public Long anchorTimestamp;
+    public Integer activeDays;
+    public Integer inactiveDays;
     
     public RepeatSettingOptions withBeginDayOfMonth(
         Integer beginDayOfMonth
@@ -70,6 +73,27 @@ public class RepeatSettingOptions {
         Integer endHour
     ) {
         this.endHour = endHour;
+        return this;
+    }
+    
+    public RepeatSettingOptions withAnchorTimestamp(
+        Long anchorTimestamp
+    ) {
+        this.anchorTimestamp = anchorTimestamp;
+        return this;
+    }
+    
+    public RepeatSettingOptions withActiveDays(
+        Integer activeDays
+    ) {
+        this.activeDays = activeDays;
+        return this;
+    }
+    
+    public RepeatSettingOptions withInactiveDays(
+        Integer inactiveDays
+    ) {
+        this.inactiveDays = inactiveDays;
         return this;
     }
 }
