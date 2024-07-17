@@ -13,14 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.identifier.model.options;
-import io.gs2.cdk.identifier.model.enums.PasswordEnableTwoFactorAuthentication;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.identifier.model.enums;
 
-public class PasswordOptions {
+
+public enum TwoFactorAuthenticationSettingStatus {
+    VERIFYING,
+    ENABLE;
+
+    public String toString() {
+        switch (this) {
+            case VERIFYING:
+                return "Verifying";
+            case ENABLE:
+                return "Enable";
+        }
+        return "unknown";
+    }
 }
-

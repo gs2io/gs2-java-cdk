@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.identifier.model.options;
+import io.gs2.cdk.identifier.model.TwoFactorAuthenticationSetting;
 import io.gs2.cdk.identifier.model.enums.PasswordEnableTwoFactorAuthentication;
 
 import java.util.HashMap;
@@ -21,6 +22,21 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PasswordOptions {
+public class PasswordEnableTwoFactorAuthenticationIsRfc6238Options {
+    public TwoFactorAuthenticationSetting twoFactorAuthenticationSetting;
+    public Long revision;
+    
+    public PasswordEnableTwoFactorAuthenticationIsRfc6238Options withTwoFactorAuthenticationSetting(
+        TwoFactorAuthenticationSetting twoFactorAuthenticationSetting
+    ) {
+        this.twoFactorAuthenticationSetting = twoFactorAuthenticationSetting;
+        return this;
+    }
+    
+    public PasswordEnableTwoFactorAuthenticationIsRfc6238Options withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
-

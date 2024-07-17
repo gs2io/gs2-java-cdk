@@ -20,6 +20,7 @@ import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 
 import io.gs2.cdk.identifier.ref.PasswordRef;
+import io.gs2.cdk.identifier.model.enums.PasswordEnableTwoFactorAuthentication;
 
 import io.gs2.cdk.identifier.model.options.PasswordOptions;
 
