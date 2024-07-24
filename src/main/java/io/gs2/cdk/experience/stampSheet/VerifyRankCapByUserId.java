@@ -17,13 +17,14 @@ package io.gs2.cdk.experience.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VerifyRankCapByUserId extends ConsumeAction {
+public class VerifyRankCapByUserId extends VerifyAction {
 
     public VerifyRankCapByUserId(
         String namespaceName,

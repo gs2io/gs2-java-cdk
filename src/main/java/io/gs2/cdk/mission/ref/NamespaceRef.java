@@ -24,8 +24,8 @@ import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
 import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
-import io.gs2.cdk.mission.stampSheet.VerifyCompleteByUserId;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.VerifyCompleteByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -162,6 +162,32 @@ public class NamespaceRef {
         ));
     }
 
+    public DecreaseCounterByUserId decreaseCounter(
+        String counterName,
+        Long value,
+        String userId
+    ) {
+        return (new DecreaseCounterByUserId(
+            this.namespaceName,
+            counterName,
+            value,
+            userId
+        ));
+    }
+
+
+    public DecreaseCounterByUserId decreaseCounter(
+        String counterName,
+        Long value
+    ) {
+        return (new DecreaseCounterByUserId(
+            this.namespaceName,
+            counterName,
+            value,
+            "#{userId}"
+        ));
+    }
+
     public VerifyCompleteByUserId verifyComplete(
         String missionGroupName,
         String verifyType,
@@ -192,32 +218,6 @@ public class NamespaceRef {
             verifyType,
             missionTaskName,
             multiplyValueSpecifyingQuantity,
-            "#{userId}"
-        ));
-    }
-
-    public DecreaseCounterByUserId decreaseCounter(
-        String counterName,
-        Long value,
-        String userId
-    ) {
-        return (new DecreaseCounterByUserId(
-            this.namespaceName,
-            counterName,
-            value,
-            userId
-        ));
-    }
-
-
-    public DecreaseCounterByUserId decreaseCounter(
-        String counterName,
-        Long value
-    ) {
-        return (new DecreaseCounterByUserId(
-            this.namespaceName,
-            counterName,
-            value,
             "#{userId}"
         ));
     }

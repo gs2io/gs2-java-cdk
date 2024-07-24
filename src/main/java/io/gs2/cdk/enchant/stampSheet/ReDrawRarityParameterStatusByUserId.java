@@ -17,6 +17,7 @@ package io.gs2.cdk.enchant.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -17,13 +17,14 @@ package io.gs2.cdk.mission.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VerifyCounterValueByUserId extends ConsumeAction {
+public class VerifyCounterValueByUserId extends VerifyAction {
 
     public VerifyCounterValueByUserId(
         String namespaceName,

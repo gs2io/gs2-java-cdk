@@ -24,8 +24,8 @@ import io.gs2.cdk.inventory.stampSheet.AcquireItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.AcquireItemSetWithGradeByUserId;
 import io.gs2.cdk.inventory.stampSheet.AddReferenceOfByUserId;
 import io.gs2.cdk.inventory.stampSheet.DeleteReferenceOfByUserId;
-import io.gs2.cdk.inventory.stampSheet.VerifyInventoryCurrentMaxCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.ConsumeItemSetByUserId;
+import io.gs2.cdk.inventory.stampSheet.VerifyInventoryCurrentMaxCapacityByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyItemSetByUserId;
 import io.gs2.cdk.inventory.stampSheet.VerifyReferenceOfByUserId;
 import java.util.Arrays;
@@ -238,38 +238,6 @@ public class InventoryModelRef {
         ));
     }
 
-    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
-        String verifyType,
-        Integer currentInventoryMaxCapacity,
-        Boolean multiplyValueSpecifyingQuantity,
-        String userId
-    ) {
-        return (new VerifyInventoryCurrentMaxCapacityByUserId(
-            this.namespaceName,
-            this.inventoryName,
-            verifyType,
-            currentInventoryMaxCapacity,
-            multiplyValueSpecifyingQuantity,
-            userId
-        ));
-    }
-
-
-    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
-        String verifyType,
-        Integer currentInventoryMaxCapacity,
-        Boolean multiplyValueSpecifyingQuantity
-    ) {
-        return (new VerifyInventoryCurrentMaxCapacityByUserId(
-            this.namespaceName,
-            this.inventoryName,
-            verifyType,
-            currentInventoryMaxCapacity,
-            multiplyValueSpecifyingQuantity,
-            "#{userId}"
-        ));
-    }
-
     public ConsumeItemSetByUserId consumeItemSet(
         String itemName,
         Long consumeCount,
@@ -298,6 +266,38 @@ public class InventoryModelRef {
             itemName,
             consumeCount,
             itemSetName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String verifyType,
+        Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyInventoryCurrentMaxCapacityByUserId verifyInventoryCurrentMaxCapacity(
+        String verifyType,
+        Integer currentInventoryMaxCapacity,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            this.namespaceName,
+            this.inventoryName,
+            verifyType,
+            currentInventoryMaxCapacity,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

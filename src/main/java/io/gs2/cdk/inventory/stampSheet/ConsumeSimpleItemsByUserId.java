@@ -17,6 +17,7 @@ package io.gs2.cdk.inventory.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.inventory.model.ConsumeCount;
 
 import java.util.HashMap;

@@ -17,6 +17,7 @@ package io.gs2.cdk.mission.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.mission.model.ScopedValue;
 
 import java.util.HashMap;

@@ -17,6 +17,7 @@ package io.gs2.cdk.jobQueue.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.jobQueue.model.JobEntry;
 
 import java.util.HashMap;
