@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.NotificationSetting;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.guild.ref.NamespaceRef;
@@ -41,6 +42,10 @@ public class Namespace extends CdkResource {
     private NotificationSetting changeMemberNotification = null;
     private NotificationSetting receiveRequestNotification = null;
     private NotificationSetting removeRequestNotification = null;
+    private ScriptSetting createGuildScript = null;
+    private ScriptSetting joinGuildScript = null;
+    private ScriptSetting leaveGuildScript = null;
+    private ScriptSetting changeRoleScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -60,6 +65,10 @@ public class Namespace extends CdkResource {
         this.changeMemberNotification = options.changeMemberNotification;
         this.receiveRequestNotification = options.receiveRequestNotification;
         this.removeRequestNotification = options.removeRequestNotification;
+        this.createGuildScript = options.createGuildScript;
+        this.joinGuildScript = options.joinGuildScript;
+        this.leaveGuildScript = options.leaveGuildScript;
+        this.changeRoleScript = options.changeRoleScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -120,6 +129,22 @@ public class Namespace extends CdkResource {
         }
         if (this.removeRequestNotification != null) {
             properties.put("RemoveRequestNotification", this.removeRequestNotification.properties(
+            ));
+        }
+        if (this.createGuildScript != null) {
+            properties.put("CreateGuildScript", this.createGuildScript.properties(
+            ));
+        }
+        if (this.joinGuildScript != null) {
+            properties.put("JoinGuildScript", this.joinGuildScript.properties(
+            ));
+        }
+        if (this.leaveGuildScript != null) {
+            properties.put("LeaveGuildScript", this.leaveGuildScript.properties(
+            ));
+        }
+        if (this.changeRoleScript != null) {
+            properties.put("ChangeRoleScript", this.changeRoleScript.properties(
             ));
         }
         if (this.logSetting != null) {

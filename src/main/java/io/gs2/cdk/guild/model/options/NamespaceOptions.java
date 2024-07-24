@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.guild.model.options;
 import io.gs2.cdk.core.model.NotificationSetting;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import java.util.HashMap;
@@ -29,6 +30,10 @@ public class NamespaceOptions {
     public NotificationSetting changeMemberNotification;
     public NotificationSetting receiveRequestNotification;
     public NotificationSetting removeRequestNotification;
+    public ScriptSetting createGuildScript;
+    public ScriptSetting joinGuildScript;
+    public ScriptSetting leaveGuildScript;
+    public ScriptSetting changeRoleScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -70,6 +75,34 @@ public class NamespaceOptions {
         NotificationSetting removeRequestNotification
     ) {
         this.removeRequestNotification = removeRequestNotification;
+        return this;
+    }
+    
+    public NamespaceOptions withCreateGuildScript(
+        ScriptSetting createGuildScript
+    ) {
+        this.createGuildScript = createGuildScript;
+        return this;
+    }
+    
+    public NamespaceOptions withJoinGuildScript(
+        ScriptSetting joinGuildScript
+    ) {
+        this.joinGuildScript = joinGuildScript;
+        return this;
+    }
+    
+    public NamespaceOptions withLeaveGuildScript(
+        ScriptSetting leaveGuildScript
+    ) {
+        this.leaveGuildScript = leaveGuildScript;
+        return this;
+    }
+    
+    public NamespaceOptions withChangeRoleScript(
+        ScriptSetting changeRoleScript
+    ) {
+        this.changeRoleScript = changeRoleScript;
         return this;
     }
     

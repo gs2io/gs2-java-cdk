@@ -25,6 +25,7 @@ public class GuildModel {
     private String name;
     private Integer defaultMaximumMemberCount;
     private Integer maximumMemberCount;
+    private Integer inactivityPeriodDays;
     private List<RoleModel> roles;
     private String guildMasterRole;
     private String guildMemberDefaultRole;
@@ -35,6 +36,7 @@ public class GuildModel {
         String name,
         Integer defaultMaximumMemberCount,
         Integer maximumMemberCount,
+        Integer inactivityPeriodDays,
         List<RoleModel> roles,
         String guildMasterRole,
         String guildMemberDefaultRole,
@@ -44,6 +46,7 @@ public class GuildModel {
         this.name = name;
         this.defaultMaximumMemberCount = defaultMaximumMemberCount;
         this.maximumMemberCount = maximumMemberCount;
+        this.inactivityPeriodDays = inactivityPeriodDays;
         this.roles = roles;
         this.guildMasterRole = guildMasterRole;
         this.guildMemberDefaultRole = guildMemberDefaultRole;
@@ -54,6 +57,7 @@ public class GuildModel {
         String name,
         Integer defaultMaximumMemberCount,
         Integer maximumMemberCount,
+        Integer inactivityPeriodDays,
         List<RoleModel> roles,
         String guildMasterRole,
         String guildMemberDefaultRole,
@@ -62,6 +66,7 @@ public class GuildModel {
         this.name = name;
         this.defaultMaximumMemberCount = defaultMaximumMemberCount;
         this.maximumMemberCount = maximumMemberCount;
+        this.inactivityPeriodDays = inactivityPeriodDays;
         this.roles = roles;
         this.guildMasterRole = guildMasterRole;
         this.guildMemberDefaultRole = guildMemberDefaultRole;
@@ -83,6 +88,9 @@ public class GuildModel {
         }
         if (this.maximumMemberCount != null) {
             properties.put("maximumMemberCount", this.maximumMemberCount);
+        }
+        if (this.inactivityPeriodDays != null) {
+            properties.put("inactivityPeriodDays", this.inactivityPeriodDays);
         }
         if (this.roles != null) {
             properties.put("roles", this.roles.stream().map(v -> v.properties(
