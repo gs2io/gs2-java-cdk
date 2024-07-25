@@ -45,7 +45,10 @@ public class Namespace extends CdkResource {
     private ScriptSetting updateProfileScript = null;
     private NotificationSetting followNotification = null;
     private NotificationSetting receiveRequestNotification = null;
+    private NotificationSetting cancelRequestNotification = null;
     private NotificationSetting acceptRequestNotification = null;
+    private NotificationSetting rejectRequestNotification = null;
+    private NotificationSetting deleteFriendNotification = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -70,7 +73,10 @@ public class Namespace extends CdkResource {
         this.updateProfileScript = options.updateProfileScript;
         this.followNotification = options.followNotification;
         this.receiveRequestNotification = options.receiveRequestNotification;
+        this.cancelRequestNotification = options.cancelRequestNotification;
         this.acceptRequestNotification = options.acceptRequestNotification;
+        this.rejectRequestNotification = options.rejectRequestNotification;
+        this.deleteFriendNotification = options.deleteFriendNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -153,8 +159,20 @@ public class Namespace extends CdkResource {
             properties.put("ReceiveRequestNotification", this.receiveRequestNotification.properties(
             ));
         }
+        if (this.cancelRequestNotification != null) {
+            properties.put("CancelRequestNotification", this.cancelRequestNotification.properties(
+            ));
+        }
         if (this.acceptRequestNotification != null) {
             properties.put("AcceptRequestNotification", this.acceptRequestNotification.properties(
+            ));
+        }
+        if (this.rejectRequestNotification != null) {
+            properties.put("RejectRequestNotification", this.rejectRequestNotification.properties(
+            ));
+        }
+        if (this.deleteFriendNotification != null) {
+            properties.put("DeleteFriendNotification", this.deleteFriendNotification.properties(
             ));
         }
         if (this.logSetting != null) {

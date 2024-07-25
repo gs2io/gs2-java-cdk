@@ -16,6 +16,7 @@
 package io.gs2.cdk.loginReward.model.options;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.loginReward.model.Reward;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.loginReward.model.enums.BonusModelMode;
 import io.gs2.cdk.loginReward.model.enums.BonusModelRepeat;
@@ -32,6 +33,7 @@ public class BonusModelOptions {
     public Integer resetHour;
     public BonusModelRepeat repeat;
     public List<Reward> rewards;
+    public List<VerifyAction> missedReceiveReliefVerifyActions;
     public List<ConsumeAction> missedReceiveReliefConsumeActions;
     
     public BonusModelOptions withMetadata(
@@ -66,6 +68,13 @@ public class BonusModelOptions {
         List<Reward> rewards
     ) {
         this.rewards = rewards;
+        return this;
+    }
+    
+    public BonusModelOptions withMissedReceiveReliefVerifyActions(
+        List<VerifyAction> missedReceiveReliefVerifyActions
+    ) {
+        this.missedReceiveReliefVerifyActions = missedReceiveReliefVerifyActions;
         return this;
     }
     

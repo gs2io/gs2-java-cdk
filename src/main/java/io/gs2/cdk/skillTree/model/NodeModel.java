@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.skillTree.model;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.skillTree.model.options.NodeModelOptions;
@@ -27,6 +28,7 @@ public class NodeModel {
     private List<ConsumeAction> releaseConsumeActions;
     private Float restrainReturnRate;
     private String metadata = null;
+    private List<VerifyAction> releaseVerifyActions = null;
     private List<AcquireAction> returnAcquireActions = null;
     private List<String> premiseNodeNames = null;
 
@@ -40,6 +42,7 @@ public class NodeModel {
         this.releaseConsumeActions = releaseConsumeActions;
         this.restrainReturnRate = restrainReturnRate;
         this.metadata = options.metadata;
+        this.releaseVerifyActions = options.releaseVerifyActions;
         this.returnAcquireActions = options.returnAcquireActions;
         this.premiseNodeNames = options.premiseNodeNames;
     }
@@ -62,6 +65,10 @@ public class NodeModel {
         }
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
+        }
+        if (this.releaseVerifyActions != null) {
+            properties.put("releaseVerifyActions", this.releaseVerifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.releaseConsumeActions != null) {
             properties.put("releaseConsumeActions", this.releaseConsumeActions.stream().map(v -> v.properties(

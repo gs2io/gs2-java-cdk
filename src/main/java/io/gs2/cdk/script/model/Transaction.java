@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.script.model;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.script.model.options.TransactionOptions;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 
 public class Transaction {
     private String transactionId = null;
+    private List<VerifyAction> verifyActions = null;
     private List<ConsumeAction> consumeActions = null;
     private List<AcquireAction> acquireActions = null;
 
@@ -31,6 +33,7 @@ public class Transaction {
         TransactionOptions options
     ) {
         this.transactionId = options.transactionId;
+        this.verifyActions = options.verifyActions;
         this.consumeActions = options.consumeActions;
         this.acquireActions = options.acquireActions;
     }
@@ -44,6 +47,10 @@ public class Transaction {
 
         if (this.transactionId != null) {
             properties.put("transactionId", this.transactionId);
+        }
+        if (this.verifyActions != null) {
+            properties.put("verifyActions", this.verifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.consumeActions != null) {
             properties.put("consumeActions", this.consumeActions.stream().map(v -> v.properties(

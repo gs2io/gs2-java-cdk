@@ -15,11 +15,11 @@
  */
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.mission.model.TargetCounterModel;
-import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.mission.model.options.MissionTaskModelOptions;
 import io.gs2.cdk.mission.model.options.MissionTaskModelVerifyCompleteTypeIsCounterOptions;
-import io.gs2.cdk.mission.model.options.MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions;
+import io.gs2.cdk.mission.model.options.MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions;
 import io.gs2.cdk.mission.model.enums.MissionTaskModelVerifyCompleteType;
 import io.gs2.cdk.mission.model.enums.MissionTaskModelTargetResetType;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class MissionTaskModel {
     private Long targetValue;
     private String metadata = null;
     private TargetCounterModel targetCounter = null;
-    private List<ConsumeAction> verifyCompleteConsumeActions = null;
+    private List<VerifyAction> verifyCompleteConsumeActions = null;
     private List<AcquireAction> completeAcquireActions = null;
     private String challengePeriodEventId = null;
     private String premiseMissionTaskName = null;
@@ -109,15 +109,15 @@ public class MissionTaskModel {
         ));
     }
 
-    public static MissionTaskModel verifyCompleteTypeIsConsumeActions(
+    public static MissionTaskModel verifyCompleteTypeIsVerifyActions(
         String name,
         String counterName,
         Long targetValue,
-        MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions options
+        MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions options
     ) {
         return (new MissionTaskModel(
             name,
-            MissionTaskModelVerifyCompleteType.CONSUME_ACTIONS,
+            MissionTaskModelVerifyCompleteType.VERIFY_ACTIONS,
             counterName,
             targetValue,
             new MissionTaskModelOptions()
@@ -131,14 +131,14 @@ public class MissionTaskModel {
     }
 
 
-    public static MissionTaskModel verifyCompleteTypeIsConsumeActions(
+    public static MissionTaskModel verifyCompleteTypeIsVerifyActions(
         String name,
         String counterName,
         Long targetValue
     ) {
         return (new MissionTaskModel(
             name,
-            MissionTaskModelVerifyCompleteType.CONSUME_ACTIONS,
+            MissionTaskModelVerifyCompleteType.VERIFY_ACTIONS,
             counterName,
             targetValue
         ));

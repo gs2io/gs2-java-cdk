@@ -16,6 +16,7 @@
 package io.gs2.cdk.quest.model;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.quest.model.Contents;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.quest.model.options.QuestModelOptions;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class QuestModel {
     private String metadata = null;
     private String challengePeriodEventId = null;
     private List<AcquireAction> firstCompleteAcquireActions = null;
+    private List<VerifyAction> verifyActions = null;
     private List<ConsumeAction> consumeActions = null;
     private List<AcquireAction> failedAcquireActions = null;
     private List<String> premiseQuestNames = null;
@@ -43,6 +45,7 @@ public class QuestModel {
         this.metadata = options.metadata;
         this.challengePeriodEventId = options.challengePeriodEventId;
         this.firstCompleteAcquireActions = options.firstCompleteAcquireActions;
+        this.verifyActions = options.verifyActions;
         this.consumeActions = options.consumeActions;
         this.failedAcquireActions = options.failedAcquireActions;
         this.premiseQuestNames = options.premiseQuestNames;
@@ -74,6 +77,10 @@ public class QuestModel {
         }
         if (this.firstCompleteAcquireActions != null) {
             properties.put("firstCompleteAcquireActions", this.firstCompleteAcquireActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.verifyActions != null) {
+            properties.put("verifyActions", this.verifyActions.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
         if (this.consumeActions != null) {

@@ -15,7 +15,7 @@
  */
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.mission.model.TargetCounterModel;
-import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.mission.model.MissionTaskModel;
 import io.gs2.cdk.mission.model.options.MissionGroupModelOptions;

@@ -19,14 +19,14 @@ package io.gs2.cdk.mission.model.enums;
 
 public enum MissionTaskModelVerifyCompleteType {
     COUNTER,
-    CONSUME_ACTIONS;
+    VERIFY_ACTIONS;
 
     public String toString() {
         switch (this) {
             case COUNTER:
                 return "counter";
-            case CONSUME_ACTIONS:
-                return "consumeActions";
+            case VERIFY_ACTIONS:
+                return "verifyActions";
         }
         return "unknown";
     }

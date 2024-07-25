@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.exchange.model.options;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.exchange.model.enums.RateModelTimingType;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 
 public class RateModelTimingTypeIsAwaitOptions {
     public String metadata;
+    public List<VerifyAction> verifyActions;
     public List<ConsumeAction> consumeActions;
     public List<AcquireAction> acquireActions;
     
@@ -32,6 +34,13 @@ public class RateModelTimingTypeIsAwaitOptions {
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public RateModelTimingTypeIsAwaitOptions withVerifyActions(
+        List<VerifyAction> verifyActions
+    ) {
+        this.verifyActions = verifyActions;
         return this;
     }
     

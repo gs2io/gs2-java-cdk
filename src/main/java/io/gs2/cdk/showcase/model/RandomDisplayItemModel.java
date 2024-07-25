@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.showcase.model;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.showcase.model.options.RandomDisplayItemModelOptions;
@@ -28,6 +29,7 @@ public class RandomDisplayItemModel {
     private Integer stock;
     private Integer weight;
     private String metadata = null;
+    private List<VerifyAction> verifyActions = null;
     private List<ConsumeAction> consumeActions = null;
 
     public RandomDisplayItemModel(
@@ -42,6 +44,7 @@ public class RandomDisplayItemModel {
         this.stock = stock;
         this.weight = weight;
         this.metadata = options.metadata;
+        this.verifyActions = options.verifyActions;
         this.consumeActions = options.consumeActions;
     }
     public RandomDisplayItemModel(
@@ -65,6 +68,10 @@ public class RandomDisplayItemModel {
         }
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
+        }
+        if (this.verifyActions != null) {
+            properties.put("verifyActions", this.verifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.consumeActions != null) {
             properties.put("consumeActions", this.consumeActions.stream().map(v -> v.properties(

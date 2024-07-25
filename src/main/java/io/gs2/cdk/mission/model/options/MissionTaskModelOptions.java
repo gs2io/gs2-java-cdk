@@ -15,7 +15,7 @@
  */
 package io.gs2.cdk.mission.model.options;
 import io.gs2.cdk.mission.model.TargetCounterModel;
-import io.gs2.cdk.core.model.ConsumeAction;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.mission.model.enums.MissionTaskModelVerifyCompleteType;
 import io.gs2.cdk.mission.model.enums.MissionTaskModelTargetResetType;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class MissionTaskModelOptions {
     public String metadata;
     public TargetCounterModel targetCounter;
-    public List<ConsumeAction> verifyCompleteConsumeActions;
+    public List<VerifyAction> verifyCompleteConsumeActions;
     public List<AcquireAction> completeAcquireActions;
     public String challengePeriodEventId;
     public String premiseMissionTaskName;
@@ -49,7 +49,7 @@ public class MissionTaskModelOptions {
     }
     
     public MissionTaskModelOptions withVerifyCompleteConsumeActions(
-        List<ConsumeAction> verifyCompleteConsumeActions
+        List<VerifyAction> verifyCompleteConsumeActions
     ) {
         this.verifyCompleteConsumeActions = verifyCompleteConsumeActions;
         return this;

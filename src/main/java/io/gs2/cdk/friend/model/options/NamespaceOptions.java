@@ -35,7 +35,10 @@ public class NamespaceOptions {
     public ScriptSetting updateProfileScript;
     public NotificationSetting followNotification;
     public NotificationSetting receiveRequestNotification;
+    public NotificationSetting cancelRequestNotification;
     public NotificationSetting acceptRequestNotification;
+    public NotificationSetting rejectRequestNotification;
+    public NotificationSetting deleteFriendNotification;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -115,10 +118,31 @@ public class NamespaceOptions {
         return this;
     }
     
+    public NamespaceOptions withCancelRequestNotification(
+        NotificationSetting cancelRequestNotification
+    ) {
+        this.cancelRequestNotification = cancelRequestNotification;
+        return this;
+    }
+    
     public NamespaceOptions withAcceptRequestNotification(
         NotificationSetting acceptRequestNotification
     ) {
         this.acceptRequestNotification = acceptRequestNotification;
+        return this;
+    }
+    
+    public NamespaceOptions withRejectRequestNotification(
+        NotificationSetting rejectRequestNotification
+    ) {
+        this.rejectRequestNotification = rejectRequestNotification;
+        return this;
+    }
+    
+    public NamespaceOptions withDeleteFriendNotification(
+        NotificationSetting deleteFriendNotification
+    ) {
+        this.deleteFriendNotification = deleteFriendNotification;
         return this;
     }
     

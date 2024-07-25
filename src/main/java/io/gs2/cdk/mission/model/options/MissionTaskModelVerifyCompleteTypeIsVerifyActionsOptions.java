@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MissionTaskModelVerifyCompleteTypeIsCounterOptions {
+public class MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions {
     public String metadata;
     public List<VerifyAction> verifyCompleteConsumeActions;
     public List<AcquireAction> completeAcquireActions;
@@ -33,42 +33,42 @@ public class MissionTaskModelVerifyCompleteTypeIsCounterOptions {
     public String premiseMissionTaskName;
     public MissionTaskModelTargetResetType targetResetType;
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withMetadata(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
         return this;
     }
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withVerifyCompleteConsumeActions(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withVerifyCompleteConsumeActions(
         List<VerifyAction> verifyCompleteConsumeActions
     ) {
         this.verifyCompleteConsumeActions = verifyCompleteConsumeActions;
         return this;
     }
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withCompleteAcquireActions(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withCompleteAcquireActions(
         List<AcquireAction> completeAcquireActions
     ) {
         this.completeAcquireActions = completeAcquireActions;
         return this;
     }
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withChallengePeriodEventId(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withChallengePeriodEventId(
         String challengePeriodEventId
     ) {
         this.challengePeriodEventId = challengePeriodEventId;
         return this;
     }
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withPremiseMissionTaskName(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withPremiseMissionTaskName(
         String premiseMissionTaskName
     ) {
         this.premiseMissionTaskName = premiseMissionTaskName;
         return this;
     }
     
-    public MissionTaskModelVerifyCompleteTypeIsCounterOptions withTargetResetType(
+    public MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions withTargetResetType(
         MissionTaskModelTargetResetType targetResetType
     ) {
         this.targetResetType = targetResetType;

@@ -16,6 +16,7 @@
 package io.gs2.cdk.loginReward.model;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.loginReward.model.Reward;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.loginReward.model.options.BonusModelOptions;
 import io.gs2.cdk.loginReward.model.options.BonusModelModeIsScheduleOptions;
@@ -39,6 +40,7 @@ public class BonusModel {
     private Integer resetHour = null;
     private BonusModelRepeat repeat = null;
     private List<Reward> rewards = null;
+    private List<VerifyAction> missedReceiveReliefVerifyActions = null;
     private List<ConsumeAction> missedReceiveReliefConsumeActions = null;
 
     public BonusModel(
@@ -55,6 +57,7 @@ public class BonusModel {
         this.resetHour = options.resetHour;
         this.repeat = options.repeat;
         this.rewards = options.rewards;
+        this.missedReceiveReliefVerifyActions = options.missedReceiveReliefVerifyActions;
         this.missedReceiveReliefConsumeActions = options.missedReceiveReliefConsumeActions;
     }
     public BonusModel(
@@ -80,6 +83,7 @@ public class BonusModel {
                 .withMetadata(options.metadata)
                 .withPeriodEventId(options.periodEventId)
                 .withRewards(options.rewards)
+                .withMissedReceiveReliefVerifyActions(options.missedReceiveReliefVerifyActions)
                 .withMissedReceiveReliefConsumeActions(options.missedReceiveReliefConsumeActions)
         ));
     }
@@ -111,6 +115,7 @@ public class BonusModel {
                 .withMetadata(options.metadata)
                 .withPeriodEventId(options.periodEventId)
                 .withRewards(options.rewards)
+                .withMissedReceiveReliefVerifyActions(options.missedReceiveReliefVerifyActions)
                 .withMissedReceiveReliefConsumeActions(options.missedReceiveReliefConsumeActions)
         ));
     }
@@ -141,6 +146,7 @@ public class BonusModel {
                 .withMetadata(options.metadata)
                 .withPeriodEventId(options.periodEventId)
                 .withRewards(options.rewards)
+                .withMissedReceiveReliefVerifyActions(options.missedReceiveReliefVerifyActions)
                 .withMissedReceiveReliefConsumeActions(options.missedReceiveReliefConsumeActions)
         ));
     }
@@ -170,6 +176,7 @@ public class BonusModel {
                 .withMetadata(options.metadata)
                 .withPeriodEventId(options.periodEventId)
                 .withRewards(options.rewards)
+                .withMissedReceiveReliefVerifyActions(options.missedReceiveReliefVerifyActions)
                 .withMissedReceiveReliefConsumeActions(options.missedReceiveReliefConsumeActions)
         ));
     }
@@ -217,6 +224,10 @@ public class BonusModel {
         if (this.missedReceiveRelief != null) {
             properties.put("missedReceiveRelief", this.missedReceiveRelief.toString(
             ));
+        }
+        if (this.missedReceiveReliefVerifyActions != null) {
+            properties.put("missedReceiveReliefVerifyActions", this.missedReceiveReliefVerifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.missedReceiveReliefConsumeActions != null) {
             properties.put("missedReceiveReliefConsumeActions", this.missedReceiveReliefConsumeActions.stream().map(v -> v.properties(

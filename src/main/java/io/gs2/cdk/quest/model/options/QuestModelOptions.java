@@ -16,6 +16,7 @@
 package io.gs2.cdk.quest.model.options;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.quest.model.Contents;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class QuestModelOptions {
     public String metadata;
     public String challengePeriodEventId;
     public List<AcquireAction> firstCompleteAcquireActions;
+    public List<VerifyAction> verifyActions;
     public List<ConsumeAction> consumeActions;
     public List<AcquireAction> failedAcquireActions;
     public List<String> premiseQuestNames;
@@ -49,6 +51,13 @@ public class QuestModelOptions {
         List<AcquireAction> firstCompleteAcquireActions
     ) {
         this.firstCompleteAcquireActions = firstCompleteAcquireActions;
+        return this;
+    }
+    
+    public QuestModelOptions withVerifyActions(
+        List<VerifyAction> verifyActions
+    ) {
+        this.verifyActions = verifyActions;
         return this;
     }
     

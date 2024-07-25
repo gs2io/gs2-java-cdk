@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.exchange.model;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.exchange.model.options.RateModelOptions;
@@ -29,6 +30,7 @@ public class RateModel {
     private String name;
     private RateModelTimingType timingType;
     private String metadata = null;
+    private List<VerifyAction> verifyActions = null;
     private List<ConsumeAction> consumeActions = null;
     private Integer lockTime = null;
     private List<AcquireAction> acquireActions = null;
@@ -41,6 +43,7 @@ public class RateModel {
         this.name = name;
         this.timingType = timingType;
         this.metadata = options.metadata;
+        this.verifyActions = options.verifyActions;
         this.consumeActions = options.consumeActions;
         this.lockTime = options.lockTime;
         this.acquireActions = options.acquireActions;
@@ -62,6 +65,7 @@ public class RateModel {
             RateModelTimingType.IMMEDIATE,
             new RateModelOptions()
                 .withMetadata(options.metadata)
+                .withVerifyActions(options.verifyActions)
                 .withConsumeActions(options.consumeActions)
                 .withAcquireActions(options.acquireActions)
         ));
@@ -88,6 +92,7 @@ public class RateModel {
             new RateModelOptions()
                 .withLockTime(lockTime)
                 .withMetadata(options.metadata)
+                .withVerifyActions(options.verifyActions)
                 .withConsumeActions(options.consumeActions)
                 .withAcquireActions(options.acquireActions)
         ));
@@ -113,6 +118,10 @@ public class RateModel {
         }
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
+        }
+        if (this.verifyActions != null) {
+            properties.put("verifyActions", this.verifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
         if (this.consumeActions != null) {
             properties.put("consumeActions", this.consumeActions.stream().map(v -> v.properties(
