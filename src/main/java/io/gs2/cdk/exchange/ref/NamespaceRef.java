@@ -22,7 +22,6 @@ import io.gs2.cdk.exchange.ref.IncrementalRateModelRef;
 import io.gs2.cdk.exchange.stampSheet.ExchangeByUserId;
 import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.exchange.stampSheet.IncrementalExchangeByUserId;
-import io.gs2.cdk.exchange.stampSheet.UnlockIncrementalExchangeByUserId;
 import io.gs2.cdk.exchange.stampSheet.CreateAwaitByUserId;
 import io.gs2.cdk.exchange.stampSheet.SkipByUserId;
 import io.gs2.cdk.exchange.stampSheet.DeleteAwaitByUserId;
@@ -113,32 +112,6 @@ public class NamespaceRef {
             rateName,
             count,
             config,
-            "#{userId}"
-        ));
-    }
-
-    public UnlockIncrementalExchangeByUserId unlockIncrementalExchange(
-        String rateName,
-        String lockTransactionId,
-        String userId
-    ) {
-        return (new UnlockIncrementalExchangeByUserId(
-            this.namespaceName,
-            rateName,
-            lockTransactionId,
-            userId
-        ));
-    }
-
-
-    public UnlockIncrementalExchangeByUserId unlockIncrementalExchange(
-        String rateName,
-        String lockTransactionId
-    ) {
-        return (new UnlockIncrementalExchangeByUserId(
-            this.namespaceName,
-            rateName,
-            lockTransactionId,
             "#{userId}"
         ));
     }

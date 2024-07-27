@@ -25,10 +25,10 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
-    public Boolean enableDirectEnhance;
     public TransactionSetting transactionSetting;
     public ScriptSetting enhanceScript;
     public LogSetting logSetting;
+    public Boolean enableDirectEnhance;
     public String queueNamespaceId;
     public String keyId;
     
@@ -36,13 +36,6 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
-        return this;
-    }
-    
-    public NamespaceOptions withEnableDirectEnhance(
-        Boolean enableDirectEnhance
-    ) {
-        this.enableDirectEnhance = enableDirectEnhance;
         return this;
     }
     
@@ -64,6 +57,13 @@ public class NamespaceOptions {
         LogSetting logSetting
     ) {
         this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withEnableDirectEnhance(
+        Boolean enableDirectEnhance
+    ) {
+        this.enableDirectEnhance = enableDirectEnhance;
         return this;
     }
     

@@ -38,7 +38,6 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
-    private Boolean enableDirectEnhance = null;
     private TransactionSetting transactionSetting = null;
     private ScriptSetting enhanceScript = null;
     private LogSetting logSetting = null;
@@ -55,7 +54,6 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
-        this.enableDirectEnhance = options.enableDirectEnhance;
         this.transactionSetting = options.transactionSetting;
         this.enhanceScript = options.enhanceScript;
         this.logSetting = options.logSetting;
@@ -99,9 +97,6 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
-        }
-        if (this.enableDirectEnhance != null) {
-            properties.put("EnableDirectEnhance", this.enableDirectEnhance);
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
