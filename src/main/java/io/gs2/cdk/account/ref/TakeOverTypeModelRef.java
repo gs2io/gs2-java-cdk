@@ -12,32 +12,27 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.account.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.account.ref.TakeOverTypeModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class TakeOverTypeModelRef {
     private String namespaceName;
+    private Integer type;
 
-    public NamespaceRef(
-        String namespaceName
-    ) {
-        this.namespaceName = namespaceName;
-    }
-
-    public TakeOverTypeModelRef takeOverTypeModel(
+    public TakeOverTypeModelRef(
+        String namespaceName,
         Integer type
     ) {
-        return (new TakeOverTypeModelRef(
-            this.namespaceName,
-            type
-        ));
+        this.namespaceName = namespaceName;
+        this.type = type;
     }
 
     public String grn(
@@ -54,7 +49,11 @@ public class NamespaceRef {
                 ).str(
                 ),
                 "account",
-                this.namespaceName
+                this.namespaceName,
+                "model",
+                "takeOver",
+                this.type.toString(
+                )
             )
         )).str(
         );

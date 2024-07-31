@@ -22,6 +22,8 @@ import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.account.ref.NamespaceRef;
+import io.gs2.cdk.account.model.CurrentMasterData;
+import io.gs2.cdk.account.model.TakeOverTypeModel;
 
 import io.gs2.cdk.account.model.options.NamespaceOptions;
 
@@ -146,5 +148,18 @@ public class Namespace extends CdkResource {
             "Item.NamespaceId",
             null
         ));
+    }
+
+    public Namespace masterData(
+        List<TakeOverTypeModel> takeOverTypeModels
+    ) {
+        (new CurrentMasterData(
+            this.stack,
+            this.name,
+            takeOverTypeModels
+        )).addDependsOn(
+            this
+        );
+        return this;
     }
 }
