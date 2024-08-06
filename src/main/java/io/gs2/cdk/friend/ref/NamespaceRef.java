@@ -17,6 +17,7 @@ package io.gs2.cdk.friend.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.friend.stampSheet.UpdateProfileByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +29,36 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
+    }
+
+    public UpdateProfileByUserId updateProfile(
+        String publicProfile,
+        String followerProfile,
+        String friendProfile,
+        String userId
+    ) {
+        return (new UpdateProfileByUserId(
+            this.namespaceName,
+            publicProfile,
+            followerProfile,
+            friendProfile,
+            userId
+        ));
+    }
+
+
+    public UpdateProfileByUserId updateProfile(
+        String publicProfile,
+        String followerProfile,
+        String friendProfile
+    ) {
+        return (new UpdateProfileByUserId(
+            this.namespaceName,
+            publicProfile,
+            followerProfile,
+            friendProfile,
+            "#{userId}"
+        ));
     }
 
     public String grn(
