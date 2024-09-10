@@ -26,7 +26,8 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
-    public ScriptSetting changeBalanceScript;
+    public ScriptSetting depositBalanceScript;
+    public ScriptSetting withdrawBalanceScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -36,10 +37,17 @@ public class NamespaceOptions {
         return this;
     }
     
-    public NamespaceOptions withChangeBalanceScript(
-        ScriptSetting changeBalanceScript
+    public NamespaceOptions withDepositBalanceScript(
+        ScriptSetting depositBalanceScript
     ) {
-        this.changeBalanceScript = changeBalanceScript;
+        this.depositBalanceScript = depositBalanceScript;
+        return this;
+    }
+    
+    public NamespaceOptions withWithdrawBalanceScript(
+        ScriptSetting withdrawBalanceScript
+    ) {
+        this.withdrawBalanceScript = withdrawBalanceScript;
         return this;
     }
     

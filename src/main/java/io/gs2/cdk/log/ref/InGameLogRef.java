@@ -13,25 +13,23 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk;
-import io.gs2.cdk.account.ref.NamespaceRef;
-import io.gs2.cdk.account.ref.BanStatusRef;
+package io.gs2.cdk.log.ref;
 
-public class Account {
+import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.func.Join;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public static NamespaceRef namespace(
-        String namespaceName
+public class InGameLogRef {
+    private String namespaceName;
+    private String requestId;
+
+    public InGameLogRef(
+        String namespaceName,
+        String requestId
     ) {
-        return (new NamespaceRef(
-            namespaceName
-        ));
-    }
-
-    public static BanStatusRef banStatus(
-        String name
-    ) {
-        return (new BanStatusRef(
-            name
-        ));
+        this.namespaceName = namespaceName;
+        this.requestId = requestId;
     }
 }

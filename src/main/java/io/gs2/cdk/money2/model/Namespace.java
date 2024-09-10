@@ -41,7 +41,8 @@ public class Namespace extends CdkResource {
     private Boolean sharedFreeCurrency;
     private PlatformSetting platformSetting;
     private String description = null;
-    private ScriptSetting changeBalanceScript = null;
+    private ScriptSetting depositBalanceScript = null;
+    private ScriptSetting withdrawBalanceScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -62,7 +63,8 @@ public class Namespace extends CdkResource {
         this.sharedFreeCurrency = sharedFreeCurrency;
         this.platformSetting = platformSetting;
         this.description = options.description;
-        this.changeBalanceScript = options.changeBalanceScript;
+        this.depositBalanceScript = options.depositBalanceScript;
+        this.withdrawBalanceScript = options.withdrawBalanceScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -121,8 +123,12 @@ public class Namespace extends CdkResource {
             properties.put("PlatformSetting", this.platformSetting.properties(
             ));
         }
-        if (this.changeBalanceScript != null) {
-            properties.put("ChangeBalanceScript", this.changeBalanceScript.properties(
+        if (this.depositBalanceScript != null) {
+            properties.put("DepositBalanceScript", this.depositBalanceScript.properties(
+            ));
+        }
+        if (this.withdrawBalanceScript != null) {
+            properties.put("WithdrawBalanceScript", this.withdrawBalanceScript.properties(
             ));
         }
         if (this.logSetting != null) {
