@@ -14,30 +14,15 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model.options;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelScopeType;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelResetType;
+import io.gs2.cdk.core.model.VerifyAction;
+import io.gs2.cdk.mission.model.enums.CounterScopeModelScopeType;
+import io.gs2.cdk.mission.model.enums.CounterScopeModelResetType;
+import io.gs2.cdk.mission.model.enums.CounterScopeModelResetDayOfWeek;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TargetCounterModelOptions {
-    public TargetCounterModelResetType resetType;
-    public String conditionName;
-    
-    public TargetCounterModelOptions withResetType(
-        TargetCounterModelResetType resetType
-    ) {
-        this.resetType = resetType;
-        return this;
-    }
-    
-    public TargetCounterModelOptions withConditionName(
-        String conditionName
-    ) {
-        this.conditionName = conditionName;
-        return this;
-    }
+public class CounterScopeModelScopeTypeIsResetTimingOptions {
 }
-

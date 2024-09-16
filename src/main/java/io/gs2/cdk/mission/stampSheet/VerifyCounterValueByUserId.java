@@ -30,7 +30,9 @@ public class VerifyCounterValueByUserId extends VerifyAction {
         String namespaceName,
         String counterName,
         String verifyType,
+        String scopeType,
         String resetType,
+        String conditionName,
         Long value,
         Boolean multiplyValueSpecifyingQuantity,
         String userId
@@ -42,7 +44,9 @@ public class VerifyCounterValueByUserId extends VerifyAction {
                     put("namespaceName", namespaceName);
                     put("counterName", counterName);
                     put("verifyType", verifyType);
+                    put("scopeType", scopeType);
                     put("resetType", resetType);
+                    put("conditionName", conditionName);
                     put("value", value);
                     put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);

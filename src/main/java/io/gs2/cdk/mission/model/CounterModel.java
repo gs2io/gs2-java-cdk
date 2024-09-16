@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.mission.model.CounterScopeModel;
 import io.gs2.cdk.mission.model.options.CounterModelOptions;
 import java.util.HashMap;

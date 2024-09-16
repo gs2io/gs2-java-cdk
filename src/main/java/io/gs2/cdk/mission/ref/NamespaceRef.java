@@ -225,7 +225,9 @@ public class NamespaceRef {
     public VerifyCounterValueByUserId verifyCounterValue(
         String counterName,
         String verifyType,
+        String scopeType,
         String resetType,
+        String conditionName,
         Long value,
         Boolean multiplyValueSpecifyingQuantity,
         String userId
@@ -234,7 +236,9 @@ public class NamespaceRef {
             this.namespaceName,
             counterName,
             verifyType,
+            scopeType,
             resetType,
+            conditionName,
             value,
             multiplyValueSpecifyingQuantity,
             userId
@@ -245,7 +249,9 @@ public class NamespaceRef {
     public VerifyCounterValueByUserId verifyCounterValue(
         String counterName,
         String verifyType,
+        String scopeType,
         String resetType,
+        String conditionName,
         Long value,
         Boolean multiplyValueSpecifyingQuantity
     ) {
@@ -253,7 +259,9 @@ public class NamespaceRef {
             this.namespaceName,
             counterName,
             verifyType,
+            scopeType,
             resetType,
+            conditionName,
             value,
             multiplyValueSpecifyingQuantity,
             "#{userId}"

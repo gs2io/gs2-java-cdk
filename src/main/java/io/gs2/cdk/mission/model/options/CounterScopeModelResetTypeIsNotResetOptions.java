@@ -14,6 +14,8 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model.options;
+import io.gs2.cdk.core.model.VerifyAction;
+import io.gs2.cdk.mission.model.enums.CounterScopeModelScopeType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetDayOfWeek;
 

@@ -13,30 +13,20 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.mission.model.options;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelScopeType;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelResetType;
+package io.gs2.cdk.exchange.model.options;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TargetCounterModelOptions {
-    public TargetCounterModelResetType resetType;
-    public String conditionName;
+public class LogCostOptions {
+    public List<Double> subs;
     
-    public TargetCounterModelOptions withResetType(
-        TargetCounterModelResetType resetType
+    public LogCostOptions withSubs(
+        List<Double> subs
     ) {
-        this.resetType = resetType;
-        return this;
-    }
-    
-    public TargetCounterModelOptions withConditionName(
-        String conditionName
-    ) {
-        this.conditionName = conditionName;
+        this.subs = subs;
         return this;
     }
 }

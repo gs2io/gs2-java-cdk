@@ -22,22 +22,13 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TargetCounterModelOptions {
+public class TargetCounterModelScopeTypeIsVerifyActionOptions {
     public TargetCounterModelResetType resetType;
-    public String conditionName;
     
-    public TargetCounterModelOptions withResetType(
+    public TargetCounterModelScopeTypeIsVerifyActionOptions withResetType(
         TargetCounterModelResetType resetType
     ) {
         this.resetType = resetType;
         return this;
     }
-    
-    public TargetCounterModelOptions withConditionName(
-        String conditionName
-    ) {
-        this.conditionName = conditionName;
-        return this;
-    }
 }
-

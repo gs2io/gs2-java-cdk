@@ -14,30 +14,21 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model.options;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelScopeType;
-import io.gs2.cdk.mission.model.enums.TargetCounterModelResetType;
+import io.gs2.cdk.mission.model.enums.ScopedValueScopeType;
+import io.gs2.cdk.mission.model.enums.ScopedValueResetType;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TargetCounterModelOptions {
-    public TargetCounterModelResetType resetType;
-    public String conditionName;
+public class ScopedValueScopeTypeIsVerifyActionOptions {
+    public Long nextResetAt;
     
-    public TargetCounterModelOptions withResetType(
-        TargetCounterModelResetType resetType
+    public ScopedValueScopeTypeIsVerifyActionOptions withNextResetAt(
+        Long nextResetAt
     ) {
-        this.resetType = resetType;
-        return this;
-    }
-    
-    public TargetCounterModelOptions withConditionName(
-        String conditionName
-    ) {
-        this.conditionName = conditionName;
+        this.nextResetAt = nextResetAt;
         return this;
     }
 }
-

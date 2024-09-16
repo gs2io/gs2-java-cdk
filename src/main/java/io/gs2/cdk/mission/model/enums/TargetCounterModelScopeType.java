@@ -13,16 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.mission.model.options;
-import io.gs2.cdk.core.model.VerifyAction;
-import io.gs2.cdk.mission.model.enums.CounterScopeModelScopeType;
-import io.gs2.cdk.mission.model.enums.CounterScopeModelResetType;
-import io.gs2.cdk.mission.model.enums.CounterScopeModelResetDayOfWeek;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.mission.model.enums;
 
-public class CounterScopeModelResetTypeIsDailyOptions {
+
+public enum TargetCounterModelScopeType {
+    RESET_TIMING,
+    VERIFY_ACTION;
+
+    public String toString() {
+        switch (this) {
+            case RESET_TIMING:
+                return "resetTiming";
+            case VERIFY_ACTION:
+                return "verifyAction";
+        }
+        return "unknown";
+    }
 }

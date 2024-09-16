@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.mission.model.options;
+import io.gs2.cdk.mission.model.enums.ScopedValueScopeType;
 import io.gs2.cdk.mission.model.enums.ScopedValueResetType;
 
 import java.util.HashMap;
@@ -22,7 +23,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ScopedValueOptions {
+    public ScopedValueResetType resetType;
+    public String conditionName;
     public Long nextResetAt;
+    
+    public ScopedValueOptions withResetType(
+        ScopedValueResetType resetType
+    ) {
+        this.resetType = resetType;
+        return this;
+    }
+    
+    public ScopedValueOptions withConditionName(
+        String conditionName
+    ) {
+        this.conditionName = conditionName;
+        return this;
+    }
     
     public ScopedValueOptions withNextResetAt(
         Long nextResetAt

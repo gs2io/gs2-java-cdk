@@ -15,6 +15,9 @@
  */
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.mission.model.options.TargetCounterModelOptions;
+import io.gs2.cdk.mission.model.options.TargetCounterModelScopeTypeIsResetTimingOptions;
+import io.gs2.cdk.mission.model.options.TargetCounterModelScopeTypeIsVerifyActionOptions;
+import io.gs2.cdk.mission.model.enums.TargetCounterModelScopeType;
 import io.gs2.cdk.mission.model.enums.TargetCounterModelResetType;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,24 +26,86 @@ import java.util.stream.Collectors;
 
 public class TargetCounterModel {
     private String counterName;
+    private TargetCounterModelScopeType scopeType;
     private Long value;
     private TargetCounterModelResetType resetType = null;
+    private String conditionName = null;
 
     public TargetCounterModel(
         String counterName,
+        TargetCounterModelScopeType scopeType,
         Long value,
         TargetCounterModelOptions options
     ) {
         this.counterName = counterName;
+        this.scopeType = scopeType;
         this.value = value;
         this.resetType = options.resetType;
+        this.conditionName = options.conditionName;
     }
     public TargetCounterModel(
         String counterName,
+        TargetCounterModelScopeType scopeType,
         Long value
     ) {
         this.counterName = counterName;
+        this.scopeType = scopeType;
         this.value = value;
+    }
+
+    public static TargetCounterModel scopeTypeIsResetTiming(
+        String counterName,
+        Long value,
+        TargetCounterModelScopeTypeIsResetTimingOptions options
+    ) {
+        return (new TargetCounterModel(
+            counterName,
+            TargetCounterModelScopeType.RESET_TIMING,
+            value,
+            new TargetCounterModelOptions()
+                .withResetType(options.resetType)
+        ));
+    }
+
+
+    public static TargetCounterModel scopeTypeIsResetTiming(
+        String counterName,
+        Long value
+    ) {
+        return (new TargetCounterModel(
+            counterName,
+            TargetCounterModelScopeType.RESET_TIMING,
+            value
+        ));
+    }
+
+    public static TargetCounterModel scopeTypeIsVerifyAction(
+        String counterName,
+        Long value,
+        String conditionName,
+        TargetCounterModelScopeTypeIsVerifyActionOptions options
+    ) {
+        return (new TargetCounterModel(
+            counterName,
+            TargetCounterModelScopeType.VERIFY_ACTION,
+            value,
+            new TargetCounterModelOptions()
+                .withConditionName(conditionName)
+                .withResetType(options.resetType)
+        ));
+    }
+
+
+    public static TargetCounterModel scopeTypeIsVerifyAction(
+        String counterName,
+        Long value,
+        String conditionName
+    ) {
+        return (new TargetCounterModel(
+            counterName,
+            TargetCounterModelScopeType.VERIFY_ACTION,
+            value
+        ));
     }
 
     public Map<String, Object> properties(
@@ -50,9 +115,16 @@ public class TargetCounterModel {
         if (this.counterName != null) {
             properties.put("counterName", this.counterName);
         }
+        if (this.scopeType != null) {
+            properties.put("scopeType", this.scopeType.toString(
+            ));
+        }
         if (this.resetType != null) {
             properties.put("resetType", this.resetType.toString(
             ));
+        }
+        if (this.conditionName != null) {
+            properties.put("conditionName", this.conditionName);
         }
         if (this.value != null) {
             properties.put("value", this.value);

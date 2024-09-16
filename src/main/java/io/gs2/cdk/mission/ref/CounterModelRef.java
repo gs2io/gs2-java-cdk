@@ -112,7 +112,9 @@ public class CounterModelRef {
 
     public VerifyCounterValueByUserId verifyCounterValue(
         String verifyType,
+        String scopeType,
         String resetType,
+        String conditionName,
         Long value,
         Boolean multiplyValueSpecifyingQuantity,
         String userId
@@ -121,7 +123,9 @@ public class CounterModelRef {
             this.namespaceName,
             this.counterName,
             verifyType,
+            scopeType,
             resetType,
+            conditionName,
             value,
             multiplyValueSpecifyingQuantity,
             userId
@@ -131,7 +135,9 @@ public class CounterModelRef {
 
     public VerifyCounterValueByUserId verifyCounterValue(
         String verifyType,
+        String scopeType,
         String resetType,
+        String conditionName,
         Long value,
         Boolean multiplyValueSpecifyingQuantity
     ) {
@@ -139,7 +145,9 @@ public class CounterModelRef {
             this.namespaceName,
             this.counterName,
             verifyType,
+            scopeType,
             resetType,
+            conditionName,
             value,
             multiplyValueSpecifyingQuantity,
             "#{userId}"
