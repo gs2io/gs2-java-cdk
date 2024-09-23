@@ -24,6 +24,7 @@ import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
 import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
+import io.gs2.cdk.mission.stampSheet.BatchReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCompleteByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
@@ -158,6 +159,32 @@ public class NamespaceRef {
             this.namespaceName,
             missionGroupName,
             missionTaskName,
+            "#{userId}"
+        ));
+    }
+
+    public BatchReceiveByUserId batchReceive(
+        String missionGroupName,
+        List<String> missionTaskNames,
+        String userId
+    ) {
+        return (new BatchReceiveByUserId(
+            this.namespaceName,
+            missionGroupName,
+            missionTaskNames,
+            userId
+        ));
+    }
+
+
+    public BatchReceiveByUserId batchReceive(
+        String missionGroupName,
+        List<String> missionTaskNames
+    ) {
+        return (new BatchReceiveByUserId(
+            this.namespaceName,
+            missionGroupName,
+            missionTaskNames,
             "#{userId}"
         ));
     }
