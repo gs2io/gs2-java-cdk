@@ -36,6 +36,7 @@ public class Namespace extends CdkResource {
     private String name;
     private String description = null;
     private Boolean allowCreateRoom = null;
+    private Integer messageLifeTimeDays = null;
     private ScriptSetting postMessageScript = null;
     private ScriptSetting createRoomScript = null;
     private ScriptSetting deleteRoomScript = null;
@@ -57,6 +58,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.allowCreateRoom = options.allowCreateRoom;
+        this.messageLifeTimeDays = options.messageLifeTimeDays;
         this.postMessageScript = options.postMessageScript;
         this.createRoomScript = options.createRoomScript;
         this.deleteRoomScript = options.deleteRoomScript;
@@ -107,6 +109,9 @@ public class Namespace extends CdkResource {
         }
         if (this.allowCreateRoom != null) {
             properties.put("AllowCreateRoom", this.allowCreateRoom);
+        }
+        if (this.messageLifeTimeDays != null) {
+            properties.put("MessageLifeTimeDays", this.messageLifeTimeDays);
         }
         if (this.postMessageScript != null) {
             properties.put("PostMessageScript", this.postMessageScript.properties(

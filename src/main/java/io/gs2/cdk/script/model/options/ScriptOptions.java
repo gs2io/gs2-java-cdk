@@ -22,11 +22,19 @@ import java.util.stream.Collectors;
 
 public class ScriptOptions {
     public String description;
+    public Boolean disableStringNumberToNumber;
     
     public ScriptOptions withDescription(
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public ScriptOptions withDisableStringNumberToNumber(
+        Boolean disableStringNumberToNumber
+    ) {
+        this.disableStringNumberToNumber = disableStringNumberToNumber;
         return this;
     }
 }

@@ -34,6 +34,7 @@ public class Script extends CdkResource {
     private String name;
     private String script;
     private String description = null;
+    private Boolean disableStringNumberToNumber = null;
 
     public Script(
         Stack stack,
@@ -51,6 +52,7 @@ public class Script extends CdkResource {
         this.name = name;
         this.script = script;
         this.description = options.description;
+        this.disableStringNumberToNumber = options.disableStringNumberToNumber;
         stack.addResource(
             this
         );
@@ -101,6 +103,9 @@ public class Script extends CdkResource {
         }
         if (this.script != null) {
             properties.put("Script", this.script);
+        }
+        if (this.disableStringNumberToNumber != null) {
+            properties.put("DisableStringNumberToNumber", this.disableStringNumberToNumber);
         }
 
         return properties;

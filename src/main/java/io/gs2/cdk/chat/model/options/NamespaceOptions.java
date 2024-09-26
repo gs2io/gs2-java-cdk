@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public Boolean allowCreateRoom;
+    public Integer messageLifeTimeDays;
     public ScriptSetting postMessageScript;
     public ScriptSetting createRoomScript;
     public ScriptSetting deleteRoomScript;
@@ -45,6 +46,13 @@ public class NamespaceOptions {
         Boolean allowCreateRoom
     ) {
         this.allowCreateRoom = allowCreateRoom;
+        return this;
+    }
+    
+    public NamespaceOptions withMessageLifeTimeDays(
+        Integer messageLifeTimeDays
+    ) {
+        this.messageLifeTimeDays = messageLifeTimeDays;
         return this;
     }
     
