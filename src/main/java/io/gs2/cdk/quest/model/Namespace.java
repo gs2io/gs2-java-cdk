@@ -142,12 +142,12 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<QuestGroupModel> questGroupModels
+        List<QuestGroupModel> groups
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            questGroupModels
+            groups
         )).addDependsOn(
             this
         );

@@ -17,47 +17,19 @@ package io.gs2.cdk.account.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.account.ref.TakeOverTypeModelRef;
-import io.gs2.cdk.account.ref.MasterDataVersionRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class MasterDataVersionRef {
     private String namespaceName;
+    private String objectKey;
 
-    public NamespaceRef(
-        String namespaceName
+    public MasterDataVersionRef(
+        String namespaceName,
+        String objectKey
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public TakeOverTypeModelRef takeOverTypeModel(
-        Integer type
-    ) {
-        return (new TakeOverTypeModelRef(
-            this.namespaceName,
-            type
-        ));
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "account",
-                this.namespaceName
-            )
-        )).str(
-        );
+        this.objectKey = objectKey;
     }
 }

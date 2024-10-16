@@ -20,6 +20,7 @@ import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.serialKey.ref.CampaignModelRef;
 import io.gs2.cdk.serialKey.stampSheet.RevertUseByUserId;
 import io.gs2.cdk.serialKey.stampSheet.UseByUserId;
+import io.gs2.cdk.serialKey.stampSheet.VerifyCodeByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,6 +83,32 @@ public class NamespaceRef {
         return (new UseByUserId(
             this.namespaceName,
             code,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCodeByUserId verifyCode(
+        String code,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyCodeByUserId(
+            this.namespaceName,
+            code,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyCodeByUserId verifyCode(
+        String code,
+        String verifyType
+    ) {
+        return (new VerifyCodeByUserId(
+            this.namespaceName,
+            code,
+            verifyType,
             "#{userId}"
         ));
     }

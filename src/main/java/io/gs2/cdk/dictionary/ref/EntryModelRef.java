@@ -26,14 +26,14 @@ import java.util.stream.Collectors;
 
 public class EntryModelRef {
     private String namespaceName;
-    private String entryName;
+    private String entryModelName;
 
     public EntryModelRef(
         String namespaceName,
-        String entryName
+        String entryModelName
     ) {
         this.namespaceName = namespaceName;
-        this.entryName = entryName;
+        this.entryModelName = entryModelName;
     }
 
     public AddEntriesByUserId addEntries(
@@ -81,13 +81,12 @@ public class EntryModelRef {
     }
 
     public VerifyEntryByUserId verifyEntry(
-        String entryModelName,
         String verifyType,
         String userId
     ) {
         return (new VerifyEntryByUserId(
             this.namespaceName,
-            entryModelName,
+            this.entryModelName,
             verifyType,
             userId
         ));
@@ -95,12 +94,11 @@ public class EntryModelRef {
 
 
     public VerifyEntryByUserId verifyEntry(
-        String entryModelName,
         String verifyType
     ) {
         return (new VerifyEntryByUserId(
             this.namespaceName,
-            entryModelName,
+            this.entryModelName,
             verifyType,
             "#{userId}"
         ));
@@ -122,7 +120,7 @@ public class EntryModelRef {
                 "dictionary",
                 this.namespaceName,
                 "model",
-                this.entryName
+                this.entryModelName
             )
         )).str(
         );

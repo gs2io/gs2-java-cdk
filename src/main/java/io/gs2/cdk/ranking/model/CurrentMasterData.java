@@ -27,19 +27,19 @@ import java.util.stream.Collectors;
 public class CurrentMasterData extends CdkResource {
     private String version= "2019-09-17";
     private String namespaceName;
-    private List<CategoryModel> categoryModels;
+    private List<CategoryModel> categories;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<CategoryModel> categoryModels
+        List<CategoryModel> categories
     ) {
         super(
             "Ranking_CurrentRankingMaster_" + namespaceName
         );
 
         this.namespaceName = namespaceName;
-        this.categoryModels = categoryModels;
+        this.categories = categories;
         stack.addResource(
             this
         );
@@ -61,8 +61,8 @@ public class CurrentMasterData extends CdkResource {
         var settings = new HashMap<String, Object>();
 
         settings.put("version", this.version);
-        if (this.categoryModels != null) {
-            settings.put("categoryModels", this.categoryModels.stream().map(v -> v.properties(
+        if (this.categories != null) {
+            settings.put("categories", this.categories.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

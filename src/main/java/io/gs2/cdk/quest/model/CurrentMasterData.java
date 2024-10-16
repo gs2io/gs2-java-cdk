@@ -27,19 +27,19 @@ import java.util.stream.Collectors;
 public class CurrentMasterData extends CdkResource {
     private String version= "2019-05-14";
     private String namespaceName;
-    private List<QuestGroupModel> questGroupModels;
+    private List<QuestGroupModel> groups;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<QuestGroupModel> questGroupModels
+        List<QuestGroupModel> groups
     ) {
         super(
             "Quest_CurrentQuestMaster_" + namespaceName
         );
 
         this.namespaceName = namespaceName;
-        this.questGroupModels = questGroupModels;
+        this.groups = groups;
         stack.addResource(
             this
         );
@@ -61,8 +61,8 @@ public class CurrentMasterData extends CdkResource {
         var settings = new HashMap<String, Object>();
 
         settings.put("version", this.version);
-        if (this.questGroupModels != null) {
-            settings.put("questGroupModels", this.questGroupModels.stream().map(v -> v.properties(
+        if (this.groups != null) {
+            settings.put("groups", this.groups.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

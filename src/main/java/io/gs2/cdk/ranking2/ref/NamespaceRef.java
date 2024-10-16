@@ -22,6 +22,9 @@ import io.gs2.cdk.ranking2.ref.SubscribeRankingModelRef;
 import io.gs2.cdk.ranking2.ref.ClusterRankingModelRef;
 import io.gs2.cdk.ranking2.stampSheet.CreateGlobalRankingReceivedRewardByUserId;
 import io.gs2.cdk.ranking2.stampSheet.CreateClusterRankingReceivedRewardByUserId;
+import io.gs2.cdk.ranking2.stampSheet.VerifyGlobalRankingScoreByUserId;
+import io.gs2.cdk.ranking2.stampSheet.VerifyClusterRankingScoreByUserId;
+import io.gs2.cdk.ranking2.stampSheet.VerifySubscribeRankingScoreByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -114,6 +117,124 @@ public class NamespaceRef {
             rankingName,
             clusterName,
             season,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyGlobalRankingScoreByUserId verifyGlobalRankingScore(
+        String rankingName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyGlobalRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyGlobalRankingScoreByUserId verifyGlobalRankingScore(
+        String rankingName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyGlobalRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyClusterRankingScoreByUserId verifyClusterRankingScore(
+        String rankingName,
+        String clusterName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyClusterRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            clusterName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyClusterRankingScoreByUserId verifyClusterRankingScore(
+        String rankingName,
+        String clusterName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyClusterRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            clusterName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifySubscribeRankingScoreByUserId verifySubscribeRankingScore(
+        String rankingName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifySubscribeRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifySubscribeRankingScoreByUserId verifySubscribeRankingScore(
+        String rankingName,
+        String verifyType,
+        Long score,
+        Long season,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifySubscribeRankingScoreByUserId(
+            this.namespaceName,
+            rankingName,
+            verifyType,
+            score,
+            season,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

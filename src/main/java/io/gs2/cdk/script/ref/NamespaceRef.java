@@ -18,6 +18,8 @@ package io.gs2.cdk.script.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.script.ref.ScriptRef;
+import io.gs2.cdk.script.stampSheet.InvokeScript;
+import io.gs2.cdk.script.model.RandomStatus;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +31,34 @@ public class NamespaceRef {
         String namespaceName
     ) {
         this.namespaceName = namespaceName;
+    }
+
+    public InvokeScript invokeScript(
+        String scriptId,
+        String args,
+        RandomStatus randomStatus,
+        String userId
+    ) {
+        return (new InvokeScript(
+            scriptId,
+            args,
+            randomStatus,
+            userId
+        ));
+    }
+
+
+    public InvokeScript invokeScript(
+        String scriptId,
+        String args,
+        RandomStatus randomStatus
+    ) {
+        return (new InvokeScript(
+            scriptId,
+            args,
+            randomStatus,
+            "#{userId}"
+        ));
     }
 
     public String grn(

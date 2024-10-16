@@ -35,11 +35,11 @@ public class NamespaceRef {
     }
 
     public EntryModelRef entryModel(
-        String entryName
+        String entryModelName
     ) {
         return (new EntryModelRef(
             this.namespaceName,
-            entryName
+            entryModelName
         ));
     }
 

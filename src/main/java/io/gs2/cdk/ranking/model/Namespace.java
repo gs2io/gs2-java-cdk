@@ -116,12 +116,12 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<CategoryModel> categoryModels
+        List<CategoryModel> categories
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            categoryModels
+            categories
         )).addDependsOn(
             this
         );
