@@ -13,7 +13,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.ranking2.ref;
+package io.gs2.cdk.guard.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
@@ -21,16 +21,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClusterRankingModelRef {
+public class NamespaceRef {
     private String namespaceName;
-    private String rankingName;
 
-    public ClusterRankingModelRef(
-        String namespaceName,
-        String rankingName
+    public NamespaceRef(
+        String namespaceName
     ) {
         this.namespaceName = namespaceName;
-        this.rankingName = rankingName;
     }
 
     public String grn(
@@ -46,10 +43,8 @@ public class ClusterRankingModelRef {
                 GetAttr.ownerId(
                 ).str(
                 ),
-                "ranking2",
-                this.namespaceName,
-                "cluster",
-                this.rankingName
+                "guard",
+                this.namespaceName
             )
         )).str(
         );

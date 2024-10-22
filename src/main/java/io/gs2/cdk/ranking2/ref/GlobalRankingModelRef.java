@@ -17,7 +17,6 @@ package io.gs2.cdk.ranking2.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.ranking2.ref.GlobalRankingSeasonRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

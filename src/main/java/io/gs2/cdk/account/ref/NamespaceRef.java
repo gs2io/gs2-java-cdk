@@ -18,7 +18,6 @@ package io.gs2.cdk.account.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.account.ref.TakeOverTypeModelRef;
-import io.gs2.cdk.account.ref.MasterDataVersionRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

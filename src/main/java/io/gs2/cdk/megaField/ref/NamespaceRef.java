@@ -18,7 +18,6 @@ package io.gs2.cdk.megaField.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.megaField.ref.AreaModelRef;
-import io.gs2.cdk.megaField.ref.NodeRef;
 import io.gs2.cdk.megaField.ref.LayerRef;
 import java.util.Arrays;
 import java.util.List;

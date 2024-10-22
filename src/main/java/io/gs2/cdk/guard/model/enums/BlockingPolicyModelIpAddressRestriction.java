@@ -13,26 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.account.ref;
 
-import io.gs2.cdk.core.func.GetAttr;
-import io.gs2.cdk.core.func.Join;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.guard.model.enums;
 
-public class MasterDataVersionRef {
-    private String namespaceName;
-    private String objectKey;
-    private String versionId;
 
-    public MasterDataVersionRef(
-        String namespaceName,
-        String objectKey,
-        String versionId
-    ) {
-        this.namespaceName = namespaceName;
-        this.objectKey = objectKey;
-        this.versionId = versionId;
+public enum BlockingPolicyModelIpAddressRestriction {
+    ALLOW,
+    DENY;
+
+    public String toString() {
+        switch (this) {
+            case ALLOW:
+                return "Allow";
+            case DENY:
+                return "Deny";
+        }
+        return "unknown";
     }
 }

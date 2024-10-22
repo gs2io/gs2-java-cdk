@@ -21,37 +21,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClusterRankingModelRef {
+public class MasterDataVersionRef {
     private String namespaceName;
-    private String rankingName;
+    private String objectKey;
+    private String versionId;
 
-    public ClusterRankingModelRef(
+    public MasterDataVersionRef(
         String namespaceName,
-        String rankingName
+        String objectKey,
+        String versionId
     ) {
         this.namespaceName = namespaceName;
-        this.rankingName = rankingName;
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "ranking2",
-                this.namespaceName,
-                "cluster",
-                this.rankingName
-            )
-        )).str(
-        );
+        this.objectKey = objectKey;
+        this.versionId = versionId;
     }
 }

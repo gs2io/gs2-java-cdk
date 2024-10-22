@@ -13,26 +13,23 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.account.ref;
+package io.gs2.cdk.guard.model.options;
+import io.gs2.cdk.guard.model.BlockingPolicyModel;
+import io.gs2.cdk.guard.model.enums.NamespaceStatus;
 
-import io.gs2.cdk.core.func.GetAttr;
-import io.gs2.cdk.core.func.Join;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MasterDataVersionRef {
-    private String namespaceName;
-    private String objectKey;
-    private String versionId;
-
-    public MasterDataVersionRef(
-        String namespaceName,
-        String objectKey,
-        String versionId
+public class NamespaceOptions {
+    public String description;
+    
+    public NamespaceOptions withDescription(
+        String description
     ) {
-        this.namespaceName = namespaceName;
-        this.objectKey = objectKey;
-        this.versionId = versionId;
+        this.description = description;
+        return this;
     }
 }
+
