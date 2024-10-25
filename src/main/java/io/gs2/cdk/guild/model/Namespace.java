@@ -37,12 +37,14 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private NotificationSetting changeNotification = null;
     private NotificationSetting joinNotification = null;
     private NotificationSetting leaveNotification = null;
     private NotificationSetting changeMemberNotification = null;
     private NotificationSetting receiveRequestNotification = null;
     private NotificationSetting removeRequestNotification = null;
     private ScriptSetting createGuildScript = null;
+    private ScriptSetting updateGuildScript = null;
     private ScriptSetting joinGuildScript = null;
     private ScriptSetting leaveGuildScript = null;
     private ScriptSetting changeRoleScript = null;
@@ -60,12 +62,14 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.changeNotification = options.changeNotification;
         this.joinNotification = options.joinNotification;
         this.leaveNotification = options.leaveNotification;
         this.changeMemberNotification = options.changeMemberNotification;
         this.receiveRequestNotification = options.receiveRequestNotification;
         this.removeRequestNotification = options.removeRequestNotification;
         this.createGuildScript = options.createGuildScript;
+        this.updateGuildScript = options.updateGuildScript;
         this.joinGuildScript = options.joinGuildScript;
         this.leaveGuildScript = options.leaveGuildScript;
         this.changeRoleScript = options.changeRoleScript;
@@ -111,6 +115,10 @@ public class Namespace extends CdkResource {
         if (this.description != null) {
             properties.put("Description", this.description);
         }
+        if (this.changeNotification != null) {
+            properties.put("ChangeNotification", this.changeNotification.properties(
+            ));
+        }
         if (this.joinNotification != null) {
             properties.put("JoinNotification", this.joinNotification.properties(
             ));
@@ -133,6 +141,10 @@ public class Namespace extends CdkResource {
         }
         if (this.createGuildScript != null) {
             properties.put("CreateGuildScript", this.createGuildScript.properties(
+            ));
+        }
+        if (this.updateGuildScript != null) {
+            properties.put("UpdateGuildScript", this.updateGuildScript.properties(
             ));
         }
         if (this.joinGuildScript != null) {

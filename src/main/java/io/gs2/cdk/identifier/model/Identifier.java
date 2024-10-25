@@ -12,6 +12,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.identifier.model;
 
@@ -19,6 +21,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 
+import io.gs2.cdk.guard.model.Namespace;
 import io.gs2.cdk.identifier.ref.IdentifierRef;
 
 import io.gs2.cdk.identifier.model.options.IdentifierOptions;
@@ -92,6 +95,40 @@ public class Identifier extends CdkResource {
             this.userName,
             clientId
         ));
+    }
+
+    public Identifier attach(
+        Namespace guardNamespace
+    ) {
+        (new AttachGuard(
+            this.stack,
+            this.userName,
+            this.getAttrClientId().str(),
+            guardNamespace.getAttrNamespaceId(
+            ).str(
+            )
+        )).addDependsOn(
+            this
+        ).addDependsOn(
+            guardNamespace
+        );
+
+        return this;
+    }
+
+    public Identifier attachGrn(
+        String guardNamespaceGrn
+    ) {
+        (new AttachGuard(
+            this.stack,
+            this.userName,
+            this.getAttrClientId().str(),
+            guardNamespaceGrn
+        )).addDependsOn(
+            this
+        );
+
+        return this;
     }
 
     public GetAttr getAttrClientId(

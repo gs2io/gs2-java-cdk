@@ -25,12 +25,14 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public NotificationSetting changeNotification;
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting changeMemberNotification;
     public NotificationSetting receiveRequestNotification;
     public NotificationSetting removeRequestNotification;
     public ScriptSetting createGuildScript;
+    public ScriptSetting updateGuildScript;
     public ScriptSetting joinGuildScript;
     public ScriptSetting leaveGuildScript;
     public ScriptSetting changeRoleScript;
@@ -40,6 +42,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withChangeNotification(
+        NotificationSetting changeNotification
+    ) {
+        this.changeNotification = changeNotification;
         return this;
     }
     
@@ -82,6 +91,13 @@ public class NamespaceOptions {
         ScriptSetting createGuildScript
     ) {
         this.createGuildScript = createGuildScript;
+        return this;
+    }
+    
+    public NamespaceOptions withUpdateGuildScript(
+        ScriptSetting updateGuildScript
+    ) {
+        this.updateGuildScript = updateGuildScript;
         return this;
     }
     
