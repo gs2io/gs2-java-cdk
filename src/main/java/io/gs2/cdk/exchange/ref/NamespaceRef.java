@@ -23,6 +23,7 @@ import io.gs2.cdk.exchange.stampSheet.ExchangeByUserId;
 import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.exchange.stampSheet.IncrementalExchangeByUserId;
 import io.gs2.cdk.exchange.stampSheet.CreateAwaitByUserId;
+import io.gs2.cdk.exchange.stampSheet.AcquireForceByUserId;
 import io.gs2.cdk.exchange.stampSheet.SkipByUserId;
 import io.gs2.cdk.exchange.stampSheet.DeleteAwaitByUserId;
 import java.util.Arrays;
@@ -141,6 +142,32 @@ public class NamespaceRef {
             this.namespaceName,
             rateName,
             count,
+            config,
+            "#{userId}"
+        ));
+    }
+
+    public AcquireForceByUserId acquireForce(
+        String awaitName,
+        List<Config> config,
+        String userId
+    ) {
+        return (new AcquireForceByUserId(
+            this.namespaceName,
+            awaitName,
+            config,
+            userId
+        ));
+    }
+
+
+    public AcquireForceByUserId acquireForce(
+        String awaitName,
+        List<Config> config
+    ) {
+        return (new AcquireForceByUserId(
+            this.namespaceName,
+            awaitName,
             config,
             "#{userId}"
         ));
