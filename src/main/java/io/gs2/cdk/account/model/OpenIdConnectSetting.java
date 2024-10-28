@@ -27,6 +27,7 @@ public class OpenIdConnectSetting {
     private String appleTeamId = null;
     private String appleKeyId = null;
     private String applePrivateKeyPem = null;
+    private String doneEndpointUrl = null;
 
     public OpenIdConnectSetting(
         String configurationPath,
@@ -39,6 +40,7 @@ public class OpenIdConnectSetting {
         this.appleTeamId = options.appleTeamId;
         this.appleKeyId = options.appleKeyId;
         this.applePrivateKeyPem = options.applePrivateKeyPem;
+        this.doneEndpointUrl = options.doneEndpointUrl;
     }
     public OpenIdConnectSetting(
         String configurationPath,
@@ -69,6 +71,9 @@ public class OpenIdConnectSetting {
         }
         if (this.applePrivateKeyPem != null) {
             properties.put("applePrivateKeyPem", this.applePrivateKeyPem);
+        }
+        if (this.doneEndpointUrl != null) {
+            properties.put("doneEndpointUrl", this.doneEndpointUrl);
         }
 
         return properties;

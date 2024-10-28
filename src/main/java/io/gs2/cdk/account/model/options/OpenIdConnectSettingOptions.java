@@ -25,6 +25,7 @@ public class OpenIdConnectSettingOptions {
     public String appleTeamId;
     public String appleKeyId;
     public String applePrivateKeyPem;
+    public String doneEndpointUrl;
     
     public OpenIdConnectSettingOptions withClientSecret(
         String clientSecret
@@ -51,6 +52,13 @@ public class OpenIdConnectSettingOptions {
         String applePrivateKeyPem
     ) {
         this.applePrivateKeyPem = applePrivateKeyPem;
+        return this;
+    }
+    
+    public OpenIdConnectSettingOptions withDoneEndpointUrl(
+        String doneEndpointUrl
+    ) {
+        this.doneEndpointUrl = doneEndpointUrl;
         return this;
     }
 }
