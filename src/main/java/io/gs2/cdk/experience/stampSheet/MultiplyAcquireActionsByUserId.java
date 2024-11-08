@@ -32,6 +32,7 @@ public class MultiplyAcquireActionsByUserId extends AcquireAction {
         String propertyId,
         String rateName,
         List<AcquireAction> acquireActions,
+        Float baseRate,
         String userId
     ) {
         super(
@@ -43,6 +44,7 @@ public class MultiplyAcquireActionsByUserId extends AcquireAction {
                     put("propertyId", propertyId);
                     put("rateName", rateName);
                     put("acquireActions", acquireActions);
+                    put("baseRate", baseRate);
                     put("userId", userId);
                 }
             }

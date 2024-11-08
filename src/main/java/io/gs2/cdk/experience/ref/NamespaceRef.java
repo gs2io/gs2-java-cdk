@@ -179,6 +179,7 @@ public class NamespaceRef {
         String propertyId,
         String rateName,
         List<AcquireAction> acquireActions,
+        Float baseRate,
         String userId
     ) {
         return (new MultiplyAcquireActionsByUserId(
@@ -187,6 +188,7 @@ public class NamespaceRef {
             propertyId,
             rateName,
             acquireActions,
+            baseRate,
             userId
         ));
     }
@@ -196,7 +198,8 @@ public class NamespaceRef {
         String experienceName,
         String propertyId,
         String rateName,
-        List<AcquireAction> acquireActions
+        List<AcquireAction> acquireActions,
+        Float baseRate
     ) {
         return (new MultiplyAcquireActionsByUserId(
             this.namespaceName,
@@ -204,6 +207,7 @@ public class NamespaceRef {
             propertyId,
             rateName,
             acquireActions,
+            baseRate,
             "#{userId}"
         ));
     }
