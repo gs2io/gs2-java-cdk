@@ -24,24 +24,20 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VerifyCodeByUserId extends VerifyAction {
+public class IssueOnce extends AcquireAction {
 
-    public VerifyCodeByUserId(
+    public IssueOnce(
         String namespaceName,
-        String code,
-        String verifyType,
         String campaignModelName,
-        String userId
+        String metadata
     ) {
         super(
-            "Gs2SerialKey:VerifyCodeByUserId",
+            "Gs2SerialKey:IssueOnce",
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("code", code);
-                    put("verifyType", verifyType);
                     put("campaignModelName", campaignModelName);
-                    put("userId", userId);
+                    put("metadata", metadata);
                 }
             }
         );

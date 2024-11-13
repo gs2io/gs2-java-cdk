@@ -12,6 +12,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.serialKey.ref;
 
@@ -19,6 +21,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.serialKey.ref.CampaignModelRef;
 import io.gs2.cdk.serialKey.stampSheet.RevertUseByUserId;
+import io.gs2.cdk.serialKey.stampSheet.IssueOnce;
 import io.gs2.cdk.serialKey.stampSheet.UseByUserId;
 import io.gs2.cdk.serialKey.stampSheet.VerifyCodeByUserId;
 import java.util.Arrays;
@@ -65,6 +68,18 @@ public class NamespaceRef {
         ));
     }
 
+    public IssueOnce issueOnce(
+        String campaignModelName,
+        String metadata
+    ) {
+        return (new IssueOnce(
+            this.namespaceName,
+            campaignModelName,
+            metadata
+        ));
+    }
+
+
     public UseByUserId use(
         String code,
         String userId
@@ -90,12 +105,14 @@ public class NamespaceRef {
     public VerifyCodeByUserId verifyCode(
         String code,
         String verifyType,
+        String campaignModelName,
         String userId
     ) {
         return (new VerifyCodeByUserId(
             this.namespaceName,
             code,
             verifyType,
+            campaignModelName,
             userId
         ));
     }
@@ -103,12 +120,14 @@ public class NamespaceRef {
 
     public VerifyCodeByUserId verifyCode(
         String code,
-        String verifyType
+        String verifyType,
+        String campaignModelName
     ) {
         return (new VerifyCodeByUserId(
             this.namespaceName,
             code,
             verifyType,
+            campaignModelName,
             "#{userId}"
         ));
     }
