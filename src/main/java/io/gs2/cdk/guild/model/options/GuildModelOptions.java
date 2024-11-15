@@ -23,11 +23,27 @@ import java.util.stream.Collectors;
 
 public class GuildModelOptions {
     public String metadata;
+    public Integer maxConcurrentJoinGuilds;
+    public Integer maxConcurrentGuildMasterCount;
     
     public GuildModelOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public GuildModelOptions withMaxConcurrentJoinGuilds(
+        Integer maxConcurrentJoinGuilds
+    ) {
+        this.maxConcurrentJoinGuilds = maxConcurrentJoinGuilds;
+        return this;
+    }
+    
+    public GuildModelOptions withMaxConcurrentGuildMasterCount(
+        Integer maxConcurrentGuildMasterCount
+    ) {
+        this.maxConcurrentGuildMasterCount = maxConcurrentGuildMasterCount;
         return this;
     }
 }

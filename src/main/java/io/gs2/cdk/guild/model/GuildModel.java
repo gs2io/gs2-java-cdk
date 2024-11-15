@@ -31,6 +31,8 @@ public class GuildModel {
     private String guildMemberDefaultRole;
     private Integer rejoinCoolTimeMinutes;
     private String metadata = null;
+    private Integer maxConcurrentJoinGuilds = null;
+    private Integer maxConcurrentGuildMasterCount = null;
 
     public GuildModel(
         String name,
@@ -52,6 +54,8 @@ public class GuildModel {
         this.guildMemberDefaultRole = guildMemberDefaultRole;
         this.rejoinCoolTimeMinutes = rejoinCoolTimeMinutes;
         this.metadata = options.metadata;
+        this.maxConcurrentJoinGuilds = options.maxConcurrentJoinGuilds;
+        this.maxConcurrentGuildMasterCount = options.maxConcurrentGuildMasterCount;
     }
     public GuildModel(
         String name,
@@ -104,6 +108,12 @@ public class GuildModel {
         }
         if (this.rejoinCoolTimeMinutes != null) {
             properties.put("rejoinCoolTimeMinutes", this.rejoinCoolTimeMinutes);
+        }
+        if (this.maxConcurrentJoinGuilds != null) {
+            properties.put("maxConcurrentJoinGuilds", this.maxConcurrentJoinGuilds);
+        }
+        if (this.maxConcurrentGuildMasterCount != null) {
+            properties.put("maxConcurrentGuildMasterCount", this.maxConcurrentGuildMasterCount);
         }
 
         return properties;
