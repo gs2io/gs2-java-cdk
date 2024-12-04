@@ -26,6 +26,7 @@ public class NamespaceOptions {
     public String description;
     public String assumeUserId;
     public NotificationSetting autoRunStampSheetNotification;
+    public NotificationSetting autoRunTransactionNotification;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -46,6 +47,13 @@ public class NamespaceOptions {
         NotificationSetting autoRunStampSheetNotification
     ) {
         this.autoRunStampSheetNotification = autoRunStampSheetNotification;
+        return this;
+    }
+    
+    public NamespaceOptions withAutoRunTransactionNotification(
+        NotificationSetting autoRunTransactionNotification
+    ) {
+        this.autoRunTransactionNotification = autoRunTransactionNotification;
         return this;
     }
     

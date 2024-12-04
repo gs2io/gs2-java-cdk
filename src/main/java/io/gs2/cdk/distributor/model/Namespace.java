@@ -38,6 +38,7 @@ public class Namespace extends CdkResource {
     private String description = null;
     private String assumeUserId = null;
     private NotificationSetting autoRunStampSheetNotification = null;
+    private NotificationSetting autoRunTransactionNotification = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -54,6 +55,7 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.assumeUserId = options.assumeUserId;
         this.autoRunStampSheetNotification = options.autoRunStampSheetNotification;
+        this.autoRunTransactionNotification = options.autoRunTransactionNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -101,6 +103,10 @@ public class Namespace extends CdkResource {
         }
         if (this.autoRunStampSheetNotification != null) {
             properties.put("AutoRunStampSheetNotification", this.autoRunStampSheetNotification.properties(
+            ));
+        }
+        if (this.autoRunTransactionNotification != null) {
+            properties.put("AutoRunTransactionNotification", this.autoRunTransactionNotification.properties(
             ));
         }
         if (this.logSetting != null) {

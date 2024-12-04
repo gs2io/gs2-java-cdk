@@ -12,38 +12,6 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
-package io.gs2.cdk.realtime.model.options;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class RoomOptions {
-    public String ipAddress;
-    public Integer port;
-    public String encryptionKey;
-    
-    public RoomOptions withIpAddress(
-        String ipAddress
-    ) {
-        this.ipAddress = ipAddress;
-        return this;
-    }
-    
-    public RoomOptions withPort(
-        Integer port
-    ) {
-        this.port = port;
-        return this;
-    }
-    
-    public RoomOptions withEncryptionKey(
-        String encryptionKey
-    ) {
-        this.encryptionKey = encryptionKey;
-        return this;
-    }
-}
-
