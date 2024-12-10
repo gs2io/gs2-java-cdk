@@ -18,6 +18,7 @@ import io.gs2.cdk.version.model.Version;
 import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
 import io.gs2.cdk.version.model.enums.VersionModelType;
+import io.gs2.cdk.version.model.enums.VersionModelApproveRequirement;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class VersionModelOptions {
     public List<ScheduleVersion> scheduleVersions;
     public Boolean needSignature;
     public String signatureKeyId;
+    public VersionModelApproveRequirement approveRequirement;
     
     public VersionModelOptions withMetadata(
         String metadata
@@ -79,6 +81,13 @@ public class VersionModelOptions {
         String signatureKeyId
     ) {
         this.signatureKeyId = signatureKeyId;
+        return this;
+    }
+    
+    public VersionModelOptions withApproveRequirement(
+        VersionModelApproveRequirement approveRequirement
+    ) {
+        this.approveRequirement = approveRequirement;
         return this;
     }
 }

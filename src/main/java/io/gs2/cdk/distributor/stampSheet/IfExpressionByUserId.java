@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IfExpressionByUserId extends ConsumeAction {
+public class IfExpressionByUserId extends VerifyAction {
 
     public IfExpressionByUserId(
         String namespaceName,

@@ -18,6 +18,7 @@ import io.gs2.cdk.version.model.Version;
 import io.gs2.cdk.version.model.ScheduleVersion;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
 import io.gs2.cdk.version.model.enums.VersionModelType;
+import io.gs2.cdk.version.model.enums.VersionModelApproveRequirement;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -23,6 +23,7 @@ import io.gs2.cdk.version.model.options.VersionModelScopeIsPassiveOptions;
 import io.gs2.cdk.version.model.options.VersionModelScopeIsActiveOptions;
 import io.gs2.cdk.version.model.enums.VersionModelScope;
 import io.gs2.cdk.version.model.enums.VersionModelType;
+import io.gs2.cdk.version.model.enums.VersionModelApproveRequirement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -39,6 +40,7 @@ public class VersionModel {
     private List<ScheduleVersion> scheduleVersions = null;
     private Boolean needSignature = null;
     private String signatureKeyId = null;
+    private VersionModelApproveRequirement approveRequirement = null;
 
     public VersionModel(
         String name,
@@ -56,6 +58,7 @@ public class VersionModel {
         this.scheduleVersions = options.scheduleVersions;
         this.needSignature = options.needSignature;
         this.signatureKeyId = options.signatureKeyId;
+        this.approveRequirement = options.approveRequirement;
     }
     public VersionModel(
         String name,
@@ -160,6 +163,7 @@ public class VersionModel {
     public static VersionModel scopeIsActive(
         String name,
         VersionModelType type,
+        VersionModelApproveRequirement approveRequirement,
         VersionModelScopeIsActiveOptions options
     ) {
         return (new VersionModel(
@@ -167,6 +171,7 @@ public class VersionModel {
             VersionModelScope.ACTIVE,
             type,
             new VersionModelOptions()
+                .withApproveRequirement(approveRequirement)
                 .withMetadata(options.metadata)
                 .withScheduleVersions(options.scheduleVersions)
         ));
@@ -175,7 +180,8 @@ public class VersionModel {
 
     public static VersionModel scopeIsActive(
         String name,
-        VersionModelType type
+        VersionModelType type,
+        VersionModelApproveRequirement approveRequirement
     ) {
         return (new VersionModel(
             name,
@@ -223,6 +229,10 @@ public class VersionModel {
         }
         if (this.signatureKeyId != null) {
             properties.put("signatureKeyId", this.signatureKeyId);
+        }
+        if (this.approveRequirement != null) {
+            properties.put("approveRequirement", this.approveRequirement.toString(
+            ));
         }
 
         return properties;
