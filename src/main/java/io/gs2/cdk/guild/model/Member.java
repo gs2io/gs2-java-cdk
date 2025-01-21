@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class Member {
     private String userId;
     private String roleName;
+    private String metadata = null;
 
     public Member(
         String userId,
@@ -31,6 +32,7 @@ public class Member {
     ) {
         this.userId = userId;
         this.roleName = roleName;
+        this.metadata = options.metadata;
     }
     public Member(
         String userId,
@@ -49,6 +51,9 @@ public class Member {
         }
         if (this.roleName != null) {
             properties.put("roleName", this.roleName);
+        }
+        if (this.metadata != null) {
+            properties.put("metadata", this.metadata);
         }
 
         return properties;

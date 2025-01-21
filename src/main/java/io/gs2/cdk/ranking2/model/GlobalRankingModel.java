@@ -18,6 +18,7 @@ import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.ranking2.model.RankingReward;
 import io.gs2.cdk.ranking2.model.options.GlobalRankingModelOptions;
 import io.gs2.cdk.ranking2.model.enums.GlobalRankingModelOrderDirection;
+import io.gs2.cdk.ranking2.model.enums.GlobalRankingModelRewardCalculationIndex;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -27,6 +28,7 @@ public class GlobalRankingModel {
     private String name;
     private Boolean sum;
     private GlobalRankingModelOrderDirection orderDirection;
+    private GlobalRankingModelRewardCalculationIndex rewardCalculationIndex;
     private String metadata = null;
     private Long minimumValue = null;
     private Long maximumValue = null;
@@ -38,11 +40,13 @@ public class GlobalRankingModel {
         String name,
         Boolean sum,
         GlobalRankingModelOrderDirection orderDirection,
+        GlobalRankingModelRewardCalculationIndex rewardCalculationIndex,
         GlobalRankingModelOptions options
     ) {
         this.name = name;
         this.sum = sum;
         this.orderDirection = orderDirection;
+        this.rewardCalculationIndex = rewardCalculationIndex;
         this.metadata = options.metadata;
         this.minimumValue = options.minimumValue;
         this.maximumValue = options.maximumValue;
@@ -53,11 +57,13 @@ public class GlobalRankingModel {
     public GlobalRankingModel(
         String name,
         Boolean sum,
-        GlobalRankingModelOrderDirection orderDirection
+        GlobalRankingModelOrderDirection orderDirection,
+        GlobalRankingModelRewardCalculationIndex rewardCalculationIndex
     ) {
         this.name = name;
         this.sum = sum;
         this.orderDirection = orderDirection;
+        this.rewardCalculationIndex = rewardCalculationIndex;
     }
 
     public Map<String, Object> properties(
@@ -92,6 +98,10 @@ public class GlobalRankingModel {
         }
         if (this.accessPeriodEventId != null) {
             properties.put("accessPeriodEventId", this.accessPeriodEventId);
+        }
+        if (this.rewardCalculationIndex != null) {
+            properties.put("rewardCalculationIndex", this.rewardCalculationIndex.toString(
+            ));
         }
 
         return properties;

@@ -21,5 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MemberOptions {
+    public String metadata;
+    
+    public MemberOptions withMetadata(
+        String metadata
+    ) {
+        this.metadata = metadata;
+        return this;
+    }
 }
 

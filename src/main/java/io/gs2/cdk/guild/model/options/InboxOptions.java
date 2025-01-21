@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.guild.model.options;
+import io.gs2.cdk.guild.model.ReceiveMemberRequest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,12 +23,20 @@ import java.util.stream.Collectors;
 
 public class InboxOptions {
     public List<String> fromUserIds;
+    public List<ReceiveMemberRequest> receiveMemberRequests;
     public Long revision;
     
     public InboxOptions withFromUserIds(
         List<String> fromUserIds
     ) {
         this.fromUserIds = fromUserIds;
+        return this;
+    }
+    
+    public InboxOptions withReceiveMemberRequests(
+        List<ReceiveMemberRequest> receiveMemberRequests
+    ) {
+        this.receiveMemberRequests = receiveMemberRequests;
         return this;
     }
     

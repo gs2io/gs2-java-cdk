@@ -28,6 +28,8 @@ public class GuildOptions {
     public Integer attribute3;
     public Integer attribute4;
     public Integer attribute5;
+    public String metadata;
+    public String memberMetadata;
     public List<RoleModel> customRoles;
     public String guildMemberDefaultRole;
     public String timeOffsetToken;
@@ -64,6 +66,20 @@ public class GuildOptions {
         Integer attribute5
     ) {
         this.attribute5 = attribute5;
+        return this;
+    }
+    
+    public GuildOptions withMetadata(
+        String metadata
+    ) {
+        this.metadata = metadata;
+        return this;
+    }
+    
+    public GuildOptions withMemberMetadata(
+        String memberMetadata
+    ) {
+        this.memberMetadata = memberMetadata;
         return this;
     }
     

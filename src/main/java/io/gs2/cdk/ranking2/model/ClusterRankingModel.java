@@ -19,6 +19,7 @@ import io.gs2.cdk.ranking2.model.RankingReward;
 import io.gs2.cdk.ranking2.model.options.ClusterRankingModelOptions;
 import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelClusterType;
 import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelOrderDirection;
+import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelRewardCalculationIndex;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -29,6 +30,7 @@ public class ClusterRankingModel {
     private ClusterRankingModelClusterType clusterType;
     private Boolean sum;
     private ClusterRankingModelOrderDirection orderDirection;
+    private ClusterRankingModelRewardCalculationIndex rewardCalculationIndex;
     private String metadata = null;
     private Long minimumValue = null;
     private Long maximumValue = null;
@@ -41,12 +43,14 @@ public class ClusterRankingModel {
         ClusterRankingModelClusterType clusterType,
         Boolean sum,
         ClusterRankingModelOrderDirection orderDirection,
+        ClusterRankingModelRewardCalculationIndex rewardCalculationIndex,
         ClusterRankingModelOptions options
     ) {
         this.name = name;
         this.clusterType = clusterType;
         this.sum = sum;
         this.orderDirection = orderDirection;
+        this.rewardCalculationIndex = rewardCalculationIndex;
         this.metadata = options.metadata;
         this.minimumValue = options.minimumValue;
         this.maximumValue = options.maximumValue;
@@ -58,12 +62,14 @@ public class ClusterRankingModel {
         String name,
         ClusterRankingModelClusterType clusterType,
         Boolean sum,
-        ClusterRankingModelOrderDirection orderDirection
+        ClusterRankingModelOrderDirection orderDirection,
+        ClusterRankingModelRewardCalculationIndex rewardCalculationIndex
     ) {
         this.name = name;
         this.clusterType = clusterType;
         this.sum = sum;
         this.orderDirection = orderDirection;
+        this.rewardCalculationIndex = rewardCalculationIndex;
     }
 
     public Map<String, Object> properties(
@@ -102,6 +108,10 @@ public class ClusterRankingModel {
         }
         if (this.accessPeriodEventId != null) {
             properties.put("accessPeriodEventId", this.accessPeriodEventId);
+        }
+        if (this.rewardCalculationIndex != null) {
+            properties.put("rewardCalculationIndex", this.rewardCalculationIndex.toString(
+            ));
         }
 
         return properties;

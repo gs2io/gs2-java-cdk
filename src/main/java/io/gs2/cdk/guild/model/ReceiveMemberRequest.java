@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 public class ReceiveMemberRequest {
     private String userId;
     private String targetGuildName;
+    private String metadata = null;
 
     public ReceiveMemberRequest(
         String userId,
@@ -31,6 +32,7 @@ public class ReceiveMemberRequest {
     ) {
         this.userId = userId;
         this.targetGuildName = targetGuildName;
+        this.metadata = options.metadata;
     }
     public ReceiveMemberRequest(
         String userId,
@@ -49,6 +51,9 @@ public class ReceiveMemberRequest {
         }
         if (this.targetGuildName != null) {
             properties.put("targetGuildName", this.targetGuildName);
+        }
+        if (this.metadata != null) {
+            properties.put("metadata", this.metadata);
         }
 
         return properties;

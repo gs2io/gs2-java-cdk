@@ -17,6 +17,7 @@ package io.gs2.cdk.ranking2.model.options;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.ranking2.model.RankingReward;
 import io.gs2.cdk.ranking2.model.enums.GlobalRankingModelOrderDirection;
+import io.gs2.cdk.ranking2.model.enums.GlobalRankingModelRewardCalculationIndex;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -13,21 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.guild.model.options;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.ranking2.model.enums;
 
-public class ReceiveMemberRequestOptions {
-    public String metadata;
-    
-    public ReceiveMemberRequestOptions withMetadata(
-        String metadata
-    ) {
-        this.metadata = metadata;
-        return this;
+
+public enum GlobalRankingModelRewardCalculationIndex {
+    RANK,
+    INDEX;
+
+    public String toString() {
+        switch (this) {
+            case RANK:
+                return "rank";
+            case INDEX:
+                return "index";
+        }
+        return "unknown";
     }
 }
-

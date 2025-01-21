@@ -18,6 +18,7 @@ import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.ranking2.model.RankingReward;
 import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelClusterType;
 import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelOrderDirection;
+import io.gs2.cdk.ranking2.model.enums.ClusterRankingModelRewardCalculationIndex;
 
 import java.util.HashMap;
 import java.util.Map;
