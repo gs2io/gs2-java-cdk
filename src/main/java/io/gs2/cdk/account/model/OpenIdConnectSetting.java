@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.account.model;
+import io.gs2.cdk.account.model.ScopeValue;
 import io.gs2.cdk.account.model.options.OpenIdConnectSettingOptions;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,8 @@ public class OpenIdConnectSetting {
     private String appleKeyId = null;
     private String applePrivateKeyPem = null;
     private String doneEndpointUrl = null;
+    private List<ScopeValue> additionalScopeValues = null;
+    private List<String> additionalReturnValues = null;
 
     public OpenIdConnectSetting(
         String configurationPath,
@@ -41,6 +44,8 @@ public class OpenIdConnectSetting {
         this.appleKeyId = options.appleKeyId;
         this.applePrivateKeyPem = options.applePrivateKeyPem;
         this.doneEndpointUrl = options.doneEndpointUrl;
+        this.additionalScopeValues = options.additionalScopeValues;
+        this.additionalReturnValues = options.additionalReturnValues;
     }
     public OpenIdConnectSetting(
         String configurationPath,
@@ -74,6 +79,13 @@ public class OpenIdConnectSetting {
         }
         if (this.doneEndpointUrl != null) {
             properties.put("doneEndpointUrl", this.doneEndpointUrl);
+        }
+        if (this.additionalScopeValues != null) {
+            properties.put("additionalScopeValues", this.additionalScopeValues.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.additionalReturnValues != null) {
+            properties.put("additionalReturnValues", this.additionalReturnValues);
         }
 
         return properties;

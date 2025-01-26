@@ -21,7 +21,8 @@ public enum MissionTaskModelTargetResetType {
     NOT_RESET,
     DAILY,
     WEEKLY,
-    MONTHLY;
+    MONTHLY,
+    DAYS;
 
     public String toString() {
         switch (this) {
@@ -33,6 +34,8 @@ public enum MissionTaskModelTargetResetType {
                 return "weekly";
             case MONTHLY:
                 return "monthly";
+            case DAYS:
+                return "days";
         }
         return "unknown";
     }

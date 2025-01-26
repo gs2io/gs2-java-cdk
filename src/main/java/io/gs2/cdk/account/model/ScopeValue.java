@@ -13,23 +13,41 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.account.model.options;
-import io.gs2.cdk.account.model.ScopeValue;
-import io.gs2.cdk.account.model.OpenIdConnectSetting;
-
+package io.gs2.cdk.account.model;
+import io.gs2.cdk.account.model.options.ScopeValueOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TakeOverTypeModelOptions {
-    public String metadata;
-    
-    public TakeOverTypeModelOptions withMetadata(
-        String metadata
+public class ScopeValue {
+    private String key;
+    private String value = null;
+
+    public ScopeValue(
+        String key,
+        ScopeValueOptions options
     ) {
-        this.metadata = metadata;
-        return this;
+        this.key = key;
+        this.value = options.value;
+    }
+    public ScopeValue(
+        String key
+    ) {
+        this.key = key;
+    }
+
+    public Map<String, Object> properties(
+    ) {
+        var properties = new HashMap<String, Object>();
+
+        if (this.key != null) {
+            properties.put("key", this.key);
+        }
+        if (this.value != null) {
+            properties.put("value", this.value);
+        }
+
+        return properties;
     }
 }
-

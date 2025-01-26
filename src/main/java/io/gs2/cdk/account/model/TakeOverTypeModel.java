@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.account.model;
+import io.gs2.cdk.account.model.ScopeValue;
 import io.gs2.cdk.account.model.OpenIdConnectSetting;
 import io.gs2.cdk.account.model.options.TakeOverTypeModelOptions;
 import java.util.HashMap;

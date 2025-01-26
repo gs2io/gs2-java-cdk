@@ -23,6 +23,7 @@ import io.gs2.cdk.mission.model.options.MissionGroupModelResetTypeIsNotResetOpti
 import io.gs2.cdk.mission.model.options.MissionGroupModelResetTypeIsDailyOptions;
 import io.gs2.cdk.mission.model.options.MissionGroupModelResetTypeIsWeeklyOptions;
 import io.gs2.cdk.mission.model.options.MissionGroupModelResetTypeIsMonthlyOptions;
+import io.gs2.cdk.mission.model.options.MissionGroupModelResetTypeIsDaysOptions;
 import io.gs2.cdk.mission.model.enums.MissionGroupModelResetType;
 import io.gs2.cdk.mission.model.enums.MissionGroupModelResetDayOfWeek;
 import java.util.HashMap;
@@ -39,6 +40,8 @@ public class MissionGroupModel {
     private MissionGroupModelResetDayOfWeek resetDayOfWeek = null;
     private Integer resetHour = null;
     private String completeNotificationNamespaceId = null;
+    private Long anchorTimestamp = null;
+    private Integer days = null;
 
     public MissionGroupModel(
         String name,
@@ -53,6 +56,8 @@ public class MissionGroupModel {
         this.resetDayOfWeek = options.resetDayOfWeek;
         this.resetHour = options.resetHour;
         this.completeNotificationNamespaceId = options.completeNotificationNamespaceId;
+        this.anchorTimestamp = options.anchorTimestamp;
+        this.days = options.days;
     }
     public MissionGroupModel(
         String name,
@@ -173,6 +178,36 @@ public class MissionGroupModel {
         ));
     }
 
+    public static MissionGroupModel resetTypeIsDays(
+        String name,
+        Long anchorTimestamp,
+        Integer days,
+        MissionGroupModelResetTypeIsDaysOptions options
+    ) {
+        return (new MissionGroupModel(
+            name,
+            MissionGroupModelResetType.DAYS,
+            new MissionGroupModelOptions()
+                .withAnchorTimestamp(anchorTimestamp)
+                .withDays(days)
+                .withMetadata(options.metadata)
+                .withTasks(options.tasks)
+                .withCompleteNotificationNamespaceId(options.completeNotificationNamespaceId)
+        ));
+    }
+
+
+    public static MissionGroupModel resetTypeIsDays(
+        String name,
+        Long anchorTimestamp,
+        Integer days
+    ) {
+        return (new MissionGroupModel(
+            name,
+            MissionGroupModelResetType.DAYS
+        ));
+    }
+
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
@@ -203,6 +238,12 @@ public class MissionGroupModel {
         }
         if (this.completeNotificationNamespaceId != null) {
             properties.put("completeNotificationNamespaceId", this.completeNotificationNamespaceId);
+        }
+        if (this.anchorTimestamp != null) {
+            properties.put("anchorTimestamp", this.anchorTimestamp);
+        }
+        if (this.days != null) {
+            properties.put("days", this.days);
         }
 
         return properties;

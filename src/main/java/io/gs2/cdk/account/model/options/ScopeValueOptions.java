@@ -13,30 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+package io.gs2.cdk.account.model.options;
 
-package io.gs2.cdk.mission.model.enums;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
-
-public enum CounterScopeModelResetType {
-    NOT_RESET,
-    DAILY,
-    WEEKLY,
-    MONTHLY,
-    DAYS;
-
-    public String toString() {
-        switch (this) {
-            case NOT_RESET:
-                return "notReset";
-            case DAILY:
-                return "daily";
-            case WEEKLY:
-                return "weekly";
-            case MONTHLY:
-                return "monthly";
-            case DAYS:
-                return "days";
-        }
-        return "unknown";
+public class ScopeValueOptions {
+    public String value;
+    
+    public ScopeValueOptions withValue(
+        String value
+    ) {
+        this.value = value;
+        return this;
     }
 }
+

@@ -22,6 +22,7 @@ import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsNotResetOpti
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsDailyOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsWeeklyOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsMonthlyOptions;
+import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsDaysOptions;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelScopeType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetDayOfWeek;
@@ -38,6 +39,8 @@ public class CounterScopeModel {
     private Integer resetHour = null;
     private String conditionName = null;
     private VerifyAction condition = null;
+    private Long anchorTimestamp = null;
+    private Integer days = null;
 
     public CounterScopeModel(
         CounterScopeModelScopeType scopeType,
@@ -50,6 +53,8 @@ public class CounterScopeModel {
         this.resetHour = options.resetHour;
         this.conditionName = options.conditionName;
         this.condition = options.condition;
+        this.anchorTimestamp = options.anchorTimestamp;
+        this.days = options.days;
     }
     public CounterScopeModel(
         CounterScopeModelScopeType scopeType
@@ -191,6 +196,31 @@ public class CounterScopeModel {
         ));
     }
 
+    public static CounterScopeModel resetTypeIsDays(
+        CounterScopeModelScopeType scopeType,
+        Long anchorTimestamp,
+        Integer days,
+        CounterScopeModelResetTypeIsDaysOptions options
+    ) {
+        return (new CounterScopeModel(
+            scopeType,
+            new CounterScopeModelOptions()
+                .withAnchorTimestamp(anchorTimestamp)
+                .withDays(days)
+        ));
+    }
+
+
+    public static CounterScopeModel resetTypeIsDays(
+        CounterScopeModelScopeType scopeType,
+        Long anchorTimestamp,
+        Integer days
+    ) {
+        return (new CounterScopeModel(
+            scopeType
+        ));
+    }
+
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
@@ -219,6 +249,12 @@ public class CounterScopeModel {
         if (this.condition != null) {
             properties.put("condition", this.condition.properties(
             ));
+        }
+        if (this.anchorTimestamp != null) {
+            properties.put("anchorTimestamp", this.anchorTimestamp);
+        }
+        if (this.days != null) {
+            properties.put("days", this.days);
         }
 
         return properties;

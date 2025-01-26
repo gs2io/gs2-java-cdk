@@ -31,6 +31,8 @@ public class CounterScopeModelOptions {
     public Integer resetHour;
     public String conditionName;
     public VerifyAction condition;
+    public Long anchorTimestamp;
+    public Integer days;
     
     public CounterScopeModelOptions withResetType(
         CounterScopeModelResetType resetType
@@ -71,6 +73,20 @@ public class CounterScopeModelOptions {
         VerifyAction condition
     ) {
         this.condition = condition;
+        return this;
+    }
+    
+    public CounterScopeModelOptions withAnchorTimestamp(
+        Long anchorTimestamp
+    ) {
+        this.anchorTimestamp = anchorTimestamp;
+        return this;
+    }
+    
+    public CounterScopeModelOptions withDays(
+        Integer days
+    ) {
+        this.days = days;
         return this;
     }
 }

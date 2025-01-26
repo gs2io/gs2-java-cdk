@@ -21,7 +21,8 @@ public enum ScopedValueResetType {
     NOT_RESET,
     DAILY,
     WEEKLY,
-    MONTHLY;
+    MONTHLY,
+    DAYS;
 
     public String toString() {
         switch (this) {
@@ -33,6 +34,8 @@ public enum ScopedValueResetType {
                 return "weekly";
             case MONTHLY:
                 return "monthly";
+            case DAYS:
+                return "days";
         }
         return "unknown";
     }

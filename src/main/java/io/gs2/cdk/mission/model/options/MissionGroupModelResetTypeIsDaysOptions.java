@@ -26,70 +26,29 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MissionGroupModelOptions {
+public class MissionGroupModelResetTypeIsDaysOptions {
     public String metadata;
     public List<MissionTaskModel> tasks;
-    public Integer resetDayOfMonth;
-    public MissionGroupModelResetDayOfWeek resetDayOfWeek;
-    public Integer resetHour;
     public String completeNotificationNamespaceId;
-    public Long anchorTimestamp;
-    public Integer days;
     
-    public MissionGroupModelOptions withMetadata(
+    public MissionGroupModelResetTypeIsDaysOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
         return this;
     }
     
-    public MissionGroupModelOptions withTasks(
+    public MissionGroupModelResetTypeIsDaysOptions withTasks(
         List<MissionTaskModel> tasks
     ) {
         this.tasks = tasks;
         return this;
     }
     
-    public MissionGroupModelOptions withResetDayOfMonth(
-        Integer resetDayOfMonth
-    ) {
-        this.resetDayOfMonth = resetDayOfMonth;
-        return this;
-    }
-    
-    public MissionGroupModelOptions withResetDayOfWeek(
-        MissionGroupModelResetDayOfWeek resetDayOfWeek
-    ) {
-        this.resetDayOfWeek = resetDayOfWeek;
-        return this;
-    }
-    
-    public MissionGroupModelOptions withResetHour(
-        Integer resetHour
-    ) {
-        this.resetHour = resetHour;
-        return this;
-    }
-    
-    public MissionGroupModelOptions withCompleteNotificationNamespaceId(
+    public MissionGroupModelResetTypeIsDaysOptions withCompleteNotificationNamespaceId(
         String completeNotificationNamespaceId
     ) {
         this.completeNotificationNamespaceId = completeNotificationNamespaceId;
         return this;
     }
-    
-    public MissionGroupModelOptions withAnchorTimestamp(
-        Long anchorTimestamp
-    ) {
-        this.anchorTimestamp = anchorTimestamp;
-        return this;
-    }
-    
-    public MissionGroupModelOptions withDays(
-        Integer days
-    ) {
-        this.days = days;
-        return this;
-    }
 }
-
