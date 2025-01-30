@@ -27,6 +27,8 @@ public class LimitModelOptions {
     public Integer resetDayOfMonth;
     public LimitModelResetDayOfWeek resetDayOfWeek;
     public Integer resetHour;
+    public Long anchorTimestamp;
+    public Integer days;
     
     public LimitModelOptions withMetadata(
         String metadata
@@ -53,6 +55,20 @@ public class LimitModelOptions {
         Integer resetHour
     ) {
         this.resetHour = resetHour;
+        return this;
+    }
+    
+    public LimitModelOptions withAnchorTimestamp(
+        Long anchorTimestamp
+    ) {
+        this.anchorTimestamp = anchorTimestamp;
+        return this;
+    }
+    
+    public LimitModelOptions withDays(
+        Integer days
+    ) {
+        this.days = days;
         return this;
     }
 }

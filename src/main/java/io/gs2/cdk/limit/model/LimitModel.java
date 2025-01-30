@@ -19,6 +19,7 @@ import io.gs2.cdk.limit.model.options.LimitModelResetTypeIsNotResetOptions;
 import io.gs2.cdk.limit.model.options.LimitModelResetTypeIsDailyOptions;
 import io.gs2.cdk.limit.model.options.LimitModelResetTypeIsWeeklyOptions;
 import io.gs2.cdk.limit.model.options.LimitModelResetTypeIsMonthlyOptions;
+import io.gs2.cdk.limit.model.options.LimitModelResetTypeIsDaysOptions;
 import io.gs2.cdk.limit.model.enums.LimitModelResetType;
 import io.gs2.cdk.limit.model.enums.LimitModelResetDayOfWeek;
 import java.util.HashMap;
@@ -33,6 +34,8 @@ public class LimitModel {
     private Integer resetDayOfMonth = null;
     private LimitModelResetDayOfWeek resetDayOfWeek = null;
     private Integer resetHour = null;
+    private Long anchorTimestamp = null;
+    private Integer days = null;
 
     public LimitModel(
         String name,
@@ -45,6 +48,8 @@ public class LimitModel {
         this.resetDayOfMonth = options.resetDayOfMonth;
         this.resetDayOfWeek = options.resetDayOfWeek;
         this.resetHour = options.resetHour;
+        this.anchorTimestamp = options.anchorTimestamp;
+        this.days = options.days;
     }
     public LimitModel(
         String name,
@@ -157,6 +162,34 @@ public class LimitModel {
         ));
     }
 
+    public static LimitModel resetTypeIsDays(
+        String name,
+        Long anchorTimestamp,
+        Integer days,
+        LimitModelResetTypeIsDaysOptions options
+    ) {
+        return (new LimitModel(
+            name,
+            LimitModelResetType.DAYS,
+            new LimitModelOptions()
+                .withAnchorTimestamp(anchorTimestamp)
+                .withDays(days)
+                .withMetadata(options.metadata)
+        ));
+    }
+
+
+    public static LimitModel resetTypeIsDays(
+        String name,
+        Long anchorTimestamp,
+        Integer days
+    ) {
+        return (new LimitModel(
+            name,
+            LimitModelResetType.DAYS
+        ));
+    }
+
     public Map<String, Object> properties(
     ) {
         var properties = new HashMap<String, Object>();
@@ -180,6 +213,12 @@ public class LimitModel {
         }
         if (this.resetHour != null) {
             properties.put("resetHour", this.resetHour);
+        }
+        if (this.anchorTimestamp != null) {
+            properties.put("anchorTimestamp", this.anchorTimestamp);
+        }
+        if (this.days != null) {
+            properties.put("days", this.days);
         }
 
         return properties;

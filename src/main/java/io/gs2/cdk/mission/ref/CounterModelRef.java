@@ -21,6 +21,7 @@ import io.gs2.cdk.mission.stampSheet.IncreaseCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.SetCounterByUserId;
 import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.ResetCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -106,6 +107,30 @@ public class CounterModelRef {
             this.namespaceName,
             this.counterName,
             value,
+            "#{userId}"
+        ));
+    }
+
+    public ResetCounterByUserId resetCounter(
+        List<ScopedValue> scopes,
+        String userId
+    ) {
+        return (new ResetCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            scopes,
+            userId
+        ));
+    }
+
+
+    public ResetCounterByUserId resetCounter(
+        List<ScopedValue> scopes
+    ) {
+        return (new ResetCounterByUserId(
+            this.namespaceName,
+            this.counterName,
+            scopes,
             "#{userId}"
         ));
     }

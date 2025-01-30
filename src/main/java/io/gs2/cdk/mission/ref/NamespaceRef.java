@@ -26,6 +26,7 @@ import io.gs2.cdk.mission.model.ScopedValue;
 import io.gs2.cdk.mission.stampSheet.ReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.BatchReceiveByUserId;
 import io.gs2.cdk.mission.stampSheet.DecreaseCounterByUserId;
+import io.gs2.cdk.mission.stampSheet.ResetCounterByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCompleteByUserId;
 import io.gs2.cdk.mission.stampSheet.VerifyCounterValueByUserId;
 import java.util.Arrays;
@@ -211,6 +212,32 @@ public class NamespaceRef {
             this.namespaceName,
             counterName,
             value,
+            "#{userId}"
+        ));
+    }
+
+    public ResetCounterByUserId resetCounter(
+        String counterName,
+        List<ScopedValue> scopes,
+        String userId
+    ) {
+        return (new ResetCounterByUserId(
+            this.namespaceName,
+            counterName,
+            scopes,
+            userId
+        ));
+    }
+
+
+    public ResetCounterByUserId resetCounter(
+        String counterName,
+        List<ScopedValue> scopes
+    ) {
+        return (new ResetCounterByUserId(
+            this.namespaceName,
+            counterName,
+            scopes,
             "#{userId}"
         ));
     }
