@@ -38,6 +38,7 @@ public class NamespaceRef {
         String triggerName,
         String triggerStrategy,
         Integer ttl,
+        String eventId,
         String userId
     ) {
         return (new TriggerByUserId(
@@ -45,6 +46,7 @@ public class NamespaceRef {
             triggerName,
             triggerStrategy,
             ttl,
+            eventId,
             userId
         ));
     }
@@ -53,13 +55,15 @@ public class NamespaceRef {
     public TriggerByUserId trigger(
         String triggerName,
         String triggerStrategy,
-        Integer ttl
+        Integer ttl,
+        String eventId
     ) {
         return (new TriggerByUserId(
             this.namespaceName,
             triggerName,
             triggerStrategy,
             ttl,
+            eventId,
             "#{userId}"
         ));
     }

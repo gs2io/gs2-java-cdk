@@ -31,6 +31,7 @@ public class TriggerByUserId extends AcquireAction {
         String triggerName,
         String triggerStrategy,
         Integer ttl,
+        String eventId,
         String userId
     ) {
         super(
@@ -41,6 +42,7 @@ public class TriggerByUserId extends AcquireAction {
                     put("triggerName", triggerName);
                     put("triggerStrategy", triggerStrategy);
                     put("ttl", ttl);
+                    put("eventId", eventId);
                     put("userId", userId);
                 }
             }
