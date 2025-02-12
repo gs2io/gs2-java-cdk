@@ -30,6 +30,7 @@ public class NamespaceOptions {
     public TransactionSetting transactionSetting;
     public ScriptSetting exchangeScript;
     public ScriptSetting incrementalExchangeScript;
+    public ScriptSetting acquireAwaitScript;
     public LogSetting logSetting;
     public String queueNamespaceId;
     public String keyId;
@@ -73,6 +74,13 @@ public class NamespaceOptions {
         ScriptSetting incrementalExchangeScript
     ) {
         this.incrementalExchangeScript = incrementalExchangeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withAcquireAwaitScript(
+        ScriptSetting acquireAwaitScript
+    ) {
+        this.acquireAwaitScript = acquireAwaitScript;
         return this;
     }
     

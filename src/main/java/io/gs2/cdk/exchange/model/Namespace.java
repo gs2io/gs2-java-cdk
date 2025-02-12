@@ -43,6 +43,7 @@ public class Namespace extends CdkResource {
     private TransactionSetting transactionSetting = null;
     private ScriptSetting exchangeScript = null;
     private ScriptSetting incrementalExchangeScript = null;
+    private ScriptSetting acquireAwaitScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -62,6 +63,7 @@ public class Namespace extends CdkResource {
         this.transactionSetting = options.transactionSetting;
         this.exchangeScript = options.exchangeScript;
         this.incrementalExchangeScript = options.incrementalExchangeScript;
+        this.acquireAwaitScript = options.acquireAwaitScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -120,6 +122,10 @@ public class Namespace extends CdkResource {
         }
         if (this.incrementalExchangeScript != null) {
             properties.put("IncrementalExchangeScript", this.incrementalExchangeScript.properties(
+            ));
+        }
+        if (this.acquireAwaitScript != null) {
+            properties.put("AcquireAwaitScript", this.acquireAwaitScript.properties(
             ));
         }
         if (this.logSetting != null) {
