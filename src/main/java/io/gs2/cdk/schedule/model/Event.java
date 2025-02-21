@@ -12,6 +12,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.schedule.model;
 import io.gs2.cdk.schedule.model.RepeatSetting;
@@ -51,13 +53,12 @@ public class Event {
         String name,
         EventScheduleType scheduleType,
         RepeatSetting repeatSetting,
-        EventRepeatType repeatType,
         EventOptions options
     ) {
         this.name = name;
         this.scheduleType = scheduleType;
         this.repeatSetting = repeatSetting;
-        this.repeatType = repeatType;
+        this.repeatType = options.repeatType;
         this.metadata = options.metadata;
         this.absoluteBegin = options.absoluteBegin;
         this.absoluteEnd = options.absoluteEnd;
@@ -72,26 +73,22 @@ public class Event {
     public Event(
         String name,
         EventScheduleType scheduleType,
-        RepeatSetting repeatSetting,
-        EventRepeatType repeatType
-    ) {
+        RepeatSetting repeatSetting
+     ) {
         this.name = name;
         this.scheduleType = scheduleType;
         this.repeatSetting = repeatSetting;
-        this.repeatType = repeatType;
     }
 
     public static Event scheduleTypeIsAbsolute(
         String name,
         RepeatSetting repeatSetting,
-        EventRepeatType repeatType,
         EventScheduleTypeIsAbsoluteOptions options
     ) {
         return (new Event(
             name,
             EventScheduleType.ABSOLUTE,
             repeatSetting,
-            repeatType,
             new EventOptions()
                 .withMetadata(options.metadata)
                 .withAbsoluteBegin(options.absoluteBegin)
@@ -102,21 +99,18 @@ public class Event {
 
     public static Event scheduleTypeIsAbsolute(
         String name,
-        RepeatSetting repeatSetting,
-        EventRepeatType repeatType
+        RepeatSetting repeatSetting
     ) {
         return (new Event(
             name,
             EventScheduleType.ABSOLUTE,
-            repeatSetting,
-            repeatType
+            repeatSetting
         ));
     }
 
     public static Event scheduleTypeIsRelative(
         String name,
         RepeatSetting repeatSetting,
-        EventRepeatType repeatType,
         String relativeTriggerName,
         EventScheduleTypeIsRelativeOptions options
     ) {
@@ -124,7 +118,6 @@ public class Event {
             name,
             EventScheduleType.RELATIVE,
             repeatSetting,
-            repeatType,
             new EventOptions()
                 .withRelativeTriggerName(relativeTriggerName)
                 .withMetadata(options.metadata)
@@ -137,14 +130,12 @@ public class Event {
     public static Event scheduleTypeIsRelative(
         String name,
         RepeatSetting repeatSetting,
-        EventRepeatType repeatType,
         String relativeTriggerName
     ) {
         return (new Event(
             name,
             EventScheduleType.RELATIVE,
-            repeatSetting,
-            repeatType
+            repeatSetting
         ));
     }
 
@@ -158,8 +149,8 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.ALWAYS,
             new EventOptions()
+                .withRepeatType(EventRepeatType.ALWAYS)
                 .withMetadata(options.metadata)
                 .withAbsoluteBegin(options.absoluteBegin)
                 .withAbsoluteEnd(options.absoluteEnd)
@@ -176,7 +167,8 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.ALWAYS
+            new EventOptions()
+                .withRepeatType(EventRepeatType.ALWAYS)
         ));
     }
 
@@ -192,10 +184,10 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.DAILY,
             new EventOptions()
                 .withRepeatBeginHour(repeatBeginHour)
                 .withRepeatEndHour(repeatEndHour)
+                .withRepeatType(EventRepeatType.DAILY)
                 .withMetadata(options.metadata)
                 .withAbsoluteBegin(options.absoluteBegin)
                 .withAbsoluteEnd(options.absoluteEnd)
@@ -214,7 +206,8 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.DAILY
+            new EventOptions()
+                .withRepeatType(EventRepeatType.DAILY)
         ));
     }
 
@@ -232,12 +225,12 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.WEEKLY,
             new EventOptions()
                 .withRepeatBeginDayOfWeek(repeatBeginDayOfWeek)
                 .withRepeatEndDayOfWeek(repeatEndDayOfWeek)
                 .withRepeatBeginHour(repeatBeginHour)
                 .withRepeatEndHour(repeatEndHour)
+                .withRepeatType(EventRepeatType.WEEKLY)
                 .withMetadata(options.metadata)
                 .withAbsoluteBegin(options.absoluteBegin)
                 .withAbsoluteEnd(options.absoluteEnd)
@@ -258,7 +251,8 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.WEEKLY
+            new EventOptions()
+                .withRepeatType(EventRepeatType.WEEKLY)
         ));
     }
 
@@ -276,12 +270,12 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.MONTHLY,
             new EventOptions()
                 .withRepeatBeginDayOfMonth(repeatBeginDayOfMonth)
                 .withRepeatEndDayOfMonth(repeatEndDayOfMonth)
                 .withRepeatBeginHour(repeatBeginHour)
                 .withRepeatEndHour(repeatEndHour)
+                .withRepeatType(EventRepeatType.MONTHLY)
                 .withMetadata(options.metadata)
                 .withAbsoluteBegin(options.absoluteBegin)
                 .withAbsoluteEnd(options.absoluteEnd)
@@ -302,7 +296,8 @@ public class Event {
             name,
             scheduleType,
             repeatSetting,
-            EventRepeatType.MONTHLY
+            new EventOptions()
+                .withRepeatType(EventRepeatType.MONTHLY)
         ));
     }
 

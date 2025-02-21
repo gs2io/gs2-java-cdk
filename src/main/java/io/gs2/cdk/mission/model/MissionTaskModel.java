@@ -12,6 +12,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.mission.model.TargetCounterModel;
@@ -30,8 +32,6 @@ import java.util.stream.Collectors;
 public class MissionTaskModel {
     private String name;
     private MissionTaskModelVerifyCompleteType verifyCompleteType;
-    private String counterName;
-    private Long targetValue;
     private String metadata = null;
     private TargetCounterModel targetCounter = null;
     private List<VerifyAction> verifyCompleteConsumeActions = null;
@@ -43,14 +43,10 @@ public class MissionTaskModel {
     public MissionTaskModel(
         String name,
         MissionTaskModelVerifyCompleteType verifyCompleteType,
-        String counterName,
-        Long targetValue,
         MissionTaskModelOptions options
     ) {
         this.name = name;
         this.verifyCompleteType = verifyCompleteType;
-        this.counterName = counterName;
-        this.targetValue = targetValue;
         this.metadata = options.metadata;
         this.targetCounter = options.targetCounter;
         this.verifyCompleteConsumeActions = options.verifyCompleteConsumeActions;
@@ -61,28 +57,20 @@ public class MissionTaskModel {
     }
     public MissionTaskModel(
         String name,
-        MissionTaskModelVerifyCompleteType verifyCompleteType,
-        String counterName,
-        Long targetValue
+        MissionTaskModelVerifyCompleteType verifyCompleteType
     ) {
         this.name = name;
         this.verifyCompleteType = verifyCompleteType;
-        this.counterName = counterName;
-        this.targetValue = targetValue;
     }
 
     public static MissionTaskModel verifyCompleteTypeIsCounter(
         String name,
-        String counterName,
-        Long targetValue,
         TargetCounterModel targetCounter,
         MissionTaskModelVerifyCompleteTypeIsCounterOptions options
     ) {
         return (new MissionTaskModel(
             name,
             MissionTaskModelVerifyCompleteType.COUNTER,
-            counterName,
-            targetValue,
             new MissionTaskModelOptions()
                 .withTargetCounter(targetCounter)
                 .withMetadata(options.metadata)
@@ -97,29 +85,21 @@ public class MissionTaskModel {
 
     public static MissionTaskModel verifyCompleteTypeIsCounter(
         String name,
-        String counterName,
-        Long targetValue,
         TargetCounterModel targetCounter
     ) {
         return (new MissionTaskModel(
             name,
-            MissionTaskModelVerifyCompleteType.COUNTER,
-            counterName,
-            targetValue
+            MissionTaskModelVerifyCompleteType.COUNTER
         ));
     }
 
     public static MissionTaskModel verifyCompleteTypeIsVerifyActions(
         String name,
-        String counterName,
-        Long targetValue,
         MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions options
     ) {
         return (new MissionTaskModel(
             name,
             MissionTaskModelVerifyCompleteType.VERIFY_ACTIONS,
-            counterName,
-            targetValue,
             new MissionTaskModelOptions()
                 .withMetadata(options.metadata)
                 .withVerifyCompleteConsumeActions(options.verifyCompleteConsumeActions)
@@ -132,15 +112,11 @@ public class MissionTaskModel {
 
 
     public static MissionTaskModel verifyCompleteTypeIsVerifyActions(
-        String name,
-        String counterName,
-        Long targetValue
+        String name
     ) {
         return (new MissionTaskModel(
             name,
-            MissionTaskModelVerifyCompleteType.VERIFY_ACTIONS,
-            counterName,
-            targetValue
+            MissionTaskModelVerifyCompleteType.VERIFY_ACTIONS
         ));
     }
 
@@ -176,15 +152,9 @@ public class MissionTaskModel {
         if (this.premiseMissionTaskName != null) {
             properties.put("premiseMissionTaskName", this.premiseMissionTaskName);
         }
-        if (this.counterName != null) {
-            properties.put("counterName", this.counterName);
-        }
         if (this.targetResetType != null) {
             properties.put("targetResetType", this.targetResetType.toString(
             ));
-        }
-        if (this.targetValue != null) {
-            properties.put("targetValue", this.targetValue);
         }
 
         return properties;
