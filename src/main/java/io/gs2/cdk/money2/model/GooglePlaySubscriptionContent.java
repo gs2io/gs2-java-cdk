@@ -14,25 +14,21 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.money2.model;
-import io.gs2.cdk.money2.model.options.GooglePlaySettingOptions;
+import io.gs2.cdk.money2.model.options.GooglePlaySubscriptionContentOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySetting {
-    private String packageName = null;
-    private String publicKey = null;
-    private String credentialsJSON = null;
+public class GooglePlaySubscriptionContent {
+    private String productId = null;
 
-    public GooglePlaySetting(
-        GooglePlaySettingOptions options
+    public GooglePlaySubscriptionContent(
+        GooglePlaySubscriptionContentOptions options
     ) {
-        this.packageName = options.packageName;
-        this.publicKey = options.publicKey;
-        this.credentialsJSON = options.credentialsJSON;
+        this.productId = options.productId;
     }
-    public GooglePlaySetting(
+    public GooglePlaySubscriptionContent(
     ) {
     }
 
@@ -40,14 +36,8 @@ public class GooglePlaySetting {
     ) {
         var properties = new HashMap<String, Object>();
 
-        if (this.packageName != null) {
-            properties.put("packageName", this.packageName);
-        }
-        if (this.publicKey != null) {
-            properties.put("publicKey", this.publicKey);
-        }
-        if (this.credentialsJSON != null) {
-            properties.put("credentialsJSON", this.credentialsJSON);
+        if (this.productId != null) {
+            properties.put("productId", this.productId);
         }
 
         return properties;

@@ -42,6 +42,7 @@ public class Namespace extends CdkResource {
     private ScriptSetting authenticationScript = null;
     private ScriptSetting createTakeOverScript = null;
     private ScriptSetting doTakeOverScript = null;
+    private ScriptSetting banScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -62,6 +63,7 @@ public class Namespace extends CdkResource {
         this.authenticationScript = options.authenticationScript;
         this.createTakeOverScript = options.createTakeOverScript;
         this.doTakeOverScript = options.doTakeOverScript;
+        this.banScript = options.banScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -124,6 +126,10 @@ public class Namespace extends CdkResource {
         }
         if (this.doTakeOverScript != null) {
             properties.put("DoTakeOverScript", this.doTakeOverScript.properties(
+            ));
+        }
+        if (this.banScript != null) {
+            properties.put("BanScript", this.banScript.properties(
             ));
         }
         if (this.logSetting != null) {

@@ -14,35 +14,30 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.money2.model.options;
+import io.gs2.cdk.money2.model.AppleAppStoreVerifyReceiptEvent;
+import io.gs2.cdk.money2.model.GooglePlayVerifyReceiptEvent;
+import io.gs2.cdk.money2.model.enums.RefundEventPlatform;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    public String credentialsJSON;
+public class RefundEventOptions {
+    public AppleAppStoreVerifyReceiptEvent appleAppStoreRefundEvent;
+    public GooglePlayVerifyReceiptEvent googlePlayRefundEvent;
     
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
+    public RefundEventOptions withAppleAppStoreRefundEvent(
+        AppleAppStoreVerifyReceiptEvent appleAppStoreRefundEvent
     ) {
-        this.packageName = packageName;
+        this.appleAppStoreRefundEvent = appleAppStoreRefundEvent;
         return this;
     }
     
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
+    public RefundEventOptions withGooglePlayRefundEvent(
+        GooglePlayVerifyReceiptEvent googlePlayRefundEvent
     ) {
-        this.publicKey = publicKey;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withCredentialsJSON(
-        String credentialsJSON
-    ) {
-        this.credentialsJSON = credentialsJSON;
+        this.googlePlayRefundEvent = googlePlayRefundEvent;
         return this;
     }
 }

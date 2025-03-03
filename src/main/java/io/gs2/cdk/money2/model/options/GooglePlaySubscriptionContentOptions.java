@@ -20,29 +20,13 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    public String credentialsJSON;
+public class GooglePlaySubscriptionContentOptions {
+    public String productId;
     
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
+    public GooglePlaySubscriptionContentOptions withProductId(
+        String productId
     ) {
-        this.packageName = packageName;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
-    ) {
-        this.publicKey = publicKey;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withCredentialsJSON(
-        String credentialsJSON
-    ) {
-        this.credentialsJSON = credentialsJSON;
+        this.productId = productId;
         return this;
     }
 }

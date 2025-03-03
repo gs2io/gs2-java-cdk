@@ -18,6 +18,7 @@ package io.gs2.cdk.money2.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.money2.model.StoreContentModel;
+import io.gs2.cdk.money2.model.StoreSubscriptionContentModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +29,13 @@ public class CurrentMasterData extends CdkResource {
     private String version= "2024-06-20";
     private String namespaceName;
     private List<StoreContentModel> storeContentModels;
+    private List<StoreSubscriptionContentModel> storeSubscriptionContentModels;
 
     public CurrentMasterData(
         Stack stack,
         String namespaceName,
-        List<StoreContentModel> storeContentModels
+        List<StoreContentModel> storeContentModels,
+        List<StoreSubscriptionContentModel> storeSubscriptionContentModels
     ) {
         super(
             "Money2_CurrentModelMaster_" + namespaceName
@@ -40,6 +43,7 @@ public class CurrentMasterData extends CdkResource {
 
         this.namespaceName = namespaceName;
         this.storeContentModels = storeContentModels;
+        this.storeSubscriptionContentModels = storeSubscriptionContentModels;
         stack.addResource(
             this
         );
@@ -63,6 +67,10 @@ public class CurrentMasterData extends CdkResource {
         settings.put("version", this.version);
         if (this.storeContentModels != null) {
             settings.put("storeContentModels", this.storeContentModels.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.storeSubscriptionContentModels != null) {
+            settings.put("storeSubscriptionContentModels", this.storeSubscriptionContentModels.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

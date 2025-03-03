@@ -14,35 +14,45 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.money2.model.options;
+import io.gs2.cdk.money2.model.enums.SubscribeTransactionStore;
+import io.gs2.cdk.money2.model.enums.SubscribeTransactionStatusDetail;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    public String credentialsJSON;
+public class SubscribeTransactionOptions {
+    public String userId;
+    public Long lastAllocatedAt;
+    public Long lastTakeOverAt;
+    public Long revision;
     
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
+    public SubscribeTransactionOptions withUserId(
+        String userId
     ) {
-        this.packageName = packageName;
+        this.userId = userId;
         return this;
     }
     
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
+    public SubscribeTransactionOptions withLastAllocatedAt(
+        Long lastAllocatedAt
     ) {
-        this.publicKey = publicKey;
+        this.lastAllocatedAt = lastAllocatedAt;
         return this;
     }
     
-    public GooglePlaySettingOptions withCredentialsJSON(
-        String credentialsJSON
+    public SubscribeTransactionOptions withLastTakeOverAt(
+        Long lastTakeOverAt
     ) {
-        this.credentialsJSON = credentialsJSON;
+        this.lastTakeOverAt = lastTakeOverAt;
+        return this;
+    }
+    
+    public SubscribeTransactionOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
         return this;
     }
 }

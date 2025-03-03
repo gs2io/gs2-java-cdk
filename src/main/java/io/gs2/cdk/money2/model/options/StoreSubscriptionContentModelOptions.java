@@ -14,35 +14,37 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.money2.model.options;
+import io.gs2.cdk.money2.model.AppleAppStoreSubscriptionContent;
+import io.gs2.cdk.money2.model.GooglePlaySubscriptionContent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    public String credentialsJSON;
+public class StoreSubscriptionContentModelOptions {
+    public String metadata;
+    public AppleAppStoreSubscriptionContent appleAppStore;
+    public GooglePlaySubscriptionContent googlePlay;
     
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
+    public StoreSubscriptionContentModelOptions withMetadata(
+        String metadata
     ) {
-        this.packageName = packageName;
+        this.metadata = metadata;
         return this;
     }
     
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
+    public StoreSubscriptionContentModelOptions withAppleAppStore(
+        AppleAppStoreSubscriptionContent appleAppStore
     ) {
-        this.publicKey = publicKey;
+        this.appleAppStore = appleAppStore;
         return this;
     }
     
-    public GooglePlaySettingOptions withCredentialsJSON(
-        String credentialsJSON
+    public StoreSubscriptionContentModelOptions withGooglePlay(
+        GooglePlaySubscriptionContent googlePlay
     ) {
-        this.credentialsJSON = credentialsJSON;
+        this.googlePlay = googlePlay;
         return this;
     }
 }

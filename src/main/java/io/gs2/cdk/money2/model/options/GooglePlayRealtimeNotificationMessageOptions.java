@@ -20,30 +20,6 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    public String credentialsJSON;
-    
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
-    ) {
-        this.packageName = packageName;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
-    ) {
-        this.publicKey = publicKey;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withCredentialsJSON(
-        String credentialsJSON
-    ) {
-        this.credentialsJSON = credentialsJSON;
-        return this;
-    }
+public class GooglePlayRealtimeNotificationMessageOptions {
 }
 

@@ -22,11 +22,17 @@ import java.util.stream.Collectors;
 
 public class AppleAppStoreSetting {
     private String bundleId = null;
+    private String issuerId = null;
+    private String keyId = null;
+    private String privateKeyPem = null;
 
     public AppleAppStoreSetting(
         AppleAppStoreSettingOptions options
     ) {
         this.bundleId = options.bundleId;
+        this.issuerId = options.issuerId;
+        this.keyId = options.keyId;
+        this.privateKeyPem = options.privateKeyPem;
     }
     public AppleAppStoreSetting(
     ) {
@@ -38,6 +44,15 @@ public class AppleAppStoreSetting {
 
         if (this.bundleId != null) {
             properties.put("bundleId", this.bundleId);
+        }
+        if (this.issuerId != null) {
+            properties.put("issuerId", this.issuerId);
+        }
+        if (this.keyId != null) {
+            properties.put("keyId", this.keyId);
+        }
+        if (this.privateKeyPem != null) {
+            properties.put("privateKeyPem", this.privateKeyPem);
         }
 
         return properties;

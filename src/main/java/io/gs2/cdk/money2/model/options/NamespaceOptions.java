@@ -16,6 +16,7 @@
 package io.gs2.cdk.money2.model.options;
 import io.gs2.cdk.money2.model.PlatformSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
+import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.money2.model.enums.NamespaceCurrencyUsagePriority;
 
@@ -28,6 +29,11 @@ public class NamespaceOptions {
     public String description;
     public ScriptSetting depositBalanceScript;
     public ScriptSetting withdrawBalanceScript;
+    public String subscribeScript;
+    public String renewScript;
+    public String unsubscribeScript;
+    public ScriptSetting takeOverScript;
+    public NotificationSetting changeSubscriptionStatusNotification;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -48,6 +54,41 @@ public class NamespaceOptions {
         ScriptSetting withdrawBalanceScript
     ) {
         this.withdrawBalanceScript = withdrawBalanceScript;
+        return this;
+    }
+    
+    public NamespaceOptions withSubscribeScript(
+        String subscribeScript
+    ) {
+        this.subscribeScript = subscribeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withRenewScript(
+        String renewScript
+    ) {
+        this.renewScript = renewScript;
+        return this;
+    }
+    
+    public NamespaceOptions withUnsubscribeScript(
+        String unsubscribeScript
+    ) {
+        this.unsubscribeScript = unsubscribeScript;
+        return this;
+    }
+    
+    public NamespaceOptions withTakeOverScript(
+        ScriptSetting takeOverScript
+    ) {
+        this.takeOverScript = takeOverScript;
+        return this;
+    }
+    
+    public NamespaceOptions withChangeSubscriptionStatusNotification(
+        NotificationSetting changeSubscriptionStatusNotification
+    ) {
+        this.changeSubscriptionStatusNotification = changeSubscriptionStatusNotification;
         return this;
     }
     

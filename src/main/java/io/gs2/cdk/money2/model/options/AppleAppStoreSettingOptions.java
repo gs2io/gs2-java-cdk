@@ -22,11 +22,35 @@ import java.util.stream.Collectors;
 
 public class AppleAppStoreSettingOptions {
     public String bundleId;
+    public String issuerId;
+    public String keyId;
+    public String privateKeyPem;
     
     public AppleAppStoreSettingOptions withBundleId(
         String bundleId
     ) {
         this.bundleId = bundleId;
+        return this;
+    }
+    
+    public AppleAppStoreSettingOptions withIssuerId(
+        String issuerId
+    ) {
+        this.issuerId = issuerId;
+        return this;
+    }
+    
+    public AppleAppStoreSettingOptions withKeyId(
+        String keyId
+    ) {
+        this.keyId = keyId;
+        return this;
+    }
+    
+    public AppleAppStoreSettingOptions withPrivateKeyPem(
+        String privateKeyPem
+    ) {
+        this.privateKeyPem = privateKeyPem;
         return this;
     }
 }

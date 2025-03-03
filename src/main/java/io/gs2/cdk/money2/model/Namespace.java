@@ -20,11 +20,13 @@ import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.money2.model.PlatformSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
+import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.money2.ref.NamespaceRef;
 import io.gs2.cdk.money2.model.CurrentMasterData;
 import io.gs2.cdk.money2.model.StoreContentModel;
+import io.gs2.cdk.money2.model.StoreSubscriptionContentModel;
 import io.gs2.cdk.money2.model.enums.NamespaceCurrencyUsagePriority;
 
 import io.gs2.cdk.money2.model.options.NamespaceOptions;
@@ -43,6 +45,11 @@ public class Namespace extends CdkResource {
     private String description = null;
     private ScriptSetting depositBalanceScript = null;
     private ScriptSetting withdrawBalanceScript = null;
+    private String subscribeScript = null;
+    private String renewScript = null;
+    private String unsubscribeScript = null;
+    private ScriptSetting takeOverScript = null;
+    private NotificationSetting changeSubscriptionStatusNotification = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -65,6 +72,11 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.depositBalanceScript = options.depositBalanceScript;
         this.withdrawBalanceScript = options.withdrawBalanceScript;
+        this.subscribeScript = options.subscribeScript;
+        this.renewScript = options.renewScript;
+        this.unsubscribeScript = options.unsubscribeScript;
+        this.takeOverScript = options.takeOverScript;
+        this.changeSubscriptionStatusNotification = options.changeSubscriptionStatusNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -131,6 +143,23 @@ public class Namespace extends CdkResource {
             properties.put("WithdrawBalanceScript", this.withdrawBalanceScript.properties(
             ));
         }
+        if (this.subscribeScript != null) {
+            properties.put("SubscribeScript", this.subscribeScript);
+        }
+        if (this.renewScript != null) {
+            properties.put("RenewScript", this.renewScript);
+        }
+        if (this.unsubscribeScript != null) {
+            properties.put("UnsubscribeScript", this.unsubscribeScript);
+        }
+        if (this.takeOverScript != null) {
+            properties.put("TakeOverScript", this.takeOverScript.properties(
+            ));
+        }
+        if (this.changeSubscriptionStatusNotification != null) {
+            properties.put("ChangeSubscriptionStatusNotification", this.changeSubscriptionStatusNotification.properties(
+            ));
+        }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
             ));
@@ -156,12 +185,14 @@ public class Namespace extends CdkResource {
     }
 
     public Namespace masterData(
-        List<StoreContentModel> storeContentModels
+        List<StoreContentModel> storeContentModels,
+        List<StoreSubscriptionContentModel> storeSubscriptionContentModels
     ) {
         (new CurrentMasterData(
             this.stack,
             this.name,
-            storeContentModels
+            storeContentModels,
+            storeSubscriptionContentModels
         )).addDependsOn(
             this
         );
