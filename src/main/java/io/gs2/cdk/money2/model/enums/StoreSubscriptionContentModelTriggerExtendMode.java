@@ -13,29 +13,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.money2.model.options;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
+package io.gs2.cdk.money2.model.enums;
 
-public class GooglePlaySettingOptions {
-    public String packageName;
-    public String publicKey;
-    
-    public GooglePlaySettingOptions withPackageName(
-        String packageName
-    ) {
-        this.packageName = packageName;
-        return this;
-    }
-    
-    public GooglePlaySettingOptions withPublicKey(
-        String publicKey
-    ) {
-        this.publicKey = publicKey;
-        return this;
+
+public enum StoreSubscriptionContentModelTriggerExtendMode {
+    JUST,
+    ROLLUP_HOUR;
+
+    public String toString() {
+        switch (this) {
+            case JUST:
+                return "just";
+            case ROLLUP_HOUR:
+                return "rollupHour";
+        }
+        return "unknown";
     }
 }
-

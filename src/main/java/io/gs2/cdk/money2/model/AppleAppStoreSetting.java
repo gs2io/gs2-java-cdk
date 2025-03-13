@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 public class AppleAppStoreSetting {
     private String bundleId = null;
+    private String sharedSecretKey = null;
     private String issuerId = null;
     private String keyId = null;
     private String privateKeyPem = null;
@@ -30,6 +31,7 @@ public class AppleAppStoreSetting {
         AppleAppStoreSettingOptions options
     ) {
         this.bundleId = options.bundleId;
+        this.sharedSecretKey = options.sharedSecretKey;
         this.issuerId = options.issuerId;
         this.keyId = options.keyId;
         this.privateKeyPem = options.privateKeyPem;
@@ -44,6 +46,9 @@ public class AppleAppStoreSetting {
 
         if (this.bundleId != null) {
             properties.put("bundleId", this.bundleId);
+        }
+        if (this.sharedSecretKey != null) {
+            properties.put("sharedSecretKey", this.sharedSecretKey);
         }
         if (this.issuerId != null) {
             properties.put("issuerId", this.issuerId);

@@ -23,14 +23,12 @@ import java.util.stream.Collectors;
 public class GooglePlaySetting {
     private String packageName = null;
     private String publicKey = null;
-    private String credentialsJSON = null;
 
     public GooglePlaySetting(
         GooglePlaySettingOptions options
     ) {
         this.packageName = options.packageName;
         this.publicKey = options.publicKey;
-        this.credentialsJSON = options.credentialsJSON;
     }
     public GooglePlaySetting(
     ) {
@@ -45,9 +43,6 @@ public class GooglePlaySetting {
         }
         if (this.publicKey != null) {
             properties.put("publicKey", this.publicKey);
-        }
-        if (this.credentialsJSON != null) {
-            properties.put("credentialsJSON", this.credentialsJSON);
         }
 
         return properties;

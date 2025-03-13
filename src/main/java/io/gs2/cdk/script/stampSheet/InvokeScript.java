@@ -31,6 +31,7 @@ public class InvokeScript extends AcquireAction {
         String scriptId,
         String args,
         RandomStatus randomStatus,
+        Boolean forceUseDistributor,
         String userId
     ) {
         super(
@@ -40,6 +41,7 @@ public class InvokeScript extends AcquireAction {
                     put("scriptId", scriptId);
                     put("args", args);
                     put("randomStatus", randomStatus);
+                    put("forceUseDistributor", forceUseDistributor);
                     put("userId", userId);
                 }
             }

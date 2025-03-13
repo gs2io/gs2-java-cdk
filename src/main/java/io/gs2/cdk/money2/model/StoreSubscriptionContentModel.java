@@ -17,6 +17,9 @@ package io.gs2.cdk.money2.model;
 import io.gs2.cdk.money2.model.AppleAppStoreSubscriptionContent;
 import io.gs2.cdk.money2.model.GooglePlaySubscriptionContent;
 import io.gs2.cdk.money2.model.options.StoreSubscriptionContentModelOptions;
+import io.gs2.cdk.money2.model.options.StoreSubscriptionContentModelTriggerExtendModeIsJustOptions;
+import io.gs2.cdk.money2.model.options.StoreSubscriptionContentModelTriggerExtendModeIsRollupHourOptions;
+import io.gs2.cdk.money2.model.enums.StoreSubscriptionContentModelTriggerExtendMode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -26,8 +29,10 @@ public class StoreSubscriptionContentModel {
     private String name;
     private String scheduleNamespaceId;
     private String triggerName;
+    private StoreSubscriptionContentModelTriggerExtendMode triggerExtendMode;
     private Integer reallocateSpanDays;
     private String metadata = null;
+    private Integer rollupHour = null;
     private AppleAppStoreSubscriptionContent appleAppStore = null;
     private GooglePlaySubscriptionContent googlePlay = null;
 
@@ -35,14 +40,17 @@ public class StoreSubscriptionContentModel {
         String name,
         String scheduleNamespaceId,
         String triggerName,
+        StoreSubscriptionContentModelTriggerExtendMode triggerExtendMode,
         Integer reallocateSpanDays,
         StoreSubscriptionContentModelOptions options
     ) {
         this.name = name;
         this.scheduleNamespaceId = scheduleNamespaceId;
         this.triggerName = triggerName;
+        this.triggerExtendMode = triggerExtendMode;
         this.reallocateSpanDays = reallocateSpanDays;
         this.metadata = options.metadata;
+        this.rollupHour = options.rollupHour;
         this.appleAppStore = options.appleAppStore;
         this.googlePlay = options.googlePlay;
     }
@@ -50,12 +58,89 @@ public class StoreSubscriptionContentModel {
         String name,
         String scheduleNamespaceId,
         String triggerName,
+        StoreSubscriptionContentModelTriggerExtendMode triggerExtendMode,
         Integer reallocateSpanDays
     ) {
         this.name = name;
         this.scheduleNamespaceId = scheduleNamespaceId;
         this.triggerName = triggerName;
+        this.triggerExtendMode = triggerExtendMode;
         this.reallocateSpanDays = reallocateSpanDays;
+    }
+
+    public static StoreSubscriptionContentModel triggerExtendModeIsJust(
+        String name,
+        String scheduleNamespaceId,
+        String triggerName,
+        Integer reallocateSpanDays,
+        StoreSubscriptionContentModelTriggerExtendModeIsJustOptions options
+    ) {
+        return (new StoreSubscriptionContentModel(
+            name,
+            scheduleNamespaceId,
+            triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode.JUST,
+            reallocateSpanDays,
+            new StoreSubscriptionContentModelOptions()
+                .withMetadata(options.metadata)
+                .withAppleAppStore(options.appleAppStore)
+                .withGooglePlay(options.googlePlay)
+        ));
+    }
+
+
+    public static StoreSubscriptionContentModel triggerExtendModeIsJust(
+        String name,
+        String scheduleNamespaceId,
+        String triggerName,
+        Integer reallocateSpanDays
+    ) {
+        return (new StoreSubscriptionContentModel(
+            name,
+            scheduleNamespaceId,
+            triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode.JUST,
+            reallocateSpanDays
+        ));
+    }
+
+    public static StoreSubscriptionContentModel triggerExtendModeIsRollupHour(
+        String name,
+        String scheduleNamespaceId,
+        String triggerName,
+        Integer reallocateSpanDays,
+        Integer rollupHour,
+        StoreSubscriptionContentModelTriggerExtendModeIsRollupHourOptions options
+    ) {
+        return (new StoreSubscriptionContentModel(
+            name,
+            scheduleNamespaceId,
+            triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode.ROLLUP_HOUR,
+            reallocateSpanDays,
+            new StoreSubscriptionContentModelOptions()
+                .withRollupHour(rollupHour)
+                .withMetadata(options.metadata)
+                .withAppleAppStore(options.appleAppStore)
+                .withGooglePlay(options.googlePlay)
+        ));
+    }
+
+
+    public static StoreSubscriptionContentModel triggerExtendModeIsRollupHour(
+        String name,
+        String scheduleNamespaceId,
+        String triggerName,
+        Integer reallocateSpanDays,
+        Integer rollupHour
+    ) {
+        return (new StoreSubscriptionContentModel(
+            name,
+            scheduleNamespaceId,
+            triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode.ROLLUP_HOUR,
+            reallocateSpanDays
+        ));
     }
 
     public Map<String, Object> properties(
@@ -73,6 +158,13 @@ public class StoreSubscriptionContentModel {
         }
         if (this.triggerName != null) {
             properties.put("triggerName", this.triggerName);
+        }
+        if (this.triggerExtendMode != null) {
+            properties.put("triggerExtendMode", this.triggerExtendMode.toString(
+            ));
+        }
+        if (this.rollupHour != null) {
+            properties.put("rollupHour", this.rollupHour);
         }
         if (this.reallocateSpanDays != null) {
             properties.put("reallocateSpanDays", this.reallocateSpanDays);

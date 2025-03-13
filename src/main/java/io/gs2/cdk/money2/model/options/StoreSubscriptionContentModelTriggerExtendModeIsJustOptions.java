@@ -23,38 +23,29 @@ import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StoreSubscriptionContentModelOptions {
+public class StoreSubscriptionContentModelTriggerExtendModeIsJustOptions {
     public String metadata;
-    public Integer rollupHour;
     public AppleAppStoreSubscriptionContent appleAppStore;
     public GooglePlaySubscriptionContent googlePlay;
     
-    public StoreSubscriptionContentModelOptions withMetadata(
+    public StoreSubscriptionContentModelTriggerExtendModeIsJustOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
         return this;
     }
     
-    public StoreSubscriptionContentModelOptions withRollupHour(
-        Integer rollupHour
-    ) {
-        this.rollupHour = rollupHour;
-        return this;
-    }
-    
-    public StoreSubscriptionContentModelOptions withAppleAppStore(
+    public StoreSubscriptionContentModelTriggerExtendModeIsJustOptions withAppleAppStore(
         AppleAppStoreSubscriptionContent appleAppStore
     ) {
         this.appleAppStore = appleAppStore;
         return this;
     }
     
-    public StoreSubscriptionContentModelOptions withGooglePlay(
+    public StoreSubscriptionContentModelTriggerExtendModeIsJustOptions withGooglePlay(
         GooglePlaySubscriptionContent googlePlay
     ) {
         this.googlePlay = googlePlay;
         return this;
     }
 }
-

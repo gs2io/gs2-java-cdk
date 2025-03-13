@@ -37,12 +37,14 @@ public class NamespaceRef {
         String scriptId,
         String args,
         RandomStatus randomStatus,
+        Boolean forceUseDistributor,
         String userId
     ) {
         return (new InvokeScript(
             scriptId,
             args,
             randomStatus,
+            forceUseDistributor,
             userId
         ));
     }
@@ -51,12 +53,14 @@ public class NamespaceRef {
     public InvokeScript invokeScript(
         String scriptId,
         String args,
-        RandomStatus randomStatus
+        RandomStatus randomStatus,
+        Boolean forceUseDistributor
     ) {
         return (new InvokeScript(
             scriptId,
             args,
             randomStatus,
+            forceUseDistributor,
             "#{userId}"
         ));
     }

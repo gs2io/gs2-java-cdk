@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 public class AppleAppStoreSettingOptions {
     public String bundleId;
+    public String sharedSecretKey;
     public String issuerId;
     public String keyId;
     public String privateKeyPem;
@@ -30,6 +31,13 @@ public class AppleAppStoreSettingOptions {
         String bundleId
     ) {
         this.bundleId = bundleId;
+        return this;
+    }
+    
+    public AppleAppStoreSettingOptions withSharedSecretKey(
+        String sharedSecretKey
+    ) {
+        this.sharedSecretKey = sharedSecretKey;
         return this;
     }
     
