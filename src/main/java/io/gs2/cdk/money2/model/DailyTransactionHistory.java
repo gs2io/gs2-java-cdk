@@ -25,8 +25,10 @@ public class DailyTransactionHistory {
     private Integer month;
     private Integer day;
     private String currency;
-    private Float depositAmount;
-    private Float withdrawAmount;
+    private Double depositAmount;
+    private Double withdrawAmount;
+    private Long issueCount;
+    private Long consumeCount;
     private Long revision = null;
 
     public DailyTransactionHistory(
@@ -34,8 +36,10 @@ public class DailyTransactionHistory {
         Integer month,
         Integer day,
         String currency,
-        Float depositAmount,
-        Float withdrawAmount,
+        Double depositAmount,
+        Double withdrawAmount,
+        Long issueCount,
+        Long consumeCount,
         DailyTransactionHistoryOptions options
     ) {
         this.year = year;
@@ -44,6 +48,8 @@ public class DailyTransactionHistory {
         this.currency = currency;
         this.depositAmount = depositAmount;
         this.withdrawAmount = withdrawAmount;
+        this.issueCount = issueCount;
+        this.consumeCount = consumeCount;
         this.revision = options.revision;
     }
     public DailyTransactionHistory(
@@ -51,8 +57,10 @@ public class DailyTransactionHistory {
         Integer month,
         Integer day,
         String currency,
-        Float depositAmount,
-        Float withdrawAmount
+        Double depositAmount,
+        Double withdrawAmount,
+        Long issueCount,
+        Long consumeCount
     ) {
         this.year = year;
         this.month = month;
@@ -60,6 +68,8 @@ public class DailyTransactionHistory {
         this.currency = currency;
         this.depositAmount = depositAmount;
         this.withdrawAmount = withdrawAmount;
+        this.issueCount = issueCount;
+        this.consumeCount = consumeCount;
     }
 
     public Map<String, Object> properties(
@@ -83,6 +93,12 @@ public class DailyTransactionHistory {
         }
         if (this.withdrawAmount != null) {
             properties.put("withdrawAmount", this.withdrawAmount);
+        }
+        if (this.issueCount != null) {
+            properties.put("issueCount", this.issueCount);
+        }
+        if (this.consumeCount != null) {
+            properties.put("consumeCount", this.consumeCount);
         }
 
         return properties;

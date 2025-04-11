@@ -16,6 +16,7 @@
 package io.gs2.cdk.idle.model.options;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.idle.model.AcquireActionList;
+import io.gs2.cdk.idle.model.enums.CategoryModelRewardResetMode;
 
 import java.util.HashMap;
 import java.util.Map;

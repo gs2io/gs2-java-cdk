@@ -39,14 +39,12 @@ public class ScriptRef {
         String scriptId,
         String args,
         RandomStatus randomStatus,
-        Boolean forceUseDistributor,
         String userId
     ) {
         return (new InvokeScript(
             scriptId,
             args,
             randomStatus,
-            forceUseDistributor,
             userId
         ));
     }
@@ -55,14 +53,12 @@ public class ScriptRef {
     public InvokeScript invokeScript(
         String scriptId,
         String args,
-        RandomStatus randomStatus,
-        Boolean forceUseDistributor
+        RandomStatus randomStatus
     ) {
         return (new InvokeScript(
             scriptId,
             args,
             randomStatus,
-            forceUseDistributor,
             "#{userId}"
         ));
     }

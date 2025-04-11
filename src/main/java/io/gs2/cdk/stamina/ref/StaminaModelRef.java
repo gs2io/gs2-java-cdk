@@ -24,6 +24,11 @@ import io.gs2.cdk.stamina.stampSheet.SetRecoverIntervalByUserId;
 import io.gs2.cdk.stamina.stampSheet.SetRecoverValueByUserId;
 import io.gs2.cdk.stamina.stampSheet.DecreaseMaxValueByUserId;
 import io.gs2.cdk.stamina.stampSheet.ConsumeStaminaByUserId;
+import io.gs2.cdk.stamina.stampSheet.VerifyStaminaValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.VerifyStaminaMaxValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.VerifyStaminaRecoverIntervalMinutesByUserId;
+import io.gs2.cdk.stamina.stampSheet.VerifyStaminaRecoverValueByUserId;
+import io.gs2.cdk.stamina.stampSheet.VerifyStaminaOverflowValueByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -204,6 +209,166 @@ public class StaminaModelRef {
             this.namespaceName,
             this.staminaName,
             consumeValue,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStaminaValueByUserId verifyStaminaValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyStaminaValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyStaminaValueByUserId verifyStaminaValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyStaminaValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStaminaMaxValueByUserId verifyStaminaMaxValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyStaminaMaxValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyStaminaMaxValueByUserId verifyStaminaMaxValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyStaminaMaxValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStaminaRecoverIntervalMinutesByUserId verifyStaminaRecoverIntervalMinutes(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyStaminaRecoverIntervalMinutesByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyStaminaRecoverIntervalMinutesByUserId verifyStaminaRecoverIntervalMinutes(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyStaminaRecoverIntervalMinutesByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStaminaRecoverValueByUserId verifyStaminaRecoverValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyStaminaRecoverValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyStaminaRecoverValueByUserId verifyStaminaRecoverValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyStaminaRecoverValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStaminaOverflowValueByUserId verifyStaminaOverflowValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyStaminaOverflowValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyStaminaOverflowValueByUserId verifyStaminaOverflowValue(
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyStaminaOverflowValueByUserId(
+            this.namespaceName,
+            this.staminaName,
+            verifyType,
+            value,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }

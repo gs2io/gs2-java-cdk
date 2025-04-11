@@ -21,13 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DepositTransaction {
-    private Float price;
+    private Double price;
     private Integer count;
     private String currency = null;
     private Long depositedAt = null;
 
     public DepositTransaction(
-        Float price,
+        Double price,
         Integer count,
         DepositTransactionOptions options
     ) {
@@ -37,7 +37,7 @@ public class DepositTransaction {
         this.depositedAt = options.depositedAt;
     }
     public DepositTransaction(
-        Float price,
+        Double price,
         Integer count
     ) {
         this.price = price;

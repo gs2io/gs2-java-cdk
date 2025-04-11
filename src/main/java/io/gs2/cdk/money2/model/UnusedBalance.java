@@ -22,12 +22,12 @@ import java.util.stream.Collectors;
 
 public class UnusedBalance {
     private String currency;
-    private Float balance;
+    private Double balance;
     private Long revision = null;
 
     public UnusedBalance(
         String currency,
-        Float balance,
+        Double balance,
         UnusedBalanceOptions options
     ) {
         this.currency = currency;
@@ -36,7 +36,7 @@ public class UnusedBalance {
     }
     public UnusedBalance(
         String currency,
-        Float balance
+        Double balance
     ) {
         this.currency = currency;
         this.balance = balance;

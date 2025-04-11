@@ -13,33 +13,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.script.stampSheet;
+package io.gs2.cdk.stamina.stampSheet;
 
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.VerifyAction;
-import io.gs2.cdk.script.model.RandomStatus;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InvokeScript extends AcquireAction {
+public class VerifyStaminaOverflowValueByUserId extends VerifyAction {
 
-    public InvokeScript(
-        String scriptId,
-        String args,
-        RandomStatus randomStatus,
+    public VerifyStaminaOverflowValueByUserId(
+        String namespaceName,
+        String staminaName,
+        String verifyType,
+        Integer value,
+        Boolean multiplyValueSpecifyingQuantity,
         String userId
     ) {
         super(
-            "Gs2Script:InvokeScript",
+            "Gs2Stamina:VerifyStaminaOverflowValueByUserId",
             new HashMap<>() {
                 {
-                    put("scriptId", scriptId);
-                    put("args", args);
-                    put("randomStatus", randomStatus);
+                    put("namespaceName", namespaceName);
+                    put("staminaName", staminaName);
+                    put("verifyType", verifyType);
+                    put("value", value);
+                    put("multiplyValueSpecifyingQuantity", multiplyValueSpecifyingQuantity);
                     put("userId", userId);
                 }
             }

@@ -17,6 +17,7 @@ package io.gs2.cdk.idle.model;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.idle.model.AcquireActionList;
 import io.gs2.cdk.idle.model.options.CategoryModelOptions;
+import io.gs2.cdk.idle.model.enums.CategoryModelRewardResetMode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -26,6 +27,7 @@ public class CategoryModel {
     private String name;
     private Integer rewardIntervalMinutes;
     private Integer defaultMaximumIdleMinutes;
+    private CategoryModelRewardResetMode rewardResetMode;
     private List<AcquireActionList> acquireActions;
     private String metadata = null;
     private String idlePeriodScheduleId = null;
@@ -35,12 +37,14 @@ public class CategoryModel {
         String name,
         Integer rewardIntervalMinutes,
         Integer defaultMaximumIdleMinutes,
+        CategoryModelRewardResetMode rewardResetMode,
         List<AcquireActionList> acquireActions,
         CategoryModelOptions options
     ) {
         this.name = name;
         this.rewardIntervalMinutes = rewardIntervalMinutes;
         this.defaultMaximumIdleMinutes = defaultMaximumIdleMinutes;
+        this.rewardResetMode = rewardResetMode;
         this.acquireActions = acquireActions;
         this.metadata = options.metadata;
         this.idlePeriodScheduleId = options.idlePeriodScheduleId;
@@ -50,11 +54,13 @@ public class CategoryModel {
         String name,
         Integer rewardIntervalMinutes,
         Integer defaultMaximumIdleMinutes,
+        CategoryModelRewardResetMode rewardResetMode,
         List<AcquireActionList> acquireActions
     ) {
         this.name = name;
         this.rewardIntervalMinutes = rewardIntervalMinutes;
         this.defaultMaximumIdleMinutes = defaultMaximumIdleMinutes;
+        this.rewardResetMode = rewardResetMode;
         this.acquireActions = acquireActions;
     }
 
@@ -73,6 +79,10 @@ public class CategoryModel {
         }
         if (this.defaultMaximumIdleMinutes != null) {
             properties.put("defaultMaximumIdleMinutes", this.defaultMaximumIdleMinutes);
+        }
+        if (this.rewardResetMode != null) {
+            properties.put("rewardResetMode", this.rewardResetMode.toString(
+            ));
         }
         if (this.acquireActions != null) {
             properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(
