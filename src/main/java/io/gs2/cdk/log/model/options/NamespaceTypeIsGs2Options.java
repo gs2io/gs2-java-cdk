@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.log.model.options;
 import io.gs2.cdk.log.model.enums.NamespaceType;
+import io.gs2.cdk.log.model.enums.NamespaceFirehoseCompressData;
 
 import java.util.HashMap;
 import java.util.Map;

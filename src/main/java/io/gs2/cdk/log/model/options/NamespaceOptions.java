@@ -12,12 +12,10 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
- * deny overwrite
  */
 package io.gs2.cdk.log.model.options;
-
 import io.gs2.cdk.log.model.enums.NamespaceType;
+import io.gs2.cdk.log.model.enums.NamespaceFirehoseCompressData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +32,7 @@ public class NamespaceOptions {
     public String awsAccessKeyId;
     public String awsSecretAccessKey;
     public String firehoseStreamName;
+    public NamespaceFirehoseCompressData firehoseCompressData;
     
     public NamespaceOptions withDescription(
         String description
@@ -97,4 +96,12 @@ public class NamespaceOptions {
         this.firehoseStreamName = firehoseStreamName;
         return this;
     }
+    
+    public NamespaceOptions withFirehoseCompressData(
+        NamespaceFirehoseCompressData firehoseCompressData
+    ) {
+        this.firehoseCompressData = firehoseCompressData;
+        return this;
+    }
 }
+

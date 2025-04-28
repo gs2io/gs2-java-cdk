@@ -21,6 +21,7 @@ import io.gs2.cdk.core.func.GetAttr;
 
 import io.gs2.cdk.log.ref.NamespaceRef;
 import io.gs2.cdk.log.model.enums.NamespaceType;
+import io.gs2.cdk.log.model.enums.NamespaceFirehoseCompressData;
 
 import io.gs2.cdk.log.model.options.NamespaceOptions;
 
@@ -41,6 +42,7 @@ public class Namespace extends CdkResource {
     private String awsAccessKeyId = null;
     private String awsSecretAccessKey = null;
     private String firehoseStreamName = null;
+    private NamespaceFirehoseCompressData firehoseCompressData = null;
 
     public Namespace(
         Stack stack,
@@ -62,6 +64,7 @@ public class Namespace extends CdkResource {
         this.awsAccessKeyId = options.awsAccessKeyId;
         this.awsSecretAccessKey = options.awsSecretAccessKey;
         this.firehoseStreamName = options.firehoseStreamName;
+        this.firehoseCompressData = options.firehoseCompressData;
         stack.addResource(
             this
         );
@@ -126,6 +129,9 @@ public class Namespace extends CdkResource {
         }
         if (this.firehoseStreamName != null) {
             properties.put("FirehoseStreamName", this.firehoseStreamName);
+        }
+        if (this.firehoseCompressData != null) {
+            properties.put("FirehoseCompressData", this.firehoseCompressData);
         }
 
         return properties;
