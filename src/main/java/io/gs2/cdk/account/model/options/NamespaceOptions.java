@@ -31,6 +31,7 @@ public class NamespaceOptions {
     public ScriptSetting createTakeOverScript;
     public ScriptSetting doTakeOverScript;
     public ScriptSetting banScript;
+    public ScriptSetting unBanScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -86,6 +87,13 @@ public class NamespaceOptions {
         ScriptSetting banScript
     ) {
         this.banScript = banScript;
+        return this;
+    }
+    
+    public NamespaceOptions withUnBanScript(
+        ScriptSetting unBanScript
+    ) {
+        this.unBanScript = unBanScript;
         return this;
     }
     
