@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CounterScopeModelOptions {
-    public CounterScopeModelResetType resetType;
     public Integer resetDayOfMonth;
     public CounterScopeModelResetDayOfWeek resetDayOfWeek;
     public Integer resetHour;
@@ -33,13 +32,6 @@ public class CounterScopeModelOptions {
     public VerifyAction condition;
     public Long anchorTimestamp;
     public Integer days;
-    
-    public CounterScopeModelOptions withResetType(
-        CounterScopeModelResetType resetType
-    ) {
-        this.resetType = resetType;
-        return this;
-    }
     
     public CounterScopeModelOptions withResetDayOfMonth(
         Integer resetDayOfMonth

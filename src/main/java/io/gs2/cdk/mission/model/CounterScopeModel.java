@@ -16,13 +16,13 @@
 package io.gs2.cdk.mission.model;
 import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.mission.model.options.CounterScopeModelOptions;
-import io.gs2.cdk.mission.model.options.CounterScopeModelScopeTypeIsResetTimingOptions;
-import io.gs2.cdk.mission.model.options.CounterScopeModelScopeTypeIsVerifyActionOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsNotResetOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsDailyOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsWeeklyOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsMonthlyOptions;
 import io.gs2.cdk.mission.model.options.CounterScopeModelResetTypeIsDaysOptions;
+import io.gs2.cdk.mission.model.options.CounterScopeModelScopeTypeIsResetTimingOptions;
+import io.gs2.cdk.mission.model.options.CounterScopeModelScopeTypeIsVerifyActionOptions;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelScopeType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetType;
 import io.gs2.cdk.mission.model.enums.CounterScopeModelResetDayOfWeek;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 
 public class CounterScopeModel {
     private CounterScopeModelScopeType scopeType;
-    private CounterScopeModelResetType resetType = null;
+    private CounterScopeModelResetType resetType;
     private Integer resetDayOfMonth = null;
     private CounterScopeModelResetDayOfWeek resetDayOfWeek = null;
     private Integer resetHour = null;
@@ -44,10 +44,11 @@ public class CounterScopeModel {
 
     public CounterScopeModel(
         CounterScopeModelScopeType scopeType,
+        CounterScopeModelResetType resetType,
         CounterScopeModelOptions options
     ) {
         this.scopeType = scopeType;
-        this.resetType = options.resetType;
+        this.resetType = resetType;
         this.resetDayOfMonth = options.resetDayOfMonth;
         this.resetDayOfWeek = options.resetDayOfWeek;
         this.resetHour = options.resetHour;
@@ -57,52 +58,11 @@ public class CounterScopeModel {
         this.days = options.days;
     }
     public CounterScopeModel(
-        CounterScopeModelScopeType scopeType
-    ) {
-        this.scopeType = scopeType;
-    }
-
-    public static CounterScopeModel scopeTypeIsResetTiming(
-        CounterScopeModelResetType resetType,
-        CounterScopeModelScopeTypeIsResetTimingOptions options
-    ) {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType.RESET_TIMING,
-            new CounterScopeModelOptions()
-                .withResetType(resetType)
-        ));
-    }
-
-
-    public static CounterScopeModel scopeTypeIsResetTiming(
+        CounterScopeModelScopeType scopeType,
         CounterScopeModelResetType resetType
     ) {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType.RESET_TIMING
-        ));
-    }
-
-    public static CounterScopeModel scopeTypeIsVerifyAction(
-        String conditionName,
-        VerifyAction condition,
-        CounterScopeModelScopeTypeIsVerifyActionOptions options
-    ) {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType.VERIFY_ACTION,
-            new CounterScopeModelOptions()
-                .withConditionName(conditionName)
-                .withCondition(condition)
-        ));
-    }
-
-
-    public static CounterScopeModel scopeTypeIsVerifyAction(
-        String conditionName,
-        VerifyAction condition
-    ) {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType.VERIFY_ACTION
-        ));
+        this.scopeType = scopeType;
+        this.resetType = resetType;
     }
 
     public static CounterScopeModel resetTypeIsNotReset(
@@ -111,6 +71,7 @@ public class CounterScopeModel {
     ) {
         return (new CounterScopeModel(
             scopeType,
+            CounterScopeModelResetType.NOT_RESET,
             new CounterScopeModelOptions()
         ));
     }
@@ -120,7 +81,8 @@ public class CounterScopeModel {
         CounterScopeModelScopeType scopeType
     ) {
         return (new CounterScopeModel(
-            scopeType
+            scopeType,
+            CounterScopeModelResetType.NOT_RESET
         ));
     }
 
@@ -131,6 +93,7 @@ public class CounterScopeModel {
     ) {
         return (new CounterScopeModel(
             scopeType,
+            CounterScopeModelResetType.DAILY,
             new CounterScopeModelOptions()
                 .withResetHour(resetHour)
         ));
@@ -142,7 +105,8 @@ public class CounterScopeModel {
         Integer resetHour
     ) {
         return (new CounterScopeModel(
-            scopeType
+            scopeType,
+            CounterScopeModelResetType.DAILY
         ));
     }
 
@@ -154,6 +118,7 @@ public class CounterScopeModel {
     ) {
         return (new CounterScopeModel(
             scopeType,
+            CounterScopeModelResetType.WEEKLY,
             new CounterScopeModelOptions()
                 .withResetDayOfWeek(resetDayOfWeek)
                 .withResetHour(resetHour)
@@ -167,7 +132,8 @@ public class CounterScopeModel {
         Integer resetHour
     ) {
         return (new CounterScopeModel(
-            scopeType
+            scopeType,
+            CounterScopeModelResetType.WEEKLY
         ));
     }
 
@@ -179,6 +145,7 @@ public class CounterScopeModel {
     ) {
         return (new CounterScopeModel(
             scopeType,
+            CounterScopeModelResetType.MONTHLY,
             new CounterScopeModelOptions()
                 .withResetDayOfMonth(resetDayOfMonth)
                 .withResetHour(resetHour)
@@ -192,7 +159,8 @@ public class CounterScopeModel {
         Integer resetHour
     ) {
         return (new CounterScopeModel(
-            scopeType
+            scopeType,
+            CounterScopeModelResetType.MONTHLY
         ));
     }
 
@@ -204,6 +172,7 @@ public class CounterScopeModel {
     ) {
         return (new CounterScopeModel(
             scopeType,
+            CounterScopeModelResetType.DAYS,
             new CounterScopeModelOptions()
                 .withAnchorTimestamp(anchorTimestamp)
                 .withDays(days)
@@ -217,7 +186,56 @@ public class CounterScopeModel {
         Integer days
     ) {
         return (new CounterScopeModel(
-            scopeType
+            scopeType,
+            CounterScopeModelResetType.DAYS
+        ));
+    }
+
+    public static CounterScopeModel scopeTypeIsResetTiming(
+        CounterScopeModelResetType resetType,
+        CounterScopeModelScopeTypeIsResetTimingOptions options
+    ) {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType.RESET_TIMING,
+            resetType,
+            new CounterScopeModelOptions()
+        ));
+    }
+
+
+    public static CounterScopeModel scopeTypeIsResetTiming(
+        CounterScopeModelResetType resetType
+    ) {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType.RESET_TIMING,
+            resetType
+        ));
+    }
+
+    public static CounterScopeModel scopeTypeIsVerifyAction(
+        CounterScopeModelResetType resetType,
+        String conditionName,
+        VerifyAction condition,
+        CounterScopeModelScopeTypeIsVerifyActionOptions options
+    ) {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType.VERIFY_ACTION,
+            resetType,
+            new CounterScopeModelOptions()
+                .withConditionName(conditionName)
+                .withCondition(condition)
+        ));
+    }
+
+
+    public static CounterScopeModel scopeTypeIsVerifyAction(
+        CounterScopeModelResetType resetType,
+        String conditionName,
+        VerifyAction condition
+    ) {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType.VERIFY_ACTION,
+            resetType
         ));
     }
 
