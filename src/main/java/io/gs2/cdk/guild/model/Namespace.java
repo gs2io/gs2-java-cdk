@@ -48,6 +48,7 @@ public class Namespace extends CdkResource {
     private ScriptSetting joinGuildScript = null;
     private ScriptSetting leaveGuildScript = null;
     private ScriptSetting changeRoleScript = null;
+    private ScriptSetting deleteGuildScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -73,6 +74,7 @@ public class Namespace extends CdkResource {
         this.joinGuildScript = options.joinGuildScript;
         this.leaveGuildScript = options.leaveGuildScript;
         this.changeRoleScript = options.changeRoleScript;
+        this.deleteGuildScript = options.deleteGuildScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -157,6 +159,10 @@ public class Namespace extends CdkResource {
         }
         if (this.changeRoleScript != null) {
             properties.put("ChangeRoleScript", this.changeRoleScript.properties(
+            ));
+        }
+        if (this.deleteGuildScript != null) {
+            properties.put("DeleteGuildScript", this.deleteGuildScript.properties(
             ));
         }
         if (this.logSetting != null) {

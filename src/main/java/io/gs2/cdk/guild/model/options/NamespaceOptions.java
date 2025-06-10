@@ -36,6 +36,7 @@ public class NamespaceOptions {
     public ScriptSetting joinGuildScript;
     public ScriptSetting leaveGuildScript;
     public ScriptSetting changeRoleScript;
+    public ScriptSetting deleteGuildScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -119,6 +120,13 @@ public class NamespaceOptions {
         ScriptSetting changeRoleScript
     ) {
         this.changeRoleScript = changeRoleScript;
+        return this;
+    }
+    
+    public NamespaceOptions withDeleteGuildScript(
+        ScriptSetting deleteGuildScript
+    ) {
+        this.deleteGuildScript = deleteGuildScript;
         return this;
     }
     
