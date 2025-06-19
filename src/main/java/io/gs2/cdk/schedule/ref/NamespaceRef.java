@@ -18,6 +18,7 @@ package io.gs2.cdk.schedule.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.schedule.stampSheet.TriggerByUserId;
+import io.gs2.cdk.schedule.stampSheet.ExtendTriggerByUserId;
 import io.gs2.cdk.schedule.stampSheet.DeleteTriggerByUserId;
 import io.gs2.cdk.schedule.stampSheet.VerifyTriggerByUserId;
 import io.gs2.cdk.schedule.stampSheet.VerifyEventByUserId;
@@ -64,6 +65,32 @@ public class NamespaceRef {
             triggerStrategy,
             ttl,
             eventId,
+            "#{userId}"
+        ));
+    }
+
+    public ExtendTriggerByUserId extendTrigger(
+        String triggerName,
+        Integer extendSeconds,
+        String userId
+    ) {
+        return (new ExtendTriggerByUserId(
+            this.namespaceName,
+            triggerName,
+            extendSeconds,
+            userId
+        ));
+    }
+
+
+    public ExtendTriggerByUserId extendTrigger(
+        String triggerName,
+        Integer extendSeconds
+    ) {
+        return (new ExtendTriggerByUserId(
+            this.namespaceName,
+            triggerName,
+            extendSeconds,
             "#{userId}"
         ));
     }
