@@ -34,6 +34,7 @@ public class NamespaceOptions {
     public ScriptSetting createGuildScript;
     public ScriptSetting updateGuildScript;
     public ScriptSetting joinGuildScript;
+    public ScriptSetting receiveJoinRequestScript;
     public ScriptSetting leaveGuildScript;
     public ScriptSetting changeRoleScript;
     public ScriptSetting deleteGuildScript;
@@ -106,6 +107,13 @@ public class NamespaceOptions {
         ScriptSetting joinGuildScript
     ) {
         this.joinGuildScript = joinGuildScript;
+        return this;
+    }
+    
+    public NamespaceOptions withReceiveJoinRequestScript(
+        ScriptSetting receiveJoinRequestScript
+    ) {
+        this.receiveJoinRequestScript = receiveJoinRequestScript;
         return this;
     }
     
