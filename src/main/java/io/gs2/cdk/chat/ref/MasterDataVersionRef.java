@@ -17,46 +17,22 @@ package io.gs2.cdk.chat.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.chat.ref.CategoryModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class MasterDataVersionRef {
     private String namespaceName;
+    private String objectKey;
+    private String versionId;
 
-    public NamespaceRef(
-        String namespaceName
+    public MasterDataVersionRef(
+        String namespaceName,
+        String objectKey,
+        String versionId
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public CategoryModelRef categoryModel(
-        Integer category
-    ) {
-        return (new CategoryModelRef(
-            this.namespaceName,
-            category
-        ));
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "chat",
-                this.namespaceName
-            )
-        )).str(
-        );
+        this.objectKey = objectKey;
+        this.versionId = versionId;
     }
 }

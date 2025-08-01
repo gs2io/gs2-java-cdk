@@ -23,6 +23,8 @@ import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.chat.ref.NamespaceRef;
+import io.gs2.cdk.chat.model.CurrentMasterData;
+import io.gs2.cdk.chat.model.CategoryModel;
 
 import io.gs2.cdk.chat.model.options.NamespaceOptions;
 
@@ -159,5 +161,18 @@ public class Namespace extends CdkResource {
             "Item.NamespaceId",
             null
         ));
+    }
+
+    public Namespace masterData(
+        List<CategoryModel> categoryModels
+    ) {
+        (new CurrentMasterData(
+            this.stack,
+            this.name,
+            categoryModels
+        )).addDependsOn(
+            this
+        );
+        return this;
     }
 }
