@@ -26,7 +26,6 @@ public class NamespaceOptions {
     public String description;
     public TransactionSetting transactionSetting;
     public String lotteryTriggerScriptId;
-    public String choicePrizeTableScriptId;
     public LogSetting logSetting;
     public String queueNamespaceId;
     public String keyId;
@@ -49,13 +48,6 @@ public class NamespaceOptions {
         String lotteryTriggerScriptId
     ) {
         this.lotteryTriggerScriptId = lotteryTriggerScriptId;
-        return this;
-    }
-    
-    public NamespaceOptions withChoicePrizeTableScriptId(
-        String choicePrizeTableScriptId
-    ) {
-        this.choicePrizeTableScriptId = choicePrizeTableScriptId;
         return this;
     }
     

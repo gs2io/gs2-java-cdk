@@ -39,7 +39,6 @@ public class Namespace extends CdkResource {
     private String description = null;
     private TransactionSetting transactionSetting = null;
     private String lotteryTriggerScriptId = null;
-    private String choicePrizeTableScriptId = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -56,7 +55,6 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
         this.lotteryTriggerScriptId = options.lotteryTriggerScriptId;
-        this.choicePrizeTableScriptId = options.choicePrizeTableScriptId;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -105,9 +103,6 @@ public class Namespace extends CdkResource {
         }
         if (this.lotteryTriggerScriptId != null) {
             properties.put("LotteryTriggerScriptId", this.lotteryTriggerScriptId);
-        }
-        if (this.choicePrizeTableScriptId != null) {
-            properties.put("ChoicePrizeTableScriptId", this.choicePrizeTableScriptId);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
