@@ -29,6 +29,7 @@ public class NamespaceOptions {
     public String description;
     public ScriptSetting depositBalanceScript;
     public ScriptSetting withdrawBalanceScript;
+    public ScriptSetting verifyReceiptScript;
     public String subscribeScript;
     public String renewScript;
     public String unsubscribeScript;
@@ -54,6 +55,13 @@ public class NamespaceOptions {
         ScriptSetting withdrawBalanceScript
     ) {
         this.withdrawBalanceScript = withdrawBalanceScript;
+        return this;
+    }
+    
+    public NamespaceOptions withVerifyReceiptScript(
+        ScriptSetting verifyReceiptScript
+    ) {
+        this.verifyReceiptScript = verifyReceiptScript;
         return this;
     }
     

@@ -45,6 +45,7 @@ public class Namespace extends CdkResource {
     private String description = null;
     private ScriptSetting depositBalanceScript = null;
     private ScriptSetting withdrawBalanceScript = null;
+    private ScriptSetting verifyReceiptScript = null;
     private String subscribeScript = null;
     private String renewScript = null;
     private String unsubscribeScript = null;
@@ -72,6 +73,7 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.depositBalanceScript = options.depositBalanceScript;
         this.withdrawBalanceScript = options.withdrawBalanceScript;
+        this.verifyReceiptScript = options.verifyReceiptScript;
         this.subscribeScript = options.subscribeScript;
         this.renewScript = options.renewScript;
         this.unsubscribeScript = options.unsubscribeScript;
@@ -141,6 +143,10 @@ public class Namespace extends CdkResource {
         }
         if (this.withdrawBalanceScript != null) {
             properties.put("WithdrawBalanceScript", this.withdrawBalanceScript.properties(
+            ));
+        }
+        if (this.verifyReceiptScript != null) {
+            properties.put("VerifyReceiptScript", this.verifyReceiptScript.properties(
             ));
         }
         if (this.subscribeScript != null) {
