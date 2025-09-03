@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.adReward.model.options;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.adReward.model.AdMob;
 import io.gs2.cdk.adReward.model.UnityAd;
 import io.gs2.cdk.adReward.model.AppLovinMax;
@@ -27,14 +28,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NamespaceOptions {
+    public String description;
+    public TransactionSetting transactionSetting;
     public AdMob admob;
     public UnityAd unityAd;
     public List<AppLovinMax> appLovinMaxes;
-    public String description;
     public ScriptSetting acquirePointScript;
     public ScriptSetting consumePointScript;
     public NotificationSetting changePointNotification;
     public LogSetting logSetting;
+    
+    public NamespaceOptions withDescription(
+        String description
+    ) {
+        this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
+        return this;
+    }
     
     public NamespaceOptions withAdmob(
         AdMob admob
@@ -54,13 +70,6 @@ public class NamespaceOptions {
         List<AppLovinMax> appLovinMaxes
     ) {
         this.appLovinMaxes = appLovinMaxes;
-        return this;
-    }
-    
-    public NamespaceOptions withDescription(
-        String description
-    ) {
-        this.description = description;
         return this;
     }
     

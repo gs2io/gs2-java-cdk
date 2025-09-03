@@ -18,6 +18,7 @@ package io.gs2.cdk.version.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -37,6 +38,7 @@ public class Namespace extends CdkResource {
     private String name;
     private String assumeUserId;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private ScriptSetting acceptVersionScript = null;
     private String checkVersionTriggerScriptId = null;
     private LogSetting logSetting = null;
@@ -55,6 +57,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.assumeUserId = assumeUserId;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.acceptVersionScript = options.acceptVersionScript;
         this.checkVersionTriggerScriptId = options.checkVersionTriggerScriptId;
         this.logSetting = options.logSetting;
@@ -100,6 +103,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.assumeUserId != null) {
             properties.put("AssumeUserId", this.assumeUserId);

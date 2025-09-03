@@ -18,6 +18,7 @@ package io.gs2.cdk.matchmaking.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
@@ -44,6 +45,7 @@ public class Namespace extends CdkResource {
     private NamespaceCreateGatheringTriggerType createGatheringTriggerType;
     private NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private Boolean enableRating = null;
     private NamespaceEnableDisconnectDetection enableDisconnectDetection = null;
     private Integer disconnectDetectionTimeoutSeconds = null;
@@ -77,6 +79,7 @@ public class Namespace extends CdkResource {
         this.createGatheringTriggerType = createGatheringTriggerType;
         this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.enableRating = options.enableRating;
         this.enableDisconnectDetection = options.enableDisconnectDetection;
         this.disconnectDetectionTimeoutSeconds = options.disconnectDetectionTimeoutSeconds;
@@ -137,6 +140,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.enableRating != null) {
             properties.put("EnableRating", this.enableRating);

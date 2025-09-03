@@ -18,6 +18,7 @@ package io.gs2.cdk.adReward.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.adReward.model.AdMob;
 import io.gs2.cdk.adReward.model.UnityAd;
 import io.gs2.cdk.adReward.model.AppLovinMax;
@@ -37,10 +38,11 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
+    private String description = null;
+    private TransactionSetting transactionSetting = null;
     private AdMob admob = null;
     private UnityAd unityAd = null;
     private List<AppLovinMax> appLovinMaxes = null;
-    private String description = null;
     private ScriptSetting acquirePointScript = null;
     private ScriptSetting consumePointScript = null;
     private NotificationSetting changePointNotification = null;
@@ -57,10 +59,11 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
+        this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.admob = options.admob;
         this.unityAd = options.unityAd;
         this.appLovinMaxes = options.appLovinMaxes;
-        this.description = options.description;
         this.acquirePointScript = options.acquirePointScript;
         this.consumePointScript = options.consumePointScript;
         this.changePointNotification = options.changePointNotification;
@@ -103,6 +106,13 @@ public class Namespace extends CdkResource {
         if (this.name != null) {
             properties.put("Name", this.name);
         }
+        if (this.description != null) {
+            properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
         if (this.admob != null) {
             properties.put("Admob", this.admob.properties(
             ));
@@ -114,9 +124,6 @@ public class Namespace extends CdkResource {
         if (this.appLovinMaxes != null) {
             properties.put("AppLovinMaxes", this.appLovinMaxes.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
-        }
-        if (this.description != null) {
-            properties.put("Description", this.description);
         }
         if (this.acquirePointScript != null) {
             properties.put("AcquirePointScript", this.acquirePointScript.properties(

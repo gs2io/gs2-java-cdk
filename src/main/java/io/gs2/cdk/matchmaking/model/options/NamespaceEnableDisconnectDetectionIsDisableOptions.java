@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.matchmaking.model.options;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
@@ -29,6 +30,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceEnableDisconnectDetectionIsDisableOptions {
     public String description;
+    public TransactionSetting transactionSetting;
     public ScriptSetting changeRatingScript;
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
@@ -41,6 +43,13 @@ public class NamespaceEnableDisconnectDetectionIsDisableOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceEnableDisconnectDetectionIsDisableOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
         return this;
     }
     

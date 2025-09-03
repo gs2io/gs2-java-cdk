@@ -18,6 +18,7 @@ package io.gs2.cdk.account.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -36,6 +37,7 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private Boolean changePasswordIfTakeOver = null;
     private Boolean differentUserIdForLoginAndDataRetention = null;
     private ScriptSetting createAccountScript = null;
@@ -58,6 +60,7 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.changePasswordIfTakeOver = options.changePasswordIfTakeOver;
         this.differentUserIdForLoginAndDataRetention = options.differentUserIdForLoginAndDataRetention;
         this.createAccountScript = options.createAccountScript;
@@ -107,6 +110,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.changePasswordIfTakeOver != null) {
             properties.put("ChangePasswordIfTakeOver", this.changePasswordIfTakeOver);

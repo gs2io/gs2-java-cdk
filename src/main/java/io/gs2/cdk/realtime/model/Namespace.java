@@ -18,6 +18,7 @@ package io.gs2.cdk.realtime.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -38,6 +39,7 @@ public class Namespace extends CdkResource {
     private NamespaceServerType serverType;
     private NamespaceServerSpec serverSpec;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private NotificationSetting createNotification = null;
     private LogSetting logSetting = null;
 
@@ -57,6 +59,7 @@ public class Namespace extends CdkResource {
         this.serverType = serverType;
         this.serverSpec = serverSpec;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.createNotification = options.createNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -103,6 +106,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.serverType != null) {
             properties.put("ServerType", this.serverType);

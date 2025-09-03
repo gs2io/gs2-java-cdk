@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.jobQueue.model.options;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public TransactionSetting transactionSetting;
     public Boolean enableAutoRun;
     public NotificationSetting pushNotification;
     public NotificationSetting runNotification;
@@ -33,6 +35,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
         return this;
     }
     

@@ -18,6 +18,7 @@ package io.gs2.cdk.dictionary.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -36,6 +37,7 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private ScriptSetting entryScript = null;
     private String duplicateEntryScript = null;
     private LogSetting logSetting = null;
@@ -52,6 +54,7 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.entryScript = options.entryScript;
         this.duplicateEntryScript = options.duplicateEntryScript;
         this.logSetting = options.logSetting;
@@ -95,6 +98,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.entryScript != null) {
             properties.put("EntryScript", this.entryScript.properties(

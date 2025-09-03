@@ -18,6 +18,7 @@ package io.gs2.cdk.distributor.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -36,6 +37,7 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private String assumeUserId = null;
     private NotificationSetting autoRunStampSheetNotification = null;
     private NotificationSetting autoRunTransactionNotification = null;
@@ -53,6 +55,7 @@ public class Namespace extends CdkResource {
         this.stack = stack;
         this.name = name;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.assumeUserId = options.assumeUserId;
         this.autoRunStampSheetNotification = options.autoRunStampSheetNotification;
         this.autoRunTransactionNotification = options.autoRunTransactionNotification;
@@ -97,6 +100,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.assumeUserId != null) {
             properties.put("AssumeUserId", this.assumeUserId);

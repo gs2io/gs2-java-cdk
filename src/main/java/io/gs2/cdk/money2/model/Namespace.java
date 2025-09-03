@@ -18,6 +18,7 @@ package io.gs2.cdk.money2.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.money2.model.PlatformSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
@@ -43,6 +44,7 @@ public class Namespace extends CdkResource {
     private Boolean sharedFreeCurrency;
     private PlatformSetting platformSetting;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private ScriptSetting depositBalanceScript = null;
     private ScriptSetting withdrawBalanceScript = null;
     private ScriptSetting verifyReceiptScript = null;
@@ -71,6 +73,7 @@ public class Namespace extends CdkResource {
         this.sharedFreeCurrency = sharedFreeCurrency;
         this.platformSetting = platformSetting;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.depositBalanceScript = options.depositBalanceScript;
         this.withdrawBalanceScript = options.withdrawBalanceScript;
         this.verifyReceiptScript = options.verifyReceiptScript;
@@ -129,6 +132,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.sharedFreeCurrency != null) {
             properties.put("SharedFreeCurrency", this.sharedFreeCurrency);

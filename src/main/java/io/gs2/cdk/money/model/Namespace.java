@@ -18,6 +18,7 @@ package io.gs2.cdk.money.model;
 import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -39,6 +40,7 @@ public class Namespace extends CdkResource {
     private Boolean shareFree;
     private NamespaceCurrency currency;
     private String description = null;
+    private TransactionSetting transactionSetting = null;
     private String appleKey = null;
     private String googleKey = null;
     private Boolean enableFakeReceipt = null;
@@ -65,6 +67,7 @@ public class Namespace extends CdkResource {
         this.shareFree = shareFree;
         this.currency = currency;
         this.description = options.description;
+        this.transactionSetting = options.transactionSetting;
         this.appleKey = options.appleKey;
         this.googleKey = options.googleKey;
         this.enableFakeReceipt = options.enableFakeReceipt;
@@ -118,6 +121,10 @@ public class Namespace extends CdkResource {
         }
         if (this.description != null) {
             properties.put("Description", this.description);
+        }
+        if (this.transactionSetting != null) {
+            properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
         }
         if (this.priority != null) {
             properties.put("Priority", this.priority);

@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.version.model.options;
+import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    public TransactionSetting transactionSetting;
     public ScriptSetting acceptVersionScript;
     public String checkVersionTriggerScriptId;
     public LogSetting logSetting;
@@ -32,6 +34,13 @@ public class NamespaceOptions {
         String description
     ) {
         this.description = description;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
         return this;
     }
     
