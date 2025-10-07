@@ -31,6 +31,7 @@ public class NamespaceOptions {
     public NotificationSetting joinNotification;
     public NotificationSetting leaveNotification;
     public NotificationSetting changeMemberNotification;
+    public Boolean changeMemberNotificationIgnoreChangeMetadata;
     public NotificationSetting receiveRequestNotification;
     public NotificationSetting removeRequestNotification;
     public ScriptSetting createGuildScript;
@@ -81,6 +82,13 @@ public class NamespaceOptions {
         NotificationSetting changeMemberNotification
     ) {
         this.changeMemberNotification = changeMemberNotification;
+        return this;
+    }
+    
+    public NamespaceOptions withChangeMemberNotificationIgnoreChangeMetadata(
+        Boolean changeMemberNotificationIgnoreChangeMetadata
+    ) {
+        this.changeMemberNotificationIgnoreChangeMetadata = changeMemberNotificationIgnoreChangeMetadata;
         return this;
     }
     
