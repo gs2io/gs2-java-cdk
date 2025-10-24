@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.limit.ref.NamespaceRef;
@@ -37,6 +38,7 @@ public class Namespace extends CdkResource {
     private String name;
     private String description = null;
     private TransactionSetting transactionSetting = null;
+    private ScriptSetting countUpScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -52,6 +54,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
+        this.countUpScript = options.countUpScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -96,6 +99,10 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
+        if (this.countUpScript != null) {
+            properties.put("CountUpScript", this.countUpScript.properties(
             ));
         }
         if (this.logSetting != null) {

@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.limit.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 public class NamespaceOptions {
     public String description;
     public TransactionSetting transactionSetting;
+    public ScriptSetting countUpScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -38,6 +40,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withCountUpScript(
+        ScriptSetting countUpScript
+    ) {
+        this.countUpScript = countUpScript;
         return this;
     }
     
