@@ -34,8 +34,10 @@ public class NamespaceOptions {
     public Boolean enableRating;
     public NamespaceEnableDisconnectDetection enableDisconnectDetection;
     public Integer disconnectDetectionTimeoutSeconds;
+    public NamespaceCreateGatheringTriggerType createGatheringTriggerType;
     public String createGatheringTriggerRealtimeNamespaceId;
     public String createGatheringTriggerScriptId;
+    public NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType;
     public String completeMatchmakingTriggerRealtimeNamespaceId;
     public String completeMatchmakingTriggerScriptId;
     public NamespaceEnableCollaborateSeasonRating enableCollaborateSeasonRating;
@@ -83,6 +85,13 @@ public class NamespaceOptions {
         return this;
     }
     
+    public NamespaceOptions withCreateGatheringTriggerType(
+        NamespaceCreateGatheringTriggerType createGatheringTriggerType
+    ) {
+        this.createGatheringTriggerType = createGatheringTriggerType;
+        return this;
+    }
+    
     public NamespaceOptions withCreateGatheringTriggerRealtimeNamespaceId(
         String createGatheringTriggerRealtimeNamespaceId
     ) {
@@ -94,6 +103,13 @@ public class NamespaceOptions {
         String createGatheringTriggerScriptId
     ) {
         this.createGatheringTriggerScriptId = createGatheringTriggerScriptId;
+        return this;
+    }
+    
+    public NamespaceOptions withCompleteMatchmakingTriggerType(
+        NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType
+    ) {
+        this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         return this;
     }
     

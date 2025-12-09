@@ -42,15 +42,15 @@ import java.util.stream.Collectors;
 public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
-    private NamespaceCreateGatheringTriggerType createGatheringTriggerType;
-    private NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType;
     private String description = null;
     private TransactionSetting transactionSetting = null;
     private Boolean enableRating = null;
     private NamespaceEnableDisconnectDetection enableDisconnectDetection = null;
     private Integer disconnectDetectionTimeoutSeconds = null;
+    private NamespaceCreateGatheringTriggerType createGatheringTriggerType = null;
     private String createGatheringTriggerRealtimeNamespaceId = null;
     private String createGatheringTriggerScriptId = null;
+    private NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType = null;
     private String completeMatchmakingTriggerRealtimeNamespaceId = null;
     private String completeMatchmakingTriggerScriptId = null;
     private NamespaceEnableCollaborateSeasonRating enableCollaborateSeasonRating = null;
@@ -66,8 +66,6 @@ public class Namespace extends CdkResource {
     public Namespace(
         Stack stack,
         String name,
-        NamespaceCreateGatheringTriggerType createGatheringTriggerType,
-        NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType,
         NamespaceOptions options
     ) {
         super(
@@ -76,15 +74,15 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.createGatheringTriggerType = createGatheringTriggerType;
-        this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
         this.enableRating = options.enableRating;
         this.enableDisconnectDetection = options.enableDisconnectDetection;
         this.disconnectDetectionTimeoutSeconds = options.disconnectDetectionTimeoutSeconds;
+        this.createGatheringTriggerType = options.createGatheringTriggerType;
         this.createGatheringTriggerRealtimeNamespaceId = options.createGatheringTriggerRealtimeNamespaceId;
         this.createGatheringTriggerScriptId = options.createGatheringTriggerScriptId;
+        this.completeMatchmakingTriggerType = options.completeMatchmakingTriggerType;
         this.completeMatchmakingTriggerRealtimeNamespaceId = options.completeMatchmakingTriggerRealtimeNamespaceId;
         this.completeMatchmakingTriggerScriptId = options.completeMatchmakingTriggerScriptId;
         this.enableCollaborateSeasonRating = options.enableCollaborateSeasonRating;
@@ -103,9 +101,7 @@ public class Namespace extends CdkResource {
 
     public Namespace(
         Stack stack,
-        String name,
-        NamespaceCreateGatheringTriggerType createGatheringTriggerType,
-        NamespaceCompleteMatchmakingTriggerType completeMatchmakingTriggerType
+        String name
     ) {
         super(
             "Matchmaking_Namespace_" + name
@@ -113,8 +109,6 @@ public class Namespace extends CdkResource {
 
         this.stack = stack;
         this.name = name;
-        this.createGatheringTriggerType = createGatheringTriggerType;
-        this.completeMatchmakingTriggerType = completeMatchmakingTriggerType;
         stack.addResource(
             this
         );
