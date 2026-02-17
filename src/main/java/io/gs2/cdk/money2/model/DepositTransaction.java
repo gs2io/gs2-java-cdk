@@ -57,9 +57,6 @@ public class DepositTransaction {
         if (this.count != null) {
             properties.put("count", this.count);
         }
-        if (this.depositedAt != null) {
-            properties.put("depositedAt", this.depositedAt);
-        }
 
         return properties;
     }
