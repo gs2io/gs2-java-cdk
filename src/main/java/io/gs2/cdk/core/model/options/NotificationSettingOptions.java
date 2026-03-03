@@ -15,10 +15,13 @@
  */
 package io.gs2.cdk.core.model.options;
 
+import io.gs2.cdk.core.model.enums.NotificationSettingEnable;
+
 public class NotificationSettingOptions {
     public String gatewayNamespaceId;
     public Boolean enableTransferMobileNotification;
     public String sound;
+    public NotificationSettingEnable enable;
 
     public NotificationSettingOptions withGatewayNamespaceId(
             String gatewayNamespaceId
@@ -38,6 +41,13 @@ public class NotificationSettingOptions {
             String sound
     ) {
         this.sound = sound;
+        return this;
+    }
+
+    public NotificationSettingOptions withEnable(
+            NotificationSettingEnable enable
+    ) {
+        this.enable = enable;
         return this;
     }
 }

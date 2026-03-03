@@ -1,7 +1,7 @@
 package io.gs2.cdk.core.model;
 
+import io.gs2.cdk.core.model.enums.NotificationSettingEnable;
 import io.gs2.cdk.core.model.options.NotificationSettingOptions;
-import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,7 @@ public class NotificationSetting {
     private String gatewayNamespaceId;
     private Boolean enableTransferMobileNotification;
     private String sound;
+    private NotificationSettingEnable enable = NotificationSettingEnable.ENABLED;
 
     public NotificationSetting(
             NotificationSettingOptions options
@@ -18,6 +19,7 @@ public class NotificationSetting {
         this.gatewayNamespaceId = options.gatewayNamespaceId;
         this.enableTransferMobileNotification = options.enableTransferMobileNotification;
         this.sound = options.sound;
+        this.enable = options.enable;
     }
 
     public Map<String, Object> properties() {
@@ -26,6 +28,7 @@ public class NotificationSetting {
                 put("GatewayNamespaceId", gatewayNamespaceId);
                 put("EnableTransferMobileNotification", enableTransferMobileNotification);
                 put("Sound", sound);
+                put("Enable", enable);
             }
         };
     }
