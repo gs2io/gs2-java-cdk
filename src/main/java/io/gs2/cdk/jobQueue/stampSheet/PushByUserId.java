@@ -12,6 +12,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.jobQueue.stampSheet;
 
@@ -37,7 +39,7 @@ public class PushByUserId extends AcquireAction {
             new HashMap<>() {
                 {
                     put("namespaceName", namespaceName);
-                    put("jobs", jobs);
+                    put("jobs", jobs.stream().map(v -> v.properties()).collect(Collectors.toList()));
                     put("userId", userId);
                 }
             }

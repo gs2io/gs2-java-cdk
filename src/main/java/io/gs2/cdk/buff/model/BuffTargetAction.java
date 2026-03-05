@@ -12,23 +12,26 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 package io.gs2.cdk.buff.model;
 import io.gs2.cdk.buff.model.BuffTargetGrn;
 import io.gs2.cdk.buff.model.options.BuffTargetActionOptions;
+import io.gs2.cdk.buff.model.enums.BuffTargetActionTargetActionName;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BuffTargetAction {
-    private String targetActionName;
+    private BuffTargetActionTargetActionName targetActionName;
     private String targetFieldName;
     private List<BuffTargetGrn> conditionGrns;
     private Float rate;
 
     public BuffTargetAction(
-        String targetActionName,
+        BuffTargetActionTargetActionName targetActionName,
         String targetFieldName,
         List<BuffTargetGrn> conditionGrns,
         Float rate,
@@ -40,7 +43,7 @@ public class BuffTargetAction {
         this.rate = rate;
     }
     public BuffTargetAction(
-        String targetActionName,
+        BuffTargetActionTargetActionName targetActionName,
         String targetFieldName,
         List<BuffTargetGrn> conditionGrns,
         Float rate
