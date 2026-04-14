@@ -17,20 +17,20 @@ package io.gs2.cdk.log.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.log.ref.FacetModelRef;
-import io.gs2.cdk.log.ref.DashboardRef;
-import io.gs2.cdk.log.ref.MetricModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class FacetModelRef {
     private String namespaceName;
+    private String field;
 
-    public NamespaceRef(
-        String namespaceName
+    public FacetModelRef(
+        String namespaceName,
+        String field
     ) {
         this.namespaceName = namespaceName;
+        this.field = field;
     }
 
     public String grn(
@@ -47,7 +47,10 @@ public class NamespaceRef {
                 ).str(
                 ),
                 "log",
-                this.namespaceName
+                this.namespaceName,
+                "model",
+                "facet",
+                this.field
             )
         )).str(
         );

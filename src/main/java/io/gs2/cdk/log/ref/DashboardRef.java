@@ -17,20 +17,20 @@ package io.gs2.cdk.log.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.log.ref.FacetModelRef;
-import io.gs2.cdk.log.ref.DashboardRef;
-import io.gs2.cdk.log.ref.MetricModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class DashboardRef {
     private String namespaceName;
+    private String dashboardName;
 
-    public NamespaceRef(
-        String namespaceName
+    public DashboardRef(
+        String namespaceName,
+        String dashboardName
     ) {
         this.namespaceName = namespaceName;
+        this.dashboardName = dashboardName;
     }
 
     public String grn(
@@ -47,7 +47,9 @@ public class NamespaceRef {
                 ).str(
                 ),
                 "log",
-                this.namespaceName
+                this.namespaceName,
+                "dashboard",
+                this.dashboardName
             )
         )).str(
         );

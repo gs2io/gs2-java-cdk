@@ -17,39 +17,19 @@ package io.gs2.cdk.log.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
-import io.gs2.cdk.log.ref.FacetModelRef;
-import io.gs2.cdk.log.ref.DashboardRef;
-import io.gs2.cdk.log.ref.MetricModelRef;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NamespaceRef {
+public class MetricModelRef {
     private String namespaceName;
+    private String name;
 
-    public NamespaceRef(
-        String namespaceName
+    public MetricModelRef(
+        String namespaceName,
+        String name
     ) {
         this.namespaceName = namespaceName;
-    }
-
-    public String grn(
-    ) {
-        return (new Join(
-            ":",
-            Arrays.asList(
-                "grn",
-                "gs2",
-                GetAttr.region(
-                ).str(
-                ),
-                GetAttr.ownerId(
-                ).str(
-                ),
-                "log",
-                this.namespaceName
-            )
-        )).str(
-        );
+        this.name = name;
     }
 }
