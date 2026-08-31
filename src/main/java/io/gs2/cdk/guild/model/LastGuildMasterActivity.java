@@ -22,12 +22,14 @@ import java.util.stream.Collectors;
 
 public class LastGuildMasterActivity {
     private String userId;
+    private Long revision = null;
 
     public LastGuildMasterActivity(
         String userId,
         LastGuildMasterActivityOptions options
     ) {
         this.userId = userId;
+        this.revision = options.revision;
     }
     public LastGuildMasterActivity(
         String userId

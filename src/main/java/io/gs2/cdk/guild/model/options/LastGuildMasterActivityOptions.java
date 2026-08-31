@@ -21,5 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LastGuildMasterActivityOptions {
+    public Long revision;
+    
+    public LastGuildMasterActivityOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
 }
 
