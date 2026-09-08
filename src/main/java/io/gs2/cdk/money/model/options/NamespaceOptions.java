@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.money.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.money.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.money.model.enums.NamespacePriority;
@@ -27,7 +28,9 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    @Deprecated
     public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
     public String appleKey;
     public String googleKey;
     public Boolean enableFakeReceipt;
@@ -47,6 +50,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
         return this;
     }
     

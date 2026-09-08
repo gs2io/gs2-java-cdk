@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.exchange.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.exchange.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -27,7 +28,9 @@ public class NamespaceOptions {
     public String description;
     public Boolean enableAwaitExchange;
     public Boolean enableDirectExchange;
+    @Deprecated
     public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
     public ScriptSetting exchangeScript;
     public ScriptSetting incrementalExchangeScript;
     public ScriptSetting acquireAwaitScript;
@@ -60,6 +63,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
         return this;
     }
     

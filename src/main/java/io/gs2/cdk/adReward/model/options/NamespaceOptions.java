@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.adReward.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.adReward.model.TransactionSettingV2;
 import io.gs2.cdk.adReward.model.AdMob;
 import io.gs2.cdk.adReward.model.UnityAd;
 import io.gs2.cdk.adReward.model.AppLovinMax;
@@ -29,7 +30,9 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    @Deprecated
     public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
     public AdMob admob;
     public UnityAd unityAd;
     public List<AppLovinMax> appLovinMaxes;
@@ -49,6 +52,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
         return this;
     }
     

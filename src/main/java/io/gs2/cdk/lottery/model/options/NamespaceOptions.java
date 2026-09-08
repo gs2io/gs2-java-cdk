@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.lottery.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.lottery.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.LogSetting;
 
 import java.util.HashMap;
@@ -24,7 +25,9 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    @Deprecated
     public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
     public String lotteryTriggerScriptId;
     public LogSetting logSetting;
     public String queueNamespaceId;
@@ -41,6 +44,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
         return this;
     }
     

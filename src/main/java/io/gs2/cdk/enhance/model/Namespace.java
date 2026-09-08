@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.enhance.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -38,9 +39,13 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    @Deprecated
     private TransactionSetting transactionSetting = null;
+    private TransactionSettingV2 transactionSettingV2 = null;
     private ScriptSetting enhanceScript = null;
     private LogSetting logSetting = null;
+    @Deprecated
+    private Boolean enableDirectEnhance = null;
 
     public Namespace(
         Stack stack,
@@ -55,8 +60,10 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
+        this.transactionSettingV2 = options.transactionSettingV2;
         this.enhanceScript = options.enhanceScript;
         this.logSetting = options.logSetting;
+        this.enableDirectEnhance = options.enableDirectEnhance;
         stack.addResource(
             this
         );
@@ -102,6 +109,10 @@ public class Namespace extends CdkResource {
             properties.put("TransactionSetting", this.transactionSetting.properties(
             ));
         }
+        if (this.transactionSettingV2 != null) {
+            properties.put("TransactionSettingV2", this.transactionSettingV2.properties(
+            ));
+        }
         if (this.enhanceScript != null) {
             properties.put("EnhanceScript", this.enhanceScript.properties(
             ));
@@ -109,6 +120,9 @@ public class Namespace extends CdkResource {
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(
             ));
+        }
+        if (this.enableDirectEnhance != null) {
+            properties.put("EnableDirectEnhance", this.enableDirectEnhance);
         }
 
         return properties;

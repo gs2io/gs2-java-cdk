@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.exchange.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -40,7 +41,9 @@ public class Namespace extends CdkResource {
     private String description = null;
     private Boolean enableAwaitExchange = null;
     private Boolean enableDirectExchange = null;
+    @Deprecated
     private TransactionSetting transactionSetting = null;
+    private TransactionSettingV2 transactionSettingV2 = null;
     private ScriptSetting exchangeScript = null;
     private ScriptSetting incrementalExchangeScript = null;
     private ScriptSetting acquireAwaitScript = null;
@@ -61,6 +64,7 @@ public class Namespace extends CdkResource {
         this.enableAwaitExchange = options.enableAwaitExchange;
         this.enableDirectExchange = options.enableDirectExchange;
         this.transactionSetting = options.transactionSetting;
+        this.transactionSettingV2 = options.transactionSettingV2;
         this.exchangeScript = options.exchangeScript;
         this.incrementalExchangeScript = options.incrementalExchangeScript;
         this.acquireAwaitScript = options.acquireAwaitScript;
@@ -114,6 +118,10 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
+        if (this.transactionSettingV2 != null) {
+            properties.put("TransactionSettingV2", this.transactionSettingV2.properties(
             ));
         }
         if (this.exchangeScript != null) {

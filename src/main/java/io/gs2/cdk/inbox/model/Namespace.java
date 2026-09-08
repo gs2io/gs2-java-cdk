@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.inbox.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
@@ -39,7 +40,9 @@ public class Namespace extends CdkResource {
     private String name;
     private String description = null;
     private Boolean isAutomaticDeletingEnabled = null;
+    @Deprecated
     private TransactionSetting transactionSetting = null;
+    private TransactionSettingV2 transactionSettingV2 = null;
     private ScriptSetting receiveMessageScript = null;
     private ScriptSetting readMessageScript = null;
     private ScriptSetting deleteMessageScript = null;
@@ -60,6 +63,7 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.isAutomaticDeletingEnabled = options.isAutomaticDeletingEnabled;
         this.transactionSetting = options.transactionSetting;
+        this.transactionSettingV2 = options.transactionSettingV2;
         this.receiveMessageScript = options.receiveMessageScript;
         this.readMessageScript = options.readMessageScript;
         this.deleteMessageScript = options.deleteMessageScript;
@@ -111,6 +115,10 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
+        if (this.transactionSettingV2 != null) {
+            properties.put("TransactionSettingV2", this.transactionSettingV2.properties(
             ));
         }
         if (this.receiveMessageScript != null) {

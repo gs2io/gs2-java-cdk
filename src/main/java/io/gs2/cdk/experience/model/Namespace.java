@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.experience.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -37,7 +38,9 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    @Deprecated
     private TransactionSetting transactionSetting = null;
+    private TransactionSettingV2 transactionSettingV2 = null;
     private String rankCapScriptId = null;
     private ScriptSetting changeExperienceScript = null;
     private ScriptSetting changeRankScript = null;
@@ -58,6 +61,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
+        this.transactionSettingV2 = options.transactionSettingV2;
         this.rankCapScriptId = options.rankCapScriptId;
         this.changeExperienceScript = options.changeExperienceScript;
         this.changeRankScript = options.changeRankScript;
@@ -107,6 +111,10 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
+        if (this.transactionSettingV2 != null) {
+            properties.put("TransactionSettingV2", this.transactionSettingV2.properties(
             ));
         }
         if (this.rankCapScriptId != null) {

@@ -19,6 +19,7 @@ import io.gs2.cdk.core.model.CdkResource;
 import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.adReward.model.TransactionSettingV2;
 import io.gs2.cdk.adReward.model.AdMob;
 import io.gs2.cdk.adReward.model.UnityAd;
 import io.gs2.cdk.adReward.model.AppLovinMax;
@@ -39,7 +40,9 @@ public class Namespace extends CdkResource {
     private Stack stack;
     private String name;
     private String description = null;
+    @Deprecated
     private TransactionSetting transactionSetting = null;
+    private TransactionSettingV2 transactionSettingV2 = null;
     private AdMob admob = null;
     private UnityAd unityAd = null;
     private List<AppLovinMax> appLovinMaxes = null;
@@ -61,6 +64,7 @@ public class Namespace extends CdkResource {
         this.name = name;
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
+        this.transactionSettingV2 = options.transactionSettingV2;
         this.admob = options.admob;
         this.unityAd = options.unityAd;
         this.appLovinMaxes = options.appLovinMaxes;
@@ -111,6 +115,10 @@ public class Namespace extends CdkResource {
         }
         if (this.transactionSetting != null) {
             properties.put("TransactionSetting", this.transactionSetting.properties(
+            ));
+        }
+        if (this.transactionSettingV2 != null) {
+            properties.put("TransactionSettingV2", this.transactionSettingV2.properties(
             ));
         }
         if (this.admob != null) {

@@ -15,6 +15,7 @@
  */
 package io.gs2.cdk.experience.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.experience.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -25,7 +26,9 @@ import java.util.stream.Collectors;
 
 public class NamespaceOptions {
     public String description;
+    @Deprecated
     public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
     public String rankCapScriptId;
     public ScriptSetting changeExperienceScript;
     public ScriptSetting changeRankScript;
@@ -44,6 +47,13 @@ public class NamespaceOptions {
         TransactionSetting transactionSetting
     ) {
         this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
         return this;
     }
     
