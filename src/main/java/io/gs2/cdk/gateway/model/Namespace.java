@@ -38,7 +38,9 @@ public class Namespace extends CdkResource {
     @Deprecated
     private TransactionSetting transactionSetting = null;
     private TransactionSettingV2 transactionSettingV2 = null;
+    @Deprecated
     private String firebaseSecret = null;
+    private String firebaseProjectId = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -56,6 +58,7 @@ public class Namespace extends CdkResource {
         this.transactionSetting = options.transactionSetting;
         this.transactionSettingV2 = options.transactionSettingV2;
         this.firebaseSecret = options.firebaseSecret;
+        this.firebaseProjectId = options.firebaseProjectId;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -108,6 +111,9 @@ public class Namespace extends CdkResource {
         }
         if (this.firebaseSecret != null) {
             properties.put("FirebaseSecret", this.firebaseSecret);
+        }
+        if (this.firebaseProjectId != null) {
+            properties.put("FirebaseProjectId", this.firebaseProjectId);
         }
         if (this.logSetting != null) {
             properties.put("LogSetting", this.logSetting.properties(

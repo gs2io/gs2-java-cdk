@@ -28,7 +28,9 @@ public class NamespaceOptions {
     @Deprecated
     public TransactionSetting transactionSetting;
     public TransactionSettingV2 transactionSettingV2;
+    @Deprecated
     public String firebaseSecret;
+    public String firebaseProjectId;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -56,6 +58,13 @@ public class NamespaceOptions {
         String firebaseSecret
     ) {
         this.firebaseSecret = firebaseSecret;
+        return this;
+    }
+    
+    public NamespaceOptions withFirebaseProjectId(
+        String firebaseProjectId
+    ) {
+        this.firebaseProjectId = firebaseProjectId;
         return this;
     }
     
