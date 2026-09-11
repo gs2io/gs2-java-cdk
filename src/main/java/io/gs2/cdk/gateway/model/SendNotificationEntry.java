@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.gateway.model;
+import io.gs2.cdk.gateway.model.MobileNotificationMessage;
 import io.gs2.cdk.gateway.model.options.SendNotificationEntryOptions;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class SendNotificationEntry {
     private String payload;
     private Boolean enableTransferMobileNotification;
     private String sound = null;
+    private List<MobileNotificationMessage> mobileNotificationMessages = null;
 
     public SendNotificationEntry(
         String userId,
@@ -42,6 +44,7 @@ public class SendNotificationEntry {
         this.payload = payload;
         this.enableTransferMobileNotification = enableTransferMobileNotification;
         this.sound = options.sound;
+        this.mobileNotificationMessages = options.mobileNotificationMessages;
     }
     public SendNotificationEntry(
         String userId,
@@ -78,6 +81,10 @@ public class SendNotificationEntry {
         }
         if (this.sound != null) {
             properties.put("sound", this.sound);
+        }
+        if (this.mobileNotificationMessages != null) {
+            properties.put("mobileNotificationMessages", this.mobileNotificationMessages.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
 
         return properties;

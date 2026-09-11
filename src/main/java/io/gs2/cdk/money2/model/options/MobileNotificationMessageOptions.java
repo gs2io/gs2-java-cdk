@@ -13,29 +13,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package io.gs2.cdk.gateway.model.options;
-import io.gs2.cdk.gateway.model.MobileNotificationMessage;
+package io.gs2.cdk.money2.model.options;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SendNotificationEntryOptions {
-    public String sound;
-    public List<MobileNotificationMessage> mobileNotificationMessages;
+public class MobileNotificationMessageOptions {
+    public String locale;
+    public String title;
+    public String message;
     
-    public SendNotificationEntryOptions withSound(
-        String sound
+    public MobileNotificationMessageOptions withLocale(
+        String locale
     ) {
-        this.sound = sound;
+        this.locale = locale;
         return this;
     }
     
-    public SendNotificationEntryOptions withMobileNotificationMessages(
-        List<MobileNotificationMessage> mobileNotificationMessages
+    public MobileNotificationMessageOptions withTitle(
+        String title
     ) {
-        this.mobileNotificationMessages = mobileNotificationMessages;
+        this.title = title;
+        return this;
+    }
+    
+    public MobileNotificationMessageOptions withMessage(
+        String message
+    ) {
+        this.message = message;
         return this;
     }
 }

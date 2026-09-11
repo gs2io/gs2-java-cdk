@@ -17,6 +17,7 @@ package io.gs2.cdk.matchmaking.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.matchmaking.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
+import io.gs2.cdk.matchmaking.model.MobileNotificationMessage;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.matchmaking.model.enums.NamespaceEnableDisconnectDetection;
