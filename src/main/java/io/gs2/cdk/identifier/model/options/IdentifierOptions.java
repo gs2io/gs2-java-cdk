@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.identifier.model.options;
+import io.gs2.cdk.identifier.model.enums.IdentifierDataStoreKeyScheme;
 
 import java.util.HashMap;
 import java.util.Map;

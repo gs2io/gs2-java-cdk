@@ -23,6 +23,7 @@ import io.gs2.cdk.identifier.model.AttachSecurityPolicy;
 import io.gs2.cdk.identifier.model.SecurityPolicy;
 
 import io.gs2.cdk.identifier.ref.UserRef;
+import io.gs2.cdk.identifier.model.enums.UserDataStoreKeyScheme;
 
 import io.gs2.cdk.identifier.model.options.UserOptions;
 

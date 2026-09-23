@@ -17,6 +17,7 @@ package io.gs2.cdk.identifier.model.options;
 import io.gs2.cdk.identifier.model.Identifier;
 import io.gs2.cdk.identifier.model.AttachSecurityPolicy;
 import io.gs2.cdk.identifier.model.SecurityPolicy;
+import io.gs2.cdk.identifier.model.enums.UserDataStoreKeyScheme;
 
 import java.util.HashMap;
 import java.util.Map;
