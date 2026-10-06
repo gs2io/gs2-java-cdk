@@ -14,6 +14,11 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.enhance.model.options;
+import io.gs2.cdk.enhance.model.UnleashIndividualMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashQuantityMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashMaterial;
+import io.gs2.cdk.enhance.model.UnleashRecipe;
+import io.gs2.cdk.enhance.model.enums.UnleashRateEntryModelType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,5 +26,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UnleashRateEntryModelOptions {
+    public Integer needCount;
+    public List<UnleashRecipe> recipes;
+    
+    public UnleashRateEntryModelOptions withNeedCount(
+        Integer needCount
+    ) {
+        this.needCount = needCount;
+        return this;
+    }
+    
+    public UnleashRateEntryModelOptions withRecipes(
+        List<UnleashRecipe> recipes
+    ) {
+        this.recipes = recipes;
+        return this;
+    }
 }
 

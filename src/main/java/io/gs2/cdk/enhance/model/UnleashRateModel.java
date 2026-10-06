@@ -14,6 +14,10 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.enhance.model;
+import io.gs2.cdk.enhance.model.UnleashIndividualMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashQuantityMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashMaterial;
+import io.gs2.cdk.enhance.model.UnleashRecipe;
 import io.gs2.cdk.enhance.model.UnleashRateEntryModel;
 import io.gs2.cdk.enhance.model.options.UnleashRateModelOptions;
 import java.util.HashMap;
@@ -28,6 +32,7 @@ public class UnleashRateModel {
     private List<UnleashRateEntryModel> gradeEntries;
     private String description = null;
     private String metadata = null;
+    private List<String> groupKeyHierarchy = null;
 
     public UnleashRateModel(
         String name,
@@ -42,6 +47,7 @@ public class UnleashRateModel {
         this.gradeEntries = gradeEntries;
         this.description = options.description;
         this.metadata = options.metadata;
+        this.groupKeyHierarchy = options.groupKeyHierarchy;
     }
     public UnleashRateModel(
         String name,
@@ -73,6 +79,9 @@ public class UnleashRateModel {
         }
         if (this.gradeModelId != null) {
             properties.put("gradeModelId", this.gradeModelId);
+        }
+        if (this.groupKeyHierarchy != null) {
+            properties.put("groupKeyHierarchy", this.groupKeyHierarchy);
         }
         if (this.gradeEntries != null) {
             properties.put("gradeEntries", this.gradeEntries.stream().map(v -> v.properties(

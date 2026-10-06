@@ -14,7 +14,14 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.enhance.model;
+import io.gs2.cdk.enhance.model.UnleashIndividualMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashQuantityMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashMaterial;
+import io.gs2.cdk.enhance.model.UnleashRecipe;
 import io.gs2.cdk.enhance.model.options.UnleashRateEntryModelOptions;
+import io.gs2.cdk.enhance.model.options.UnleashRateEntryModelTypeIsSimpleOptions;
+import io.gs2.cdk.enhance.model.options.UnleashRateEntryModelTypeIsRecipeOptions;
+import io.gs2.cdk.enhance.model.enums.UnleashRateEntryModelType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -22,22 +29,74 @@ import java.util.stream.Collectors;
 
 public class UnleashRateEntryModel {
     private Long gradeValue;
-    private Integer needCount;
+    private UnleashRateEntryModelType type;
+    private Integer needCount = null;
+    private List<UnleashRecipe> recipes = null;
 
     public UnleashRateEntryModel(
         Long gradeValue,
-        Integer needCount,
+        UnleashRateEntryModelType type,
         UnleashRateEntryModelOptions options
     ) {
         this.gradeValue = gradeValue;
-        this.needCount = needCount;
+        this.type = type;
+        this.needCount = options.needCount;
+        this.recipes = options.recipes;
     }
     public UnleashRateEntryModel(
         Long gradeValue,
-        Integer needCount
+        UnleashRateEntryModelType type
     ) {
         this.gradeValue = gradeValue;
-        this.needCount = needCount;
+        this.type = type;
+    }
+
+    public static UnleashRateEntryModel typeIsSimple(
+        Long gradeValue,
+        Integer needCount,
+        UnleashRateEntryModelTypeIsSimpleOptions options
+    ) {
+        return (new UnleashRateEntryModel(
+            gradeValue,
+            UnleashRateEntryModelType.SIMPLE,
+            new UnleashRateEntryModelOptions()
+                .withNeedCount(needCount)
+        ));
+    }
+
+
+    public static UnleashRateEntryModel typeIsSimple(
+        Long gradeValue,
+        Integer needCount
+    ) {
+        return (new UnleashRateEntryModel(
+            gradeValue,
+            UnleashRateEntryModelType.SIMPLE
+        ));
+    }
+
+    public static UnleashRateEntryModel typeIsRecipe(
+        Long gradeValue,
+        List<UnleashRecipe> recipes,
+        UnleashRateEntryModelTypeIsRecipeOptions options
+    ) {
+        return (new UnleashRateEntryModel(
+            gradeValue,
+            UnleashRateEntryModelType.RECIPE,
+            new UnleashRateEntryModelOptions()
+                .withRecipes(recipes)
+        ));
+    }
+
+
+    public static UnleashRateEntryModel typeIsRecipe(
+        Long gradeValue,
+        List<UnleashRecipe> recipes
+    ) {
+        return (new UnleashRateEntryModel(
+            gradeValue,
+            UnleashRateEntryModelType.RECIPE
+        ));
     }
 
     public Map<String, Object> properties(
@@ -47,8 +106,16 @@ public class UnleashRateEntryModel {
         if (this.gradeValue != null) {
             properties.put("gradeValue", this.gradeValue);
         }
+        if (this.type != null) {
+            properties.put("type", this.type.toString(
+            ));
+        }
         if (this.needCount != null) {
             properties.put("needCount", this.needCount);
+        }
+        if (this.recipes != null) {
+            properties.put("recipes", this.recipes.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
 
         return properties;

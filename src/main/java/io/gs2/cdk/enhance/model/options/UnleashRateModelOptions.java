@@ -14,6 +14,10 @@
  * permissions and limitations under the License.
  */
 package io.gs2.cdk.enhance.model.options;
+import io.gs2.cdk.enhance.model.UnleashIndividualMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashQuantityMaterialSetting;
+import io.gs2.cdk.enhance.model.UnleashMaterial;
+import io.gs2.cdk.enhance.model.UnleashRecipe;
 import io.gs2.cdk.enhance.model.UnleashRateEntryModel;
 
 import java.util.HashMap;
@@ -24,6 +28,7 @@ import java.util.stream.Collectors;
 public class UnleashRateModelOptions {
     public String description;
     public String metadata;
+    public List<String> groupKeyHierarchy;
     
     public UnleashRateModelOptions withDescription(
         String description
@@ -36,6 +41,13 @@ public class UnleashRateModelOptions {
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public UnleashRateModelOptions withGroupKeyHierarchy(
+        List<String> groupKeyHierarchy
+    ) {
+        this.groupKeyHierarchy = groupKeyHierarchy;
         return this;
     }
 }

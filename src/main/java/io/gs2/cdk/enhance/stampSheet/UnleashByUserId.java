@@ -18,6 +18,7 @@ package io.gs2.cdk.enhance.stampSheet;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.VerifyAction;
+import io.gs2.cdk.enhance.model.UnleashMaterialSelection;
 import io.gs2.cdk.core.model.Config;
 
 import java.util.HashMap;
@@ -32,6 +33,8 @@ public class UnleashByUserId extends AcquireAction {
         String rateName,
         String targetItemSetId,
         List<String> materials,
+        String recipeName,
+        List<UnleashMaterialSelection> recipeMaterials,
         List<Config> config,
         String userId
     ) {
@@ -43,6 +46,8 @@ public class UnleashByUserId extends AcquireAction {
                     put("rateName", rateName);
                     put("targetItemSetId", targetItemSetId);
                     put("materials", materials);
+                    put("recipeName", recipeName);
+                    put("recipeMaterials", recipeMaterials);
                     put("config", config);
                     put("userId", userId);
                 }
