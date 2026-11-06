@@ -18,12 +18,18 @@ package io.gs2.cdk.realtime.model.enums;
 
 
 public enum NamespaceServerType {
-    RELAY;
+    RELAY,
+    SYNC,
+    STATE_MACHINE;
 
     public String toString() {
         switch (this) {
             case RELAY:
                 return "relay";
+            case SYNC:
+                return "sync";
+            case STATE_MACHINE:
+                return "stateMachine";
         }
         return "unknown";
     }

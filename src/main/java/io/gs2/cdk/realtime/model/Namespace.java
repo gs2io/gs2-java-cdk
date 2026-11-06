@@ -43,6 +43,9 @@ public class Namespace extends CdkResource {
     @Deprecated
     private TransactionSetting transactionSetting = null;
     private TransactionSettingV2 transactionSettingV2 = null;
+    private String objectCatalog = null;
+    private String stateMachineNamespaceId = null;
+    private Long stateMachineVersion = null;
     private NotificationSetting createNotification = null;
     private LogSetting logSetting = null;
 
@@ -64,6 +67,9 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
         this.transactionSettingV2 = options.transactionSettingV2;
+        this.objectCatalog = options.objectCatalog;
+        this.stateMachineNamespaceId = options.stateMachineNamespaceId;
+        this.stateMachineVersion = options.stateMachineVersion;
         this.createNotification = options.createNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -124,6 +130,15 @@ public class Namespace extends CdkResource {
         }
         if (this.serverSpec != null) {
             properties.put("ServerSpec", this.serverSpec);
+        }
+        if (this.objectCatalog != null) {
+            properties.put("ObjectCatalog", this.objectCatalog);
+        }
+        if (this.stateMachineNamespaceId != null) {
+            properties.put("StateMachineNamespaceId", this.stateMachineNamespaceId);
+        }
+        if (this.stateMachineVersion != null) {
+            properties.put("StateMachineVersion", this.stateMachineVersion);
         }
         if (this.createNotification != null) {
             properties.put("CreateNotification", this.createNotification.properties(

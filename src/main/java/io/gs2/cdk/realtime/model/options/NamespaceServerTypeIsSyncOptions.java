@@ -1,0 +1,87 @@
+/*
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+package io.gs2.cdk.realtime.model.options;
+import io.gs2.cdk.core.model.TransactionSetting;
+import io.gs2.cdk.realtime.model.TransactionSettingV2;
+import io.gs2.cdk.realtime.model.MobileNotificationMessage;
+import io.gs2.cdk.core.model.NotificationSetting;
+import io.gs2.cdk.core.model.LogSetting;
+import io.gs2.cdk.realtime.model.enums.NamespaceServerType;
+import io.gs2.cdk.realtime.model.enums.NamespaceServerSpec;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class NamespaceServerTypeIsSyncOptions {
+    public String description;
+    public TransactionSetting transactionSetting;
+    public TransactionSettingV2 transactionSettingV2;
+    public Long stateMachineVersion;
+    public NotificationSetting createNotification;
+    public LogSetting logSetting;
+    public Long revision;
+    
+    public NamespaceServerTypeIsSyncOptions withDescription(
+        String description
+    ) {
+        this.description = description;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withTransactionSetting(
+        TransactionSetting transactionSetting
+    ) {
+        this.transactionSetting = transactionSetting;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withTransactionSettingV2(
+        TransactionSettingV2 transactionSettingV2
+    ) {
+        this.transactionSettingV2 = transactionSettingV2;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withStateMachineVersion(
+        Long stateMachineVersion
+    ) {
+        this.stateMachineVersion = stateMachineVersion;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withCreateNotification(
+        NotificationSetting createNotification
+    ) {
+        this.createNotification = createNotification;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withLogSetting(
+        LogSetting logSetting
+    ) {
+        this.logSetting = logSetting;
+        return this;
+    }
+    
+    public NamespaceServerTypeIsSyncOptions withRevision(
+        Long revision
+    ) {
+        this.revision = revision;
+        return this;
+    }
+}

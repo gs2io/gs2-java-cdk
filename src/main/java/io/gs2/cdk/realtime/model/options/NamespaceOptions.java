@@ -31,6 +31,9 @@ public class NamespaceOptions {
     @Deprecated
     public TransactionSetting transactionSetting;
     public TransactionSettingV2 transactionSettingV2;
+    public String objectCatalog;
+    public String stateMachineNamespaceId;
+    public Long stateMachineVersion;
     public NotificationSetting createNotification;
     public LogSetting logSetting;
     
@@ -52,6 +55,27 @@ public class NamespaceOptions {
         TransactionSettingV2 transactionSettingV2
     ) {
         this.transactionSettingV2 = transactionSettingV2;
+        return this;
+    }
+    
+    public NamespaceOptions withObjectCatalog(
+        String objectCatalog
+    ) {
+        this.objectCatalog = objectCatalog;
+        return this;
+    }
+    
+    public NamespaceOptions withStateMachineNamespaceId(
+        String stateMachineNamespaceId
+    ) {
+        this.stateMachineNamespaceId = stateMachineNamespaceId;
+        return this;
+    }
+    
+    public NamespaceOptions withStateMachineVersion(
+        Long stateMachineVersion
+    ) {
+        this.stateMachineVersion = stateMachineVersion;
         return this;
     }
     
