@@ -16,6 +16,8 @@
 package io.gs2.cdk.realtime.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.realtime.model.TransactionSettingV2;
+import io.gs2.cdk.realtime.model.SyncSetting;
+import io.gs2.cdk.realtime.model.StateMachineSetting;
 import io.gs2.cdk.realtime.model.MobileNotificationMessage;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
@@ -31,7 +33,7 @@ public class NamespaceServerTypeIsSyncOptions {
     public String description;
     public TransactionSetting transactionSetting;
     public TransactionSettingV2 transactionSettingV2;
-    public Long stateMachineVersion;
+    public SyncSetting syncSetting;
     public NotificationSetting createNotification;
     public LogSetting logSetting;
     public Long revision;
@@ -57,10 +59,10 @@ public class NamespaceServerTypeIsSyncOptions {
         return this;
     }
     
-    public NamespaceServerTypeIsSyncOptions withStateMachineVersion(
-        Long stateMachineVersion
+    public NamespaceServerTypeIsSyncOptions withSyncSetting(
+        SyncSetting syncSetting
     ) {
-        this.stateMachineVersion = stateMachineVersion;
+        this.syncSetting = syncSetting;
         return this;
     }
     

@@ -16,6 +16,8 @@
 package io.gs2.cdk.realtime.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.realtime.model.TransactionSettingV2;
+import io.gs2.cdk.realtime.model.SyncSetting;
+import io.gs2.cdk.realtime.model.StateMachineSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.realtime.model.enums.NamespaceServerType;
@@ -31,9 +33,8 @@ public class NamespaceOptions {
     @Deprecated
     public TransactionSetting transactionSetting;
     public TransactionSettingV2 transactionSettingV2;
-    public String objectCatalog;
-    public String stateMachineNamespaceId;
-    public Long stateMachineVersion;
+    public SyncSetting syncSetting;
+    public StateMachineSetting stateMachineSetting;
     public NotificationSetting createNotification;
     public LogSetting logSetting;
     
@@ -58,24 +59,17 @@ public class NamespaceOptions {
         return this;
     }
     
-    public NamespaceOptions withObjectCatalog(
-        String objectCatalog
+    public NamespaceOptions withSyncSetting(
+        SyncSetting syncSetting
     ) {
-        this.objectCatalog = objectCatalog;
+        this.syncSetting = syncSetting;
         return this;
     }
     
-    public NamespaceOptions withStateMachineNamespaceId(
-        String stateMachineNamespaceId
+    public NamespaceOptions withStateMachineSetting(
+        StateMachineSetting stateMachineSetting
     ) {
-        this.stateMachineNamespaceId = stateMachineNamespaceId;
-        return this;
-    }
-    
-    public NamespaceOptions withStateMachineVersion(
-        Long stateMachineVersion
-    ) {
-        this.stateMachineVersion = stateMachineVersion;
+        this.stateMachineSetting = stateMachineSetting;
         return this;
     }
     

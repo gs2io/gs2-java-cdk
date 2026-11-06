@@ -20,6 +20,8 @@ import io.gs2.cdk.core.model.Stack;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.realtime.model.TransactionSettingV2;
+import io.gs2.cdk.realtime.model.SyncSetting;
+import io.gs2.cdk.realtime.model.StateMachineSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -43,9 +45,8 @@ public class Namespace extends CdkResource {
     @Deprecated
     private TransactionSetting transactionSetting = null;
     private TransactionSettingV2 transactionSettingV2 = null;
-    private String objectCatalog = null;
-    private String stateMachineNamespaceId = null;
-    private Long stateMachineVersion = null;
+    private SyncSetting syncSetting = null;
+    private StateMachineSetting stateMachineSetting = null;
     private NotificationSetting createNotification = null;
     private LogSetting logSetting = null;
 
@@ -67,9 +68,8 @@ public class Namespace extends CdkResource {
         this.description = options.description;
         this.transactionSetting = options.transactionSetting;
         this.transactionSettingV2 = options.transactionSettingV2;
-        this.objectCatalog = options.objectCatalog;
-        this.stateMachineNamespaceId = options.stateMachineNamespaceId;
-        this.stateMachineVersion = options.stateMachineVersion;
+        this.syncSetting = options.syncSetting;
+        this.stateMachineSetting = options.stateMachineSetting;
         this.createNotification = options.createNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -131,14 +131,13 @@ public class Namespace extends CdkResource {
         if (this.serverSpec != null) {
             properties.put("ServerSpec", this.serverSpec);
         }
-        if (this.objectCatalog != null) {
-            properties.put("ObjectCatalog", this.objectCatalog);
+        if (this.syncSetting != null) {
+            properties.put("SyncSetting", this.syncSetting.properties(
+            ));
         }
-        if (this.stateMachineNamespaceId != null) {
-            properties.put("StateMachineNamespaceId", this.stateMachineNamespaceId);
-        }
-        if (this.stateMachineVersion != null) {
-            properties.put("StateMachineVersion", this.stateMachineVersion);
+        if (this.stateMachineSetting != null) {
+            properties.put("StateMachineSetting", this.stateMachineSetting.properties(
+            ));
         }
         if (this.createNotification != null) {
             properties.put("CreateNotification", this.createNotification.properties(
