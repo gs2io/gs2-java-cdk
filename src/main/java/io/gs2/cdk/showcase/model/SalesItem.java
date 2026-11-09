@@ -17,6 +17,7 @@ package io.gs2.cdk.showcase.model;
 import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.showcase.model.Bonus;
 import io.gs2.cdk.showcase.model.options.SalesItemOptions;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class SalesItem {
     private String metadata = null;
     private List<VerifyAction> verifyActions = null;
     private List<ConsumeAction> consumeActions = null;
+    private List<Bonus> bonuses = null;
 
     public SalesItem(
         String name,
@@ -40,6 +42,7 @@ public class SalesItem {
         this.metadata = options.metadata;
         this.verifyActions = options.verifyActions;
         this.consumeActions = options.consumeActions;
+        this.bonuses = options.bonuses;
     }
     public SalesItem(
         String name,
@@ -69,6 +72,10 @@ public class SalesItem {
         }
         if (this.acquireActions != null) {
             properties.put("acquireActions", this.acquireActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
+        }
+        if (this.bonuses != null) {
+            properties.put("bonuses", this.bonuses.stream().map(v -> v.properties(
                     )).collect(Collectors.toList()));
         }
 

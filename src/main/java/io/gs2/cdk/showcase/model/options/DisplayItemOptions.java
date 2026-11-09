@@ -17,6 +17,7 @@ package io.gs2.cdk.showcase.model.options;
 import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.core.model.ConsumeAction;
 import io.gs2.cdk.core.model.AcquireAction;
+import io.gs2.cdk.showcase.model.Bonus;
 import io.gs2.cdk.showcase.model.SalesItem;
 import io.gs2.cdk.showcase.model.SalesItemGroup;
 import io.gs2.cdk.showcase.model.enums.DisplayItemType;
