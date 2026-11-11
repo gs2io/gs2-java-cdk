@@ -18,6 +18,7 @@ import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.realtime.model.TransactionSettingV2;
 import io.gs2.cdk.realtime.model.SyncSetting;
 import io.gs2.cdk.realtime.model.StateMachineSetting;
+import io.gs2.cdk.realtime.model.ParticipantSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 import io.gs2.cdk.realtime.model.enums.NamespaceServerType;
@@ -35,6 +36,7 @@ public class NamespaceOptions {
     public TransactionSettingV2 transactionSettingV2;
     public SyncSetting syncSetting;
     public StateMachineSetting stateMachineSetting;
+    public ParticipantSetting participantSetting;
     public NotificationSetting createNotification;
     public LogSetting logSetting;
     
@@ -70,6 +72,13 @@ public class NamespaceOptions {
         StateMachineSetting stateMachineSetting
     ) {
         this.stateMachineSetting = stateMachineSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withParticipantSetting(
+        ParticipantSetting participantSetting
+    ) {
+        this.participantSetting = participantSetting;
         return this;
     }
     

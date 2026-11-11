@@ -22,6 +22,7 @@ import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.realtime.model.TransactionSettingV2;
 import io.gs2.cdk.realtime.model.SyncSetting;
 import io.gs2.cdk.realtime.model.StateMachineSetting;
+import io.gs2.cdk.realtime.model.ParticipantSetting;
 import io.gs2.cdk.core.model.NotificationSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
@@ -47,6 +48,7 @@ public class Namespace extends CdkResource {
     private TransactionSettingV2 transactionSettingV2 = null;
     private SyncSetting syncSetting = null;
     private StateMachineSetting stateMachineSetting = null;
+    private ParticipantSetting participantSetting = null;
     private NotificationSetting createNotification = null;
     private LogSetting logSetting = null;
 
@@ -70,6 +72,7 @@ public class Namespace extends CdkResource {
         this.transactionSettingV2 = options.transactionSettingV2;
         this.syncSetting = options.syncSetting;
         this.stateMachineSetting = options.stateMachineSetting;
+        this.participantSetting = options.participantSetting;
         this.createNotification = options.createNotification;
         this.logSetting = options.logSetting;
         stack.addResource(
@@ -137,6 +140,10 @@ public class Namespace extends CdkResource {
         }
         if (this.stateMachineSetting != null) {
             properties.put("StateMachineSetting", this.stateMachineSetting.properties(
+            ));
+        }
+        if (this.participantSetting != null) {
+            properties.put("ParticipantSetting", this.participantSetting.properties(
             ));
         }
         if (this.createNotification != null) {
