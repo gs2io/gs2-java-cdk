@@ -21,6 +21,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.account.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
+import io.gs2.cdk.account.model.AccountDeletionSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import io.gs2.cdk.account.ref.NamespaceRef;
@@ -49,6 +50,10 @@ public class Namespace extends CdkResource {
     private ScriptSetting doTakeOverScript = null;
     private ScriptSetting banScript = null;
     private ScriptSetting unBanScript = null;
+    private AccountDeletionSetting accountDeletionSetting = null;
+    private ScriptSetting requestDeletionScript = null;
+    private ScriptSetting cancelDeletionScript = null;
+    private ScriptSetting executeDeletionScript = null;
     private LogSetting logSetting = null;
 
     public Namespace(
@@ -73,6 +78,10 @@ public class Namespace extends CdkResource {
         this.doTakeOverScript = options.doTakeOverScript;
         this.banScript = options.banScript;
         this.unBanScript = options.unBanScript;
+        this.accountDeletionSetting = options.accountDeletionSetting;
+        this.requestDeletionScript = options.requestDeletionScript;
+        this.cancelDeletionScript = options.cancelDeletionScript;
+        this.executeDeletionScript = options.executeDeletionScript;
         this.logSetting = options.logSetting;
         stack.addResource(
             this
@@ -151,6 +160,22 @@ public class Namespace extends CdkResource {
         }
         if (this.unBanScript != null) {
             properties.put("UnBanScript", this.unBanScript.properties(
+            ));
+        }
+        if (this.accountDeletionSetting != null) {
+            properties.put("AccountDeletionSetting", this.accountDeletionSetting.properties(
+            ));
+        }
+        if (this.requestDeletionScript != null) {
+            properties.put("RequestDeletionScript", this.requestDeletionScript.properties(
+            ));
+        }
+        if (this.cancelDeletionScript != null) {
+            properties.put("CancelDeletionScript", this.cancelDeletionScript.properties(
+            ));
+        }
+        if (this.executeDeletionScript != null) {
+            properties.put("ExecuteDeletionScript", this.executeDeletionScript.properties(
             ));
         }
         if (this.logSetting != null) {

@@ -17,6 +17,7 @@ package io.gs2.cdk.account.model.options;
 import io.gs2.cdk.core.model.TransactionSetting;
 import io.gs2.cdk.account.model.TransactionSettingV2;
 import io.gs2.cdk.core.model.ScriptSetting;
+import io.gs2.cdk.account.model.AccountDeletionSetting;
 import io.gs2.cdk.core.model.LogSetting;
 
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class NamespaceOptions {
     public ScriptSetting doTakeOverScript;
     public ScriptSetting banScript;
     public ScriptSetting unBanScript;
+    public AccountDeletionSetting accountDeletionSetting;
+    public ScriptSetting requestDeletionScript;
+    public ScriptSetting cancelDeletionScript;
+    public ScriptSetting executeDeletionScript;
     public LogSetting logSetting;
     
     public NamespaceOptions withDescription(
@@ -113,6 +118,34 @@ public class NamespaceOptions {
         ScriptSetting unBanScript
     ) {
         this.unBanScript = unBanScript;
+        return this;
+    }
+    
+    public NamespaceOptions withAccountDeletionSetting(
+        AccountDeletionSetting accountDeletionSetting
+    ) {
+        this.accountDeletionSetting = accountDeletionSetting;
+        return this;
+    }
+    
+    public NamespaceOptions withRequestDeletionScript(
+        ScriptSetting requestDeletionScript
+    ) {
+        this.requestDeletionScript = requestDeletionScript;
+        return this;
+    }
+    
+    public NamespaceOptions withCancelDeletionScript(
+        ScriptSetting cancelDeletionScript
+    ) {
+        this.cancelDeletionScript = cancelDeletionScript;
+        return this;
+    }
+    
+    public NamespaceOptions withExecuteDeletionScript(
+        ScriptSetting executeDeletionScript
+    ) {
+        this.executeDeletionScript = executeDeletionScript;
         return this;
     }
     
