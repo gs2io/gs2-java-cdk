@@ -16,6 +16,8 @@
 package io.gs2.cdk.account.model.options;
 import io.gs2.cdk.account.model.ScopeValue;
 import io.gs2.cdk.account.model.OpenIdConnectSetting;
+import io.gs2.cdk.account.model.IssuedCodeSetting;
+import io.gs2.cdk.account.model.enums.TakeOverTypeModelTakeOverMethod;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,11 +26,27 @@ import java.util.stream.Collectors;
 
 public class TakeOverTypeModelOptions {
     public String metadata;
+    public OpenIdConnectSetting openIdConnectSetting;
+    public IssuedCodeSetting issuedCodeSetting;
     
     public TakeOverTypeModelOptions withMetadata(
         String metadata
     ) {
         this.metadata = metadata;
+        return this;
+    }
+    
+    public TakeOverTypeModelOptions withOpenIdConnectSetting(
+        OpenIdConnectSetting openIdConnectSetting
+    ) {
+        this.openIdConnectSetting = openIdConnectSetting;
+        return this;
+    }
+    
+    public TakeOverTypeModelOptions withIssuedCodeSetting(
+        IssuedCodeSetting issuedCodeSetting
+    ) {
+        this.issuedCodeSetting = issuedCodeSetting;
         return this;
     }
 }

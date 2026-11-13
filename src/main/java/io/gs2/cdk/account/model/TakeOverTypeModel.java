@@ -16,7 +16,11 @@
 package io.gs2.cdk.account.model;
 import io.gs2.cdk.account.model.ScopeValue;
 import io.gs2.cdk.account.model.OpenIdConnectSetting;
+import io.gs2.cdk.account.model.IssuedCodeSetting;
 import io.gs2.cdk.account.model.options.TakeOverTypeModelOptions;
+import io.gs2.cdk.account.model.options.TakeOverTypeModelTakeOverMethodIsOpenIdConnectOptions;
+import io.gs2.cdk.account.model.options.TakeOverTypeModelTakeOverMethodIsIssuedCodeOptions;
+import io.gs2.cdk.account.model.enums.TakeOverTypeModelTakeOverMethod;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -24,24 +28,78 @@ import java.util.stream.Collectors;
 
 public class TakeOverTypeModel {
     private Integer type;
-    private OpenIdConnectSetting openIdConnectSetting;
+    private TakeOverTypeModelTakeOverMethod takeOverMethod;
     private String metadata = null;
+    private OpenIdConnectSetting openIdConnectSetting = null;
+    private IssuedCodeSetting issuedCodeSetting = null;
 
     public TakeOverTypeModel(
         Integer type,
-        OpenIdConnectSetting openIdConnectSetting,
+        TakeOverTypeModelTakeOverMethod takeOverMethod,
         TakeOverTypeModelOptions options
     ) {
         this.type = type;
-        this.openIdConnectSetting = openIdConnectSetting;
+        this.takeOverMethod = takeOverMethod;
         this.metadata = options.metadata;
+        this.openIdConnectSetting = options.openIdConnectSetting;
+        this.issuedCodeSetting = options.issuedCodeSetting;
     }
     public TakeOverTypeModel(
         Integer type,
-        OpenIdConnectSetting openIdConnectSetting
+        TakeOverTypeModelTakeOverMethod takeOverMethod
     ) {
         this.type = type;
-        this.openIdConnectSetting = openIdConnectSetting;
+        this.takeOverMethod = takeOverMethod;
+    }
+
+    public static TakeOverTypeModel takeOverMethodIsOpenIdConnect(
+        Integer type,
+        OpenIdConnectSetting openIdConnectSetting,
+        TakeOverTypeModelTakeOverMethodIsOpenIdConnectOptions options
+    ) {
+        return (new TakeOverTypeModel(
+            type,
+            TakeOverTypeModelTakeOverMethod.OPEN_ID_CONNECT,
+            new TakeOverTypeModelOptions()
+                .withOpenIdConnectSetting(openIdConnectSetting)
+                .withMetadata(options.metadata)
+        ));
+    }
+
+
+    public static TakeOverTypeModel takeOverMethodIsOpenIdConnect(
+        Integer type,
+        OpenIdConnectSetting openIdConnectSetting
+    ) {
+        return (new TakeOverTypeModel(
+            type,
+            TakeOverTypeModelTakeOverMethod.OPEN_ID_CONNECT
+        ));
+    }
+
+    public static TakeOverTypeModel takeOverMethodIsIssuedCode(
+        Integer type,
+        IssuedCodeSetting issuedCodeSetting,
+        TakeOverTypeModelTakeOverMethodIsIssuedCodeOptions options
+    ) {
+        return (new TakeOverTypeModel(
+            type,
+            TakeOverTypeModelTakeOverMethod.ISSUED_CODE,
+            new TakeOverTypeModelOptions()
+                .withIssuedCodeSetting(issuedCodeSetting)
+                .withMetadata(options.metadata)
+        ));
+    }
+
+
+    public static TakeOverTypeModel takeOverMethodIsIssuedCode(
+        Integer type,
+        IssuedCodeSetting issuedCodeSetting
+    ) {
+        return (new TakeOverTypeModel(
+            type,
+            TakeOverTypeModelTakeOverMethod.ISSUED_CODE
+        ));
     }
 
     public Map<String, Object> properties(
@@ -54,8 +112,16 @@ public class TakeOverTypeModel {
         if (this.metadata != null) {
             properties.put("metadata", this.metadata);
         }
+        if (this.takeOverMethod != null) {
+            properties.put("takeOverMethod", this.takeOverMethod.toString(
+            ));
+        }
         if (this.openIdConnectSetting != null) {
             properties.put("openIdConnectSetting", this.openIdConnectSetting.properties(
+            ));
+        }
+        if (this.issuedCodeSetting != null) {
+            properties.put("issuedCodeSetting", this.issuedCodeSetting.properties(
             ));
         }
 
