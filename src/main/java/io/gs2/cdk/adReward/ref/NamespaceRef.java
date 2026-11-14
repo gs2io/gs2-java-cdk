@@ -19,6 +19,7 @@ import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.adReward.stampSheet.AcquirePointByUserId;
 import io.gs2.cdk.adReward.stampSheet.ConsumePointByUserId;
+import io.gs2.cdk.adReward.stampSheet.VerifyPointByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,6 +73,36 @@ public class NamespaceRef {
         return (new ConsumePointByUserId(
             this.namespaceName,
             point,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyPointByUserId verifyPoint(
+        String verifyType,
+        Long point,
+        Boolean multiplyValueSpecifyingQuantity,
+        String userId
+    ) {
+        return (new VerifyPointByUserId(
+            this.namespaceName,
+            verifyType,
+            point,
+            multiplyValueSpecifyingQuantity,
+            userId
+        ));
+    }
+
+
+    public VerifyPointByUserId verifyPoint(
+        String verifyType,
+        Long point,
+        Boolean multiplyValueSpecifyingQuantity
+    ) {
+        return (new VerifyPointByUserId(
+            this.namespaceName,
+            verifyType,
+            point,
+            multiplyValueSpecifyingQuantity,
             "#{userId}"
         ));
     }
