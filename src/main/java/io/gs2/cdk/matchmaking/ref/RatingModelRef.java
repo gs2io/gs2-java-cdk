@@ -17,6 +17,7 @@ package io.gs2.cdk.matchmaking.ref;
 
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
+import io.gs2.cdk.matchmaking.stampSheet.VerifyRatingByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,34 @@ public class RatingModelRef {
     ) {
         this.namespaceName = namespaceName;
         this.ratingName = ratingName;
+    }
+
+    public VerifyRatingByUserId verifyRating(
+        String verifyType,
+        Float rateValue,
+        String userId
+    ) {
+        return (new VerifyRatingByUserId(
+            this.namespaceName,
+            this.ratingName,
+            verifyType,
+            rateValue,
+            userId
+        ));
+    }
+
+
+    public VerifyRatingByUserId verifyRating(
+        String verifyType,
+        Float rateValue
+    ) {
+        return (new VerifyRatingByUserId(
+            this.namespaceName,
+            this.ratingName,
+            verifyType,
+            rateValue,
+            "#{userId}"
+        ));
     }
 
     public String grn(

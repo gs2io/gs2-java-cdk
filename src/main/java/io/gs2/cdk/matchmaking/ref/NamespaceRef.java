@@ -20,6 +20,7 @@ import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.matchmaking.ref.RatingModelRef;
 import io.gs2.cdk.matchmaking.ref.SeasonModelRef;
 import io.gs2.cdk.matchmaking.stampSheet.VerifyIncludeParticipantByUserId;
+import io.gs2.cdk.matchmaking.stampSheet.VerifyRatingByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -85,6 +86,36 @@ public class NamespaceRef {
             tier,
             verifyType,
             seasonGatheringName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyRatingByUserId verifyRating(
+        String ratingName,
+        String verifyType,
+        Float rateValue,
+        String userId
+    ) {
+        return (new VerifyRatingByUserId(
+            this.namespaceName,
+            ratingName,
+            verifyType,
+            rateValue,
+            userId
+        ));
+    }
+
+
+    public VerifyRatingByUserId verifyRating(
+        String ratingName,
+        String verifyType,
+        Float rateValue
+    ) {
+        return (new VerifyRatingByUserId(
+            this.namespaceName,
+            ratingName,
+            verifyType,
+            rateValue,
             "#{userId}"
         ));
     }
