@@ -20,6 +20,7 @@ import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.skillTree.ref.NodeModelRef;
 import io.gs2.cdk.skillTree.stampSheet.MarkReleaseByUserId;
 import io.gs2.cdk.skillTree.stampSheet.MarkRestrainByUserId;
+import io.gs2.cdk.skillTree.stampSheet.VerifyStatusByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -90,6 +91,36 @@ public class NamespaceRef {
             this.namespaceName,
             propertyId,
             nodeModelNames,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyStatusByUserId verifyStatus(
+        String propertyId,
+        String nodeModelName,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyStatusByUserId(
+            this.namespaceName,
+            propertyId,
+            nodeModelName,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyStatusByUserId verifyStatus(
+        String propertyId,
+        String nodeModelName,
+        String verifyType
+    ) {
+        return (new VerifyStatusByUserId(
+            this.namespaceName,
+            propertyId,
+            nodeModelName,
+            verifyType,
             "#{userId}"
         ));
     }
