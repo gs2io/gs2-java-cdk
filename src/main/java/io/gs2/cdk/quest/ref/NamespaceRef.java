@@ -21,6 +21,7 @@ import io.gs2.cdk.quest.ref.QuestGroupModelRef;
 import io.gs2.cdk.quest.stampSheet.CreateProgressByUserId;
 import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.quest.stampSheet.DeleteProgressByUserId;
+import io.gs2.cdk.quest.stampSheet.VerifyCompletedQuestListByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,6 +88,36 @@ public class NamespaceRef {
     ) {
         return (new DeleteProgressByUserId(
             this.namespaceName,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyCompletedQuestListByUserId verifyCompletedQuestList(
+        String questGroupName,
+        String questName,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyCompletedQuestListByUserId(
+            this.namespaceName,
+            questGroupName,
+            questName,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyCompletedQuestListByUserId verifyCompletedQuestList(
+        String questGroupName,
+        String questName,
+        String verifyType
+    ) {
+        return (new VerifyCompletedQuestListByUserId(
+            this.namespaceName,
+            questGroupName,
+            questName,
+            verifyType,
             "#{userId}"
         ));
     }
