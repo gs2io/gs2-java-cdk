@@ -26,6 +26,7 @@ import io.gs2.cdk.enchant.stampSheet.ReDrawRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.AddRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.SetRarityParameterStatusByUserId;
 import io.gs2.cdk.enchant.model.RarityParameterValue;
+import io.gs2.cdk.enchant.stampSheet.VerifyBalanceParameterStatusByUserId;
 import io.gs2.cdk.enchant.stampSheet.VerifyRarityParameterStatusByUserId;
 import java.util.Arrays;
 import java.util.List;
@@ -204,6 +205,44 @@ public class NamespaceRef {
             parameterName,
             propertyId,
             parameterValues,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyBalanceParameterStatusByUserId verifyBalanceParameterStatus(
+        String parameterName,
+        String propertyId,
+        String parameterValueName,
+        String verifyType,
+        Long parameterValue,
+        String userId
+    ) {
+        return (new VerifyBalanceParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValueName,
+            verifyType,
+            parameterValue,
+            userId
+        ));
+    }
+
+
+    public VerifyBalanceParameterStatusByUserId verifyBalanceParameterStatus(
+        String parameterName,
+        String propertyId,
+        String parameterValueName,
+        String verifyType,
+        Long parameterValue
+    ) {
+        return (new VerifyBalanceParameterStatusByUserId(
+            this.namespaceName,
+            parameterName,
+            propertyId,
+            parameterValueName,
+            verifyType,
+            parameterValue,
             "#{userId}"
         ));
     }
