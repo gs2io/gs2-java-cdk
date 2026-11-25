@@ -20,6 +20,7 @@ import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.dictionary.stampSheet.AddEntriesByUserId;
 import io.gs2.cdk.dictionary.stampSheet.DeleteEntriesByUserId;
 import io.gs2.cdk.dictionary.stampSheet.VerifyEntryByUserId;
+import io.gs2.cdk.dictionary.stampSheet.VerifyEntryCountByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -100,6 +101,36 @@ public class EntryModelRef {
             this.namespaceName,
             this.entryModelName,
             verifyType,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyEntryCountByUserId verifyEntryCount(
+        String verifyType,
+        Integer count,
+        List<String> entryModelNames,
+        String userId
+    ) {
+        return (new VerifyEntryCountByUserId(
+            this.namespaceName,
+            verifyType,
+            count,
+            entryModelNames,
+            userId
+        ));
+    }
+
+
+    public VerifyEntryCountByUserId verifyEntryCount(
+        String verifyType,
+        Integer count,
+        List<String> entryModelNames
+    ) {
+        return (new VerifyEntryCountByUserId(
+            this.namespaceName,
+            verifyType,
+            count,
+            entryModelNames,
             "#{userId}"
         ));
     }

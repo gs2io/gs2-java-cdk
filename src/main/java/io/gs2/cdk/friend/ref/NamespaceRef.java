@@ -18,6 +18,9 @@ package io.gs2.cdk.friend.ref;
 import io.gs2.cdk.core.func.GetAttr;
 import io.gs2.cdk.core.func.Join;
 import io.gs2.cdk.friend.stampSheet.UpdateProfileByUserId;
+import io.gs2.cdk.friend.stampSheet.VerifyFollowByUserId;
+import io.gs2.cdk.friend.stampSheet.VerifyFriendByUserId;
+import io.gs2.cdk.friend.stampSheet.VerifyFriendCountByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,6 +60,84 @@ public class NamespaceRef {
             publicProfile,
             followerProfile,
             friendProfile,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyFollowByUserId verifyFollow(
+        String targetUserId,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyFollowByUserId(
+            this.namespaceName,
+            targetUserId,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyFollowByUserId verifyFollow(
+        String targetUserId,
+        String verifyType
+    ) {
+        return (new VerifyFollowByUserId(
+            this.namespaceName,
+            targetUserId,
+            verifyType,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyFriendByUserId verifyFriend(
+        String targetUserId,
+        String verifyType,
+        String userId
+    ) {
+        return (new VerifyFriendByUserId(
+            this.namespaceName,
+            targetUserId,
+            verifyType,
+            userId
+        ));
+    }
+
+
+    public VerifyFriendByUserId verifyFriend(
+        String targetUserId,
+        String verifyType
+    ) {
+        return (new VerifyFriendByUserId(
+            this.namespaceName,
+            targetUserId,
+            verifyType,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyFriendCountByUserId verifyFriendCount(
+        String verifyType,
+        Integer count,
+        String userId
+    ) {
+        return (new VerifyFriendCountByUserId(
+            this.namespaceName,
+            verifyType,
+            count,
+            userId
+        ));
+    }
+
+
+    public VerifyFriendCountByUserId verifyFriendCount(
+        String verifyType,
+        Integer count
+    ) {
+        return (new VerifyFriendCountByUserId(
+            this.namespaceName,
+            verifyType,
+            count,
             "#{userId}"
         ));
     }
