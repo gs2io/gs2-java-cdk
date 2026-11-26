@@ -22,6 +22,7 @@ import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.core.model.Config;
 import io.gs2.cdk.formation.stampSheet.SetFormByUserId;
 import io.gs2.cdk.formation.model.Slot;
+import io.gs2.cdk.formation.stampSheet.VerifyFormByUserId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -94,6 +95,50 @@ public class FormModelRef {
             this.moldModelName,
             index,
             slots,
+            "#{userId}"
+        ));
+    }
+
+    public VerifyFormByUserId verifyForm(
+        Integer index,
+        String propertyIdRegex,
+        String verifyType,
+        Integer count,
+        String slotName,
+        String countType,
+        String userId
+    ) {
+        return (new VerifyFormByUserId(
+            this.namespaceName,
+            this.moldModelName,
+            index,
+            propertyIdRegex,
+            verifyType,
+            count,
+            slotName,
+            countType,
+            userId
+        ));
+    }
+
+
+    public VerifyFormByUserId verifyForm(
+        Integer index,
+        String propertyIdRegex,
+        String verifyType,
+        Integer count,
+        String slotName,
+        String countType
+    ) {
+        return (new VerifyFormByUserId(
+            this.namespaceName,
+            this.moldModelName,
+            index,
+            propertyIdRegex,
+            verifyType,
+            count,
+            slotName,
+            countType,
             "#{userId}"
         ));
     }
