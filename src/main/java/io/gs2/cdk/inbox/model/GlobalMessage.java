@@ -16,6 +16,7 @@
 package io.gs2.cdk.inbox.model;
 import io.gs2.cdk.core.model.AcquireAction;
 import io.gs2.cdk.inbox.model.TimeSpan;
+import io.gs2.cdk.core.model.VerifyAction;
 import io.gs2.cdk.inbox.model.options.GlobalMessageOptions;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class GlobalMessage {
     private TimeSpan expiresTimeSpan = null;
     private Long expiresAt = null;
     private String messageReceptionPeriodEventId = null;
+    private List<VerifyAction> verifyActions = null;
 
     public GlobalMessage(
         String name,
@@ -41,6 +43,7 @@ public class GlobalMessage {
         this.expiresTimeSpan = options.expiresTimeSpan;
         this.expiresAt = options.expiresAt;
         this.messageReceptionPeriodEventId = options.messageReceptionPeriodEventId;
+        this.verifyActions = options.verifyActions;
     }
     public GlobalMessage(
         String name,
@@ -73,6 +76,10 @@ public class GlobalMessage {
         }
         if (this.messageReceptionPeriodEventId != null) {
             properties.put("messageReceptionPeriodEventId", this.messageReceptionPeriodEventId);
+        }
+        if (this.verifyActions != null) {
+            properties.put("verifyActions", this.verifyActions.stream().map(v -> v.properties(
+                    )).collect(Collectors.toList()));
         }
 
         return properties;
